@@ -1,0 +1,118 @@
+package ExAstris.Bridge;
+
+import java.text.DecimalFormat;
+import java.util.List;
+
+import ExAstris.Block.BlockBarrelThaumium;
+import ExAstris.Block.TileEntity.TileEntityBarrelThaumium;
+import ExAstris.Block.TileEntity.TileEntityBarrelThaumium.BarrelMode;
+import net.minecraft.item.ItemStack;
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaDataAccessor;
+import mcp.mobius.waila.api.IWailaDataProvider;
+import mcp.mobius.waila.api.IWailaRegistrar;
+
+public class Waila implements IWailaDataProvider {
+
+	@Override
+	public ItemStack getWailaStack(IWailaDataAccessor accessor,
+			IWailaConfigHandler config) {
+		return null;
+	}
+
+	@Override
+	public List<String> getWailaHead(ItemStack stack, List<String> currentTip,
+			IWailaDataAccessor accessor, IWailaConfigHandler config) {
+		return currentTip;
+	}
+	
+	@Override
+	public List<String> getWailaBody(ItemStack stack, List<String> currentTip,
+			IWailaDataAccessor accessor, IWailaConfigHandler config) {
+		if (accessor.getBlock() instanceof BlockBarrelThaumium) {
+			TileEntityBarrelThaumium teBarrel = (TileEntityBarrelThaumium) accessor
+					.getTileEntity();
+			currentTip.add(getBarrelDisplay(teBarrel.getMode(), teBarrel));
+		} 
+		return currentTip;
+	}
+	
+	@Override
+	public List<String> getWailaTail(ItemStack stack, List<String> currentTip,
+			IWailaDataAccessor accessor, IWailaConfigHandler config) {
+		return currentTip;
+	}
+	
+	public String getBarrelDisplay(BarrelMode mode, TileEntityBarrelThaumium barrel) {
+		DecimalFormat format = new DecimalFormat("##.#");
+		switch (mode) {
+		case EMPTY:
+			return "Empty";
+		case FLUID:
+			if (barrel.isFull())
+				return barrel.fluid.getFluid().getName();
+			else
+				return barrel.fluid.getFluid().getName() + " "
+						+ format.format(barrel.getVolume() * 100) + "%";
+		case COMPOST:
+			if (barrel.isFull())
+				return "Composting: "
+						+ Math.round(getBarrelTimeRemaining(barrel)) + "%";
+			else
+				return "Collecting Material: "
+						+ format.format(barrel.getVolume() * 100) + "%";
+		case DIRT:
+			return "Dirt";
+		case CLAY:
+			return "Clay";
+		case MILKED:
+			return "Sliming: " + Math.round(getBarrelTimeRemaining(barrel))
+					+ "%";
+		case SLIME:
+			return "Slime";
+		case SPORED:
+			return "Transforming: "
+					+ Math.round(getBarrelTimeRemaining(barrel)) + "%";
+		case ENDER_COOKING:
+		case BLAZE_COOKING:
+		case PECK_COOKING:
+			return "Summoning: " + Math.round(getBarrelTimeRemaining(barrel))
+					+ "%";
+		case ENDER:
+		case BLAZE:
+		case PECK:
+			return "Incoming!";
+		case DARKOAK:
+			return "Dark Oak Sapling";
+		case BEETRAP:
+			return "Scented Artifical Hive";
+		case COBBLESTONE:
+			return "Cobblestone";
+		case ENDSTONE:
+			return "End Stone";
+		case NETHERRACK:
+			return "Netherrack";
+		case OBSIDIAN:
+			return "Obsidian";
+		case SOULSAND:
+			return "Soul Sand";
+		case OBSIDIANTOTEM:
+			return "Obsidian Totem";
+		case BEEINFUSED:
+			return "Infused Artifical Hive";
+		case BLOCK:
+			return barrel.block.getLocalizedName();
+		default:
+			return "";
+		}
+	}
+	
+	public float getBarrelTimeRemaining(TileEntityBarrelThaumium barrel) {
+		return (barrel.getTimer() / (float) 1000) * 100;
+	}
+	
+	public static void callbackRegister(IWailaRegistrar registrar) {
+		Waila instance = new Waila();
+		registrar.registerBodyProvider(instance, BlockBarrelThaumium.class);
+	}
+}
