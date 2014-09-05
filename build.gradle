@@ -17,9 +17,9 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.0"
-group= "com.yourname.modid" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "modid"
+version = "1.00"
+group= "exastris"
+archivesBaseName = "Ex-Astris"
 
 minecraft {
     version = "1.7.10-10.13.0.1208"
@@ -39,6 +39,14 @@ dependencies {
     // for more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
+	
+	compile files("libs/Ex-Nihilo-1.36.jar")
+	compile files("libs/MineFactoryReloaded-[1.7.10]2.8.0RC3-591.jar")
+	compile files("libs/TConstruct_mc1.7.10_1.6.0d40.1.jar")
+	compile files("libs/Thaumcraft-1.7.10-4.2.0.1.jar")
+	compile files("libs/ThermalFoundation-[1.7.10]1.0.0B3-8.jar")
+	compile files("libs/TSteelworks-1.7.10-1.0.3.jar")
+	compile files("libs/Waila-1.5.3a_1.7.10.jar")
 
 }
 
