@@ -6,7 +6,7 @@ public class ModData {
 	public static final String ID = "exastris";
 	public static final String NAME = "Ex Astris";
 	public static final String VERSION = "For 1.7.10";
-    public static final String DEPENDENCIES = "required-after:Forge@[10.13.0.1180,);required-after:exnihilo;after:ThermalExpansion;after:Thaumcraft;after:TConstruct;after:TSteelworks;";
+    public static final String DEPENDENCIES = "required-after:Forge@[10.13.0.1180,);required-after:exnihilo;after:ThermalExpansion;after:Thaumcraft;after:TConstruct;after:TSteelworks;after:RedstoneArsenal;";
     
     public static void setMetadata(ModMetadata data)
 	{

@@ -17,7 +17,7 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.01"
+version = "1.02"
 group= "exastris"
 archivesBaseName = "Ex-Astris"
 
