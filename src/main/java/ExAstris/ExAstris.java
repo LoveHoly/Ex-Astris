@@ -72,6 +72,11 @@ public class ExAstris {
 			TConstruct.Initialize();
 		}
 		
-		
+		if (Loader.isModLoaded("TSteelworks"))
+		{
+			log.info("+++ - Found TSteelworks!");
+
+			TSteelworks.Initialize();
+		}
 	}
 }
