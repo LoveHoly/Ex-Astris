@@ -39,7 +39,7 @@ public class BlockSieveAutomatic extends BlockContainer{
 	@Override
 	public void registerBlockIcons(IIconRegister register)
 	{
-		blockIcon = Blocks.planks.getIcon(0,0);
+		blockIcon = Blocks.iron_block.getIcon(0,0);
 		meshIcon = register.registerIcon(ModData.TEXTURE_LOCATION + ":" + "IconSieveMesh");
 	}
 	

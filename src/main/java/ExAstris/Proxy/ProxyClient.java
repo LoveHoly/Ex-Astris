@@ -3,6 +3,7 @@ package ExAstris.Proxy;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
 import cpw.mods.fml.client.registry.ClientRegistry;
+import cpw.mods.fml.common.Loader;
 import exnihilo.blocks.models.ModelSieveMesh;
 import ExAstris.ExAstrisBlock;
 import ExAstris.Block.Model.ModelBarrelThaumium;
@@ -21,13 +22,17 @@ public class ProxyClient extends Proxy {
 	}
 	@Override
 	public void initializeRenderers() {
-		ModelBarrelThaumium barrel = new ModelBarrelThaumium();
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBarrelThaumium.class, new RenderBarrelThaumium(barrel));
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ExAstrisBlock.BarrelThaumium), new ItemRenderBarrelThaumium(barrel));
+		if(Loader.isModLoaded("Thaumcraft")){
+			ModelBarrelThaumium barrel = new ModelBarrelThaumium();
+			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBarrelThaumium.class, new RenderBarrelThaumium(barrel));
+			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ExAstrisBlock.BarrelThaumium), new ItemRenderBarrelThaumium(barrel));
+		}
+		if(Loader.isModLoaded("ThermalExpansion")){
+			ModelSieveAutomatic sieve = new ModelSieveAutomatic();
+			ModelSieveMesh mesh = new ModelSieveMesh();
+			ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySieveAutomatic.class, new RenderSieveAutomatic(sieve, mesh));
+			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ExAstrisBlock.SieveAutomatic), new ItemRenderSieveAutomatic(sieve, mesh));
+		}
 		
-		ModelSieveAutomatic sieve = new ModelSieveAutomatic();
-		ModelSieveMesh mesh = new ModelSieveMesh();
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySieveAutomatic.class, new RenderSieveAutomatic(sieve, mesh));
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ExAstrisBlock.SieveAutomatic), new ItemRenderSieveAutomatic(sieve, mesh));
 	}
 }
