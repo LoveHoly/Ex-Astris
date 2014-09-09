@@ -17,7 +17,7 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.03"
+version = "1.03a"
 group= "exastris"
 archivesBaseName = "Ex-Astris"
 
@@ -42,7 +42,7 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 	
 	compile files("libs/Ex-Nihilo-1.36.jar")
-	compile files("libs/MineFactoryReloaded-[1.7.10]2.8.0RC3-591.jar")
+	//compile files("libs/MineFactoryReloaded-[1.7.10]2.8.0RC3-591.jar")
 	compile files("libs/TConstruct_mc1.7.10_1.6.0d40.1.jar")
 	compile files("libs/Thaumcraft-1.7.10-4.2.0.1.jar")
 	compile files("libs/ThermalFoundation-[1.7.10]1.0.0B3-8.jar")

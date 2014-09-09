@@ -13,6 +13,7 @@ import thaumcraft.api.crafting.IArcaneRecipe;
 import thaumcraft.api.crafting.CrucibleRecipe;
 import thaumcraft.api.crafting.InfusionRecipe;
 import thaumcraft.common.config.ConfigResearch;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -142,24 +143,28 @@ public class Thaumcraft {
 				new ItemStack(GameRegistry.findItem("Thaumcraft", "blockCustomPlant"), 1, 1)).setPages(new ResearchPage[] {
 						new ResearchPage("exastris.page.EXASTRISTHAUM.12"), new ResearchPage((InfusionRecipe)ConfigResearch.recipes.get("exastrissilverwood"))
 				}).setConcealed().setSpecial().setParents("EXASTRIS_GREATWOOD").registerResearchItem();
-		new ResearchItem("EXASTRIS_BEEHIVES",
-				"EXASTRIS_THAUM",
-				new AspectList().add(Aspect.MAGIC, 10).add(Aspect.AIR, 10).add(Aspect.BEAST, 10).add(Aspect.CRAFT, 10),
-				0,
-				-4,
-				0,
-				new ItemStack(ExAstrisBlock.BeeTrapInfused, 1, 0)).setPages(new ResearchPage[] {
-				new ResearchPage("exastris.page.EXASTRISTHAUM.13"), new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("exastriscurioushive")), new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("exastrisunusualhive")), new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("exastrisresonatinghive"))
-				}).setConcealed().setParents("EXASTRIS_BARRELTHAUMIUM").registerResearchItem();
-		new ResearchItem("EXASTRIS_ADVANCEBEEHIVES",
-				"EXASTRIS_THAUM",
-				new AspectList().add(Aspect.MAGIC, 10).add(Aspect.AIR, 10).add(Aspect.BEAST, 10).add(Aspect.CRAFT, 10),
-				-2,
-				-4,
-				0,
-				new ItemStack(ExAstrisBlock.BeeTrapInfused, 1, 0)).setPages(new ResearchPage[] {
-				new ResearchPage("exastris.page.EXASTRISTHAUM.14"), new ResearchPage("exastris.page.EXASTRISTHAUM.15")
-				}).setConcealed().setSpecial().setParents("EXASTRIS_BEEHIVES").registerResearchItem();
+		if (Loader.isModLoaded("MagicBees"))
+		{
+			new ResearchItem("EXASTRIS_BEEHIVES",
+					"EXASTRIS_THAUM",
+					new AspectList().add(Aspect.MAGIC, 10).add(Aspect.AIR, 10).add(Aspect.BEAST, 10).add(Aspect.CRAFT, 10),
+					0,
+					-4,
+					0,
+					new ItemStack(ExAstrisBlock.BeeTrapInfused, 1, 0)).setPages(new ResearchPage[] {
+					new ResearchPage("exastris.page.EXASTRISTHAUM.13"), new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("exastriscurioushive")), new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("exastrisunusualhive")), new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("exastrisresonatinghive"))
+					}).setConcealed().setParents("EXASTRIS_BARRELTHAUMIUM").registerResearchItem();
+			new ResearchItem("EXASTRIS_ADVANCEBEEHIVES",
+					"EXASTRIS_THAUM",
+					new AspectList().add(Aspect.MAGIC, 10).add(Aspect.AIR, 10).add(Aspect.BEAST, 10).add(Aspect.CRAFT, 10),
+					-2,
+					-4,
+					0,
+					new ItemStack(ExAstrisBlock.BeeTrapInfused, 1, 0)).setPages(new ResearchPage[] {
+					new ResearchPage("exastris.page.EXASTRISTHAUM.14"), new ResearchPage("exastris.page.EXASTRISTHAUM.15")
+					}).setConcealed().setSpecial().setParents("EXASTRIS_BEEHIVES").registerResearchItem();
+		}
+		
 	}
 	public static void addPages()
 	{
@@ -188,42 +193,45 @@ public class Thaumcraft {
 					new ItemStack(GameRegistry.findItem("Thaumcraft", "blockCustomPlant"), 1, 4), new ItemStack(GameRegistry.findItem("Thaumcraft", "ItemResource"), 1, 14), new ItemStack(GameRegistry.findItem("Thaumcraft", "blockCustomPlant"), 1, 4),
 					new ItemStack(Blocks.diamond_block, 1, 0), new ItemStack(GameRegistry.findItem("Thaumcraft", "blockCustomPlant"), 1, 4)
 		}));
+		if (Loader.isModLoaded("MagicBees"))
+		{
+			ConfigResearch.recipes.put("exastrisdeephive",ThaumcraftApi.addInfusionCraftingRecipe("EXASTRIS_ADVANCEBEEHIVES",
+					new ItemStack(GameRegistry.findItem("MagicBees", "hive"), 1, 3),
+					12,
+					new AspectList().add(Aspect.MAGIC, 64).add(Aspect.BEAST, 64).add(Aspect.VOID, 32),
+					new ItemStack(ExAstrisBlock.BeeTrapInfused, 1, 0),
+					new ItemStack[] { 
+						new ItemStack(Blocks.stone, 1, 0), new ItemStack(Blocks.stone, 1, 0),
+						new ItemStack(Blocks.stone, 1, 0), new ItemStack(Blocks.stone, 1, 0),
+						new ItemStack(Blocks.stone, 1, 0), new ItemStack(Blocks.stone, 1, 0),
+						new ItemStack(Blocks.stone, 1, 0), new ItemStack(Blocks.stone, 1, 0)
+			}));
+			
+			ConfigResearch.recipes.put("exastrisinfernalhive",ThaumcraftApi.addInfusionCraftingRecipe("EXASTRIS_ADVANCEBEEHIVES",
+					new ItemStack(GameRegistry.findItem("MagicBees", "hive"), 1, 4),
+					12,
+					new AspectList().add(Aspect.MAGIC, 64).add(Aspect.BEAST, 64).add(Aspect.FIRE, 32),
+					new ItemStack(ExAstrisBlock.BeeTrapInfused, 1, 0),
+					new ItemStack[] { 
+						new ItemStack(Blocks.nether_brick, 1, 0), new ItemStack(Blocks.nether_brick, 1, 0),
+						new ItemStack(Blocks.nether_brick, 1, 0), new ItemStack(Blocks.nether_brick, 1, 0),
+						new ItemStack(Blocks.nether_brick, 1, 0), new ItemStack(Blocks.nether_brick, 1, 0),
+						new ItemStack(Blocks.nether_brick, 1, 0), new ItemStack(Blocks.nether_brick, 1, 0)
+			}));
+			
+			ConfigResearch.recipes.put("exastrisoblivionhive",ThaumcraftApi.addInfusionCraftingRecipe("EXASTRIS_ADVANCEBEEHIVES",
+					new ItemStack(GameRegistry.findItem("MagicBees", "hive"), 1, 5),
+					12,
+					new AspectList().add(Aspect.MAGIC, 64).add(Aspect.BEAST, 64).add(Aspect.ELDRITCH, 32),
+					new ItemStack(ExAstrisBlock.BeeTrapInfused, 1, 0),
+					new ItemStack[] { 
+						new ItemStack(Blocks.end_stone, 1, 0), new ItemStack(Blocks.end_stone, 1, 0),
+						new ItemStack(Blocks.end_stone, 1, 0), new ItemStack(Blocks.end_stone, 1, 0),
+						new ItemStack(Blocks.end_stone, 1, 0), new ItemStack(Blocks.end_stone, 1, 0),
+						new ItemStack(Blocks.end_stone, 1, 0), new ItemStack(Blocks.end_stone, 1, 0)
+			}));
+		}
 		
-		ConfigResearch.recipes.put("exastrisdeephive",ThaumcraftApi.addInfusionCraftingRecipe("EXASTRIS_ADVANCEBEEHIVES",
-				new ItemStack(GameRegistry.findItem("MagicBees", "hive"), 1, 3),
-				12,
-				new AspectList().add(Aspect.MAGIC, 64).add(Aspect.BEAST, 64).add(Aspect.VOID, 32),
-				new ItemStack(ExAstrisBlock.BeeTrapInfused, 1, 0),
-				new ItemStack[] { 
-					new ItemStack(Blocks.stone, 1, 0), new ItemStack(Blocks.stone, 1, 0),
-					new ItemStack(Blocks.stone, 1, 0), new ItemStack(Blocks.stone, 1, 0),
-					new ItemStack(Blocks.stone, 1, 0), new ItemStack(Blocks.stone, 1, 0),
-					new ItemStack(Blocks.stone, 1, 0), new ItemStack(Blocks.stone, 1, 0)
-		}));
-		
-		ConfigResearch.recipes.put("exastrisinfernalhive",ThaumcraftApi.addInfusionCraftingRecipe("EXASTRIS_ADVANCEBEEHIVES",
-				new ItemStack(GameRegistry.findItem("MagicBees", "hive"), 1, 4),
-				12,
-				new AspectList().add(Aspect.MAGIC, 64).add(Aspect.BEAST, 64).add(Aspect.FIRE, 32),
-				new ItemStack(ExAstrisBlock.BeeTrapInfused, 1, 0),
-				new ItemStack[] { 
-					new ItemStack(Blocks.nether_brick, 1, 0), new ItemStack(Blocks.nether_brick, 1, 0),
-					new ItemStack(Blocks.nether_brick, 1, 0), new ItemStack(Blocks.nether_brick, 1, 0),
-					new ItemStack(Blocks.nether_brick, 1, 0), new ItemStack(Blocks.nether_brick, 1, 0),
-					new ItemStack(Blocks.nether_brick, 1, 0), new ItemStack(Blocks.nether_brick, 1, 0)
-		}));
-		
-		ConfigResearch.recipes.put("exastrisoblivionhive",ThaumcraftApi.addInfusionCraftingRecipe("EXASTRIS_ADVANCEBEEHIVES",
-				new ItemStack(GameRegistry.findItem("MagicBees", "hive"), 1, 5),
-				12,
-				new AspectList().add(Aspect.MAGIC, 64).add(Aspect.BEAST, 64).add(Aspect.ELDRITCH, 32),
-				new ItemStack(ExAstrisBlock.BeeTrapInfused, 1, 0),
-				new ItemStack[] { 
-					new ItemStack(Blocks.end_stone, 1, 0), new ItemStack(Blocks.end_stone, 1, 0),
-					new ItemStack(Blocks.end_stone, 1, 0), new ItemStack(Blocks.end_stone, 1, 0),
-					new ItemStack(Blocks.end_stone, 1, 0), new ItemStack(Blocks.end_stone, 1, 0),
-					new ItemStack(Blocks.end_stone, 1, 0), new ItemStack(Blocks.end_stone, 1, 0)
-		}));
 	}
 	public static void addArcane()
 	{
@@ -232,9 +240,12 @@ public class Thaumcraft {
 		ConfigResearch.recipes.put("exastrisvisfilter", ThaumcraftApi.addArcaneCraftingRecipe("EXASTRIS_VISFILTER", new ItemStack(GameRegistry.findItem("Thaumcraft", "ItemResource"), 1, 8), new AspectList().add(Aspect.ORDER, 5).add(Aspect.WATER, 5), new Object[] { "mmm", "imi", "mmm", 'i', Items.gold_ingot, 'm', new ItemStack(ENItems.Mesh, 1, 0) }));
 		ConfigResearch.recipes.put("exastrismatrix", ThaumcraftApi.addArcaneCraftingRecipe("EXASTRIS_MATRIX", new ItemStack(GameRegistry.findItem("Thaumcraft", "blockStoneDevice"), 1, 2), new AspectList().add(Aspect.AIR, 10).add(Aspect.EARTH, 10).add(Aspect.FIRE, 10).add(Aspect.WATER, 10).add(Aspect.ORDER, 10).add(Aspect.ENTROPY, 10), new Object[] { "bcb", "cec", "bcb", 'b', new ItemStack(GameRegistry.findItem("Thaumcraft", "blockCosmeticSolid"), 1, 6), 'c', new ItemStack(GameRegistry.findItem("Thaumcraft", "blockCrystal"), 1, 6), 'e', Items.ender_pearl }));
 		ConfigResearch.recipes.put("exastrishammerthaumium", ThaumcraftApi.addArcaneCraftingRecipe("EXASTRIS_HAMMERTHAUMIUM", new ItemStack(ExAstrisItem.HammerThaumium, 1, 0), new AspectList().add(Aspect.AIR, 2).add(Aspect.EARTH, 2).add(Aspect.FIRE, 2).add(Aspect.WATER, 2).add(Aspect.ORDER, 2).add(Aspect.ENTROPY, 2), new Object[] { " a ", " ba", "b  ", 'a', new ItemStack(GameRegistry.findItem("Thaumcraft", "ItemResource"), 1, 2), 'b', Items.stick}));
-		ConfigResearch.recipes.put("exastriscurioushive", ThaumcraftApi.addArcaneCraftingRecipe("EXASTRIS_BEEHIVES", new ItemStack(GameRegistry.findItem("MagicBees", "hive"), 1, 0), new AspectList().add(Aspect.AIR, 4).add(Aspect.EARTH, 4).add(Aspect.FIRE, 4).add(Aspect.WATER, 4), new Object[] { " a ", "aba", " a ", 'a', new ItemStack(GameRegistry.findItem("Thaumcraft", "ItemResource"), 1, 4), 'b', new ItemStack(ExAstrisBlock.BeeTrapInfused, 1, 0)}));
-		ConfigResearch.recipes.put("exastrisunusualhive", ThaumcraftApi.addArcaneCraftingRecipe("EXASTRIS_BEEHIVES", new ItemStack(GameRegistry.findItem("MagicBees", "hive"), 1, 1), new AspectList().add(Aspect.AIR, 4).add(Aspect.EARTH, 4).add(Aspect.FIRE, 4).add(Aspect.WATER, 4), new Object[] { " a ", "aba", " a ", 'a', new ItemStack(GameRegistry.findItem("Thaumcraft", "ItemResource"), 1, 3), 'b', new ItemStack(ExAstrisBlock.BeeTrapInfused, 1, 0)}));
-		ConfigResearch.recipes.put("exastrisresonatinghive", ThaumcraftApi.addArcaneCraftingRecipe("EXASTRIS_BEEHIVES", new ItemStack(GameRegistry.findItem("MagicBees", "hive"), 1, 2), new AspectList().add(Aspect.AIR, 4).add(Aspect.EARTH, 4).add(Aspect.FIRE, 4).add(Aspect.WATER, 4), new Object[] { " a ", "aba", " a ", 'a', new ItemStack(GameRegistry.findItem("Thaumcraft", "ItemResource"), 1, 6), 'b', new ItemStack(ExAstrisBlock.BeeTrapInfused, 1, 0)}));
+		if (Loader.isModLoaded("MagicBees"))
+		{
+			ConfigResearch.recipes.put("exastriscurioushive", ThaumcraftApi.addArcaneCraftingRecipe("EXASTRIS_BEEHIVES", new ItemStack(GameRegistry.findItem("MagicBees", "hive"), 1, 0), new AspectList().add(Aspect.AIR, 4).add(Aspect.EARTH, 4).add(Aspect.FIRE, 4).add(Aspect.WATER, 4), new Object[] { " a ", "aba", " a ", 'a', new ItemStack(GameRegistry.findItem("Thaumcraft", "ItemResource"), 1, 4), 'b', new ItemStack(ExAstrisBlock.BeeTrapInfused, 1, 0)}));
+			ConfigResearch.recipes.put("exastrisunusualhive", ThaumcraftApi.addArcaneCraftingRecipe("EXASTRIS_BEEHIVES", new ItemStack(GameRegistry.findItem("MagicBees", "hive"), 1, 1), new AspectList().add(Aspect.AIR, 4).add(Aspect.EARTH, 4).add(Aspect.FIRE, 4).add(Aspect.WATER, 4), new Object[] { " a ", "aba", " a ", 'a', new ItemStack(GameRegistry.findItem("Thaumcraft", "ItemResource"), 1, 3), 'b', new ItemStack(ExAstrisBlock.BeeTrapInfused, 1, 0)}));
+			ConfigResearch.recipes.put("exastrisresonatinghive", ThaumcraftApi.addArcaneCraftingRecipe("EXASTRIS_BEEHIVES", new ItemStack(GameRegistry.findItem("MagicBees", "hive"), 1, 2), new AspectList().add(Aspect.AIR, 4).add(Aspect.EARTH, 4).add(Aspect.FIRE, 4).add(Aspect.WATER, 4), new Object[] { " a ", "aba", " a ", 'a', new ItemStack(GameRegistry.findItem("Thaumcraft", "ItemResource"), 1, 6), 'b', new ItemStack(ExAstrisBlock.BeeTrapInfused, 1, 0)}));
+		}
 	}
 	public static void addCrucible()
 	{

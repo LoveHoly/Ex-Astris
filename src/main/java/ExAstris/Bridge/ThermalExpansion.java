@@ -36,7 +36,10 @@ public class ThermalExpansion {
 			addTransposerRecipe(10000, new ItemStack(GameRegistry.findBlock("exnihilo", "bee_trap_treated")),new ItemStack(GameRegistry.findBlock("ExtraBees", "hive"),1,0),new FluidStack(FluidRegistry.WATER, 8000),false);
 			addTransposerRecipe(10000, new ItemStack(GameRegistry.findBlock("exnihilo", "bee_trap_treated")),new ItemStack(GameRegistry.findBlock("ExtraBees", "hive"),1,1),new FluidStack(TinkerSmeltery.moltenStoneFluid, 8000),false);
 			addTransposerRecipe(10000, new ItemStack(GameRegistry.findBlock("exnihilo", "bee_trap_treated")),new ItemStack(GameRegistry.findBlock("ExtraBees", "hive"),1,2),new FluidStack(TFFluids.fluidRedstone, 8000),false);
-			addTransposerRecipe(10000, new ItemStack(GameRegistry.findBlock("exnihilo", "bee_trap_treated")),new ItemStack(GameRegistry.findBlock("ExtraBees", "hive"),1,3),new FluidStack(LiquidRegistry.getLiquid("milk"), 8000),false);
+			if(Loader.isModLoaded("MineFactoryReloaded")){
+				addTransposerRecipe(10000, new ItemStack(GameRegistry.findBlock("exnihilo", "bee_trap_treated")),new ItemStack(GameRegistry.findBlock("ExtraBees", "hive"),1,3),new FluidStack(LiquidRegistry.getLiquid("milk"), 8000),false);
+			}
+
 		}
 	}
 	@SuppressWarnings({ "unchecked", "rawtypes" })
