@@ -45,6 +45,7 @@ public class ExAstris {
 	@EventHandler
 	public void Initialize(FMLInitializationEvent event)
 	{
+		ExAstrisRecipe.registerCraftingRecipes();
 		FMLInterModComms.sendMessage("Waila", "register", "ExAstris.Bridge.Waila.callbackRegister");
 	}
 	@EventHandler

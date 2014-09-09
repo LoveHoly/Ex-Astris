@@ -6,12 +6,17 @@ import ExAstris.Data.ModData;
 import ExAstris.Item.ItemDollThaumic;
 import ExAstris.Item.ItemHammerRF;
 import ExAstris.Item.ItemHammerThaumium;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.ShapedOreRecipe;
+import redstonearsenal.item.RAItems;
 
 public class ExAstrisItem {
 	public static Item DollThaumic;
 	public static Item HammerThaumium;
 	public static Item HammerRF;
+	
 	public static void registerItems()
 	{
 		DollThaumic = new ItemDollThaumic();
@@ -22,5 +27,7 @@ public class ExAstrisItem {
 		
 		HammerRF = new ItemHammerRF();
 		GameRegistry.registerItem(HammerRF, ItemData.HAMMER_RF_UNLOCALIZED_NAME);
+		
+		//GameRegistry.addRecipe(new ShapedOreRecipe(HammerRF, new Object[] { " a ", " ba", "b  ", Character.valueOf('a'), RAItems.ingotElectrumFlux, Character.valueOf('b'), RAItems.rodObsidianFlux }));
 	}
 }

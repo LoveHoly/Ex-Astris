@@ -4,8 +4,11 @@ import java.text.DecimalFormat;
 import java.util.List;
 
 import ExAstris.Block.BlockBarrelThaumium;
+import ExAstris.Block.BlockSieveAutomatic;
 import ExAstris.Block.TileEntity.TileEntityBarrelThaumium;
 import ExAstris.Block.TileEntity.TileEntityBarrelThaumium.BarrelMode;
+import ExAstris.Block.TileEntity.TileEntitySieveAutomatic;
+import ExAstris.Block.TileEntity.TileEntitySieveAutomatic.SieveMode;
 import net.minecraft.item.ItemStack;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
@@ -34,12 +37,22 @@ public class Waila implements IWailaDataProvider {
 					.getTileEntity();
 			currentTip.add(getBarrelDisplay(teBarrel.getMode(), teBarrel));
 		} 
+		else if (accessor.getBlock() instanceof BlockSieveAutomatic) {
+			TileEntitySieveAutomatic teSieve = (TileEntitySieveAutomatic) accessor
+					.getTileEntity();
+			currentTip.add(getSieveDisplay(teSieve));
+		} 
 		return currentTip;
 	}
 	
 	@Override
 	public List<String> getWailaTail(ItemStack stack, List<String> currentTip,
 			IWailaDataAccessor accessor, IWailaConfigHandler config) {
+		if (accessor.getBlock() instanceof BlockSieveAutomatic) {
+			TileEntitySieveAutomatic teSieve = (TileEntitySieveAutomatic) accessor
+				.getTileEntity();
+			currentTip.add(getSieveDisplayTail(teSieve));
+		} 
 		return currentTip;
 	}
 	
@@ -107,6 +120,16 @@ public class Waila implements IWailaDataProvider {
 		}
 	}
 	
+	public String getSieveDisplay(TileEntitySieveAutomatic sieve) {
+		if (sieve.mode == SieveMode.EMPTY)
+			return "Empty";// 
+		else
+			return Math.round(getSieveClicksRemaining(sieve)) + "% left";// + sieve.storage.getEnergyStored() + " / " + sieve.storage.getMaxEnergyStored() + " RF"
+	}
+	
+	public String getSieveDisplayTail(TileEntitySieveAutomatic sieve) {
+		return sieve.storage.getEnergyStored() + " / " + sieve.storage.getMaxEnergyStored() + " RF";
+	}
 	public float getBarrelTimeRemaining(TileEntityBarrelThaumium barrel) {
 		return (barrel.getTimer() / (float) 1000) * 100;
 	}
@@ -114,5 +137,10 @@ public class Waila implements IWailaDataProvider {
 	public static void callbackRegister(IWailaRegistrar registrar) {
 		Waila instance = new Waila();
 		registrar.registerBodyProvider(instance, BlockBarrelThaumium.class);
+		registrar.registerBodyProvider(instance, BlockSieveAutomatic.class);
+		registrar.registerTailProvider(instance, BlockSieveAutomatic.class);
+	}
+	public float getSieveClicksRemaining(TileEntitySieveAutomatic sieve) {
+		return (sieve.getVolume() / 1) * 100;
 	}
 }
