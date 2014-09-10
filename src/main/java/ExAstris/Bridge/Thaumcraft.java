@@ -161,8 +161,10 @@ public class Thaumcraft {
 					-4,
 					0,
 					new ItemStack(ExAstrisBlock.BeeTrapInfused, 1, 0)).setPages(new ResearchPage[] {
-					new ResearchPage("exastris.page.EXASTRISTHAUM.14"), new ResearchPage("exastris.page.EXASTRISTHAUM.15")
+					new ResearchPage("exastris.page.EXASTRISTHAUM.14"),  new ResearchPage((InfusionRecipe)ConfigResearch.recipes.get("exastrisdeephive")),  new ResearchPage((InfusionRecipe)ConfigResearch.recipes.get("exastrisinfernalhive")),  new ResearchPage((InfusionRecipe)ConfigResearch.recipes.get("exastrisoblivionhive"))
 					}).setConcealed().setSpecial().setParents("EXASTRIS_BEEHIVES").registerResearchItem();
+			
+			ThaumcraftApi.addWarpToResearch("EXASTRIS_ADVANCEBEEHIVES", 2);
 		}
 		
 	}
@@ -238,7 +240,7 @@ public class Thaumcraft {
 		ConfigResearch.recipes.put("exastrisbarrelthaumium", ThaumcraftApi.addArcaneCraftingRecipe("EXASTRIS_BARRELTHAUMIUM", new ItemStack(ExAstrisBlock.BarrelThaumium, 1, 0), new AspectList().add(Aspect.FIRE, 5).add(Aspect.WATER, 5), new Object[] { "a a", "a a", "aba", 'a', new ItemStack(GameRegistry.findItem("Thaumcraft", "ItemResource"),1,2), 'b', new ItemStack(GameRegistry.findItem("Thaumcraft", "ItemNugget"),1,6) }));
 		//ConfigResearch.recipes.put("exastrisdollthaumic", ThaumcraftApi.addArcaneCraftingRecipe("EXASTRIS_DOLLTHAUMIC", new ItemStack(ExAstrisItem.DollThaumic, 1, 0), new AspectList().add(Aspect.EARTH, 10).add(Aspect.FIRE, 10), new Object[] { "aba", "cdc", "aea", 'a', new ItemStack(GameRegistry.findItem("Thaumcraft", "ItemResource"),1,4), 'b', new ItemStack(GameRegistry.findItem("Thaumcraft", "ItemResource"),1,6), 'c', new ItemStack(GameRegistry.findItem("Thaumcraft", "ItemResource"),1,14), 'd', new ItemStack(ENItems.Doll,1,0), 'e', new ItemStack(GameRegistry.findItem("Thaumcraft", "ItemResource"),1,3) }));
 		ConfigResearch.recipes.put("exastrisvisfilter", ThaumcraftApi.addArcaneCraftingRecipe("EXASTRIS_VISFILTER", new ItemStack(GameRegistry.findItem("Thaumcraft", "ItemResource"), 1, 8), new AspectList().add(Aspect.ORDER, 5).add(Aspect.WATER, 5), new Object[] { "mmm", "imi", "mmm", 'i', Items.gold_ingot, 'm', new ItemStack(ENItems.Mesh, 1, 0) }));
-		ConfigResearch.recipes.put("exastrismatrix", ThaumcraftApi.addArcaneCraftingRecipe("EXASTRIS_MATRIX", new ItemStack(GameRegistry.findItem("Thaumcraft", "blockStoneDevice"), 1, 2), new AspectList().add(Aspect.AIR, 10).add(Aspect.EARTH, 10).add(Aspect.FIRE, 10).add(Aspect.WATER, 10).add(Aspect.ORDER, 10).add(Aspect.ENTROPY, 10), new Object[] { "bcb", "cec", "bcb", 'b', new ItemStack(GameRegistry.findItem("Thaumcraft", "blockCosmeticSolid"), 1, 6), 'c', new ItemStack(GameRegistry.findItem("Thaumcraft", "blockCrystal"), 1, 6), 'e', Items.ender_pearl }));
+		ConfigResearch.recipes.put("exastrismatrix", ThaumcraftApi.addArcaneCraftingRecipe("EXASTRIS_MATRIX", new ItemStack(GameRegistry.findItem("Thaumcraft", "blockStoneDevice"), 1, 2), new AspectList().add(Aspect.AIR, 1).add(Aspect.EARTH, 1).add(Aspect.FIRE, 1).add(Aspect.WATER, 1).add(Aspect.ORDER, 1).add(Aspect.ENTROPY, 1), new Object[] { "bcb", "cec", "bcb", 'b', new ItemStack(GameRegistry.findItem("Thaumcraft", "blockCosmeticSolid"), 1, 6), 'c', new ItemStack(GameRegistry.findItem("Thaumcraft", "blockCrystal"), 1, 6), 'e', Items.ender_pearl }));
 		ConfigResearch.recipes.put("exastrishammerthaumium", ThaumcraftApi.addArcaneCraftingRecipe("EXASTRIS_HAMMERTHAUMIUM", new ItemStack(ExAstrisItem.HammerThaumium, 1, 0), new AspectList().add(Aspect.AIR, 2).add(Aspect.EARTH, 2).add(Aspect.FIRE, 2).add(Aspect.WATER, 2).add(Aspect.ORDER, 2).add(Aspect.ENTROPY, 2), new Object[] { " a ", " ba", "b  ", 'a', new ItemStack(GameRegistry.findItem("Thaumcraft", "ItemResource"), 1, 2), 'b', Items.stick}));
 		if (Loader.isModLoaded("MagicBees"))
 		{
