@@ -89,11 +89,13 @@ public class Waila implements IWailaDataProvider {
 		case ENDER_COOKING:
 		case BLAZE_COOKING:
 		case PECK_COOKING:
+		case BLIZZ_COOKING:
 			return "Summoning: " + Math.round(getBarrelTimeRemaining(barrel))
 					+ "%";
 		case ENDER:
 		case BLAZE:
 		case PECK:
+		case BLIZZ:
 			return "Incoming!";
 		case DARKOAK:
 			return "Dark Oak Sapling";

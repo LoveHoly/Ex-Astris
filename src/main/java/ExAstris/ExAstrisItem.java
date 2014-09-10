@@ -7,6 +7,7 @@ import ExAstris.Data.ModData;
 import ExAstris.Item.ItemDollThaumic;
 import ExAstris.Item.ItemHammerRF;
 import ExAstris.Item.ItemHammerThaumium;
+import ExAstris.Item.ItemDollFreezing;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -19,6 +20,7 @@ public class ExAstrisItem {
 	public static Item DollThaumic;
 	public static Item HammerThaumium;
 	public static Item HammerRF;
+	public static Item DollFreezing;
 	
 	public static void registerItems()
 	{
@@ -28,6 +30,10 @@ public class ExAstrisItem {
 			
 			HammerThaumium = new ItemHammerThaumium();
 			GameRegistry.registerItem(HammerThaumium, ItemData.HAMMER_THAUMIUM_UNLOCALIZED_NAME);
+			if(Loader.isModLoaded("ThermalExpansion")){
+				DollFreezing = new ItemDollFreezing();
+				GameRegistry.registerItem(DollFreezing, ItemData.FREEZING_DOLL_UNLOCALIZED_NAME);
+			}
 		}
 		
 		if(Loader.isModLoaded("RedstoneArsenal")){

@@ -37,6 +37,7 @@ import exnihilo.registries.CompostRegistry;
 import exnihilo.registries.helpers.Color;
 import exnihilo.registries.helpers.Compostable;
 import thaumcraft.common.entities.monster.EntityPech;
+import thermalfoundation.entity.monster.EntityBlizz;
 
 public class TileEntityBarrelThaumium extends TileEntity implements IFluidHandler, ISidedInventory{	
 	private static final float MIN_RENDER_CAPACITY = 0.1f;
@@ -77,7 +78,9 @@ public class TileEntityBarrelThaumium extends TileEntity implements IFluidHandle
 		OBSIDIANTOTEM(20, ExtractMode.Always),
 		PECK_COOKING(21, ExtractMode.None),
 		PECK(22, ExtractMode.None),
-		BEEINFUSED(23, ExtractMode.Always);
+		BEEINFUSED(23, ExtractMode.Always),
+		BLIZZ_COOKING(24, ExtractMode.None),
+		BLIZZ(25, ExtractMode.None);
 
 		private BarrelMode(int v, ExtractMode extract){this.value = v; this.canExtract = extract;}
 		public int value;
@@ -555,6 +558,69 @@ public class TileEntityBarrelThaumium extends TileEntity implements IFluidHandle
 			}
 
 			break;
+		case BLIZZ_COOKING:
+			timer++;
+
+			if (worldObj.isRemote && worldObj.rand.nextInt(20) == 0)
+			{
+				float f = (worldObj.rand.nextFloat() - 0.5F) * 0.2F;
+				float f1 = (worldObj.rand.nextFloat() - 0.5F) * 0.2F;
+				float f2 = (worldObj.rand.nextFloat() - 0.5F) * 0.2F;
+				this.worldObj.spawnParticle("snowballpoof", xCoord + (double)(worldObj.rand.nextFloat() * 0.6) + 0.2d, yCoord + 1, zCoord + (double)(worldObj.rand.nextFloat() * 0.6) + 0.2d, (double)f, (double)f1, (double)f2);
+			}
+
+			if(isDone())
+			{
+				setMode(BarrelMode.BLIZZ);
+				timer = 0;
+			}
+			break;
+
+		case BLIZZ:
+			if (worldObj.isRemote && worldObj.rand.nextInt(5) == 0)
+			{
+				//spawn ender particles
+				float f = (worldObj.rand.nextFloat() - 0.5F) * 0.2F;
+				float f1 = (worldObj.rand.nextFloat() - 0.5F) * 0.2F;
+				float f2 = (worldObj.rand.nextFloat() - 0.5F) * 0.2F;
+				this.worldObj.spawnParticle("snowballpoof", xCoord + (double)(worldObj.rand.nextFloat() * 0.6) + 0.2d, yCoord + 1, zCoord + (double)(worldObj.rand.nextFloat() * 0.6) + 0.2d, (double)f, (double)f1, (double)f2);
+			}
+
+			if (!worldObj.isRemote && worldObj.difficultySetting.getDifficultyId() > 0)
+			{
+				if(isDone())
+				{
+					timer = 0;
+					resetBarrel();
+					break;
+				}
+
+				//Try to spawn enderman, if you can't keep trying.
+				for (int x = -1; x <= 1; x++)
+				{
+					for (int y = -1; y <= 1; y++)
+					{
+						for (int z = -1; z <= 1; z++)
+						{
+							if (
+									worldObj.isAirBlock(xCoord + x, yCoord + y, zCoord + z) && 
+									worldObj.isAirBlock(xCoord + x, yCoord + y + 1, zCoord + z) && 
+									worldObj.isAirBlock(xCoord + x, yCoord + y + 2, zCoord + z) &&
+									worldObj.rand.nextInt(10) == 0 && !isDone())
+							{
+								timer = MAX_COMPOSTING_TIME;
+
+								EntityBlizz blizz = new EntityBlizz(worldObj);
+								blizz.setPosition(xCoord + x + 0.5d, yCoord + y, zCoord + z + 0.5d);
+
+								worldObj.spawnEntityInWorld(blizz);
+							}
+						}
+					}
+				}
+			}
+
+			break;
 		default:
 			break;
 		}
@@ -829,6 +895,13 @@ public class TileEntityBarrelThaumium extends TileEntity implements IFluidHandle
 			break;
 		case 23:
 			setMode(BarrelMode.BEEINFUSED);
+			break;
+		case 24:
+			setMode(BarrelMode.BLIZZ_COOKING);
+			break;
+
+		case 25:
+			setMode(BarrelMode.BLIZZ);
 			break;
 
 		}
@@ -1156,6 +1229,10 @@ public class TileEntityBarrelThaumium extends TileEntity implements IFluidHandle
 					if (ModData.ALLOW_BARREL_RECIPE_CLAY && Block.getBlockFromItem(item) == ENBlocks.Dust)
 					{
 						setMode(BarrelMode.CLAY);
+					}
+					if(item == ExAstrisItem.DollFreezing)
+					{
+						setMode(BarrelMode.BLIZZ_COOKING);
 					}
 				}
 

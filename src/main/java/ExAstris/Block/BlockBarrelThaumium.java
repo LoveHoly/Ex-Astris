@@ -210,6 +210,11 @@ public class BlockBarrelThaumium extends BlockContainer
 								barrel.setMode(BarrelMode.SPORED);
 								useItem(player);
 							}
+							if(item.getItem() == ExAstrisItem.DollFreezing)
+							{
+								barrel.setMode(BarrelMode.BLIZZ_COOKING);
+								useItem(player);
+							}
 
 						} 
 						
