@@ -12,6 +12,10 @@ import tsteelworks.lib.crafting.AdvancedSmelting;
 public class TSteelworks {
 	public static void Initialize()
 	{
+		addMeltingRecipe();
+	}
+	public static void addMeltingRecipe()
+	{
 		AdvancedSmelting.addMelting(GameRegistry.findBlock("exastris", "cobalt_dust"),0,650, new FluidStack(TinkerSmeltery.moltenCobaltFluid, MoltenData.ingotCostHighoven));
 		AdvancedSmelting.addMelting(GameRegistry.findBlock("exastris", "ardite_dust"),0,650, new FluidStack(TinkerSmeltery.moltenArditeFluid, MoltenData.ingotCostHighoven));
 		
@@ -24,6 +28,5 @@ public class TSteelworks {
 		AdvancedSmelting.addMelting(GameRegistry.findBlock("exnihilo", "nickel_dust"),0,400, new FluidStack(TinkerSmeltery.moltenNickelFluid, MoltenData.ingotCostHighoven));
 		AdvancedSmelting.addMelting(GameRegistry.findBlock("exnihilo", "platinum_dust"),0,400, new FluidStack(TinkerSmeltery.moltenShinyFluid, MoltenData.ingotCostHighoven));
 		AdvancedSmelting.addMelting(GameRegistry.findBlock("exnihilo", "aluminum_dust"),0,400, new FluidStack(TinkerSmeltery.moltenAluminumFluid, MoltenData.ingotCostHighoven));
-		
 	}
 }

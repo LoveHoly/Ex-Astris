@@ -22,9 +22,21 @@ import net.minecraft.util.ResourceLocation;
 import exnihilo.ENItems;
 import exnihilo.registries.HammerRegistry;
 import exnihilo.registries.SieveRegistry;
+import exnihilo.registries.HeatRegistry;
 
 public class Thaumcraft {
 	public static void Initialize()
+	{
+		addHammerRegistry();
+		addSieveRegistry();
+		addHeatRegistry();
+		addPages();
+		addInfusion();
+		addArcane();
+		addCrucible();
+		addResearch();
+	}
+	public static void addHammerRegistry()
 	{
 		HammerRegistry.register(Blocks.double_stone_slab, 1, GameRegistry.findItem("Thaumcraft", "ItemShard"), 0, 1.00f, 0.0f);
 		HammerRegistry.register(Blocks.nether_brick, 0, GameRegistry.findItem("Thaumcraft", "ItemShard"), 1, 1.00f, 0.0f);
@@ -32,13 +44,21 @@ public class Thaumcraft {
 		HammerRegistry.register(Blocks.ice, 0, GameRegistry.findItem("Thaumcraft", "ItemShard"), 2, 1.00f, 0.0f);
 		HammerRegistry.register(Blocks.tnt, 0, GameRegistry.findItem("Thaumcraft", "ItemShard"), 5, 1.00f, 0.0f);
 		HammerRegistry.register(Blocks.obsidian, 0, GameRegistry.findItem("Thaumcraft", "ItemShard"), 4, 1.00f, 0.0f);
+		
+	}
+	public static void addSieveRegistry()
+	{
 		SieveRegistry.register(Blocks.sand, 0, GameRegistry.findItem("Thaumcraft", "ItemNugget"), 5, 128);
 		SieveRegistry.register(Blocks.sand, 0, GameRegistry.findItem("Thaumcraft", "ItemResource"), 6, 128);
-		addPages();
-		addInfusion();
-		addArcane();
-		addCrucible();
-		addResearch();
+	}
+	public static void addHeatRegistry()
+	{
+		HeatRegistry.register(GameRegistry.findBlock("Thaumcraft","blockAiry"),1, 0.15F);
+		for(int i=0;i<=15;i++)
+		{
+			HeatRegistry.register(GameRegistry.findBlock("Thaumcraft","blockCandle"),i, 0.1F);
+		}
+		
 	}
 	public static void addResearch()
 	{

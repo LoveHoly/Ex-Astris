@@ -17,9 +17,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
-
+import exnihilo.registries.HeatRegistry;
 public class ThermalExpansion {
 	public static void Initialize()
+	{
+		addHeatRegistry();
+		addHiveRegistry();
+		
+	}
+	public static void addHiveRegistry()
 	{
 		if (Loader.isModLoaded("Forestry") && Loader.isModLoaded("exnihilo"))
 		{
@@ -43,6 +49,14 @@ public class ThermalExpansion {
 			}
 
 		}
+	}
+	public static void addHeatRegistry()
+	{
+		HeatRegistry.register(GameRegistry.findBlock("ThermalFoundation","FluidPyrotheum"), 0.5F);
+		HeatRegistry.register(GameRegistry.findBlock("ThermalFoundation","FluidPyrotheum"), 0, 0.7F);
+		HeatRegistry.register(GameRegistry.findBlock("ThermalFoundation","FluidCryotheum"), 0.2F);
+		HeatRegistry.register(GameRegistry.findBlock("ThermalFoundation","FluidCryotheum"), 0, 0.3F);
+
 	}
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static void addSmelterRecipe(int Energy, ItemStack PrimaryInput, ItemStack SecondaryInput, ItemStack PrimaryOutput,ItemStack SecondaryOutput, int SecondaryChance,boolean Overwrite)
