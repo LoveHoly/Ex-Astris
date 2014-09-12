@@ -63,6 +63,7 @@ public class BlockBarrelThaumium extends BlockContainer
 	public void getSubBlocks(Item item, CreativeTabs tabs, List subItems) {
 		subItems.add(new ItemStack(item, 1, 0));
 	}
+	
 
 	@Override
 	public int damageDropped (int metadata) {
@@ -402,4 +403,5 @@ public class BlockBarrelThaumium extends BlockContainer
 		}
 		return 0;
 	}
+
 }

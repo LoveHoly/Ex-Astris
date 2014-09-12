@@ -15,9 +15,11 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
+import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -49,7 +51,22 @@ public class BlockSieveAutomatic extends BlockContainer{
 	public void getSubBlocks(Item item, CreativeTabs tabs, List subItems) {
 		subItems.add(new ItemStack(item, 1, 0));
 	}
+	
+	@Override
+    public void breakBlock(World world, int x, int y, int z, Block block, int meta)
+	{
+		TileEntity tile = world.getTileEntity(x, y, z);
 
+		ISidedInventory inv = (ISidedInventory) tile;
+		for (int i = 0; i < inv.getSizeInventory(); i++) {
+			if(inv.getStackInSlot(i) != null){
+				EntityItem entityitem = new EntityItem(world, x, y, z, inv.getStackInSlot(i));
+				world.spawnEntityInWorld(entityitem);
+			}
+		}
+		super.breakBlock(world, x,  y,  z,  block,  meta);
+	}
+	
 	@Override
 	public int getRenderType()
 	{

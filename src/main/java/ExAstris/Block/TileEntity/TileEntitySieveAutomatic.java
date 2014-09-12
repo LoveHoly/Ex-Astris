@@ -5,6 +5,7 @@ import java.util.Iterator;
 
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyHandler;
+import cofh.lib.util.helpers.ItemHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.particles.ParticleSieve;
@@ -26,8 +27,8 @@ import net.minecraft.util.IIcon;
 import net.minecraftforge.common.util.ForgeDirection;
 
 public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHandler, ISidedInventory {
-	public EnergyStorage storage = new EnergyStorage(32000);
-	private static final int energyPerCycle = 100;
+	public EnergyStorage storage = new EnergyStorage(64000);
+	private static final int energyPerCycle = 1000;
 	private static final float MIN_RENDER_CAPACITY = 0.70f;
 	private static final float MAX_RENDER_CAPACITY = 0.9f;
 	private static final float PROCESSING_INTERVAL = 0.075f;
@@ -145,43 +146,47 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 						
 						int size = getSizeInventory();
 						int inventoryIndex = 0;
-						for(int i = 1; i < size; i++)
+						
+						if (worldObj.rand.nextInt(reward.rarity) == 0)
 						{
-							if(inventory[i] == null)
+							for(int i = 1; i < size; i++)
 							{
-								inventoryIndex=i;
-								break;
-							}else{
-								if( inventory[i].getUnlocalizedName().equals(new ItemStack(reward.item, 1, reward.meta).getUnlocalizedName()))
+								if(inventory[i] == null)
 								{
 									inventoryIndex=i;
 									break;
+								}else{
+									if( ItemHelper.itemsEqualWithMetadata(inventory[i],new ItemStack(reward.item, 1, reward.meta)) )
+									{
+										inventoryIndex=i;
+										break;
+									}
 								}
 							}
-						}
-						
-						
-						if(inventoryIndex != 0)
-						{
-							if(inventory[inventoryIndex] != null) inventory[inventoryIndex] = new ItemStack(reward.item, (inventory[inventoryIndex].stackSize + 1), reward.meta);
-							else inventory[inventoryIndex] = new ItemStack(reward.item, 1, reward.meta);
-						}
-						else
-						{
-							if (worldObj.rand.nextInt(reward.rarity) == 0)
+							
+							
+							if(inventoryIndex != 0)
 							{
-								EntityItem entityitem = new EntityItem(worldObj, (double)xCoord + 0.5D, (double)yCoord + 1.5D, (double)zCoord + 0.5D, new ItemStack(reward.item, 1, reward.meta));
-
-								double f3 = 0.05F;
-								entityitem.motionX = worldObj.rand.nextGaussian() * f3;
-								entityitem.motionY = (0.2d);
-								entityitem.motionZ = worldObj.rand.nextGaussian() * f3;
-
-								worldObj.spawnEntityInWorld(entityitem);
+								if(inventory[inventoryIndex] != null) inventory[inventoryIndex] = new ItemStack(reward.item, (inventory[inventoryIndex].stackSize + 1), reward.meta);
+								else inventory[inventoryIndex] = new ItemStack(reward.item, 1, reward.meta);
+							}
+							else
+							{
 								
-								//System.out.println("Spawning: " + reward.id);
+									EntityItem entityitem = new EntityItem(worldObj, (double)xCoord + 0.5D, (double)yCoord + 1.5D, (double)zCoord + 0.5D, new ItemStack(reward.item, 1, reward.meta));
+
+									double f3 = 0.05F;
+									entityitem.motionX = worldObj.rand.nextGaussian() * f3;
+									entityitem.motionY = (0.2d);
+									entityitem.motionZ = worldObj.rand.nextGaussian() * f3;
+
+									worldObj.spawnEntityInWorld(entityitem);
+									
+									//System.out.println("Spawning: " + reward.id);
+								
 							}
 						}
+						
 						
 					}
 				}
