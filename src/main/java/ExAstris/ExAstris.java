@@ -79,5 +79,12 @@ public class ExAstris {
 
 			TSteelworks.Initialize();
 		}
+		
+		if (Loader.isModLoaded("MineFactoryReloaded"))
+		{
+			log.info("+++ - Found MineFactoryReloaded!");
+
+			MineFactoryReloaded.Initialize();
+		}
 	}
 }
