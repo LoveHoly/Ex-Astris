@@ -3,4 +3,5 @@ Ex Astris
 
 Ex Nihilo Addon
 
-Special Thks nemonemo
+Coding Help nemonemo
+Translating Help Kagerow
