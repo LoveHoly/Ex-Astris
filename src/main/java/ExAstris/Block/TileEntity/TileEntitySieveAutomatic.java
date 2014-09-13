@@ -28,7 +28,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHandler, ISidedInventory {
 	public EnergyStorage storage = new EnergyStorage(64000);
-	private static final int energyPerCycle = 1000;
+	private static final int energyPerCycle = 800;
 	private static final float MIN_RENDER_CAPACITY = 0.70f;
 	private static final float MAX_RENDER_CAPACITY = 0.9f;
 	private static final float PROCESSING_INTERVAL = 0.075f;
