@@ -13,12 +13,14 @@ import thaumcraft.api.crafting.IArcaneRecipe;
 import thaumcraft.api.crafting.CrucibleRecipe;
 import thaumcraft.api.crafting.InfusionRecipe;
 import thaumcraft.common.config.ConfigResearch;
+import thaumcraft.common.entities.monster.EntityPech;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
 import exnihilo.ENItems;
 import exnihilo.registries.HammerRegistry;
 import exnihilo.registries.SieveRegistry;
@@ -275,5 +277,12 @@ public class Thaumcraft {
 		ConfigResearch.recipes.put("exastrisshimmerleaf", ThaumcraftApi.addCrucibleRecipe("EXASTRIS_SHIMMERLEAF", new ItemStack(GameRegistry.findItem("Thaumcraft", "blockCustomPlant"), 1, 2), new ItemStack(Blocks.red_flower, 1, 0), new AspectList().add(Aspect.MAGIC, 4).add(Aspect.EXCHANGE, 4).add(Aspect.PLANT, 4)));
 		ConfigResearch.recipes.put("exastriscinderpearl", ThaumcraftApi.addCrucibleRecipe("EXASTRIS_CINDERPEARL", new ItemStack(GameRegistry.findItem("Thaumcraft", "blockCustomPlant"), 1, 3), new ItemStack(Blocks.yellow_flower, 1, 0),new AspectList().add(Aspect.MAGIC, 4). add(Aspect.PLANT, 4).add(Aspect.FIRE, 4)));
 		ConfigResearch.recipes.put("exastrisvishroom", ThaumcraftApi.addCrucibleRecipe("EXASTRIS_VISHROOM", new ItemStack(GameRegistry.findItem("Thaumcraft", "blockCustomPlant"), 1, 5), new ItemStack(Blocks.brown_mushroom, 1, 0),new AspectList().add(Aspect.MAGIC, 4). add(Aspect.PLANT, 4).add(Aspect.POISON, 4)));
+	}
+	public static void summonPeck(World worldObj,double x,double y,double z)
+	{
+		EntityPech peck = new EntityPech(worldObj);
+		peck.setPosition(x, y, z);
+
+		worldObj.spawnEntityInWorld(peck);
 	}
 }

@@ -55,5 +55,13 @@ public class ExAstrisRecipe {
 					'f', Items.diamond_sword);
 		}
 		
+		GameRegistry.addRecipe(new ItemStack(ExAstrisBlock.EndCake, 1, 0),
+				"aaa",
+				"bcb",
+				"aaa",
+				'a', Items.ender_eye, 
+				'b', Items.cake, 
+				'c', Items.golden_apple);
+		
 	}
 }

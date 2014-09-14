@@ -10,4 +10,7 @@ public class BlockData {
 	
 	public static final String SIEVE_AUTOMATIC_KEY = "sieve_automatic";
 	public static final String SIEVE_AUTOMATIC_UNLOCALIZED_NAME = "sieve_automatic";
+
+	public static final String ENDCAKE_KEY = "endcake";
+	public static final String ENDCAKE_UNLOCALIZED_NAME = "endcake";
 }

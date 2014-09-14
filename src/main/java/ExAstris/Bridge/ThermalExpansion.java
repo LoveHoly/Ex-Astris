@@ -14,10 +14,13 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import exnihilo.registries.HeatRegistry;
+import thermalfoundation.entity.monster.EntityBlizz;
+
 public class ThermalExpansion {
 	public static void Initialize()
 	{
@@ -104,5 +107,12 @@ public class ThermalExpansion {
 			}
 		}
 		catch (Exception ex){System.out.println("Ex Astris: Failed to add Transposer recipes, " + ex.getMessage());}
+	}
+	public static void summonBlizz(World worldObj,double x,double y,double z)
+	{
+		EntityBlizz peck = new EntityBlizz(worldObj);
+		peck.setPosition(x, y, z);
+
+		worldObj.spawnEntityInWorld(peck);
 	}
 }

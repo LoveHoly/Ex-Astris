@@ -21,7 +21,6 @@ public class ExAstrisItem {
 	public static Item HammerRF;
 	public static Item DollFreezing;
 	public static Item UnchargedNetherStar;
-	public static boolean RedstoneArsenalIs;
 	public static void registerItems()
 	{
 		if(Loader.isModLoaded("Thaumcraft")){
@@ -41,17 +40,12 @@ public class ExAstrisItem {
 			GameRegistry.registerItem(HammerRF, ItemData.HAMMER_RF_UNLOCALIZED_NAME);
 		}
 		
-		
-		/*
-		if(Loader.isModLoaded("RedstoneArsenal")){
-			
-		}
-		*/
-		
+				
 		if(Loader.isModLoaded("AWWayofTime")){
 			UnchargedNetherStar = new ItemUnchargedNetherStar();
 			GameRegistry.registerItem(UnchargedNetherStar, ItemData.UNCHARGED_NETHERSTAR_UNLOCALIZED_NAME);
 		}
+		
 		//GameRegistry.addRecipe(new ShapedOreRecipe(HammerRF, new Object[] { " a ", " ba", "b  ", Character.valueOf('a'), RAItems.ingotElectrumFlux, Character.valueOf('b'), RAItems.rodObsidianFlux }));
 	}
 }

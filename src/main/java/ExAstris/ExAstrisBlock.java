@@ -2,8 +2,10 @@ package ExAstris;
 
 import ExAstris.Block.BlockBarrelThaumium;
 import ExAstris.Block.BlockBeeTrapInfused;
+import ExAstris.Block.BlockEndCake;
 import ExAstris.Block.BlockSieveAutomatic;
 import ExAstris.Block.ItemBlock.ItemBlockBarrelThaumium;
+import ExAstris.Block.ItemBlock.ItemBlockEndCake;
 import ExAstris.Block.ItemBlock.ItemBlockSieveAutomatic;
 import ExAstris.Data.BlockData;
 import cpw.mods.fml.common.Loader;
@@ -14,6 +16,7 @@ public class ExAstrisBlock {
 	public static Block BarrelThaumium;
 	public static Block BeeTrapInfused;
 	public static Block SieveAutomatic;
+	public static Block EndCake;
 	public static void registerBlocks()
 	{
 		if(Loader.isModLoaded("Thaumcraft")){
@@ -29,5 +32,8 @@ public class ExAstrisBlock {
 			SieveAutomatic = new BlockSieveAutomatic();
 			GameRegistry.registerBlock(SieveAutomatic, ItemBlockSieveAutomatic.class, BlockData.SIEVE_AUTOMATIC_KEY);
 		}
+		
+		EndCake = new BlockEndCake();
+		GameRegistry.registerBlock(EndCake, ItemBlockEndCake.class, BlockData.ENDCAKE_KEY);
 	}
 }

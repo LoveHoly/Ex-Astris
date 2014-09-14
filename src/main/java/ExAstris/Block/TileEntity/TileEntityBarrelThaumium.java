@@ -36,8 +36,6 @@ import exnihilo.registries.ColorRegistry;
 import exnihilo.registries.CompostRegistry;
 import exnihilo.registries.helpers.Color;
 import exnihilo.registries.helpers.Compostable;
-import thaumcraft.common.entities.monster.EntityPech;
-import thermalfoundation.entity.monster.EntityBlizz;
 
 public class TileEntityBarrelThaumium extends TileEntity implements IFluidHandler, ISidedInventory{	
 	private static final float MIN_RENDER_CAPACITY = 0.1f;
@@ -546,12 +544,8 @@ public class TileEntityBarrelThaumium extends TileEntity implements IFluidHandle
 									worldObj.rand.nextInt(10) == 0 && !isDone())
 							{
 								timer = MAX_COMPOSTING_TIME;
-
-								EntityPech peck = new EntityPech(worldObj);
-								peck.setPosition(xCoord + x + 0.5d, yCoord + y, zCoord + z + 0.5d);
-
-								worldObj.spawnEntityInWorld(peck);
-							}
+								
+								ExAstris.Bridge.Thaumcraft.summonPeck(worldObj,xCoord + x + 0.5d,yCoord + y,zCoord + z + 0.5d);							}
 						}
 					}
 				}
@@ -609,11 +603,8 @@ public class TileEntityBarrelThaumium extends TileEntity implements IFluidHandle
 									worldObj.rand.nextInt(10) == 0 && !isDone())
 							{
 								timer = MAX_COMPOSTING_TIME;
-
-								EntityBlizz blizz = new EntityBlizz(worldObj);
-								blizz.setPosition(xCoord + x + 0.5d, yCoord + y, zCoord + z + 0.5d);
-
-								worldObj.spawnEntityInWorld(blizz);
+								ExAstris.Bridge.ThermalExpansion.summonBlizz(worldObj,xCoord + x + 0.5d, yCoord + y, zCoord + z + 0.5d);
+								
 							}
 						}
 					}
