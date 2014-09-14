@@ -34,10 +34,11 @@ public class ExAstris {
 	public void PreInitialize(FMLPreInitializationEvent event)
 	{
 		log = LogManager.getLogger(ModData.NAME);
-		//Metadata!
+		
 		ModData.setMetadata(event.getModMetadata());
 		ExAstrisBlock.registerBlocks();
 		ExAstrisItem.registerItems();
+		
 		proxy.initializeSounds();
 		proxy.initializeRenderers();
 		MinecraftForge.EVENT_BUS.register(this);
@@ -85,6 +86,13 @@ public class ExAstris {
 			log.info("+++ - Found MineFactoryReloaded!");
 
 			MineFactoryReloaded.Initialize();
+		}
+		if(Loader.isModLoaded("AWWayofTime"))
+		{
+
+			log.info("+++ - Found Blood Magic!");
+
+			BloodMagic.Initialize();
 		}
 	}
 }

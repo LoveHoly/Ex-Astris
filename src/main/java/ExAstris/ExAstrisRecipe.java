@@ -1,9 +1,12 @@
 package ExAstris;
 
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
+
+
 
 public class ExAstrisRecipe {
 	public static void registerCraftingRecipes()
@@ -38,6 +41,18 @@ public class ExAstrisRecipe {
 						'e', new ItemStack(GameRegistry.findItem("exnihilo", "doll"), 1, 0));
 			}
 			
+		}
+		if(Loader.isModLoaded("AWWayofTime")){
+			GameRegistry.addRecipe(new ItemStack(ExAstrisItem.UnchargedNetherStar, 1, 0),
+					"aaa",
+					"dbd",
+					"cef",
+					'a', Items.skull, 
+					'b', Items.quartz, 
+					'c', Items.diamond_axe, 
+					'd', Blocks.soul_sand, 
+					'e', Items.diamond_pickaxe, 
+					'f', Items.diamond_sword);
 		}
 		
 	}
