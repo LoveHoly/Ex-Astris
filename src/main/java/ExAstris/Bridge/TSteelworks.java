@@ -6,7 +6,7 @@ import net.minecraftforge.fluids.FluidStack;
 import ExAstris.ExAstrisBlock;
 import ExAstris.Data.MoltenData;
 import tconstruct.smeltery.TinkerSmeltery;
-import tsteelworks.lib.crafting.AdvancedSmelting;
+import tsteelworks.lib.registry.AdvancedSmelting;
 
 
 public class TSteelworks {

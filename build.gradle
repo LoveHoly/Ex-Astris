@@ -17,7 +17,7 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.07a"
+version = "1.07b"
 group= "exastris"
 archivesBaseName = "Ex-Astris"
 
@@ -46,7 +46,7 @@ dependencies {
 	compile files("libs/TConstruct_mc1.7.10_1.6.0d40.1.jar")
 	compile files("libs/Thaumcraft-1.7.10-4.2.0.1.jar")
 	compile files("libs/ThermalFoundation-[1.7.10]1.0.0B3-8.jar")
-	compile files("libs/TSteelworks-1.7.10-1.0.3.jar")
+	compile files("libs/TSteelworks-1.7.10-1.0.4.jar")
 	compile files("libs/Waila-1.5.3a_1.7.10.jar")
 	compile files("libs/RedstoneArsenal-[1.7.10]1.1.0B4-10.jar")
 	compile files("libs/Blood Magic-v1.1.0(1.7.10).jar")
