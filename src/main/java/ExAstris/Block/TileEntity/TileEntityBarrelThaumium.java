@@ -612,6 +612,7 @@ public class TileEntityBarrelThaumium extends TileEntity implements IFluidHandle
 			}
 
 			break;
+
 		default:
 			break;
 		}
@@ -753,8 +754,10 @@ public class TileEntityBarrelThaumium extends TileEntity implements IFluidHandle
 			
 		case OBSIDIANTOTEM:
 			return new ItemStack(GameRegistry.findItem("Thaumcraft", "blockCosmeticSolid"), 1, 0);
+			
 		case BEEINFUSED:
 			return new ItemStack(ExAstrisBlock.BeeTrapInfused, 1, 0);
+			
 		default:
 			return null;
 		}
@@ -884,9 +887,11 @@ public class TileEntityBarrelThaumium extends TileEntity implements IFluidHandle
 		case 22:
 			setMode(BarrelMode.PECK);
 			break;
+			
 		case 23:
 			setMode(BarrelMode.BEEINFUSED);
 			break;
+			
 		case 24:
 			setMode(BarrelMode.BLIZZ_COOKING);
 			break;
@@ -894,7 +899,6 @@ public class TileEntityBarrelThaumium extends TileEntity implements IFluidHandle
 		case 25:
 			setMode(BarrelMode.BLIZZ);
 			break;
-
 		}
 
 		volume = compound.getFloat("volume");
@@ -1192,99 +1196,104 @@ public class TileEntityBarrelThaumium extends TileEntity implements IFluidHandle
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack stack) {
 		//XXX addItemFromPipe
-		Item item = stack.getItem();
-		int meta = stack.getItemDamage();
 		
-		if (slot == 0)
+		if (stack == null || stack.getItem() == null)
 		{
-			if (item == null)
+			if (slot == 0)
 			{
 				resetBarrel();
 			}
 		}
-
-		if (slot == 1)
+		else
 		{
-			if (getMode() == BarrelMode.COMPOST || getMode() == BarrelMode.EMPTY)
+			Item item = stack.getItem();
+			int meta = stack.getItemDamage();
+
+			if (slot == 1)
 			{
-				if(CompostRegistry.containsItem(item, meta))
+				if (getMode() == BarrelMode.COMPOST || getMode() == BarrelMode.EMPTY)
 				{
-					this.addCompostItem(CompostRegistry.getItem(item, meta));
-				}
-			}
-
-			if(getMode() == BarrelMode.FLUID && this.isFull())
-			{
-				if(fluid.fluidID == FluidRegistry.WATER.getID())
-				{
-					if (ModData.ALLOW_BARREL_RECIPE_CLAY && Block.getBlockFromItem(item) == ENBlocks.Dust)
+					if(CompostRegistry.containsItem(item, meta))
 					{
-						setMode(BarrelMode.CLAY);
-					}
-					if(item == ExAstrisItem.DollFreezing)
-					{
-						setMode(BarrelMode.BLIZZ_COOKING);
+						this.addCompostItem(CompostRegistry.getItem(item, meta));
 					}
 				}
 
-				if(fluid.fluidID == FluidRegistry.LAVA.getID())
+				if(getMode() == BarrelMode.FLUID && this.isFull())
 				{
-					if (ModData.ALLOW_BARREL_RECIPE_NETHERRACK && item == Items.redstone)
+					if(fluid.fluidID == FluidRegistry.WATER.getID())
 					{
-						setMode(BarrelMode.NETHERRACK);
+						if (ModData.ALLOW_BARREL_RECIPE_CLAY && Block.getBlockFromItem(item) == ENBlocks.Dust)
+						{
+							setMode(BarrelMode.CLAY);
+						}
+						
+						if(item == ExAstrisItem.DollFreezing)
+						{
+							setMode(BarrelMode.BLIZZ_COOKING);
+						}
 					}
 
-					if (ModData.ALLOW_BARREL_RECIPE_ENDSTONE && item == Items.glowstone_dust)
+					if(fluid.fluidID == FluidRegistry.LAVA.getID())
 					{
-						setMode(BarrelMode.ENDSTONE);
+						if (ModData.ALLOW_BARREL_RECIPE_NETHERRACK && item == Items.redstone)
+						{
+							setMode(BarrelMode.NETHERRACK);
+						}
+
+						if (ModData.ALLOW_BARREL_RECIPE_ENDSTONE && item == Items.glowstone_dust)
+						{
+							setMode(BarrelMode.ENDSTONE);
+						}
+
+						if(ModData.ALLOW_BARREL_RECIPE_BLAZE_RODS && item == ENItems.DollAngry)
+						{
+							setMode(BarrelMode.BLAZE_COOKING);
+						}
 					}
 
-					if(ModData.ALLOW_BARREL_RECIPE_BLAZE_RODS && item == ENItems.DollAngry)
+					if (fluid.fluidID == Fluids.fluidWitchWater.getID())
 					{
-						setMode(BarrelMode.BLAZE_COOKING);
-					}
-				}
+						if(ModData.ALLOW_BARREL_RECIPE_SOULSAND && Block.getBlockFromItem(item) == Blocks.sand)
+						{
+							resetColor();
+							setMode(BarrelMode.SOULSAND);
+						}
 
-				if (fluid.fluidID == Fluids.fluidWitchWater.getID())
-				{
-					if(ModData.ALLOW_BARREL_RECIPE_SOULSAND && Block.getBlockFromItem(item) == Blocks.sand)
-					{
-						resetColor();
-						setMode(BarrelMode.SOULSAND);
-					}
-				
-					if(Block.getBlockFromItem(item) == Blocks.obsidian )
-					{
-						resetColor();
-						setMode(BarrelMode.OBSIDIANTOTEM);
+						if(ModData.ALLOW_BARREL_RECIPE_ENDER_PEARLS && item == ENItems.DollCreepy)
+						{
+							setMode(BarrelMode.ENDER_COOKING);
+						}
+						
+						if(ModData.ALLOW_BARREL_RECIPE_DARK_OAK && Block.getBlockFromItem(item) == Blocks.sapling && meta == 0)
+						{
+							setMode(BarrelMode.DARKOAK);
+						}
+						
+						if(Block.getBlockFromItem(item) == Blocks.obsidian )
+						{
+							resetColor();
+							setMode(BarrelMode.OBSIDIANTOTEM);
+						}
+						
+						if(Block.getBlockFromItem(item) == ENBlocks.BeeTrap )
+						{
+							resetColor();
+							setMode(BarrelMode.BEEINFUSED);
+						}
+						
+						if(item == ExAstrisItem.DollThaumic)
+						{
+							setMode(BarrelMode.PECK_COOKING);
+						}
+						
 					}
 					
-					if(Block.getBlockFromItem(item) == ENBlocks.BeeTrap )
+					Fluid seedOil = FluidRegistry.getFluid("seedoil");
+					if (seedOil != null && fluid.fluidID == seedOil.getID())
 					{
-						resetColor();
-						setMode(BarrelMode.BEEINFUSED);
+						setMode(BarrelMode.BEETRAP);
 					}
-					
-					if(item == ExAstrisItem.DollThaumic)
-					{
-						setMode(BarrelMode.PECK_COOKING);
-					}
-					
-					if(ModData.ALLOW_BARREL_RECIPE_ENDER_PEARLS && item == ENItems.DollCreepy)
-					{
-						setMode(BarrelMode.ENDER_COOKING);
-					}
-					
-					if(ModData.ALLOW_BARREL_RECIPE_DARK_OAK && Block.getBlockFromItem(item) == Blocks.sapling && meta == 0)
-					{
-						setMode(BarrelMode.DARKOAK);
-					}
-				}
-				
-				Fluid seedOil = FluidRegistry.getFluid("seedoil");
-				if (seedOil != null && fluid.fluidID == seedOil.getID())
-				{
-					setMode(BarrelMode.BEETRAP);
 				}
 			}
 		}
@@ -1391,6 +1400,11 @@ public class TileEntityBarrelThaumium extends TileEntity implements IFluidHandle
 				{
 					return true;
 				}
+				
+				if(item == ExAstrisItem.DollFreezing)
+				{
+					return true;
+				}
 			}
 
 
@@ -1420,13 +1434,17 @@ public class TileEntityBarrelThaumium extends TileEntity implements IFluidHandle
 					return true;
 				}
 				
-				if(Block.getBlockFromItem(item) == Blocks.obsidian )
+				if(Block.getBlockFromItem(item) == Blocks.obsidian)
 				{
-					System.out.printf("EX EXNIHILO " + worldObj.getBlock(xCoord, yCoord, zCoord).getUnlocalizedName());
 					return true;
 				}
 				
 				if(item == ExAstrisItem.DollThaumic)
+				{
+					return true;
+				}
+				
+				if(Block.getBlockFromItem(item) == ExAstrisBlock.BeeTrapInfused)
 				{
 					return true;
 				}
