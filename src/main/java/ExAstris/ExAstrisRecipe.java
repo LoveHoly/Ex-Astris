@@ -1,5 +1,6 @@
 package ExAstris;
 
+import ExAstris.Data.ModData;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -11,7 +12,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class ExAstrisRecipe {
 	public static void registerCraftingRecipes()
 	{
-		if(Loader.isModLoaded("RedstoneArsenal")){
+		if(Loader.isModLoaded("RedstoneArsenal") && ModData.ALLOW_HAMMER_RF){
 			GameRegistry.addRecipe(new ItemStack(ExAstrisItem.HammerRF, 1, 0),
 					" x ",
 					" yx",
@@ -20,16 +21,21 @@ public class ExAstrisRecipe {
 					'y', new ItemStack(GameRegistry.findItem("RedstoneArsenal", "material"), 1, 193));
 		}
 		if(Loader.isModLoaded("ThermalExpansion")){
-			GameRegistry.addRecipe(new ItemStack(ExAstrisBlock.SieveAutomatic, 1, 0),
-					"aba",
-					"aca",
-					"d d",
-					'a', new ItemStack(GameRegistry.findItem("ThermalFoundation", "material"), 1, 72), 
-					'b', new ItemStack(GameRegistry.findItem("exnihilo", "mesh"), 1, 0), 
-					'c', new ItemStack(GameRegistry.findItem("ThermalFoundation", "material"), 1, 135), 
-					'd', new ItemStack(GameRegistry.findItem("ThermalFoundation", "material"), 1, 104));
+			if(ModData.ALLOW_SIEVE_AUTOMATIC)
+			{
+				GameRegistry.addRecipe(new ItemStack(ExAstrisBlock.SieveAutomatic, 1, 0),
+						"aba",
+						"aca",
+						"d d",
+						'a', new ItemStack(GameRegistry.findItem("ThermalFoundation", "material"), 1, 72), 
+						'b', new ItemStack(GameRegistry.findItem("exnihilo", "mesh"), 1, 0), 
+						'c', new ItemStack(GameRegistry.findItem("ThermalFoundation", "material"), 1, 135), 
+						'd', new ItemStack(GameRegistry.findItem("ThermalFoundation", "material"), 1, 104));
+			}
 			
-			if(Loader.isModLoaded("Thaumcraft")){
+			
+			if(Loader.isModLoaded("Thaumcraft") && ModData.ALLOW_DOLL_FREEZING && ModData.ALLOW_BARREL_THAUMIUM){
+
 				GameRegistry.addRecipe(new ItemStack(ExAstrisItem.DollFreezing, 1, 0),
 						"aba",
 						"ded",
@@ -55,13 +61,17 @@ public class ExAstrisRecipe {
 					'f', Items.diamond_sword);
 		}
 		
-		GameRegistry.addRecipe(new ItemStack(ExAstrisBlock.EndCake, 1, 0),
-				"aaa",
-				"bcb",
-				"aaa",
-				'a', Items.ender_eye, 
-				'b', Items.cake, 
-				'c', Items.golden_apple);
+		if(ModData.ALLOW_ENDCAKE)
+		{
+			GameRegistry.addRecipe(new ItemStack(ExAstrisBlock.EndCake, 1, 0),
+					"aaa",
+					"bcb",
+					"aaa",
+					'a', Items.ender_eye, 
+					'b', Items.cake, 
+					'c', Items.golden_apple);
+		}
+		
 		
 	}
 }

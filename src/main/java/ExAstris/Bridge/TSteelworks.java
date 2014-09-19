@@ -4,6 +4,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import ExAstris.ExAstrisBlock;
+import ExAstris.Data.ModData;
 import ExAstris.Data.MoltenData;
 import tconstruct.smeltery.TinkerSmeltery;
 import tsteelworks.lib.registry.AdvancedSmelting;
@@ -12,7 +13,10 @@ import tsteelworks.lib.registry.AdvancedSmelting;
 public class TSteelworks {
 	public static void Initialize()
 	{
-		addMeltingRecipe();
+		if(ModData.ALLOW_TSTEELWORKS_MELTING)
+		{
+			addMeltingRecipe();
+		}
 	}
 	public static void addMeltingRecipe()
 	{

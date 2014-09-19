@@ -2,6 +2,7 @@ package ExAstris.Bridge;
 
 import java.lang.reflect.Method;
 
+import ExAstris.Data.ModData;
 import skyboy.core.fluid.LiquidRegistry;
 import tconstruct.smeltery.TinkerSmeltery;
 import thermalfoundation.block.TFBlocks;
@@ -25,12 +26,15 @@ public class ThermalExpansion {
 	public static void Initialize()
 	{
 		addHeatRegistry();
-		addHiveRegistry();
+		if(ModData.ALLOW_THERMAL_EXPANSION_HIVE_REGISTRY)
+		{
+			addHiveRegistry();
+		}
 		
 	}
 	public static void addHiveRegistry()
 	{
-		if (Loader.isModLoaded("Forestry") && Loader.isModLoaded("exnihilo"))
+		if (Loader.isModLoaded("Forestry"))
 		{
 			addSmelterRecipe(10000, new ItemStack(GameRegistry.findBlock("exnihilo", "bee_trap_treated")),new ItemStack(Blocks.leaves,8),new ItemStack(GameRegistry.findBlock("Forestry", "beehives"),1,1),null,0,false);
 			addSmelterRecipe(10000, new ItemStack(GameRegistry.findBlock("exnihilo", "bee_trap_treated")),new ItemStack(Blocks.grass,8),new ItemStack(GameRegistry.findBlock("Forestry", "beehives"),1,2),null,0,false);
@@ -40,7 +44,7 @@ public class ThermalExpansion {
 			addSmelterRecipe(10000, new ItemStack(GameRegistry.findBlock("exnihilo", "bee_trap_treated")),new ItemStack(Blocks.ice,8),new ItemStack(GameRegistry.findBlock("Forestry", "beehives"),1,6),null,0,false);
 			addSmelterRecipe(10000, new ItemStack(GameRegistry.findBlock("exnihilo", "bee_trap_treated")),new ItemStack(Blocks.mycelium,8),new ItemStack(GameRegistry.findBlock("Forestry", "beehives"),1,7),null,0,false);
 		}
-		if (Loader.isModLoaded("ExtraBees") && Loader.isModLoaded("exnihilo"))
+		if (Loader.isModLoaded("ExtraBees"))
 		{
 			addTransposerRecipe(10000, new ItemStack(GameRegistry.findBlock("exnihilo", "bee_trap_treated")),new ItemStack(GameRegistry.findBlock("ExtraBees", "hive"),1,0),new FluidStack(FluidRegistry.WATER, 8000),false);
 			if(Loader.isModLoaded("TConstruct")){
@@ -55,10 +59,14 @@ public class ThermalExpansion {
 	}
 	public static void addHeatRegistry()
 	{
-		HeatRegistry.register(GameRegistry.findBlock("ThermalFoundation","FluidPyrotheum"), 0.5F);
-		HeatRegistry.register(GameRegistry.findBlock("ThermalFoundation","FluidPyrotheum"), 0, 0.7F);
-		HeatRegistry.register(GameRegistry.findBlock("ThermalFoundation","FluidCryotheum"), 0.2F);
-		HeatRegistry.register(GameRegistry.findBlock("ThermalFoundation","FluidCryotheum"), 0, 0.3F);
+		if(ModData.ALLOW_THERMAL_EXPANSION_HEAT_REGISTRY)
+		{
+			HeatRegistry.register(GameRegistry.findBlock("ThermalFoundation","FluidPyrotheum"), 0.5F);
+			HeatRegistry.register(GameRegistry.findBlock("ThermalFoundation","FluidPyrotheum"), 0, 0.7F);
+			HeatRegistry.register(GameRegistry.findBlock("ThermalFoundation","FluidCryotheum"), 0.2F);
+			HeatRegistry.register(GameRegistry.findBlock("ThermalFoundation","FluidCryotheum"), 0, 0.3F);
+			
+		}
 
 	}
 	@SuppressWarnings({ "unchecked", "rawtypes" })

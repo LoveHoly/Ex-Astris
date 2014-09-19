@@ -41,7 +41,7 @@ public class ExAstrisItem {
 		}
 		
 				
-		if(Loader.isModLoaded("AWWayofTime")){
+		if(Loader.isModLoaded("AWWayofTime") && ModData.ALLOW_UNCHARGED_NETHERSTAR){
 			UnchargedNetherStar = new ItemUnchargedNetherStar();
 			GameRegistry.registerItem(UnchargedNetherStar, ItemData.UNCHARGED_NETHERSTAR_UNLOCALIZED_NAME);
 		}

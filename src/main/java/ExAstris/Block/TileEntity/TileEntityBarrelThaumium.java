@@ -1276,7 +1276,7 @@ public class TileEntityBarrelThaumium extends TileEntity implements IFluidHandle
 							setMode(BarrelMode.OBSIDIANTOTEM);
 						}
 						
-						if(Block.getBlockFromItem(item) == ENBlocks.BeeTrap )
+						if(ExAstris.Data.ModData.ALLOW_BEE_TRAP_INFUSED && Block.getBlockFromItem(item) == ENBlocks.BeeTrap )
 						{
 							resetColor();
 							setMode(BarrelMode.BEEINFUSED);

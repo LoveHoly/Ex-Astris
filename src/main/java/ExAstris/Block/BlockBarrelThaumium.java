@@ -274,7 +274,7 @@ public class BlockBarrelThaumium extends BlockContainer
 								
 							}
 							
-							if(item.getItem() == Item.getItemFromBlock(ENBlocks.BeeTrap))
+							if(ExAstris.Data.ModData.ALLOW_BEE_TRAP_INFUSED && item.getItem() == Item.getItemFromBlock(ENBlocks.BeeTrap))
 							{
 								barrel.setMode(BarrelMode.BEEINFUSED);
 								barrel.resetColor();

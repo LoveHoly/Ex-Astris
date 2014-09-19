@@ -31,12 +31,18 @@ public class Thaumcraft {
 	{
 		addHammerRegistry();
 		addSieveRegistry();
-		addHeatRegistry();
+		if(ModData.ALLOW_THAUMCRAFT_HEAT_REGISTRY)
+		{
+			addHeatRegistry();
+		}
 		addPages();
 		addInfusion();
 		addArcane();
 		addCrucible();
-		addResearch();
+		if(ModData.ALLOW_THAUMCRAFT_RESEARCH)
+		{
+			addResearch();			
+		}
 	}
 	public static void addHammerRegistry()
 	{
@@ -73,24 +79,58 @@ public class Thaumcraft {
 				new ItemStack(GameRegistry.findItem("Thaumcraft", "ItemShard"), 1, 0)).setPages(new ResearchPage[] {
 				new ResearchPage("exastris.page.EXASTRISTHAUM.1"), new ResearchPage("exastris.page.EXASTRISTHAUM.2")
 				}).setStub().setRound().setAutoUnlock().registerResearchItem();
-		new ResearchItem("EXASTRIS_BARRELTHAUMIUM",
-				"EXASTRIS_THAUM",
-				new AspectList().add(Aspect.TOOL, 10).add(Aspect.WATER, 10).add(Aspect.MAGIC, 10).add(Aspect.CRAFT, 10),
-				0,
-				-2,
-				0,
-				new ItemStack(ExAstrisBlock.BarrelThaumium, 1, 0)).setPages(new ResearchPage[] {
-				new ResearchPage("exastris.page.EXASTRISTHAUM.3"), new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("exastrisbarrelthaumium"))
-				}).setConcealed().registerResearchItem();
-		new ResearchItem("EXASTRIS_DOLLTHAUMIC",
-				"EXASTRIS_THAUM",
-				new AspectList().add(Aspect.SOUL, 10).add(Aspect.GREED, 10).add(Aspect.MAGIC, 10),
-				2,
-				-2,
-				0,
-				new ItemStack(ExAstrisItem.DollThaumic, 1, 0)).setPages(new ResearchPage[] {
-				new ResearchPage("exastris.page.EXASTRISTHAUM.4"),new ResearchPage((CrucibleRecipe)ConfigResearch.recipes.get("exastrisdollthaumic"))
-				}).setConcealed().setParents("EXASTRIS_BARRELTHAUMIUM").registerResearchItem();
+		
+		if(ModData.ALLOW_BARREL_THAUMIUM)
+		{
+			new ResearchItem("EXASTRIS_BARRELTHAUMIUM",
+					"EXASTRIS_THAUM",
+					new AspectList().add(Aspect.TOOL, 10).add(Aspect.WATER, 10).add(Aspect.MAGIC, 10).add(Aspect.CRAFT, 10),
+					0,
+					-2,
+					0,
+					new ItemStack(ExAstrisBlock.BarrelThaumium, 1, 0)).setPages(new ResearchPage[] {
+					new ResearchPage("exastris.page.EXASTRISTHAUM.3"), new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("exastrisbarrelthaumium"))
+					}).setConcealed().registerResearchItem();
+			if(ModData.ALLOW_DOLL_THAUMIC)
+			{
+				new ResearchItem("EXASTRIS_DOLLTHAUMIC",
+						"EXASTRIS_THAUM",
+						new AspectList().add(Aspect.SOUL, 10).add(Aspect.GREED, 10).add(Aspect.MAGIC, 10),
+						2,
+						-2,
+						0,
+						new ItemStack(ExAstrisItem.DollThaumic, 1, 0)).setPages(new ResearchPage[] {
+						new ResearchPage("exastris.page.EXASTRISTHAUM.4"),new ResearchPage((CrucibleRecipe)ConfigResearch.recipes.get("exastrisdollthaumic"))
+						}).setConcealed().setParents("EXASTRIS_BARRELTHAUMIUM").registerResearchItem();
+				
+			}
+			
+			if (Loader.isModLoaded("MagicBees") && ModData.ALLOW_BEE_TRAP_INFUSED)
+			{
+				new ResearchItem("EXASTRIS_BEEHIVES",
+						"EXASTRIS_THAUM",
+						new AspectList().add(Aspect.MAGIC, 10).add(Aspect.AIR, 10).add(Aspect.BEAST, 10).add(Aspect.CRAFT, 10),
+						0,
+						-4,
+						0,
+						new ItemStack(ExAstrisBlock.BeeTrapInfused, 1, 0)).setPages(new ResearchPage[] {
+						new ResearchPage("exastris.page.EXASTRISTHAUM.13"), new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("exastriscurioushive")), new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("exastrisunusualhive")), new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("exastrisresonatinghive"))
+						}).setConcealed().setParents("EXASTRIS_BARRELTHAUMIUM").registerResearchItem();
+				new ResearchItem("EXASTRIS_ADVANCEBEEHIVES",
+						"EXASTRIS_THAUM",
+						new AspectList().add(Aspect.MAGIC, 10).add(Aspect.AIR, 10).add(Aspect.BEAST, 10).add(Aspect.CRAFT, 10),
+						-2,
+						-4,
+						0,
+						new ItemStack(ExAstrisBlock.BeeTrapInfused, 1, 0)).setPages(new ResearchPage[] {
+						new ResearchPage("exastris.page.EXASTRISTHAUM.14"),  new ResearchPage((InfusionRecipe)ConfigResearch.recipes.get("exastrisdeephive")),  new ResearchPage((InfusionRecipe)ConfigResearch.recipes.get("exastrisinfernalhive")),  new ResearchPage((InfusionRecipe)ConfigResearch.recipes.get("exastrisoblivionhive"))
+						}).setConcealed().setSpecial().setParents("EXASTRIS_BEEHIVES").registerResearchItem();
+				
+				ThaumcraftApi.addWarpToResearch("EXASTRIS_ADVANCEBEEHIVES", 2);
+			}
+		}
+		
+		
 		new ResearchItem("EXASTRIS_VISFILTER",
 				"EXASTRIS_THAUM",
 				new AspectList().add(Aspect.WATER, 10).add(Aspect.ORDER, 10),
@@ -109,15 +149,19 @@ public class Thaumcraft {
 				new ItemStack(GameRegistry.findItem("Thaumcraft", "blockStoneDevice"), 1, 2)).setPages(new ResearchPage[] {
 				new ResearchPage("exastris.page.EXASTRISTHAUM.6"),new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("exastrismatrix"))
 				}).setConcealed().setParents("EXASTRIS_VISFILTER").registerResearchItem();
-		new ResearchItem("EXASTRIS_HAMMERTHAUMIUM",
-				"EXASTRIS_THAUM",
-				new AspectList().add(Aspect.TOOL, 10).add(Aspect.MAGIC, 10),
-				0,
-				2,
-				0,
-				new ItemStack(ExAstrisItem.HammerThaumium, 1, 0)).setPages(new ResearchPage[] {
-				new ResearchPage("exastris.page.EXASTRISTHAUM.7"),new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("exastrishammerthaumium"))
-				}).setConcealed().registerResearchItem();
+		if(ModData.ALLOW_HAMMER_THAUMIUM)
+		{
+			new ResearchItem("EXASTRIS_HAMMERTHAUMIUM",
+					"EXASTRIS_THAUM",
+					new AspectList().add(Aspect.TOOL, 10).add(Aspect.MAGIC, 10),
+					0,
+					2,
+					0,
+					new ItemStack(ExAstrisItem.HammerThaumium, 1, 0)).setPages(new ResearchPage[] {
+					new ResearchPage("exastris.page.EXASTRISTHAUM.7"),new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("exastrishammerthaumium"))
+					}).setConcealed().registerResearchItem();
+			 
+		}
 		new ResearchItem("EXASTRIS_SHIMMERLEAF",
 				"EXASTRIS_THAUM",
 				new AspectList().add(Aspect.PLANT, 10).add(Aspect.MAGIC, 10).add(Aspect.EXCHANGE, 10),
@@ -165,29 +209,7 @@ public class Thaumcraft {
 				new ItemStack(GameRegistry.findItem("Thaumcraft", "blockCustomPlant"), 1, 1)).setPages(new ResearchPage[] {
 						new ResearchPage("exastris.page.EXASTRISTHAUM.12"), new ResearchPage((InfusionRecipe)ConfigResearch.recipes.get("exastrissilverwood"))
 				}).setConcealed().setSpecial().setParents("EXASTRIS_GREATWOOD").registerResearchItem();
-		if (Loader.isModLoaded("MagicBees"))
-		{
-			new ResearchItem("EXASTRIS_BEEHIVES",
-					"EXASTRIS_THAUM",
-					new AspectList().add(Aspect.MAGIC, 10).add(Aspect.AIR, 10).add(Aspect.BEAST, 10).add(Aspect.CRAFT, 10),
-					0,
-					-4,
-					0,
-					new ItemStack(ExAstrisBlock.BeeTrapInfused, 1, 0)).setPages(new ResearchPage[] {
-					new ResearchPage("exastris.page.EXASTRISTHAUM.13"), new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("exastriscurioushive")), new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("exastrisunusualhive")), new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("exastrisresonatinghive"))
-					}).setConcealed().setParents("EXASTRIS_BARRELTHAUMIUM").registerResearchItem();
-			new ResearchItem("EXASTRIS_ADVANCEBEEHIVES",
-					"EXASTRIS_THAUM",
-					new AspectList().add(Aspect.MAGIC, 10).add(Aspect.AIR, 10).add(Aspect.BEAST, 10).add(Aspect.CRAFT, 10),
-					-2,
-					-4,
-					0,
-					new ItemStack(ExAstrisBlock.BeeTrapInfused, 1, 0)).setPages(new ResearchPage[] {
-					new ResearchPage("exastris.page.EXASTRISTHAUM.14"),  new ResearchPage((InfusionRecipe)ConfigResearch.recipes.get("exastrisdeephive")),  new ResearchPage((InfusionRecipe)ConfigResearch.recipes.get("exastrisinfernalhive")),  new ResearchPage((InfusionRecipe)ConfigResearch.recipes.get("exastrisoblivionhive"))
-					}).setConcealed().setSpecial().setParents("EXASTRIS_BEEHIVES").registerResearchItem();
-			
-			ThaumcraftApi.addWarpToResearch("EXASTRIS_ADVANCEBEEHIVES", 2);
-		}
+		
 		
 	}
 	public static void addPages()

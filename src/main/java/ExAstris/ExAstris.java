@@ -1,5 +1,7 @@
 package ExAstris;
 
+import java.io.File;
+
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import ExAstris.Data.ModData;
@@ -36,8 +38,18 @@ public class ExAstris {
 		log = LogManager.getLogger(ModData.NAME);
 		
 		ModData.setMetadata(event.getModMetadata());
+		
+		
+		config = new Configuration(new File(event.getModConfigurationDirectory().getAbsolutePath() + File.separator + "ExAstris.cfg"));
+		config.load();
+		
+		ModData.load(config);
+		
 		ExAstrisBlock.registerBlocks();
 		ExAstrisItem.registerItems();
+		
+		if(config.hasChanged())
+			config.save();
 		
 		proxy.initializeSounds();
 		proxy.initializeRenderers();
