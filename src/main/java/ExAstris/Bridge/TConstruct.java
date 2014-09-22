@@ -29,7 +29,10 @@ public class TConstruct {
 		{
 			addHeatRegistry();
 		}
-		addModifiers();
+		if(ModData.ALLOW_TCONSTRUCT_MODIFIERS)
+		{
+			addModifiers();
+		}
 	}
 	public static void addNetherOre()
 	{

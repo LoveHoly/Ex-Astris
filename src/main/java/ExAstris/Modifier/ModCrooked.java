@@ -78,7 +78,7 @@ public class ModCrooked extends ModBoolean {
 				tool.getToolName().equals("Cutlass") ||
 				tool.getToolName().equals("Cleaver") ||
 				tool.getToolName().equals("Lumber Axe") ||
-				tool.getToolName().equals("Scythe") )
+				tool.getToolName().equals("Scythe") || tool.getToolName().equals("Pickaxe"))
 		{
 			return true;
 		}
