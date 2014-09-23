@@ -4,12 +4,39 @@ import ExAstris.Data.ModData;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 
 
 public class ExAstrisRecipe {
+	public static void registerFurnaceRecipes()
+	{
+		if(Loader.isModLoaded("TConstruct") && ModData.ALLOW_ADD_TCONSTRUCT_NETHERORE)
+		{
+			ItemStack cobaltOreBlock = new ItemStack(ExAstrisBlock.cobaltOreBlock);
+			ItemStack cobaltOreBlock1 = new ItemStack(ExAstrisBlock.cobaltOreBlock);
+			ItemStack cobaltOreBlock2 = new ItemStack(ExAstrisBlock.cobaltOreBlock);
+			
+			ItemStack arditeOreBlock = new ItemStack(ExAstrisBlock.arditeOreBlock);
+			ItemStack arditeOreBlock1 = new ItemStack(ExAstrisBlock.arditeOreBlock);
+			ItemStack arditeOreBlock2 = new ItemStack(ExAstrisBlock.arditeOreBlock);
+			
+			cobaltOreBlock1.setItemDamage(1);
+			cobaltOreBlock2.setItemDamage(2);
+			GameRegistry.addSmelting(cobaltOreBlock, new ItemStack(GameRegistry.findItem("TConstruct", "materials"), 1, 3), 0.1f);
+			GameRegistry.addSmelting(cobaltOreBlock1, new ItemStack(GameRegistry.findItem("TConstruct", "materials"), 1, 3), 0.1f);
+			GameRegistry.addSmelting(cobaltOreBlock2, new ItemStack(GameRegistry.findItem("TConstruct", "materials"), 1, 3), 0.1f);
+			
+			
+			arditeOreBlock1.setItemDamage(1);
+			arditeOreBlock2.setItemDamage(2);
+			GameRegistry.addSmelting(arditeOreBlock, new ItemStack(GameRegistry.findItem("TConstruct", "materials"), 1, 4), 0.1f);
+			GameRegistry.addSmelting(arditeOreBlock1, new ItemStack(GameRegistry.findItem("TConstruct", "materials"), 1, 4), 0.1f);
+			GameRegistry.addSmelting(arditeOreBlock2, new ItemStack(GameRegistry.findItem("TConstruct", "materials"), 1, 4), 0.1f);
+		}
+	}
 	public static void registerCraftingRecipes()
 	{
 		if(Loader.isModLoaded("RedstoneArsenal") && ModData.ALLOW_HAMMER_RF){

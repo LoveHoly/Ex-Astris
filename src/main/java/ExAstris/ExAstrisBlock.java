@@ -3,11 +3,14 @@ package ExAstris;
 import ExAstris.Block.BlockBarrelThaumium;
 import ExAstris.Block.BlockBeeTrapInfused;
 import ExAstris.Block.BlockEndCake;
+import ExAstris.Block.BlockOre;
 import ExAstris.Block.BlockSieveAutomatic;
 import ExAstris.Block.ItemBlock.ItemBlockBarrelThaumium;
 import ExAstris.Block.ItemBlock.ItemBlockEndCake;
+import ExAstris.Block.ItemBlock.ItemBlockOre;
 import ExAstris.Block.ItemBlock.ItemBlockSieveAutomatic;
 import ExAstris.Data.BlockData;
+import ExAstris.Data.ModData;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
@@ -17,6 +20,10 @@ public class ExAstrisBlock {
 	public static Block BeeTrapInfused;
 	public static Block SieveAutomatic;
 	public static Block EndCake;
+
+	public static Block cobaltOreBlock;
+	public static Block arditeOreBlock;
+
 	public static void registerBlocks()
 	{
 		if(Loader.isModLoaded("Thaumcraft")){
@@ -35,5 +42,15 @@ public class ExAstrisBlock {
 		
 		EndCake = new BlockEndCake();
 		GameRegistry.registerBlock(EndCake, ItemBlockEndCake.class, BlockData.ENDCAKE_KEY);
+		
+		if(Loader.isModLoaded("TConstruct") && ModData.ALLOW_ADD_TCONSTRUCT_NETHERORE)
+		{
+			cobaltOreBlock = new BlockOre("Cobalt");
+			GameRegistry.registerBlock(cobaltOreBlock, ItemBlockOre.class, "CobaltOreBlock");
+			
+			arditeOreBlock = new BlockOre("Ardite");
+			GameRegistry.registerBlock(arditeOreBlock, ItemBlockOre.class, "ArditeOreBlock");
+			
+		}
 	}
 }

@@ -84,6 +84,8 @@ public class ModData {
 	public static String ALLOW_TCONSTRUCT_MODIFIERS_KEY = "Tconstruct modifiers allowed";
 	public static boolean ALLOW_TCONSTRUCT_MODIFIERS = true;
 	
+	public static String[] oreType = { "Gravel","Sand","Dust" };
+	
 	public static void load(Configuration config)
 	{
 		ALLOW_BARREL_THAUMIUM  = config.get(CATEGORY_OPTIONS, ALLOW_BARREL_THAUMIUM_KEY, ALLOW_BARREL_THAUMIUM).getBoolean(ALLOW_BARREL_THAUMIUM);
