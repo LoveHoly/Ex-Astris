@@ -32,6 +32,12 @@ public class TileEntityRotaryApiary extends TileEntityPowerReceiver  implements 
 	private int biomeId = -1;
 	private float temperature;
 	private float humidity;
+	
+	
+	public TileEntityRotaryApiary()
+	{
+		inventory = new ItemStack[getSizeInventory()];
+	}
 	//Rotary Power!!
 	@Override
 	protected void animateWithTick(World arg0, int arg1, int arg2, int arg3) {}

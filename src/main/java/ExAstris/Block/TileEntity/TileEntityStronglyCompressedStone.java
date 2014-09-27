@@ -11,6 +11,7 @@ public class TileEntityStronglyCompressedStone extends TileEntity {
 	public int META;
 	private int timer = 0;
 	private static int TIMER_MAX = 6000;
+	
 	public TileEntityStronglyCompressedStone(int meta) {
 		super();
 		META = meta;
@@ -18,12 +19,14 @@ public class TileEntityStronglyCompressedStone extends TileEntity {
 	@Override
 	public void updateEntity()
 	{
-		//ExAstris.ExAstris.log.info("META:"+META);
 		if(!worldObj.isRemote && META == 3)
 		{
 			//ExAstris.ExAstris.log.info("META3CHECKINGABLE,"+timer+","+TIMER_MAX);
 			timer ++;
-			//worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+			if(timer % 60 == 0)
+			{
+				worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+			}
 			if (timer > TIMER_MAX)
 			{
 				worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.bedrock, 0, 3);
@@ -45,7 +48,23 @@ public class TileEntityStronglyCompressedStone extends TileEntity {
 		super.writeToNBT(compound);
 		compound.setInteger("timer", timer);
 	}
-		
+	
+	@Override
+	public Packet getDescriptionPacket()
+	{
+		NBTTagCompound tag = new NBTTagCompound();
+		this.writeToNBT(tag);
+
+		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, this.blockMetadata, tag);
+	}
+
+	@Override
+	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt)
+	{
+		NBTTagCompound tag = pkt.func_148857_g();
+		this.readFromNBT(tag);
+	}
+	
 	public int getMeta()
 	{
 		return META;

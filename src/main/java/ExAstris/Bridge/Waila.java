@@ -44,11 +44,11 @@ public class Waila implements IWailaDataProvider {
 					.getTileEntity();
 			currentTip.add(getSieveDisplay(teSieve));
 		} 
-		/*else if (accessor.getBlock() instanceof BlockStronglyCompressedStone) {
+		else if (accessor.getBlock() instanceof BlockStronglyCompressedStone) {
 			TileEntityStronglyCompressedStone scStone = (TileEntityStronglyCompressedStone) accessor
 					.getTileEntity();
 			if(scStone.getMeta() == 3)	currentTip.add(getSCStoneDisplay(scStone));
-		} */
+		} 
 		return currentTip;
 	}
 	
@@ -137,9 +137,9 @@ public class Waila implements IWailaDataProvider {
 	}
 	
 	public String getSCStoneDisplay(TileEntityStronglyCompressedStone stone) {
-		DecimalFormat format = new DecimalFormat("##.#");
+		//DecimalFormat format = new DecimalFormat("##.#");
 		//ExAstris.ExAstris.log.info("FFFFFFFFFFFFFFFFFFFFFTransforming: " + stone.getTimer() + "%");
-		return "Transforming: " + format.format(getSCStonePer(stone)) + "%";// 
+		return "Transforming: " + getSCStonePer(stone) + "%";// 
 	}
 	
 	public String getSieveDisplayTail(TileEntitySieveAutomatic sieve) {
@@ -154,14 +154,14 @@ public class Waila implements IWailaDataProvider {
 		registrar.registerBodyProvider(instance, BlockBarrelThaumium.class);
 		registrar.registerBodyProvider(instance, BlockSieveAutomatic.class);
 		registrar.registerTailProvider(instance, BlockSieveAutomatic.class);
-		//registrar.registerBodyProvider(instance, BlockStronglyCompressedStone.class);
+		registrar.registerBodyProvider(instance, BlockStronglyCompressedStone.class);
 	}
 	public float getSieveClicksRemaining(TileEntitySieveAutomatic sieve) {
 		return (sieve.getVolume() / 1) * 100;
 	}
 	
 	public float getSCStonePer(TileEntityStronglyCompressedStone stone) {
-		return (stone.getTimer() / 6000) * 100;
+		return ((float)stone.getTimer() / 6000) * 100;
 	}
 	
 	
