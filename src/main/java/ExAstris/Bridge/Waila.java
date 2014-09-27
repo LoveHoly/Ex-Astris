@@ -5,10 +5,12 @@ import java.util.List;
 
 import ExAstris.Block.BlockBarrelThaumium;
 import ExAstris.Block.BlockSieveAutomatic;
+import ExAstris.Block.BlockStronglyCompressedStone;
 import ExAstris.Block.TileEntity.TileEntityBarrelThaumium;
 import ExAstris.Block.TileEntity.TileEntityBarrelThaumium.BarrelMode;
 import ExAstris.Block.TileEntity.TileEntitySieveAutomatic;
 import ExAstris.Block.TileEntity.TileEntitySieveAutomatic.SieveMode;
+import ExAstris.Block.TileEntity.TileEntityStronglyCompressedStone;
 import net.minecraft.item.ItemStack;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
@@ -42,6 +44,11 @@ public class Waila implements IWailaDataProvider {
 					.getTileEntity();
 			currentTip.add(getSieveDisplay(teSieve));
 		} 
+		/*else if (accessor.getBlock() instanceof BlockStronglyCompressedStone) {
+			TileEntityStronglyCompressedStone scStone = (TileEntityStronglyCompressedStone) accessor
+					.getTileEntity();
+			if(scStone.getMeta() == 3)	currentTip.add(getSCStoneDisplay(scStone));
+		} */
 		return currentTip;
 	}
 	
@@ -129,6 +136,12 @@ public class Waila implements IWailaDataProvider {
 			return Math.round(getSieveClicksRemaining(sieve)) + "% left";// + sieve.storage.getEnergyStored() + " / " + sieve.storage.getMaxEnergyStored() + " RF"
 	}
 	
+	public String getSCStoneDisplay(TileEntityStronglyCompressedStone stone) {
+		DecimalFormat format = new DecimalFormat("##.#");
+		//ExAstris.ExAstris.log.info("FFFFFFFFFFFFFFFFFFFFFTransforming: " + stone.getTimer() + "%");
+		return "Transforming: " + format.format(getSCStonePer(stone)) + "%";// 
+	}
+	
 	public String getSieveDisplayTail(TileEntitySieveAutomatic sieve) {
 		return sieve.storage.getEnergyStored() + " / " + sieve.storage.getMaxEnergyStored() + " RF";
 	}
@@ -141,8 +154,15 @@ public class Waila implements IWailaDataProvider {
 		registrar.registerBodyProvider(instance, BlockBarrelThaumium.class);
 		registrar.registerBodyProvider(instance, BlockSieveAutomatic.class);
 		registrar.registerTailProvider(instance, BlockSieveAutomatic.class);
+		//registrar.registerBodyProvider(instance, BlockStronglyCompressedStone.class);
 	}
 	public float getSieveClicksRemaining(TileEntitySieveAutomatic sieve) {
 		return (sieve.getVolume() / 1) * 100;
 	}
+	
+	public float getSCStonePer(TileEntityStronglyCompressedStone stone) {
+		return (stone.getTimer() / 6000) * 100;
+	}
+	
+	
 }

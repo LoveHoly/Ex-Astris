@@ -15,9 +15,9 @@ public class BlockData {
 	public static final String ENDCAKE_KEY = "endcake";
 	public static final String ENDCAKE_UNLOCALIZED_NAME = "endcake";
 	
-	public static final String THAUMIC_DYNAMO_KEY = "thaumic_dynamo";
-	public static final String THAUMIC_DYNAMO_UNLOCALIZED_NAME = "thaumic_dynamo";
+	public static final String ROTARY_APIARY_KEY = "rotary_apiary";
+	public static final String ROTARY_APIARY_UNLOCALIZED_NAME = "rotary_apiary";
 	
-	public static final String SIEVE_ROTARY_KEY = "thaumic_dynamo";
-	public static final String SIEVE_ROTARY_UNLOCALIZED_NAME = "thaumic_dynamo";
+	public static final String STRONGLY_COMPRESSED_STONE_KEY = "strongly_compressed_stone";
+	public static final String STRONGLY_COMPRESSED_STONE_UNLOCALIZED_NAME = "strongly_compressed_stone";
 }

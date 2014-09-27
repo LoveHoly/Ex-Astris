@@ -59,6 +59,7 @@ public class ExAstrisItem {
 			arditeOreItem = new ItemOre("Ardite");
 			GameRegistry.registerItem(arditeOreItem, "OreArditeItem");
 		}
+		
 		//GameRegistry.addRecipe(new ShapedOreRecipe(HammerRF, new Object[] { " a ", " ba", "b  ", Character.valueOf('a'), RAItems.ingotElectrumFlux, Character.valueOf('b'), RAItems.rodObsidianFlux }));
 	}
 }

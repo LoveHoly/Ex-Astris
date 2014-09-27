@@ -17,7 +17,6 @@ public class BlockBeeTrapInfused extends Block{
 	
 	public BlockBeeTrapInfused() {
 		super(Material.ground);
-		
 		setHardness(0.8f);
 		setStepSound(soundTypeGrass);
 		setCreativeTab(CreativeTabs.tabBlock);

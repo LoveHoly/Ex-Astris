@@ -7,6 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
+import exnihilo.registries.HammerRegistry;
 
 
 
@@ -99,6 +100,82 @@ public class ExAstrisRecipe {
 					'c', Items.golden_apple);
 		}
 		
-		
+		if(Loader.isModLoaded("TConstruct") && ModData.ALLOW_ADD_TCONSTRUCT_NETHERORE)
+		{
+			//ExAstris.log.info("+++ - TOOOLLLLLLLLLLLLL"+
+				//	Blocks.cobblestone.getHarvestTool(0));
+			
+			GameRegistry.addRecipe(new ItemStack(ExAstrisBlock.cobaltOreBlock, 1, 0),
+					"aa ",
+					"aa ",
+					"   ",
+					'a', new ItemStack(ExAstrisItem.cobaltOreItem, 1, 0));
+			
+			GameRegistry.addRecipe(new ItemStack(ExAstrisBlock.cobaltOreBlock, 1,1),
+					"aa ",
+					"aa ",
+					"   ",
+					'a', new ItemStack(ExAstrisItem.cobaltOreItem, 1, 1));
+			
+			GameRegistry.addRecipe(new ItemStack(ExAstrisBlock.cobaltOreBlock, 1, 2),
+					"aa ",
+					"aa ",
+					"   ",
+					'a', new ItemStack(ExAstrisItem.cobaltOreItem, 1, 2));
+			
+			
+			
+			
+			GameRegistry.addRecipe(new ItemStack(ExAstrisBlock.arditeOreBlock, 1, 0),
+					"aa ",
+					"aa ",
+					"   ",
+					'a', new ItemStack(ExAstrisItem.arditeOreItem, 1, 0));
+			
+			GameRegistry.addRecipe(new ItemStack(ExAstrisBlock.arditeOreBlock, 1,1),
+					"aa ",
+					"aa ",
+					"   ",
+					'a', new ItemStack(ExAstrisItem.arditeOreItem, 1, 1));
+			
+			GameRegistry.addRecipe(new ItemStack(ExAstrisBlock.arditeOreBlock, 1, 2),
+					"aa ",
+					"aa ",
+					"   ",
+					'a', new ItemStack(ExAstrisItem.arditeOreItem, 1, 2));
+			
+
+			HammerRegistry.register(Blocks.netherrack, 0,ExAstrisItem.cobaltOreItem , 0, 1.00f, 0.0f);
+			HammerRegistry.register(ExAstrisBlock.cobaltOreBlock, 0,ExAstrisItem.cobaltOreItem , 1, 1.00f, 0.0f);
+			HammerRegistry.register(ExAstrisBlock.cobaltOreBlock, 1,ExAstrisItem.cobaltOreItem , 2, 1.00f, 0.0f);
+			
+
+			HammerRegistry.register(Blocks.netherrack, 0,ExAstrisItem.arditeOreItem , 0, 1.00f, 0.0f);
+			HammerRegistry.register(ExAstrisBlock.arditeOreBlock, 0,ExAstrisItem.arditeOreItem , 1, 1.00f, 0.0f);
+			HammerRegistry.register(ExAstrisBlock.arditeOreBlock, 1,ExAstrisItem.arditeOreItem , 2, 1.00f, 0.0f);
+		}
+		if(Loader.isModLoaded("RotaryCraft") && ModData.ALLOW_STRONGLY_COMPRESSED_STONE)
+		{
+			GameRegistry.addRecipe(new ItemStack(ExAstrisBlock.StronglyCompressedStone, 1, 0),
+					"aaa",
+					"aaa",
+					"aaa",
+					'a', new ItemStack(Blocks.obsidian, 1, 0));
+			GameRegistry.addRecipe(new ItemStack(ExAstrisBlock.StronglyCompressedStone, 1, 1),
+					"aaa",
+					"aaa",
+					"aaa",
+					'a', new ItemStack(ExAstrisBlock.StronglyCompressedStone, 1, 0));
+			GameRegistry.addRecipe(new ItemStack(ExAstrisBlock.StronglyCompressedStone, 1, 2),
+					"aaa",
+					"aaa",
+					"aaa",
+					'a', new ItemStack(ExAstrisBlock.StronglyCompressedStone, 1, 1));
+			GameRegistry.addRecipe(new ItemStack(ExAstrisBlock.StronglyCompressedStone, 1, 3),
+					"aaa",
+					"aaa",
+					"aaa",
+					'a', new ItemStack(ExAstrisBlock.StronglyCompressedStone, 1, 2));
+		}
 	}
 }

@@ -13,15 +13,12 @@ import tconstruct.library.crafting.Smeltery;
 import tconstruct.library.crafting.ToolBuilder;
 import tconstruct.smeltery.TinkerSmeltery;
 import cpw.mods.fml.common.registry.GameRegistry;
+import exnihilo.blocks.ores.BlockOre;
 import exnihilo.registries.HeatRegistry;
 
 public class TConstruct {
 	public static void Initialize()
 	{
-	/*	if(ModData.ALLOW_ADD_TCONSTRUCT_NETHERORE)
-		{
-			addNetherOre();
-		}*/
 		addSmeltery();
 		if(ModData.ALLOW_TCONSTRUCT_HEAT_REGISTRY)
 		{
@@ -32,12 +29,7 @@ public class TConstruct {
 			addModifiers();
 		}
 	}
-	/*public static void addNetherOre()
-	{
-		OreRegistry.createNetherOre("cobalt", new Color("2376dd"), 100, TConstructRegistry.getItem("ingotCobalt"), false);
-		OreRegistry.createNetherOre("ardite",new Color("f48a00"), 100, TConstructRegistry.getItem("ingotArdite"), false);
-		
-	}*/
+	
 	public static void addSmeltery()
 	{
 		if(ModData.ALLOW_ADD_TCONSTRUCT_NETHERORE)

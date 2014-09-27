@@ -1,5 +1,6 @@
 package ExAstris.Bridge;
 
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
@@ -20,8 +21,11 @@ public class TSteelworks {
 	}
 	public static void addMeltingRecipe()
 	{
-		AdvancedSmelting.addMelting(GameRegistry.findBlock("exastris", "CobaltOreBlock"),2,650, new FluidStack(TinkerSmeltery.moltenCobaltFluid, MoltenData.ingotCostHighoven));
-		AdvancedSmelting.addMelting(GameRegistry.findBlock("exastris", "ArditeOreBlock"),2,650, new FluidStack(TinkerSmeltery.moltenArditeFluid, MoltenData.ingotCostHighoven));
+		if(Loader.isModLoaded("TConstruct") && ModData.ALLOW_ADD_TCONSTRUCT_NETHERORE)
+		{
+			AdvancedSmelting.addMelting(GameRegistry.findBlock("exastris", "CobaltOreBlock"),2,650, new FluidStack(TinkerSmeltery.moltenCobaltFluid, MoltenData.ingotCostHighoven));
+			AdvancedSmelting.addMelting(GameRegistry.findBlock("exastris", "ArditeOreBlock"),2,650, new FluidStack(TinkerSmeltery.moltenArditeFluid, MoltenData.ingotCostHighoven));
+		}
 		
 		AdvancedSmelting.addMelting(GameRegistry.findBlock("exnihilo", "iron_dust"),0,600, new FluidStack(TinkerSmeltery.moltenIronFluid, MoltenData.ingotCostHighoven));
 		AdvancedSmelting.addMelting(GameRegistry.findBlock("exnihilo", "gold_dust"),0,400, new FluidStack(TinkerSmeltery.moltenGoldFluid, MoltenData.ingotCostHighoven));

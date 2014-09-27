@@ -51,7 +51,7 @@ public class Thaumcraft {
 		HammerRegistry.register(Blocks.grass, 0, GameRegistry.findItem("Thaumcraft", "ItemShard"), 3, 1.00f, 0.0f);
 		HammerRegistry.register(Blocks.ice, 0, GameRegistry.findItem("Thaumcraft", "ItemShard"), 2, 1.00f, 0.0f);
 		HammerRegistry.register(Blocks.tnt, 0, GameRegistry.findItem("Thaumcraft", "ItemShard"), 5, 1.00f, 0.0f);
-		HammerRegistry.register(Blocks.obsidian, 0, GameRegistry.findItem("Thaumcraft", "ItemShard"), 4, 1.00f, 0.0f);
+		HammerRegistry.register(Blocks.quartz_block, 0, GameRegistry.findItem("Thaumcraft", "ItemShard"), 4, 1.00f, 0.0f);
 		
 	}
 	public static void addSieveRegistry()
