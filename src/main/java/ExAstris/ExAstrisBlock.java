@@ -4,13 +4,11 @@ import ExAstris.Block.BlockBarrelThaumium;
 import ExAstris.Block.BlockBeeTrapInfused;
 import ExAstris.Block.BlockEndCake;
 import ExAstris.Block.BlockOre;
-//import ExAstris.Block.BlockRotaryApiary;
 import ExAstris.Block.BlockSieveAutomatic;
 import ExAstris.Block.BlockStronglyCompressedStone;
 import ExAstris.Block.ItemBlock.ItemBlockBarrelThaumium;
 import ExAstris.Block.ItemBlock.ItemBlockEndCake;
 import ExAstris.Block.ItemBlock.ItemBlockOre;
-//import ExAstris.Block.ItemBlock.ItemBlockRotaryApiary;
 import ExAstris.Block.ItemBlock.ItemBlockSieveAutomatic;
 import ExAstris.Block.ItemBlock.ItemBlockStronglyCompressedStone;
 import ExAstris.Data.BlockData;
@@ -28,7 +26,6 @@ public class ExAstrisBlock {
 	public static Block cobaltOreBlock;
 	public static Block arditeOreBlock;
 	
-	public static Block RotaryApiary;
 	public static Block StronglyCompressedStone;
 	public static void registerBlocks()
 	{
@@ -65,7 +62,5 @@ public class ExAstrisBlock {
 			GameRegistry.registerBlock(StronglyCompressedStone, ItemBlockStronglyCompressedStone.class, BlockData.STRONGLY_COMPRESSED_STONE_KEY);
 			
 		}
-		//RotaryApiary = new BlockRotaryApiary();
-		//GameRegistry.registerBlock(RotaryApiary, ItemBlockRotaryApiary.class, BlockData.ROTARY_APIARY_KEY);
 	}
 }

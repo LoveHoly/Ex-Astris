@@ -25,7 +25,6 @@ public class Proxy {
 	
 	public void initializeSounds(){}
 	public void initializeRenderers(){}
-	
 	public World getWorld()
 	{
 		return null;

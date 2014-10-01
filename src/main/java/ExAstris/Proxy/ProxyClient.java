@@ -1,6 +1,7 @@
 package ExAstris.Proxy;
 
 import net.minecraft.item.Item;
+import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.Loader;
@@ -16,10 +17,12 @@ import ExAstris.Block.TileEntity.TileEntityBarrelThaumium;
 import ExAstris.Block.TileEntity.TileEntitySieveAutomatic;
 
 public class ProxyClient extends Proxy {
+	
 	public ProxyClient()
 	{
 		Proxy.setInstance((Proxy)this);
 	}
+	
 	@Override
 	public void initializeRenderers() {
 		if(Loader.isModLoaded("Thaumcraft")){
@@ -35,4 +38,5 @@ public class ProxyClient extends Proxy {
 		}
 		
 	}
+	
 }
