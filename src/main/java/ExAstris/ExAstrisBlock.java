@@ -16,6 +16,7 @@ import ExAstris.Data.ModData;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 
 public class ExAstrisBlock {
 	public static Block BarrelThaumium;
@@ -27,6 +28,33 @@ public class ExAstrisBlock {
 	public static Block arditeOreBlock;
 	
 	public static Block StronglyCompressedStone;
+	
+	public static Block eximiteOreBlock;
+	public static Block meutoiteOreBlock;
+	
+	public static Block prometheumOreBlock;
+	public static Block deepironOreBlock;
+	public static Block infuscoliumOreBlock;
+	public static Block oureclaseOreBlock;
+	public static Block astralsilverOreBlock;
+	public static Block carmotOreBlock;
+	public static Block mithrilOreBlock;
+	public static Block rubraciumOreBlock;
+	public static Block orichalcumOreBlock;
+	public static Block adamantineOreBlock;
+	public static Block atlarusOreBlock;
+
+	public static Block ignatiusOreBlock;
+	public static Block shadowironOreBlock;
+	public static Block lemuriteOreBlock;
+	public static Block midasiumOreBlock;
+	public static Block vyroxeresOreBlock;
+	public static Block ceruclaseOreBlock;
+	public static Block alduoriteOreBlock;
+	public static Block kalendriteOreBlock;
+	public static Block vulcaniteOreBlock;
+	public static Block sanguiniteOreBlock;
+	
 	public static void registerBlocks()
 	{
 		if(Loader.isModLoaded("Thaumcraft")){
@@ -61,6 +89,61 @@ public class ExAstrisBlock {
 			StronglyCompressedStone = new BlockStronglyCompressedStone();
 			GameRegistry.registerBlock(StronglyCompressedStone, ItemBlockStronglyCompressedStone.class, BlockData.STRONGLY_COMPRESSED_STONE_KEY);
 			
+		}
+		
+		if(Loader.isModLoaded("Metallurgy") && ModData.ALLOW_METALLURGY_ORES)
+		{
+			eximiteOreBlock = new BlockOre("Eximite");
+			GameRegistry.registerBlock(eximiteOreBlock, ItemBlockOre.class, "EximiteOreBlock");
+			
+			meutoiteOreBlock = new BlockOre("Meutoite");
+			GameRegistry.registerBlock(meutoiteOreBlock, ItemBlockOre.class, "MeutoiteOreBlock");
+
+			prometheumOreBlock = new BlockOre("Prometheum");
+			deepironOreBlock = new BlockOre("DeepIron");
+			infuscoliumOreBlock = new BlockOre("Infuscolium");
+			oureclaseOreBlock = new BlockOre("Oureclase");
+			astralsilverOreBlock = new BlockOre("AstralSilver");
+			carmotOreBlock = new BlockOre("Carmot");
+			mithrilOreBlock = new BlockOre("Mithril");
+			rubraciumOreBlock = new BlockOre("Rubracium");
+			orichalcumOreBlock = new BlockOre("Orichalcum");
+			adamantineOreBlock = new BlockOre("Adamantine");
+			atlarusOreBlock = new BlockOre("Atlarus");
+			
+			GameRegistry.registerBlock(prometheumOreBlock, ItemBlockOre.class, "PrometheumOreBlock");
+			GameRegistry.registerBlock(deepironOreBlock, ItemBlockOre.class, "DeepIronOreBlock");
+			GameRegistry.registerBlock(infuscoliumOreBlock, ItemBlockOre.class, "InfuscoliumOreBlock");
+			GameRegistry.registerBlock(oureclaseOreBlock, ItemBlockOre.class, "OureclaseOreBlock");
+			GameRegistry.registerBlock(astralsilverOreBlock, ItemBlockOre.class, "AstralSilverOreBlock");
+			GameRegistry.registerBlock(carmotOreBlock, ItemBlockOre.class, "CarmotOreBlock");
+			GameRegistry.registerBlock(mithrilOreBlock, ItemBlockOre.class, "MithrilOreBlock");
+			GameRegistry.registerBlock(rubraciumOreBlock, ItemBlockOre.class, "RubraciumOreBlock");
+			GameRegistry.registerBlock(orichalcumOreBlock, ItemBlockOre.class, "OrichalcumOreBlock");
+			GameRegistry.registerBlock(adamantineOreBlock, ItemBlockOre.class, "AdamantineOreBlock");
+			GameRegistry.registerBlock(atlarusOreBlock, ItemBlockOre.class, "AtlarusOreBlock");
+			
+			ignatiusOreBlock = new BlockOre("Ignatius");
+			shadowironOreBlock = new BlockOre("ShadowIron");
+			lemuriteOreBlock = new BlockOre("Lemurite");
+			midasiumOreBlock = new BlockOre("Midasium");
+			vyroxeresOreBlock = new BlockOre("Vyroxeres");
+			ceruclaseOreBlock = new BlockOre("Ceruclase");
+			alduoriteOreBlock = new BlockOre("Alduorite");
+			kalendriteOreBlock = new BlockOre("Kalendrite");
+			vulcaniteOreBlock = new BlockOre("Vulcanite");
+			sanguiniteOreBlock = new BlockOre("Sanguinite");
+			
+			GameRegistry.registerBlock(ignatiusOreBlock, ItemBlockOre.class, "IgnatiusOreBlock");
+			GameRegistry.registerBlock(shadowironOreBlock, ItemBlockOre.class, "ShadowIronOreBlock");
+			GameRegistry.registerBlock(lemuriteOreBlock, ItemBlockOre.class, "LemuriteOreBlock");
+			GameRegistry.registerBlock(midasiumOreBlock, ItemBlockOre.class, "MidasiumOreBlock");
+			GameRegistry.registerBlock(vyroxeresOreBlock, ItemBlockOre.class, "VyroxeresOreBlock");
+			GameRegistry.registerBlock(ceruclaseOreBlock, ItemBlockOre.class, "CeruclaseOreBlock");
+			GameRegistry.registerBlock(alduoriteOreBlock, ItemBlockOre.class, "AlduoriteOreBlock");
+			GameRegistry.registerBlock(kalendriteOreBlock, ItemBlockOre.class, "KalendriteOreBlock");
+			GameRegistry.registerBlock(vulcaniteOreBlock, ItemBlockOre.class, "VulcaniteOreBlock");
+			GameRegistry.registerBlock(sanguiniteOreBlock, ItemBlockOre.class, "SanguiniteOreBlock");
 		}
 	}
 }

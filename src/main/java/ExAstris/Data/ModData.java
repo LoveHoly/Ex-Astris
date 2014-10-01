@@ -7,7 +7,7 @@ public class ModData {
 	public static final String ID = "exastris";
 	public static final String NAME = "Ex Astris";
 	public static final String VERSION = "For 1.7.10";
-    public static final String DEPENDENCIES = "required-after:Forge@[10.13.0.1180,);required-after:exnihilo;after:ThermalExpansion;after:Thaumcraft;after:TConstruct;after:TSteelworks;after:RedstoneArsenal;";
+    public static final String DEPENDENCIES = "required-after:Forge@[10.13.0.1180,);required-after:exnihilo;after:ThermalExpansion;after:Thaumcraft;after:TConstruct;after:TSteelworks;after:RedstoneArsenal;after:RotaryCraft;after:Metallurgy;";
     
     public static void setMetadata(ModMetadata data)
 	{
@@ -86,6 +86,9 @@ public class ModData {
 	
 	public static String ALLOW_STRONGLY_COMPRESSED_STONE_KEY = "Rotary Strongly Compressed Stone allowed";
 	public static boolean ALLOW_STRONGLY_COMPRESSED_STONE = true;
+
+	public static String ALLOW_METALLURGY_ORES_KEY = "Metallurgy ores allowed";
+	public static boolean ALLOW_METALLURGY_ORES = true;
 	
 	public static String[] oreType = { "Gravel","Sand","Dust" };
 	
@@ -110,6 +113,7 @@ public class ModData {
 		ALLOW_TSTEELWORKS_MELTING  = config.get(CATEGORY_OPTIONS, ALLOW_TSTEELWORKS_MELTING_KEY, ALLOW_TSTEELWORKS_MELTING).getBoolean(ALLOW_TSTEELWORKS_MELTING);
 		ALLOW_TCONSTRUCT_MODIFIERS  = config.get(CATEGORY_OPTIONS, ALLOW_TCONSTRUCT_MODIFIERS_KEY, ALLOW_TCONSTRUCT_MODIFIERS).getBoolean(ALLOW_TCONSTRUCT_MODIFIERS);
 		ALLOW_STRONGLY_COMPRESSED_STONE  = config.get(CATEGORY_OPTIONS, ALLOW_STRONGLY_COMPRESSED_STONE_KEY, ALLOW_STRONGLY_COMPRESSED_STONE).getBoolean(ALLOW_STRONGLY_COMPRESSED_STONE);
+		ALLOW_METALLURGY_ORES  = config.get(CATEGORY_OPTIONS, ALLOW_METALLURGY_ORES_KEY, ALLOW_METALLURGY_ORES).getBoolean(ALLOW_METALLURGY_ORES);
 	}
 	
 }

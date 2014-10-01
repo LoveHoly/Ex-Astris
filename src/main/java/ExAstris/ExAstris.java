@@ -108,5 +108,12 @@ public class ExAstris {
 
 			BloodMagic.Initialize();
 		}
+		
+		if(Loader.isModLoaded("Metallurgy"))
+		{
+
+			log.info("+++ - Found Metallurgy!");
+			Metallurgy.init();
+		}
 	}
 }

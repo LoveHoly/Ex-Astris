@@ -23,9 +23,37 @@ public class ExAstrisItem {
 	public static Item DollFreezing;
 	public static Item UnchargedNetherStar;
 	
-
+	//TConstruct Nether ores
 	public static Item cobaltOreItem;
 	public static Item arditeOreItem;
+	
+	//Metallurgy
+	public static Item eximiteOreItem;
+	public static Item meutoiteOreItem;
+
+	public static Item prometheumOreItem;
+	public static Item deepironOreItem;
+	public static Item infuscoliumOreItem;
+	public static Item oureclaseOreItem;
+	public static Item astralsilverOreItem;
+	public static Item carmotOreItem;
+	public static Item mithrilOreItem;
+	public static Item rubraciumOreItem;
+	public static Item orichalcumOreItem;
+	public static Item adamantineOreItem;
+	public static Item atlarusOreItem;
+	
+	public static Item ignatiusOreItem;
+	public static Item shadowironOreItem;
+	public static Item lemuriteOreItem;
+	public static Item midasiumOreItem;
+	public static Item vyroxeresOreItem;
+	public static Item ceruclaseOreItem;
+	public static Item alduoriteOreItem;
+	public static Item kalendriteOreItem;
+	public static Item vulcaniteOreItem;
+	public static Item sanguiniteOreItem;
+	
 	public static void registerItems()
 	{
 		if(Loader.isModLoaded("Thaumcraft")){
@@ -54,12 +82,66 @@ public class ExAstrisItem {
 		if(Loader.isModLoaded("TConstruct") && ModData.ALLOW_ADD_TCONSTRUCT_NETHERORE)
 		{
 			cobaltOreItem = new ItemOre("Cobalt");
-			GameRegistry.registerItem(cobaltOreItem, "OreCobaltItem");
+			GameRegistry.registerItem(cobaltOreItem, "CobaltOreItem");
 
 			arditeOreItem = new ItemOre("Ardite");
-			GameRegistry.registerItem(arditeOreItem, "OreArditeItem");
+			GameRegistry.registerItem(arditeOreItem, "ArditeOreItem");
 		}
 		
+		if(Loader.isModLoaded("Metallurgy") && ModData.ALLOW_METALLURGY_ORES)
+		{
+			eximiteOreItem = new ItemOre("Eximite");
+			GameRegistry.registerItem(eximiteOreItem, "EximiteOreItem");
+
+			meutoiteOreItem = new ItemOre("Meutoite");
+			GameRegistry.registerItem(meutoiteOreItem, "MeutoiteOreItem");
+			
+			prometheumOreItem = new ItemOre("Prometheum");
+			deepironOreItem = new ItemOre("DeepIron");
+			infuscoliumOreItem = new ItemOre("Infuscolium");
+			oureclaseOreItem = new ItemOre("Oureclase");
+			astralsilverOreItem = new ItemOre("AstralSilver");
+			carmotOreItem = new ItemOre("Carmot");
+			mithrilOreItem = new ItemOre("Mithril");
+			rubraciumOreItem = new ItemOre("Rubracium");
+			orichalcumOreItem = new ItemOre("Orichalcum");
+			adamantineOreItem = new ItemOre("Adamantine");
+			atlarusOreItem = new ItemOre("Atlarus");
+			
+			GameRegistry.registerItem(prometheumOreItem,  "PrometheumOreItem");
+			GameRegistry.registerItem(deepironOreItem,  "DeepIronOreItem");
+			GameRegistry.registerItem(infuscoliumOreItem, "InfuscoliumOreItem");
+			GameRegistry.registerItem(oureclaseOreItem,  "OureclaseOreItem");
+			GameRegistry.registerItem(astralsilverOreItem,  "AstralSilverOreItem");
+			GameRegistry.registerItem(carmotOreItem,  "CarmotOreItem");
+			GameRegistry.registerItem(mithrilOreItem,  "MithrilOreItem");
+			GameRegistry.registerItem(rubraciumOreItem, "RubraciumOreItem");
+			GameRegistry.registerItem(orichalcumOreItem, "OrichalcumOreItem");
+			GameRegistry.registerItem(adamantineOreItem, "AdamantineOreItem");
+			GameRegistry.registerItem(atlarusOreItem,  "AtlarusOreItem");
+			
+			ignatiusOreItem = new ItemOre("Ignatius");
+			shadowironOreItem = new ItemOre("ShadowIron");
+			lemuriteOreItem = new ItemOre("Lemurite");
+			midasiumOreItem = new ItemOre("Midasium");
+			vyroxeresOreItem = new ItemOre("Vyroxeres");
+			ceruclaseOreItem = new ItemOre("Ceruclase");
+			alduoriteOreItem = new ItemOre("Alduorite");
+			kalendriteOreItem = new ItemOre("Kalendrite");
+			vulcaniteOreItem = new ItemOre("Vulcanite");
+			sanguiniteOreItem = new ItemOre("Sanguinite");
+			
+			GameRegistry.registerItem(ignatiusOreItem,  "IgnatiusOreItem");
+			GameRegistry.registerItem(shadowironOreItem,  "ShadowIronOreItem");
+			GameRegistry.registerItem(lemuriteOreItem,  "LemuriteOreItem");
+			GameRegistry.registerItem(midasiumOreItem,  "MidasiumOreItem");
+			GameRegistry.registerItem(vyroxeresOreItem,  "VyroxeresOreItem");
+			GameRegistry.registerItem(ceruclaseOreItem,  "CeruclaseOreItem");
+			GameRegistry.registerItem(alduoriteOreItem,  "AlduoriteOreItem");
+			GameRegistry.registerItem(kalendriteOreItem,  "KalendriteOreItem");
+			GameRegistry.registerItem(vulcaniteOreItem,  "VulcaniteOreItem");
+			GameRegistry.registerItem(sanguiniteOreItem,  "SanguiniteOreItem");
+		}
 		//GameRegistry.addRecipe(new ShapedOreRecipe(HammerRF, new Object[] { " a ", " ba", "b  ", Character.valueOf('a'), RAItems.ingotElectrumFlux, Character.valueOf('b'), RAItems.rodObsidianFlux }));
 	}
 }

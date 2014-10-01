@@ -17,7 +17,7 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.10a"
+version = "1.11"
 group= "exastris"
 archivesBaseName = "Ex-Astris"
 
@@ -50,6 +50,8 @@ dependencies {
 	compile files("libs/Waila-1.5.3a_1.7.10.jar")
 	compile files("libs/RedstoneArsenal-[1.7.10]1.1.0B4-10.jar")
 	compile files("libs/Blood Magic-v1.1.0(1.7.10).jar")
+	compile files("libs/DragonAPI 1.7.10 V1f.jar")
+	compile files("libs/RotaryCraft 1.7.10 V1f.jar")
 
 }
 

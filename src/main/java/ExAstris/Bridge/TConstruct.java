@@ -1,5 +1,7 @@
 package ExAstris.Bridge;
 
+import ExAstris.ExAstrisBlock;
+import ExAstris.ExAstrisItem;
 import ExAstris.Data.ModData;
 import ExAstris.Data.MoltenData;
 import ExAstris.Modifier.ModCrooked;
@@ -12,9 +14,13 @@ import tconstruct.library.client.TConstructClientRegistry;
 import tconstruct.library.crafting.Smeltery;
 import tconstruct.library.crafting.ToolBuilder;
 import tconstruct.smeltery.TinkerSmeltery;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
+import exnihilo.ENBlocks;
 import exnihilo.blocks.ores.BlockOre;
+import exnihilo.registries.HammerRegistry;
 import exnihilo.registries.HeatRegistry;
+import exnihilo.registries.SieveRegistry;
 
 public class TConstruct {
 	public static void Initialize()
@@ -28,8 +34,26 @@ public class TConstruct {
 		{
 			addModifiers();
 		}
+		addHammerRegistry();
+		addSieveRegistry();
 	}
-	
+	public static void addSieveRegistry()
+	{
+		if(Loader.isModLoaded("TConstruct") && ModData.ALLOW_ADD_TCONSTRUCT_NETHERORE)
+		{
+			SieveRegistry.register(ENBlocks.NetherGravel, 0, ExAstrisItem.cobaltOreItem, 0, 128);
+			SieveRegistry.register(ENBlocks.NetherGravel, 0, ExAstrisItem.arditeOreItem, 0, 128);
+		}
+	}
+	public static void addHammerRegistry()
+	{
+		if(Loader.isModLoaded("TConstruct") && ModData.ALLOW_ADD_TCONSTRUCT_NETHERORE)
+		{
+			RegistryFactory.HammerOreRegistryFactory(ExAstrisBlock.cobaltOreBlock, ExAstrisItem.cobaltOreItem );		
+			RegistryFactory.HammerOreRegistryFactory(ExAstrisBlock.arditeOreBlock, ExAstrisItem.arditeOreItem );	
+		}
+		
+	}
 	public static void addSmeltery()
 	{
 		if(ModData.ALLOW_ADD_TCONSTRUCT_NETHERORE)
