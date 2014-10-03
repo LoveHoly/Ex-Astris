@@ -6,5 +6,5 @@ Ex Nihilo Addon
 Special Thks
 
 - Coding Help nemonemo 
-- Translating Help Kagerow, crafteverywhere, ViKaleidoscope
+- Translating Help Kagerow, Seren, crafteverywhere, ViKaleidoscope
 - Texture Help Nark
