@@ -202,3 +202,4 @@ exastris.item.SanguiniteDust.name=Powdered Sanguinite Ore
 exastris.block.SanguiniteGravel.name=Sanguinite Ore Gravel
 exastris.block.SanguiniteSand.name=Sanguinite Ore Sand
 exastris.block.SanguiniteDust.name=Sanguinite Ore Dust
+itemGroup.ExAstrisTab=Ex Astris Tab

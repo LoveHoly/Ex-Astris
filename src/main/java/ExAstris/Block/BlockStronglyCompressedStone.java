@@ -25,7 +25,7 @@ public class BlockStronglyCompressedStone  extends BlockContainer  {
 		setHardness(50.0f);
 		setHarvestLevel("pickaxe", 3);
 		setResistance(6000.0f);
-		setCreativeTab(CreativeTabs.tabBlock);
+		setCreativeTab(ExAstris.ExAstris.ExAstrisTab);
 		
 		GameRegistry.registerTileEntity(TileEntityStronglyCompressedStone.class, this.getUnlocalizedName());
 	}

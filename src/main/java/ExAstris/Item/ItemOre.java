@@ -22,7 +22,7 @@ public class ItemOre extends Item
 	public ItemOre(String name) {
 		super();
 		setHasSubtypes(true);
-		setCreativeTab(CreativeTabs.tabMaterials);
+		setCreativeTab(ExAstris.ExAstris.ExAstrisTab);
 		Name = name;
 	}
 

@@ -31,6 +31,7 @@ public class ItemHammerRF extends ItemToolRF {
 	{
 		super(RAItems.TOOL_MATERIAL_FLUX);
 	    this.energyPerUseCharged = 1600;
+		setCreativeTab(ExAstris.ExAstris.ExAstrisTab);
 	}
 
 	@Override

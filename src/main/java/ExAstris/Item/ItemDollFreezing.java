@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
 public class ItemDollFreezing extends Item{
 	public ItemDollFreezing() {
 		super();
-		setCreativeTab(CreativeTabs.tabMisc);
+		setCreativeTab(ExAstris.ExAstris.ExAstrisTab);
 	}
 	
 	@Override

@@ -45,7 +45,7 @@ public class BlockBarrelThaumium extends BlockContainer
 
 	public BlockBarrelThaumium() {
 		super(Material.rock);
-		setCreativeTab(CreativeTabs.tabDecorations);
+		setCreativeTab(ExAstris.ExAstris.ExAstrisTab);
 		setHardness(4.0f);
 		setBlockBounds(0.1F, 0.0F, 0.1F, 0.9F, 1.0F, 0.9F);
 

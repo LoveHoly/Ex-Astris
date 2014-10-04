@@ -24,6 +24,7 @@ public class BlockEndCake extends BlockCake {
 	public BlockEndCake()
 	{
 		super();
+		setCreativeTab(ExAstris.ExAstris.ExAstrisTab);
 	}
 	
 	@Override

@@ -2,8 +2,10 @@ package ExAstris;
 
 import java.io.File;
 
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
+import ExAstris.CreativeTab.CreativeTabExAstris;
 import ExAstris.Data.ModData;
 import ExAstris.Proxy.Proxy;
 import ExAstris.Bridge.*;
@@ -33,6 +35,8 @@ public class ExAstris {
 	
 	public static Configuration config;
 	public static Logger log;
+	
+	public static CreativeTabs ExAstrisTab = new CreativeTabExAstris(CreativeTabs.getNextID());
 	@EventHandler
 	public void PreInitialize(FMLPreInitializationEvent event)
 	{

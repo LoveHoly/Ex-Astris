@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
 public class ItemDollThaumic extends Item{
 	public ItemDollThaumic() {
 		super();
-		setCreativeTab(CreativeTabs.tabMisc);
+		setCreativeTab(ExAstris.ExAstris.ExAstrisTab);
 	}
 	
 	@Override

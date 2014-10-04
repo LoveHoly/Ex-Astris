@@ -31,7 +31,7 @@ public class BlockSieveAutomatic extends BlockContainer{
 
 	public BlockSieveAutomatic() {
 		super(Material.iron);
-		setCreativeTab(CreativeTabs.tabDecorations);
+		setCreativeTab(ExAstris.ExAstris.ExAstrisTab);
 		setHardness(2.0f);
 
 		setBlockName(ModData.ID + "." + BlockData.SIEVE_AUTOMATIC_KEY);

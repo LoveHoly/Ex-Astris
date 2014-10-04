@@ -19,7 +19,7 @@ public class BlockBeeTrapInfused extends Block{
 		super(Material.ground);
 		setHardness(0.8f);
 		setStepSound(soundTypeGrass);
-		setCreativeTab(CreativeTabs.tabBlock);
+		setCreativeTab(ExAstris.ExAstris.ExAstrisTab);
 	}
 
 	@Override

@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
 public class ItemUnchargedNetherStar extends Item{
 	public ItemUnchargedNetherStar() {
 		super();
-		setCreativeTab(CreativeTabs.tabMisc);
+		setCreativeTab(ExAstris.ExAstris.ExAstrisTab);
 	}
 	
 	@Override

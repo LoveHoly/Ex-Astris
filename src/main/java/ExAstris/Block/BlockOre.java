@@ -21,7 +21,7 @@ public class BlockOre  extends BlockSand{
 		super();
 		setHardness(0.4F);
 		setStepSound(soundTypeSand);
-		setCreativeTab(CreativeTabs.tabBlock);
+		setCreativeTab(ExAstris.ExAstris.ExAstrisTab);
 		Name = name;
 	}
 	
