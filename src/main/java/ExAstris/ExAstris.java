@@ -123,5 +123,19 @@ public class ExAstris {
 			log.info("+++ - Found Metallurgy!");
 			Metallurgy.init();
 		}
+		
+		if(Loader.isModLoaded("arsmagica2"))
+		{
+
+			log.info("+++ - Found Ars Magica!");
+			ArsMagica.init();
+		}
+		
+		if(Loader.isModLoaded("BigReactors"))
+		{
+
+			log.info("+++ - Found BigReactors!");
+			BigReactors.init();
+		}
 	}
 }
