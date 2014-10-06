@@ -2,6 +2,7 @@ package ExAstris.Block;
 
 import java.util.List;
 
+import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -105,12 +106,9 @@ public class BlockSieveAutomatic extends BlockContainer{
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ)
 	{
-		if (player == null)
-		{
-			return false;
-		}
-
-
+		///if(!world.isRemote) {
+		player.openGui(ExAstris.ExAstris.instance, 0, world, x, y, z);
+		//}
 		return true;
 	}
 

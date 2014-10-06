@@ -72,6 +72,12 @@ public class BlockStronglyCompressedStone  extends BlockContainer  {
 
 	@Override
 	public TileEntity createNewTileEntity(World p_149915_1_, int meta) {
-		return new TileEntityStronglyCompressedStone(meta);
+		return new TileEntityStronglyCompressedStone();
+	}
+	
+	@Override
+	public boolean hasTileEntity()
+	{
+		return true;
 	}
 }

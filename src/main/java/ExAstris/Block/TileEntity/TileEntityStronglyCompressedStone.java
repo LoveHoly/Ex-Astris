@@ -8,26 +8,26 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityStronglyCompressedStone extends TileEntity {
-	public int META;
-	private int timer = 0;
-	private static int TIMER_MAX = 6000;
+	private int timer;
+	private float volume;
+	private static final int UPDATE_INTERVAL = 20;
 	
-	public TileEntityStronglyCompressedStone(int meta) {
+	public TileEntityStronglyCompressedStone() {
 		super();
-		META = meta;
 	}
 	@Override
 	public void updateEntity()
 	{
-		if(!worldObj.isRemote && META == 3)
+		if(blockMetadata == 3)
 		{
 			//ExAstris.ExAstris.log.info("META3CHECKINGABLE,"+timer+","+TIMER_MAX);
 			timer ++;
-			if(timer % 60 == 0)
+			if (timer > UPDATE_INTERVAL)
 			{
-				worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+				timer = 0;
+				volume += 0.01f;
 			}
-			if (timer > TIMER_MAX)
+			if (volume > 1.0f)
 			{
 				worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.bedrock, 0, 3);
 			}
@@ -39,39 +39,22 @@ public class TileEntityStronglyCompressedStone extends TileEntity {
 	public void readFromNBT(NBTTagCompound compound)
 	{
 		super.readFromNBT(compound);
-		timer = compound.getInteger("timer");
+		blockMetadata = compound.getInteger("blockMetadata");
+		volume = compound.getFloat("volume");
+		ExAstris.ExAstris.log.info("+++ - READFROMENBT!");
 	}
 
 	@Override
 	public void writeToNBT(NBTTagCompound compound)
 	{
 		super.writeToNBT(compound);
-		compound.setInteger("timer", timer);
+		compound.setInteger("blockMetadata", blockMetadata);
+		compound.setFloat("volume", volume);
+		ExAstris.ExAstris.log.info("+++ - WRITETONBT!");
 	}
 	
-	@Override
-	public Packet getDescriptionPacket()
+	public float getVolume()
 	{
-		NBTTagCompound tag = new NBTTagCompound();
-		this.writeToNBT(tag);
-
-		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, this.blockMetadata, tag);
-	}
-
-	@Override
-	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt)
-	{
-		NBTTagCompound tag = pkt.func_148857_g();
-		this.readFromNBT(tag);
-	}
-	
-	public int getMeta()
-	{
-		return META;
-	}
-	
-	public int getTimer()
-	{
-		return timer;
+		return volume;
 	}
 }

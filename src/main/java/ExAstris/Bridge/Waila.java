@@ -47,7 +47,7 @@ public class Waila implements IWailaDataProvider {
 		else if (accessor.getBlock() instanceof BlockStronglyCompressedStone) {
 			TileEntityStronglyCompressedStone scStone = (TileEntityStronglyCompressedStone) accessor
 					.getTileEntity();
-			if(scStone.getMeta() == 3)	currentTip.add(getSCStoneDisplay(scStone));
+			if(scStone.blockMetadata == 3)	currentTip.add(getSCStoneDisplay(scStone));
 		} 
 		return currentTip;
 	}
@@ -153,7 +153,6 @@ public class Waila implements IWailaDataProvider {
 		Waila instance = new Waila();
 		registrar.registerBodyProvider(instance, BlockBarrelThaumium.class);
 		registrar.registerBodyProvider(instance, BlockSieveAutomatic.class);
-		registrar.registerTailProvider(instance, BlockSieveAutomatic.class);
 		registrar.registerBodyProvider(instance, BlockStronglyCompressedStone.class);
 	}
 	public float getSieveClicksRemaining(TileEntitySieveAutomatic sieve) {
@@ -161,7 +160,7 @@ public class Waila implements IWailaDataProvider {
 	}
 	
 	public float getSCStonePer(TileEntityStronglyCompressedStone stone) {
-		return ((float)stone.getTimer() / 6000) * 100;
+		return (stone.getVolume() * 100.0f);
 	}
 	
 	

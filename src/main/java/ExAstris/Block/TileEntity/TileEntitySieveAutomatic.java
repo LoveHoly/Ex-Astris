@@ -19,6 +19,7 @@ import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
@@ -28,10 +29,10 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHandler, ISidedInventory {
 	public EnergyStorage storage = new EnergyStorage(64000);
-	private static final int energyPerCycle = 800;
+	private static final int energyPerCycle = 80;
 	private static final float MIN_RENDER_CAPACITY = 0.70f;
 	private static final float MAX_RENDER_CAPACITY = 0.9f;
-	private static final float PROCESSING_INTERVAL = 0.075f;
+	private static final float PROCESSING_INTERVAL = 0.005f;
 	private static final int UPDATE_INTERVAL = 20;
 	
 	protected ItemStack[] inventory;
@@ -45,7 +46,7 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 	private int timer = 0;
 	private boolean update = false;
 	private boolean particleMode = false;
-	private int timesClicked = 0;
+	//private int timesClicked = 0;
 
 	public enum SieveMode
 	{EMPTY(0), FILLED(1);
@@ -81,7 +82,7 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 		timer++;
 		if (timer >= UPDATE_INTERVAL)
 		{
-			timesClicked = 0;
+		//	timesClicked = 0;
 			
 			timer = 0;
 			disableParticles();
@@ -108,28 +109,19 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 				}
 			}else if(mode != SieveMode.EMPTY)
 			{
-				ProcessContents(false);
+				ProcessContents();
 			}
 		}
 		
 		//adddend
 	}
 
-	public void ProcessContents(boolean creative)
+	public void ProcessContents()
 	{	
-		if (creative)
-		{
-			volume = 0;
-		}else
-		{
-			timesClicked++;
-			if (timesClicked <= 6)
-			{
-				volume -= PROCESSING_INTERVAL;
-				storage.extractEnergy(energyPerCycle, false);
-			}
-		}
-
+		
+		volume -= PROCESSING_INTERVAL;
+		storage.extractEnergy(energyPerCycle, false);
+		
 		if (volume <= 0)
 		{
 			mode = SieveMode.EMPTY;
@@ -267,6 +259,20 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 		volume = compound.getFloat("volume");
 		particleMode = compound.getBoolean("particles");
 		storage.readFromNBT(compound);
+		
+		NBTTagList nbttaglist = compound.getTagList("Items", 10);
+    	this.inventory = new ItemStack[this.getSizeInventory()];
+
+    	for (int i = 0; i < nbttaglist.tagCount(); ++i)
+    	{
+        		NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
+        		byte b0 = nbttagcompound1.getByte("Slot");
+
+        		if (b0 >= 0 && b0 < this.inventory.length)
+        		{
+            		this.inventory[b0] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
+        		}
+    	}
 	}
 
 	@Override
@@ -284,6 +290,21 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 		compound.setFloat("volume", volume);
 		compound.setBoolean("particles", particleMode);
 		storage.writeToNBT(compound);
+		
+		NBTTagList nbttaglist = new NBTTagList();
+
+    	for (int i = 0; i < this.inventory.length; ++i)
+    	{	
+        		if (this.inventory[i] != null)
+        		{
+            		NBTTagCompound nbttagcompound1 = new NBTTagCompound();
+            		nbttagcompound1.setByte("Slot", (byte)i);
+            		this.inventory[i].writeToNBT(nbttagcompound1);
+            		nbttaglist.appendTag(nbttagcompound1);
+        		}
+    	}
+
+    	compound.setTag("Items", nbttaglist);
 	}
 
 	@Override
@@ -336,7 +357,7 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 	//ISidedInventory!
 	@Override
 	public int getSizeInventory() {
-		return 31;
+		return 21;
 	}
 
 	@Override
@@ -404,9 +425,9 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 	}
 
 	@Override
-	public boolean isUseableByPlayer(EntityPlayer p_70300_1_) {
+	public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer) {
 		// TODO Auto-generated method stub
-		return false;
+		return worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : par1EntityPlayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
 	}
 
 	@Override

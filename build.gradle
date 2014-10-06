@@ -17,7 +17,7 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.11a"
+version = "1.12"
 group= "exastris"
 archivesBaseName = "Ex-Astris"
 
@@ -41,17 +41,19 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 	
-	compile files("libs/Ex-Nihilo-1.36.jar")
-	//compile files("libs/MineFactoryReloaded-[1.7.10]2.8.0RC3-591.jar")
-	compile files("libs/TConstruct_mc1.7.10_1.6.0d40.1.jar")
-	compile files("libs/Thaumcraft-1.7.10-4.2.0.1.jar")
+	compile files("libs/Ex-Nihilo-1.37.jar")
+	compile files("libs/CoFHCore-[1.7.10]3.0.0B6-32.jar")
+	compile files("libs/CoFHLib-[1.7.10]1.0.0B6-26.jar")
+	compile files("libs/MineFactoryReloaded-[1.7.10]2.8.0RC3-591.jar")
+	compile files("libs/RedstoneArsenal-[1.7.10]1.1.0B4-dev-10.jar")
 	compile files("libs/ThermalFoundation-[1.7.10]1.0.0B3-8.jar")
-	compile files("libs/TSteelworks-1.7.10-1.0.4.jar")
-	compile files("libs/Waila-1.5.3a_1.7.10.jar")
-	compile files("libs/RedstoneArsenal-[1.7.10]1.1.0B4-10.jar")
+	compile files("libs/TConstruct-1.7.10-1.7.0d3.1.jar")
+	compile files("libs/TSteelworks-1.7.10-1.0.5.jar")
+	compile files("libs/Thaumcraft-1.7.10-4.2.0.1.jar")
 	compile files("libs/Blood Magic-v1.1.0(1.7.10).jar")
 	compile files("libs/DragonAPI 1.7.10 V1f.jar")
 	compile files("libs/RotaryCraft 1.7.10 V1f.jar")
+	compile files("libs/Waila-1.5.5_1.7.10.jar")
 
 }
 

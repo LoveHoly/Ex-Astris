@@ -7,6 +7,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import ExAstris.CreativeTab.CreativeTabExAstris;
 import ExAstris.Data.ModData;
+import ExAstris.GUI.GUIHandler;
 import ExAstris.Proxy.Proxy;
 import ExAstris.Bridge.*;
 import cpw.mods.fml.common.Loader;
@@ -63,6 +64,9 @@ public class ExAstris {
 	@EventHandler
 	public void Initialize(FMLInitializationEvent event)
 	{
+		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GUIHandler());
+		
+		
 		ExAstrisRecipe.registerCraftingRecipes();
 		ExAstrisRecipe.registerFurnaceRecipes();
 		FMLInterModComms.sendMessage("Waila", "register", "ExAstris.Bridge.Waila.callbackRegister");
