@@ -4,12 +4,14 @@ import ExAstris.Block.BlockBarrelThaumium;
 import ExAstris.Block.BlockBeeTrapInfused;
 import ExAstris.Block.BlockEndCake;
 import ExAstris.Block.BlockOre;
+import ExAstris.Block.BlockQStronglyCompressedStone;
 import ExAstris.Block.BlockRotaryAlveary;
 import ExAstris.Block.BlockSieveAutomatic;
 import ExAstris.Block.BlockStronglyCompressedStone;
 import ExAstris.Block.ItemBlock.ItemBlockBarrelThaumium;
 import ExAstris.Block.ItemBlock.ItemBlockEndCake;
 import ExAstris.Block.ItemBlock.ItemBlockOre;
+import ExAstris.Block.ItemBlock.ItemBlockQStronglyCompressedStone;
 import ExAstris.Block.ItemBlock.ItemBlockRotaryAlveary;
 import ExAstris.Block.ItemBlock.ItemBlockSieveAutomatic;
 import ExAstris.Block.ItemBlock.ItemBlockStronglyCompressedStone;
@@ -28,8 +30,9 @@ public class ExAstrisBlock {
 
 	public static Block cobaltOreBlock;
 	public static Block arditeOreBlock;
-	
+
 	public static Block StronglyCompressedStone;
+	public static Block QStronglyCompressedStone;
 	public static Block RotaryAlveary;
 	
 	public static Block eximiteOreBlock;
@@ -92,8 +95,11 @@ public class ExAstrisBlock {
 			StronglyCompressedStone = new BlockStronglyCompressedStone();
 			GameRegistry.registerBlock(StronglyCompressedStone, ItemBlockStronglyCompressedStone.class, BlockData.STRONGLY_COMPRESSED_STONE_KEY);
 			
-			RotaryAlveary = new BlockRotaryAlveary();
-			GameRegistry.registerBlock(RotaryAlveary, ItemBlockRotaryAlveary.class, BlockData.ROTARY_ALVEARY_KEY);
+			QStronglyCompressedStone = new BlockQStronglyCompressedStone();
+			GameRegistry.registerBlock(QStronglyCompressedStone, ItemBlockQStronglyCompressedStone.class, BlockData.STRONGLY_COMPRESSED_STONE_KEY + "3");
+			
+			//RotaryAlveary = new BlockRotaryAlveary();
+			//GameRegistry.registerBlock(RotaryAlveary, ItemBlockRotaryAlveary.class, BlockData.ROTARY_ALVEARY_KEY);
 			
 		}
 		

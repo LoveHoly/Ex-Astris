@@ -136,7 +136,7 @@ public class ExAstrisRecipe {
 					"aaa",
 					"aaa",
 					'a', new ItemStack(ExAstrisBlock.StronglyCompressedStone, 1, 1));
-			GameRegistry.addRecipe(new ItemStack(ExAstrisBlock.StronglyCompressedStone, 1, 3),
+			GameRegistry.addRecipe(new ItemStack(ExAstrisBlock.QStronglyCompressedStone, 1, 0),
 					"aaa",
 					"aaa",
 					"aaa",

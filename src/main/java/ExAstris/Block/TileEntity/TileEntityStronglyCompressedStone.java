@@ -18,19 +18,19 @@ public class TileEntityStronglyCompressedStone extends TileEntity {
 	@Override
 	public void updateEntity()
 	{
-		if(blockMetadata == 3)
-		{
 			//ExAstris.ExAstris.log.info("META3CHECKINGABLE,"+timer+","+TIMER_MAX);
-			timer ++;
-			if (timer > UPDATE_INTERVAL)
-			{
-				timer = 0;
-				volume += 0.01f;
-			}
-			if (volume > 1.0f)
-			{
-				worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.bedrock, 0, 3);
-			}
+		timer ++;
+		if (timer > UPDATE_INTERVAL)
+		{
+			timer = 0;
+			volume += 0.01f;
+			ExAstris.ExAstris.log.info("+++ - UpdateV!"+this.volume);
+			worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+		}
+		if (volume > 1.0f)
+		{
+			worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.bedrock, 0, 3);
+			
 		}
 			
 	}
@@ -39,22 +39,35 @@ public class TileEntityStronglyCompressedStone extends TileEntity {
 	public void readFromNBT(NBTTagCompound compound)
 	{
 		super.readFromNBT(compound);
-		blockMetadata = compound.getInteger("blockMetadata");
-		volume = compound.getFloat("volume");
-		ExAstris.ExAstris.log.info("+++ - READFROMENBT!");
+		this.volume = compound.getFloat("volume");
+		//ExAstris.ExAstris.log.info("+++ - READFROMENBT!"+volume);
 	}
 
 	@Override
 	public void writeToNBT(NBTTagCompound compound)
 	{
 		super.writeToNBT(compound);
-		compound.setInteger("blockMetadata", blockMetadata);
-		compound.setFloat("volume", volume);
-		ExAstris.ExAstris.log.info("+++ - WRITETONBT!");
+		compound.setFloat("volume", this.volume);
+		//ExAstris.ExAstris.log.info("+++ - WRITETONBT!"+volume);
 	}
-	
+	@Override
+	public Packet getDescriptionPacket()
+	{
+		NBTTagCompound tag = new NBTTagCompound();
+		this.writeToNBT(tag);
+
+		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, this.blockMetadata, tag);
+	}
+
+	@Override
+	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt)
+	{
+		NBTTagCompound tag = pkt.func_148857_g();
+		this.readFromNBT(tag);
+	}
 	public float getVolume()
 	{
-		return volume;
+		ExAstris.ExAstris.log.info("+++ - getVolume!"+this.volume);
+		return this.volume;
 	}
 }
