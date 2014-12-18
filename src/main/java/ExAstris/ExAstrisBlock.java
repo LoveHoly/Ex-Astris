@@ -33,7 +33,7 @@ public class ExAstrisBlock {
 
 	public static Block StronglyCompressedStone;
 	public static Block QStronglyCompressedStone;
-	public static Block RotaryAlveary;
+	//public static Block RotaryAlveary;
 	
 	public static Block eximiteOreBlock;
 	public static Block meutoiteOreBlock;

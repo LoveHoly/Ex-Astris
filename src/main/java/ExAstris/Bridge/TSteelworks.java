@@ -7,8 +7,8 @@ import net.minecraftforge.fluids.FluidStack;
 import ExAstris.ExAstrisBlock;
 import ExAstris.Data.ModData;
 import ExAstris.Data.MoltenData;
-import tconstruct.smeltery.TinkerSmeltery;
-import tsteelworks.lib.registry.AdvancedSmelting;
+//import tconstruct.smeltery.TinkerSmeltery;
+//import tsteelworks.lib.registry.AdvancedSmelting;
 
 
 public class TSteelworks {
@@ -21,7 +21,7 @@ public class TSteelworks {
 	}
 	public static void addMeltingRecipe()
 	{
-		if(Loader.isModLoaded("TConstruct") && ModData.ALLOW_ADD_TCONSTRUCT_NETHERORE)
+	/*	if(Loader.isModLoaded("TConstruct") && ModData.ALLOW_ADD_TCONSTRUCT_NETHERORE)
 		{
 			AdvancedSmelting.addMelting(GameRegistry.findBlock("exastris", "CobaltOreBlock"),2,650, new FluidStack(TinkerSmeltery.moltenCobaltFluid, MoltenData.ingotCostHighoven));
 			AdvancedSmelting.addMelting(GameRegistry.findBlock("exastris", "ArditeOreBlock"),2,650, new FluidStack(TinkerSmeltery.moltenArditeFluid, MoltenData.ingotCostHighoven));
@@ -36,5 +36,6 @@ public class TSteelworks {
 		AdvancedSmelting.addMelting(GameRegistry.findBlock("exnihilo", "nickel_dust"),0,400, new FluidStack(TinkerSmeltery.moltenNickelFluid, MoltenData.ingotCostHighoven));
 		AdvancedSmelting.addMelting(GameRegistry.findBlock("exnihilo", "platinum_dust"),0,400, new FluidStack(TinkerSmeltery.moltenShinyFluid, MoltenData.ingotCostHighoven));
 		AdvancedSmelting.addMelting(GameRegistry.findBlock("exnihilo", "aluminum_dust"),0,400, new FluidStack(TinkerSmeltery.moltenAluminumFluid, MoltenData.ingotCostHighoven));
+		*/
 	}
 }

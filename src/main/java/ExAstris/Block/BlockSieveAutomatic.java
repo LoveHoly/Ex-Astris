@@ -20,6 +20,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -106,9 +107,17 @@ public class BlockSieveAutomatic extends BlockContainer{
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ)
 	{
-		///if(!world.isRemote) {
+		if (player.getHeldItem()!= null)
+		{
+			if (player.getHeldItem().getItem() == Items.stick)
+			{
+				TileEntitySieveAutomatic te = (TileEntitySieveAutomatic) world.getTileEntity(x, y, z);
+				te.changeSpeedLevel(0.001f);
+				return true;
+			}
+		}
 		player.openGui(ExAstris.ExAstris.instance, 0, world, x, y, z);
-		//}
+
 		return true;
 	}
 
@@ -139,35 +148,3 @@ public class BlockSieveAutomatic extends BlockContainer{
 
 	}
 }
-
-
-/*
-		TileEntitySieveAutomatic sieve = (TileEntitySieveAutomatic) world.getTileEntity(x, y, z);
-
-		if (sieve.mode == SieveMode.EMPTY && player.getCurrentEquippedItem() != null)
-		{
-			ItemStack held = player.getCurrentEquippedItem();
-			
-			if (SieveRegistry.Contains(Block.getBlockFromItem(held.getItem()), held.getItemDamage()))
-			{
-				sieve.addSievable(Block.getBlockFromItem(held.getItem()), held.getItemDamage());
-				removeCurrentItem(player);
-			}
-		}else
-		{
-			if (world.isRemote)
-			{
-				sieve.ProcessContents(false);
-			}else
-			{
-				if (sieve.mode != SieveMode.EMPTY)
-				{
-					if(isHuman(player))//ModData.ALLOW_SIEVE_AUTOMATION
-					{
-						sieve.ProcessContents(false);
-					}				
-				}
-			}
-		}
- */ 
-

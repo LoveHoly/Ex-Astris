@@ -544,11 +544,12 @@ public class TileEntityBarrelThaumium extends TileEntity implements IFluidHandle
 									worldObj.rand.nextInt(10) == 0 && !isDone())
 							{
 								timer = MAX_COMPOSTING_TIME;
-								
-								ExAstris.Bridge.Thaumcraft.summonPeck(worldObj,xCoord + x + 0.5d,yCoord + y,zCoord + z + 0.5d);							}
+
+								//ExAstris.Bridge.Thaumcraft.summonPeck(worldObj,xCoord + x + 0.5d,yCoord + y,zCoord + z + 0.5d);							}
 						}
 					}
 				}
+			}
 			}
 
 			break;
@@ -604,7 +605,7 @@ public class TileEntityBarrelThaumium extends TileEntity implements IFluidHandle
 							{
 								timer = MAX_COMPOSTING_TIME;
 								ExAstris.Bridge.ThermalExpansion.summonBlizz(worldObj,xCoord + x + 0.5d, yCoord + y, zCoord + z + 0.5d);
-								
+
 							}
 						}
 					}
@@ -742,31 +743,31 @@ public class TileEntityBarrelThaumium extends TileEntity implements IFluidHandle
 
 		case ENDER:
 			return new ItemStack(Items.ender_pearl, 1, 0);
-			
+
 		case BEETRAP:
 			return new ItemStack(ENBlocks.BeeTrapTreated, 1, 0);
-			
+
 		case DARKOAK:
 			return new ItemStack(Blocks.sapling, 1, 5);
 
 		case BLOCK:
 			return new ItemStack(block);
-			
+
 		case OBSIDIANTOTEM:
 			return new ItemStack(GameRegistry.findItem("Thaumcraft", "blockCosmeticSolid"), 1, 0);
-			
+
 		case BEEINFUSED:
 			return new ItemStack(ExAstrisBlock.BeeTrapInfused, 1, 0);
-			
+
 		default:
 			return null;
 		}
 	}
-	
+
 	public float getVolume() {
 		return volume;
 	}
-	
+
 	public int getTimer() {
 		return timer;
 	}
@@ -867,15 +868,15 @@ public class TileEntityBarrelThaumium extends TileEntity implements IFluidHandle
 		case 17:
 			setMode(BarrelMode.ENDER);
 			break;
-			
+
 		case 18:
 			setMode(BarrelMode.DARKOAK);
 			break;
-			
+
 		case 19:
 			setMode(BarrelMode.BLOCK);
 			break;
-			
+
 		case 20:
 			setMode(BarrelMode.OBSIDIANTOTEM);
 			break;
@@ -887,11 +888,11 @@ public class TileEntityBarrelThaumium extends TileEntity implements IFluidHandle
 		case 22:
 			setMode(BarrelMode.PECK);
 			break;
-			
+
 		case 23:
 			setMode(BarrelMode.BEEINFUSED);
 			break;
-			
+
 		case 24:
 			setMode(BarrelMode.BLIZZ_COOKING);
 			break;
@@ -908,7 +909,7 @@ public class TileEntityBarrelThaumium extends TileEntity implements IFluidHandle
 		colorBase = new Color (compound.getInteger("colorBase"));
 		fluid = new FluidStack(FluidRegistry.getFluid(compound.getShort("fluid")), (int)(volume * MAX_FLUID));
 		needsUpdate = true;
-		
+
 		if(!compound.getString("block").equals("")) {
 			block = (Block)Block.blockRegistry.getObject(compound.getString("block"));
 		}else{
@@ -927,7 +928,7 @@ public class TileEntityBarrelThaumium extends TileEntity implements IFluidHandle
 		compound.setInteger("color", color.toInt());
 		compound.setInteger("colorBase", colorBase.toInt());
 		compound.setShort("fluid", (short)fluid.fluidID);
-		
+
 		if(block == null) {
 			compound.setString("block", "");
 		}else{
@@ -1196,7 +1197,7 @@ public class TileEntityBarrelThaumium extends TileEntity implements IFluidHandle
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack stack) {
 		//XXX addItemFromPipe
-		
+
 		if (stack == null || stack.getItem() == null)
 		{
 			if (slot == 0)
@@ -1227,7 +1228,7 @@ public class TileEntityBarrelThaumium extends TileEntity implements IFluidHandle
 						{
 							setMode(BarrelMode.CLAY);
 						}
-						
+
 						if(item == ExAstrisItem.DollFreezing)
 						{
 							setMode(BarrelMode.BLIZZ_COOKING);
@@ -1264,31 +1265,31 @@ public class TileEntityBarrelThaumium extends TileEntity implements IFluidHandle
 						{
 							setMode(BarrelMode.ENDER_COOKING);
 						}
-						
+
 						if(ModData.ALLOW_BARREL_RECIPE_DARK_OAK && Block.getBlockFromItem(item) == Blocks.sapling && meta == 0)
 						{
 							setMode(BarrelMode.DARKOAK);
 						}
-						
+
 						if(Block.getBlockFromItem(item) == Blocks.obsidian )
 						{
 							resetColor();
 							setMode(BarrelMode.OBSIDIANTOTEM);
 						}
-						
+
 						if(ExAstris.Data.ModData.ALLOW_BEE_TRAP_INFUSED && Block.getBlockFromItem(item) == ENBlocks.BeeTrap )
 						{
 							resetColor();
 							setMode(BarrelMode.BEEINFUSED);
 						}
-						
+
 						if(item == ExAstrisItem.DollThaumic)
 						{
 							setMode(BarrelMode.PECK_COOKING);
 						}
-						
+
 					}
-					
+
 					Fluid seedOil = FluidRegistry.getFluid("seedoil");
 					if (seedOil != null && fluid.fluidID == seedOil.getID())
 					{
@@ -1383,7 +1384,7 @@ public class TileEntityBarrelThaumium extends TileEntity implements IFluidHandle
 		///XXX isItemValid
 		Item item = stack.getItem();
 		int meta = stack.getItemDamage();
-		
+
 		if (!this.isFull() && getMode() == BarrelMode.COMPOST || getMode() == BarrelMode.EMPTY)
 		{
 			if(ModData.ALLOW_BARREL_RECIPE_DIRT && CompostRegistry.containsItem(item, meta))
@@ -1400,7 +1401,7 @@ public class TileEntityBarrelThaumium extends TileEntity implements IFluidHandle
 				{
 					return true;
 				}
-				
+
 				if(item == ExAstrisItem.DollFreezing)
 				{
 					return true;
@@ -1433,33 +1434,33 @@ public class TileEntityBarrelThaumium extends TileEntity implements IFluidHandle
 				{
 					return true;
 				}
-				
+
 				if(Block.getBlockFromItem(item) == Blocks.obsidian)
 				{
 					return true;
 				}
-				
+
 				if(item == ExAstrisItem.DollThaumic)
 				{
 					return true;
 				}
-				
+
 				if(Block.getBlockFromItem(item) == ExAstrisBlock.BeeTrapInfused)
 				{
 					return true;
 				}
-				
+
 				if(ModData.ALLOW_BARREL_RECIPE_ENDER_PEARLS && item == ENItems.DollCreepy)
 				{
 					return true;
 				}
-				
+
 				if(ModData.ALLOW_BARREL_RECIPE_DARK_OAK && Block.getBlockFromItem(item) == Blocks.sapling && meta == 0)
 				{
 					return true;
 				}
 			}
-			
+
 			Fluid seedOil = FluidRegistry.getFluid("seedoil");
 			if (seedOil != null && fluid.fluidID == seedOil.getID() && Block.getBlockFromItem(item) == ENBlocks.BeeTrap)
 			{

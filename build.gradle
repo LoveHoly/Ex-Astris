@@ -15,6 +15,13 @@ buildscript {
     }
 }
 
+//repositories {
+//	maven {
+//		name = "CurseForge"
+//		url = "https://minecraft.curseforge.com/api" + project.curseforge_key
+//	}
+//}
+
 apply plugin: 'forge'
 
 version = "1.13"
@@ -22,7 +29,7 @@ group= "exastris"
 archivesBaseName = "Ex-Astris"
 
 minecraft {
-    version = "1.7.10-10.13.0.1208"
+    version = "1.7.10-10.13.2.1236"
     assetDir = "eclipse/assets"
 	
 }
@@ -42,18 +49,21 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 	
 	compile files("libs/Ex-Nihilo-1.37.jar")
-	compile files("libs/CoFHCore-[1.7.10]3.0.0B6-32.jar")
-	compile files("libs/CoFHLib-[1.7.10]1.0.0B6-26.jar")
-	compile files("libs/MineFactoryReloaded-[1.7.10]2.8.0RC3-591.jar")
-	compile files("libs/RedstoneArsenal-[1.7.10]1.1.0B4-dev-10.jar")
-	compile files("libs/ThermalFoundation-[1.7.10]1.0.0B3-8.jar")
-	compile files("libs/TConstruct-1.7.10-1.7.0d3.1.jar")
-	compile files("libs/TSteelworks-1.7.10-1.0.5.jar")
-	compile files("libs/Thaumcraft-1.7.10-4.2.0.1.jar")
-	compile files("libs/Blood Magic-v1.1.0(1.7.10).jar")
-	compile files("libs/DragonAPI 1.7.10 V1f.jar")
-	compile files("libs/RotaryCraft 1.7.10 V1f.jar")
-	compile files("libs/Waila-1.5.5_1.7.10.jar")
+	compile files("libs/CoFHCore-[1.7.10]3.0.0B9-40.jar")
+	compile files("libs/CoFHLib-[1.7.10]1.0.0B8-34.jar")
+	//compile files("libs/MineFactoryReloaded-[1.7.10]2.8.0RC6-9.jar")
+	compile files("libs/RedstoneArsenal-[1.7.10]1.1.0RC1-dev-19.jar")
+	compile files("libs/ThermalFoundation-[1.7.10]1.0.0RC1-13.jar")
+	//compile files("libs/Mantle-1.7.10-0.3.2.jar")
+	//compile files("libs/TConstruct-1.7.10-1.7.1c.jar")
+	//compile files("libs/cookiecore-1.3.0.jar")
+	//compile files("libs/TSteelworks-1.7.10-1.0.6.jar")
+	compile files("libs/Thaumcraft-1.7.10-4.2.1.4.jar")
+	//compile files("libs/BloodMagic-1.7.10-1.3.0Beta-6.jar")
+	//compile files("libs/DragonAPI 1.7.10 V3c.jar")
+	//compile files("libs/RotaryCraft 1.7.10 V3c.jar")
+	compile files("libs/Waila-1.5.6a_1.7.10.jar")
+	//compile files("libs/forestry_1.7.10-3.3.0.6.jar")
 
 }
 

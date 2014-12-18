@@ -1,6 +1,6 @@
 package ExAstris.Bridge;
 
-import ExAstris.ExAstrisBlock;
+/*import ExAstris.ExAstrisBlock;
 import ExAstris.ExAstrisItem;
 import ExAstris.Data.ModData;
 import ExAstris.Data.MoltenData;
@@ -88,4 +88,4 @@ public class TConstruct {
 		
 		TConstructRegistry.registerActiveToolMod(new TConstructModifier());
 	}
-}
+}*/

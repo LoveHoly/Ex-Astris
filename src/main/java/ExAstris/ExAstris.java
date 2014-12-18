@@ -85,7 +85,7 @@ public class ExAstris {
 		{
 			log.info("+++ - Found Thaumcraft!");
 
-			Thaumcraft.Initialize();
+			//Thaumcraft.Initialize();
 		}
 		
 
@@ -93,7 +93,7 @@ public class ExAstris {
 		{
 			log.info("+++ - Found TConstruct!");
 
-			TConstruct.Initialize();
+			//TConstruct.Initialize();
 		}
 		
 		if (Loader.isModLoaded("TSteelworks"))

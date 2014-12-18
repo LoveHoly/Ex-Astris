@@ -13,6 +13,9 @@ import ExAstris.Block.TileEntity.TileEntitySieveAutomatic;
 import ExAstris.Block.TileEntity.TileEntitySieveAutomatic.SieveMode;
 import ExAstris.Block.TileEntity.TileEntityStronglyCompressedStone;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
@@ -157,6 +160,12 @@ public class Waila implements IWailaDataProvider {
 	}
 	public float getSieveClicksRemaining(TileEntitySieveAutomatic sieve) {
 		return (sieve.getVolume() / 1) * 100;
+	}
+
+	@Override
+	public NBTTagCompound getNBTData(TileEntity arg0, NBTTagCompound arg1,
+			World arg2, int arg3, int arg4, int arg5) {
+		return null;
 	}
 	
 	

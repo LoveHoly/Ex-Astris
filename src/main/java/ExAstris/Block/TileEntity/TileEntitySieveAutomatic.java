@@ -15,6 +15,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -29,13 +30,14 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHandler, ISidedInventory {
 	public EnergyStorage storage = new EnergyStorage(64000);
-	private static final int energyPerCycle = 80;
+	private int energyPerCycle = 10;
 	private static final float MIN_RENDER_CAPACITY = 0.70f;
 	private static final float MAX_RENDER_CAPACITY = 0.9f;
-	private static final float PROCESSING_INTERVAL = 0.005f;
+	private float PROCESSING_INTERVAL;// = 0.005f; //was 0.005
 	private static final int UPDATE_INTERVAL = 20;
+	private int speedLevel;
 	
-	protected ItemStack[] inventory;
+	protected ItemStack[] inventory; //Slots 21 and 22 are the upgrades!
 	
 	public Block content;
 	public int contentMeta = 0;
@@ -46,7 +48,6 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 	private int timer = 0;
 	private boolean update = false;
 	private boolean particleMode = false;
-	//private int timesClicked = 0;
 
 	public enum SieveMode
 	{EMPTY(0), FILLED(1);
@@ -58,6 +59,16 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 	{
 		mode = SieveMode.EMPTY;
 		inventory = new ItemStack[getSizeInventory()];
+		speedLevel=0;
+		PROCESSING_INTERVAL = 0.005f;
+	}
+	
+	public void changeSpeedLevel(float change)
+	{
+		this.speedLevel+=change;
+		this.PROCESSING_INTERVAL+=change;
+		if (this.speedLevel < 0)
+			this.speedLevel=0;
 	}
 
 	public void addSievable(Block block, int blockMeta)
@@ -81,9 +92,7 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 
 		timer++;
 		if (timer >= UPDATE_INTERVAL)
-		{
-		//	timesClicked = 0;
-			
+		{	
 			timer = 0;
 			disableParticles();
 
@@ -119,7 +128,7 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 	public void ProcessContents()
 	{	
 		
-		volume -= PROCESSING_INTERVAL;
+		volume -= (PROCESSING_INTERVAL+(getSpeedUpgrades()/64));
 		storage.extractEnergy(energyPerCycle, false);
 		
 		if (volume <= 0)
@@ -136,7 +145,7 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 					{
 						SiftReward reward = it.next();
 						
-						int size = getSizeInventory();
+						int size = getSizeInventory()-2;
 						int inventoryIndex = 0;
 						
 						if (worldObj.rand.nextInt(reward.rarity) == 0)
@@ -148,7 +157,7 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 									inventoryIndex=i;
 									break;
 								}else{
-									if( ItemHelper.itemsEqualWithMetadata(inventory[i],new ItemStack(reward.item, 1, reward.meta)) )
+									if( ItemHelper.itemsEqualWithMetadata(inventory[i],new ItemStack(reward.item, 1, reward.meta)) && inventory[i].stackSize < inventory[i].getMaxStackSize())
 									{
 										inventoryIndex=i;
 										break;
@@ -258,6 +267,7 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 		contentMeta = compound.getInteger("contentMeta");
 		volume = compound.getFloat("volume");
 		particleMode = compound.getBoolean("particles");
+		this.PROCESSING_INTERVAL = compound.getFloat("speed");
 		storage.readFromNBT(compound);
 		
 		NBTTagList nbttaglist = compound.getTagList("Items", 10);
@@ -289,6 +299,7 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 		compound.setInteger("contentMeta", contentMeta);
 		compound.setFloat("volume", volume);
 		compound.setBoolean("particles", particleMode);
+		compound.setFloat("speed", PROCESSING_INTERVAL);
 		storage.writeToNBT(compound);
 		
 		NBTTagList nbttaglist = new NBTTagList();
@@ -357,7 +368,7 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 	//ISidedInventory!
 	@Override
 	public int getSizeInventory() {
-		return 21;
+		return 23;
 	}
 
 	@Override
@@ -466,19 +477,27 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 
 	@Override
 	public boolean canInsertItem(int slot, ItemStack item, int side) {
-		//SieveRegistry.Contains(Block.getBlockFromItem(item.getItem()),item.getItemDamage()) &&
 		if (SieveRegistry.Contains(Block.getBlockFromItem(item.getItem()),item.getItemDamage()) && slot == 0)
 		{
 		//ExAstris.ExAstris.log.info("IMPORTANT INFO : slot "+slot+" side "+side);
 			return true;
 		}
+		if (slot == 21 || slot == 22)
+			return item.getItem() == Items.apple;
 		return false;
-		//return false;
 	}
 
 	@Override
 	public boolean canExtractItem(int slot, ItemStack item, int side) {
 		if (slot >= 1) return true;
 		return false;
+	}
+	
+	public int getSpeedUpgrades()
+	{
+		if (inventory[22]==null)
+			return 0;
+		else
+			return inventory[22].stackSize;
 	}
 }
