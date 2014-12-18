@@ -1,6 +1,6 @@
 package ExAstris.Bridge;
 
-/*import ExAstris.ExAstrisBlock;
+import ExAstris.ExAstrisBlock;
 import ExAstris.ExAstrisItem;
 import ExAstris.Data.ModData;
 import thaumcraft.api.ThaumcraftApi;
@@ -25,8 +25,8 @@ import exnihilo.ENItems;
 import exnihilo.registries.HammerRegistry;
 import exnihilo.registries.SieveRegistry;
 import exnihilo.registries.HeatRegistry;
-*/
-public class Thaumcraft{} /* {
+
+public class Thaumcraft {
 	public static void Initialize()
 	{
 		addHammerRegistry();
@@ -307,4 +307,4 @@ public class Thaumcraft{} /* {
 
 		worldObj.spawnEntityInWorld(peck);
 	}
-}*/
+}

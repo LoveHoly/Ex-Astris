@@ -1,6 +1,6 @@
 package ExAstris.Modifier;
 
-/*import java.util.Arrays;
+import java.util.Arrays;
 import java.util.List;
 
 import net.minecraft.item.ItemStack;
@@ -86,4 +86,4 @@ public class ModCrooked extends ModBoolean {
 		return false;
 	}
 
-}*/
+}

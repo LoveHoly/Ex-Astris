@@ -1,6 +1,6 @@
 package ExAstris.Modifier;
 
-/*import java.util.Arrays;
+import java.util.Arrays;
 import java.util.List;
 
 import tconstruct.library.tools.ToolCore;
@@ -66,4 +66,4 @@ public class ModHammered  extends ModBoolean {
 		return false;
 
 	}
-}*/
+}

@@ -15,7 +15,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
-public class BlockRotaryAlveary{} /*  extends BlockContainer{
+public class BlockRotaryAlveary extends BlockContainer{
 	public static IIcon topIcon;
 	public static IIcon sideIcon;
 	public BlockRotaryAlveary() {
@@ -57,4 +57,4 @@ public class BlockRotaryAlveary{} /*  extends BlockContainer{
 		// TODO Auto-generated method stub
 		return new TileEntityRotaryAlveary(p_149915_2_);
 	}
-}*/
+}

@@ -63,6 +63,7 @@ public class ContainerSieveAutomatic extends Container
 		{
 			ItemStack stackInSlot = slot.getStack();
 			stack = stackInSlot.copy();
+			System.out.println(stackInSlot.stackSize);
 			if (slotNum <= 20 || slotNum == 57 || slotNum == 58) //In the sieve!
 			{
 				if (!this.mergeItemStack(stackInSlot, 21, 57, true))
@@ -75,11 +76,11 @@ public class ContainerSieveAutomatic extends Container
 			}
 			else if (this.sieve.canInsertItem(21, stackInSlot, 0))
 			{
-				System.out.println("INSERTING");
-				if (!this.mergeItemStack(stackInSlot, 57, 58, false));
+				if (!this.mergeItemStack(stackInSlot, 57, 58, false))
 					return null;
 			}
 
+			
 			if (stackInSlot.stackSize == 0) {
 				slot.putStack(null);
 			} else {

@@ -419,7 +419,6 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 
 	@Override
 	public String getInventoryName() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -431,7 +430,6 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 
 	@Override
 	public int getInventoryStackLimit() {
-		// TODO Auto-generated method stub
 		return 64;
 	}
 

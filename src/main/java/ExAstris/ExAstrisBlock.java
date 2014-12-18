@@ -33,7 +33,7 @@ public class ExAstrisBlock {
 
 	public static Block StronglyCompressedStone;
 	public static Block QStronglyCompressedStone;
-	//public static Block RotaryAlveary;
+	public static Block RotaryAlveary;
 	
 	public static Block eximiteOreBlock;
 	public static Block meutoiteOreBlock;
@@ -98,8 +98,8 @@ public class ExAstrisBlock {
 			QStronglyCompressedStone = new BlockQStronglyCompressedStone();
 			GameRegistry.registerBlock(QStronglyCompressedStone, ItemBlockQStronglyCompressedStone.class, BlockData.STRONGLY_COMPRESSED_STONE_KEY + "3");
 			
-			//RotaryAlveary = new BlockRotaryAlveary();
-			//GameRegistry.registerBlock(RotaryAlveary, ItemBlockRotaryAlveary.class, BlockData.ROTARY_ALVEARY_KEY);
+			RotaryAlveary = new BlockRotaryAlveary();
+			GameRegistry.registerBlock(RotaryAlveary, ItemBlockRotaryAlveary.class, BlockData.ROTARY_ALVEARY_KEY);
 			
 		}
 		

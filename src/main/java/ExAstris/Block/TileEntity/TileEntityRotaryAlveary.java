@@ -1,6 +1,6 @@
 package ExAstris.Block.TileEntity;
 
-/*import forestry.api.apiculture.IAlvearyComponent;
+import forestry.api.apiculture.IAlvearyComponent;
 import forestry.api.apiculture.IBeeListener;
 import forestry.api.apiculture.IBeeModifier;
 import forestry.api.core.IStructureLogic;
@@ -23,9 +23,9 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
-import net.minecraftforge.fluids.IFluidHandler; */
+import net.minecraftforge.fluids.IFluidHandler;
 
-public class TileEntityRotaryAlveary{} /*extends TileAlveary implements ISidedInventory, IFluidHandler, IAlvearyComponent {
+public class TileEntityRotaryAlveary extends TileAlveary implements ISidedInventory, IFluidHandler, IAlvearyComponent {
 	//protected final int componentBlockMeta;
 		
 	protected ItemStack RotaryInventory;
@@ -203,4 +203,4 @@ public class TileEntityRotaryAlveary{} /*extends TileAlveary implements ISidedIn
 	@Override
 	public void openGui(EntityPlayer player) {
 	}
-}*/
+}

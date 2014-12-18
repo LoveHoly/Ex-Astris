@@ -1,24 +1,21 @@
 package ExAstris.Bridge;
 
-/*import ExAstris.ExAstrisBlock;
+import ExAstris.ExAstrisBlock;
 import ExAstris.ExAstrisItem;
 import ExAstris.Data.ModData;
 import ExAstris.Data.MoltenData;
 import ExAstris.Modifier.ModCrooked;
 import ExAstris.Modifier.ModHammered;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.client.TConstructClientRegistry;
+import tconstruct.library.crafting.ModifyBuilder;
 import tconstruct.library.crafting.Smeltery;
-import tconstruct.library.crafting.ToolBuilder;
 import tconstruct.smeltery.TinkerSmeltery;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import exnihilo.ENBlocks;
-import exnihilo.blocks.ores.BlockOre;
-import exnihilo.registries.HammerRegistry;
 import exnihilo.registries.HeatRegistry;
 import exnihilo.registries.SieveRegistry;
 
@@ -80,12 +77,12 @@ public class TConstruct {
 	}
 	static void addModifiers()
 	{
-		ToolBuilder.instance.registerToolMod(new ModCrooked(new ItemStack[] { new ItemStack(GameRegistry.findItem("exnihilo", "crook_bone"), 1, 0) }, 60));
+		ModifyBuilder.registerModifier(new ModCrooked(new ItemStack[] { new ItemStack(GameRegistry.findItem("exnihilo", "crook_bone"), 1, 0) }, 60));
 		TConstructClientRegistry.addEffectRenderMapping(60, "exastris", "crook", true);
 		
-		ToolBuilder.instance.registerToolMod(new ModHammered(new ItemStack[] { new ItemStack(GameRegistry.findItem("exnihilo", "hammer_diamond"), 1, 0) }, 61));
+		ModifyBuilder.registerModifier(new ModHammered(new ItemStack[] { new ItemStack(GameRegistry.findItem("exnihilo", "hammer_diamond"), 1, 0) }, 61));
 		TConstructClientRegistry.addEffectRenderMapping(61, "exastris", "hammer", true);
 		
 		TConstructRegistry.registerActiveToolMod(new TConstructModifier());
 	}
-}*/
+}

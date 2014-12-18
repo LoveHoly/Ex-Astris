@@ -3,7 +3,7 @@ package ExAstris.Bridge;
 import java.lang.reflect.Method;
 
 import ExAstris.Data.ModData;
-//import tconstruct.smeltery.TinkerSmeltery;
+import tconstruct.smeltery.TinkerSmeltery;
 import thermalfoundation.block.TFBlocks;
 import thermalfoundation.fluid.TFFluids;
 import thermalfoundation.item.TFItems;
