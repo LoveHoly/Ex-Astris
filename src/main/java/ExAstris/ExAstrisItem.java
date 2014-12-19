@@ -9,6 +9,7 @@ import ExAstris.Item.ItemDollThaumic;
 import ExAstris.Item.ItemHammerThaumium;
 import ExAstris.Item.ItemDollFreezing;
 import ExAstris.Item.ItemOre;
+import ExAstris.Item.ItemSieveUpgrade;
 import ExAstris.Item.ItemUnchargedNetherStar;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -53,6 +54,8 @@ public class ExAstrisItem {
 	public static Item kalendriteOreItem;
 	public static Item vulcaniteOreItem;
 	public static Item sanguiniteOreItem;
+	
+	public static Item sieveUpgradeItem;
 	
 	public static void registerItems()
 	{
@@ -142,6 +145,10 @@ public class ExAstrisItem {
 			GameRegistry.registerItem(vulcaniteOreItem,  "VulcaniteOreItem");
 			GameRegistry.registerItem(sanguiniteOreItem,  "SanguiniteOreItem");
 		}
-		//GameRegistry.addRecipe(new ShapedOreRecipe(HammerRF, new Object[] { " a ", " ba", "b  ", Character.valueOf('a'), RAItems.ingotElectrumFlux, Character.valueOf('b'), RAItems.rodObsidianFlux }));
+		if (ModData.ALLOW_SIEVE_AUTOMATIC)
+		{
+			sieveUpgradeItem = new ItemSieveUpgrade();
+			GameRegistry.registerItem(sieveUpgradeItem, "SieveUpgradeItem");
+		}
 	}
 }

@@ -16,4 +16,6 @@ public class ItemData {
 	public static final String UNCHARGED_NETHERSTAR_KEY = "uncharged_netherstar";
 	public static final String UNCHARGED_NETHERSTAR_UNLOCALIZED_NAME = "uncharged_netherstar";
 	
+	public static final String SIEVE_UPGRADE_NAME = "sieve_upgrade";
+	
 }

@@ -3,6 +3,8 @@ package ExAstris.Block.TileEntity;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import ExAstris.ExAstrisItem;
+
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyHandler;
 import cofh.lib.util.helpers.ItemHelper;
@@ -15,9 +17,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.ISidedInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -30,7 +30,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHandler, ISidedInventory {
 	public EnergyStorage storage = new EnergyStorage(64000);
-	private int energyPerCycle = 10;
+	private int energyPerCycle = 40;
 	private static final float MIN_RENDER_CAPACITY = 0.70f;
 	private static final float MAX_RENDER_CAPACITY = 0.9f;
 	private float PROCESSING_INTERVAL;// = 0.005f; //was 0.005
@@ -105,7 +105,7 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 		
 		
 		//addd
-		if(storage.getEnergyStored() > energyPerCycle)
+		if(storage.getEnergyStored() > getEffectiveEnergy())
 		{
 			if (mode == SieveMode.EMPTY && inventory[0] != null)
 			{
@@ -114,7 +114,7 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 				{
 					addSievable(Block.getBlockFromItem(held.getItem()), held.getItemDamage());
 					decrStackSize(0,1);
-					storage.extractEnergy(energyPerCycle, false);
+					storage.extractEnergy(getEffectiveEnergy(), false);
 				}
 			}else if(mode != SieveMode.EMPTY)
 			{
@@ -128,8 +128,8 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 	public void ProcessContents()
 	{	
 		
-		volume -= (PROCESSING_INTERVAL+(getSpeedUpgrades()/64));
-		storage.extractEnergy(energyPerCycle, false);
+		volume -= getEffectiveSpeed();
+		storage.extractEnergy(getEffectiveEnergy(), false);
 		
 		if (volume <= 0)
 		{
@@ -480,8 +480,10 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 		//ExAstris.ExAstris.log.info("IMPORTANT INFO : slot "+slot+" side "+side);
 			return true;
 		}
-		if (slot == 21 || slot == 22)
-			return item.getItem() == Items.apple;
+		if (slot == 21)
+			return item.getItem() == ExAstrisItem.sieveUpgradeItem && item.getItemDamage() == 0;
+		if (slot==22)
+			return item.getItem() == ExAstrisItem.sieveUpgradeItem && item.getItemDamage() == 1;
 		return false;
 	}
 
@@ -491,11 +493,23 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 		return false;
 	}
 	
-	public int getSpeedUpgrades()
+	public float getEffectiveSpeed()
 	{
-		if (inventory[22]==null)
-			return 0;
-		else
-			return inventory[22].stackSize;
+		float time = PROCESSING_INTERVAL;
+		if (inventory[21] != null)
+		{
+			time += (((float)inventory[21].stackSize)/1024);
+		}
+		return time;
+	}
+	
+	public int getEffectiveEnergy()
+	{
+		int energy = energyPerCycle;
+		if (inventory[21] != null)
+		{
+			energy *= ((((float)inventory[21].stackSize)/1024) + PROCESSING_INTERVAL)/PROCESSING_INTERVAL;
+		}
+		return energy;
 	}
 }

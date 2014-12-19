@@ -59,6 +59,7 @@ public class GUISieveAutomatic extends GuiContainer{
 		{
 			List<String> lines = new ArrayList<String>();
 			lines.add(this.sieve.getEnergyStored(null)+ " RF");
+			lines.add("Consuming "+this.sieve.getEffectiveEnergy()+ "RF/t");
 			this.func_146283_a(lines, mouseX - x + 152, mouseY-y+10);
 		}
 	}

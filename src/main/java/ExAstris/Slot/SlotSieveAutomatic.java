@@ -1,5 +1,6 @@
 package ExAstris.Slot;
 
+import ExAstris.ExAstrisItem;
 import exnihilo.registries.SieveRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
@@ -24,7 +25,11 @@ public class SlotSieveAutomatic  extends Slot{
 		}
 		else if (this.id == 21)
 		{
-			return itemstack.getItem() == Items.apple;
+			return itemstack.getItem() == ExAstrisItem.sieveUpgradeItem && itemstack.getItemDamage() == 0;
+		}
+		else if (this.id == 22)
+		{
+			return itemstack.getItem() == ExAstrisItem.sieveUpgradeItem && itemstack.getItemDamage() == 1;
 		}
 		return false;
 	}

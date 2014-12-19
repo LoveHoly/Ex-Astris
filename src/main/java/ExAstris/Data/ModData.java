@@ -25,95 +25,135 @@ public class ModData {
     
     public static String CATEGORY_OPTIONS = "options";
     
+    //Categories
+    public static String categoryThaumcraft="Thaumcraft";
+    public static String categoryMagicBees="MagicBees";
+    public static String categoryExAstris="ExAstris";
+    public static String categoryRedstoneArsenal="RedstoneArsenal";
+    public static String categoryMFR="MineFactoryReloaded";
+    public static String categoryTiCon="TinkersConstruct";
+    public static String categorySteelworks="TinkersSteelworks";
+    public static String categoryThermalExpansion="ThermalExpansion";
+    public static String categoryRotaryCraft="RotaryCraft";
+    public static String categoryMetallurgy="Metallurgy";
+    public static String categoryBloodMagic="BloodMagic";
+    
     //BLOCKS
-    public static String ALLOW_BARREL_THAUMIUM_KEY = "barrel thaumium allowed";
+    public static String ALLOW_BARREL_THAUMIUM_KEY = "thaumiumBarrel";
 	public static boolean ALLOW_BARREL_THAUMIUM = true;
 	
-	public static String ALLOW_BEE_TRAP_INFUSED_KEY = "infused atificial hive allowed";
+	public static String ALLOW_BEE_TRAP_INFUSED_KEY = "infusedArtificialHive";
 	public static boolean ALLOW_BEE_TRAP_INFUSED = true;
 
-	public static String ALLOW_ENDCAKE_KEY = "infused atificial hive allowed";
+	public static String ALLOW_ENDCAKE_KEY = "endCake";
 	public static boolean ALLOW_ENDCAKE = true;
 	
-	public static String ALLOW_SIEVE_AUTOMATIC_KEY = "automatic sieve allowed";
+	public static String ALLOW_SIEVE_AUTOMATIC_KEY = "autoSieve";
 	public static boolean ALLOW_SIEVE_AUTOMATIC = true;
+	public static String SIEVE_AUTOMATIC_BASE_ENERGY_KEY = "autoSieveEnergy";
+	public static int SIEVE_AUTOMATIC_BASE_ENERGY;
 	
 	//ITEMS
-	public static String ALLOW_DOLL_FREEZING_KEY = "freezing doll allowed";
+	public static String ALLOW_DOLL_FREEZING_KEY = "freezingDoll";
 	public static boolean ALLOW_DOLL_FREEZING = true;
 	
-	public static String ALLOW_DOLL_THAUMIC_KEY = "thaumic doll allowed";
+	public static String ALLOW_DOLL_THAUMIC_KEY = "thaumicDoll";
 	public static boolean ALLOW_DOLL_THAUMIC = true;
 
-	public static String ALLOW_HAMMER_RF_KEY = "flux-infused hammer allowed";
+	public static String ALLOW_HAMMER_RF_KEY = "fluxHammer";
 	public static boolean ALLOW_HAMMER_RF = true;
 
-	public static String ALLOW_HAMMER_THAUMIUM_KEY = "thaumium hammer allowed";
+	public static String ALLOW_HAMMER_THAUMIUM_KEY = "thaumiumHammer";
 	public static boolean ALLOW_HAMMER_THAUMIUM = true;
 	
-	public static String ALLOW_UNCHARGED_NETHERSTAR_KEY = "uncharged nether star allowed";
+	public static String ALLOW_UNCHARGED_NETHERSTAR_KEY = "unchargedNetherStar";
 	public static boolean ALLOW_UNCHARGED_NETHERSTAR = true;
 	
 	//BRIDGES
-	public static String ALLOW_MFR_COMPOST_KEY = "Compost MineFactory Reloaded leaves and rubber sapling allowed";
+	public static String ALLOW_MFR_COMPOST_KEY = "MFRCompost";
 	public static boolean ALLOW_MFR_COMPOST = true;
 	
-	public static String ALLOW_ADD_TCONSTRUCT_NETHERORE_KEY = "Add NetherOre Cobalt and Ardite recipe allowed";
+	public static String ALLOW_ADD_TCONSTRUCT_NETHERORE_KEY = "tinkersOresFromSifting";
 	public static boolean ALLOW_ADD_TCONSTRUCT_NETHERORE = true;
 	
-	public static String ALLOW_TCONSTRUCT_HEAT_REGISTRY_KEY = "heat registry stone torch allowed";
+	public static String ALLOW_TCONSTRUCT_HEAT_REGISTRY_KEY = "tinkersHeat";
 	public static boolean ALLOW_TCONSTRUCT_HEAT_REGISTRY = true;
 	
 	//THAUMCRAFT RESEARCH
-	public static String ALLOW_THAUMCRAFT_RESEARCH_KEY = "thaumcraft research allowed";
+	public static String ALLOW_THAUMCRAFT_RESEARCH_KEY = "research";
 	public static boolean ALLOW_THAUMCRAFT_RESEARCH = true;
 	
-	public static String ALLOW_THAUMCRAFT_HEAT_REGISTRY_KEY = "heat registry thaumcraft candle and nitor allowed";
+	public static String ALLOW_THAUMCRAFT_HEAT_REGISTRY_KEY = "thaumHeat";
 	public static boolean ALLOW_THAUMCRAFT_HEAT_REGISTRY = true;
 	
 	//Thermal Expansion
-	public static String ALLOW_THERMAL_EXPANSION_HEAT_REGISTRY_KEY = "heat registry pyro and cry allowed";
+	public static String ALLOW_THERMAL_EXPANSION_HEAT_REGISTRY_KEY = "thermalHeat";
 	public static boolean ALLOW_THERMAL_EXPANSION_HEAT_REGISTRY = true;
 
-	public static String ALLOW_THERMAL_EXPANSION_HIVE_REGISTRY_KEY = "hive registry thermalexpansion allowed";
+	public static String ALLOW_THERMAL_EXPANSION_HIVE_REGISTRY_KEY = "thermalHives";
 	public static boolean ALLOW_THERMAL_EXPANSION_HIVE_REGISTRY = true;
 	
-	public static String ALLOW_TSTEELWORKS_MELTING_KEY = "Tsteelworks melting allowed";
+	public static String ALLOW_TSTEELWORKS_MELTING_KEY = "steelworksMelting";
 	public static boolean ALLOW_TSTEELWORKS_MELTING = true;
 	
-	public static String ALLOW_TCONSTRUCT_MODIFIERS_KEY = "Tconstruct modifiers allowed";
+	public static String ALLOW_TCONSTRUCT_MODIFIERS_KEY = "modifiers";
 	public static boolean ALLOW_TCONSTRUCT_MODIFIERS = true;
 	
-	public static String ALLOW_STRONGLY_COMPRESSED_STONE_KEY = "Rotary Strongly Compressed Stone allowed";
+	public static String ALLOW_STRONGLY_COMPRESSED_STONE_KEY = "stronglyCompressedStone";
 	public static boolean ALLOW_STRONGLY_COMPRESSED_STONE = true;
 
-	public static String ALLOW_METALLURGY_ORES_KEY = "Metallurgy ores allowed";
+	public static String ALLOW_METALLURGY_ORES_KEY = "metallurgySifting";
 	public static boolean ALLOW_METALLURGY_ORES = true;
 	
 	public static String[] oreType = { "Gravel","Sand","Dust" };
 	
 	public static void load(Configuration config)
 	{
-		ALLOW_BARREL_THAUMIUM  = config.get(CATEGORY_OPTIONS, ALLOW_BARREL_THAUMIUM_KEY, ALLOW_BARREL_THAUMIUM).getBoolean(ALLOW_BARREL_THAUMIUM);
-		ALLOW_BEE_TRAP_INFUSED  = config.get(CATEGORY_OPTIONS, ALLOW_BEE_TRAP_INFUSED_KEY, ALLOW_BEE_TRAP_INFUSED).getBoolean(ALLOW_BEE_TRAP_INFUSED);
-		ALLOW_ENDCAKE  = config.get(CATEGORY_OPTIONS, ALLOW_ENDCAKE_KEY, ALLOW_ENDCAKE).getBoolean(ALLOW_ENDCAKE);
-		ALLOW_SIEVE_AUTOMATIC  = config.get(CATEGORY_OPTIONS, ALLOW_SIEVE_AUTOMATIC_KEY, ALLOW_SIEVE_AUTOMATIC).getBoolean(ALLOW_SIEVE_AUTOMATIC);
-		ALLOW_DOLL_FREEZING  = config.get(CATEGORY_OPTIONS, ALLOW_DOLL_FREEZING_KEY, ALLOW_DOLL_FREEZING).getBoolean(ALLOW_DOLL_FREEZING);
-		ALLOW_DOLL_THAUMIC  = config.get(CATEGORY_OPTIONS, ALLOW_DOLL_THAUMIC_KEY, ALLOW_DOLL_THAUMIC).getBoolean(ALLOW_DOLL_THAUMIC);
-		ALLOW_HAMMER_RF  = config.get(CATEGORY_OPTIONS, ALLOW_HAMMER_RF_KEY, ALLOW_HAMMER_RF).getBoolean(ALLOW_HAMMER_RF);
-		ALLOW_HAMMER_THAUMIUM  = config.get(CATEGORY_OPTIONS, ALLOW_HAMMER_THAUMIUM_KEY, ALLOW_HAMMER_THAUMIUM).getBoolean(ALLOW_HAMMER_THAUMIUM);
-		ALLOW_UNCHARGED_NETHERSTAR  = config.get(CATEGORY_OPTIONS, ALLOW_UNCHARGED_NETHERSTAR_KEY, ALLOW_UNCHARGED_NETHERSTAR).getBoolean(ALLOW_UNCHARGED_NETHERSTAR);
-		ALLOW_MFR_COMPOST  = config.get(CATEGORY_OPTIONS, ALLOW_MFR_COMPOST_KEY, ALLOW_MFR_COMPOST).getBoolean(ALLOW_MFR_COMPOST);
-		ALLOW_ADD_TCONSTRUCT_NETHERORE  = config.get(CATEGORY_OPTIONS, ALLOW_ADD_TCONSTRUCT_NETHERORE_KEY, ALLOW_ADD_TCONSTRUCT_NETHERORE).getBoolean(ALLOW_ADD_TCONSTRUCT_NETHERORE);
-		ALLOW_TCONSTRUCT_HEAT_REGISTRY  = config.get(CATEGORY_OPTIONS, ALLOW_TCONSTRUCT_HEAT_REGISTRY_KEY, ALLOW_TCONSTRUCT_HEAT_REGISTRY).getBoolean(ALLOW_TCONSTRUCT_HEAT_REGISTRY);
-		ALLOW_THAUMCRAFT_RESEARCH  = config.get(CATEGORY_OPTIONS, ALLOW_THAUMCRAFT_RESEARCH_KEY, ALLOW_THAUMCRAFT_RESEARCH).getBoolean(ALLOW_THAUMCRAFT_RESEARCH);
-		ALLOW_THAUMCRAFT_HEAT_REGISTRY  = config.get(CATEGORY_OPTIONS, ALLOW_THAUMCRAFT_HEAT_REGISTRY_KEY, ALLOW_THAUMCRAFT_HEAT_REGISTRY).getBoolean(ALLOW_THAUMCRAFT_HEAT_REGISTRY);
-		ALLOW_THERMAL_EXPANSION_HEAT_REGISTRY  = config.get(CATEGORY_OPTIONS, ALLOW_THERMAL_EXPANSION_HEAT_REGISTRY_KEY, ALLOW_THERMAL_EXPANSION_HEAT_REGISTRY).getBoolean(ALLOW_THERMAL_EXPANSION_HEAT_REGISTRY);
-		ALLOW_THERMAL_EXPANSION_HIVE_REGISTRY  = config.get(CATEGORY_OPTIONS, ALLOW_THERMAL_EXPANSION_HIVE_REGISTRY_KEY, ALLOW_THERMAL_EXPANSION_HIVE_REGISTRY).getBoolean(ALLOW_THERMAL_EXPANSION_HIVE_REGISTRY);
-		ALLOW_TSTEELWORKS_MELTING  = config.get(CATEGORY_OPTIONS, ALLOW_TSTEELWORKS_MELTING_KEY, ALLOW_TSTEELWORKS_MELTING).getBoolean(ALLOW_TSTEELWORKS_MELTING);
-		ALLOW_TCONSTRUCT_MODIFIERS  = config.get(CATEGORY_OPTIONS, ALLOW_TCONSTRUCT_MODIFIERS_KEY, ALLOW_TCONSTRUCT_MODIFIERS).getBoolean(ALLOW_TCONSTRUCT_MODIFIERS);
-		ALLOW_STRONGLY_COMPRESSED_STONE  = config.get(CATEGORY_OPTIONS, ALLOW_STRONGLY_COMPRESSED_STONE_KEY, ALLOW_STRONGLY_COMPRESSED_STONE).getBoolean(ALLOW_STRONGLY_COMPRESSED_STONE);
-		ALLOW_METALLURGY_ORES  = config.get(CATEGORY_OPTIONS, ALLOW_METALLURGY_ORES_KEY, ALLOW_METALLURGY_ORES).getBoolean(ALLOW_METALLURGY_ORES);
+		//Thaumcraft
+		ALLOW_BARREL_THAUMIUM  = config.get(categoryThaumcraft, ALLOW_BARREL_THAUMIUM_KEY, ALLOW_BARREL_THAUMIUM, "Enable Thaumium Barrel").getBoolean();
+		ALLOW_DOLL_THAUMIC  = config.get(categoryThaumcraft, ALLOW_DOLL_THAUMIC_KEY, ALLOW_DOLL_THAUMIC, "Enable Thaumic Doll").getBoolean();
+		ALLOW_HAMMER_THAUMIUM  = config.get(categoryThaumcraft, ALLOW_HAMMER_THAUMIUM_KEY, ALLOW_HAMMER_THAUMIUM, "Enable Thaumium Hammer").getBoolean();
+		ALLOW_THAUMCRAFT_RESEARCH  = config.get(categoryThaumcraft, ALLOW_THAUMCRAFT_RESEARCH_KEY, ALLOW_THAUMCRAFT_RESEARCH, "Enable Thaumcraft Research").getBoolean();
+		ALLOW_THAUMCRAFT_HEAT_REGISTRY  = config.get(categoryThaumcraft, ALLOW_THAUMCRAFT_HEAT_REGISTRY_KEY, ALLOW_THAUMCRAFT_HEAT_REGISTRY, "Add Thaumcraft Items as heat source for Crucible etc").getBoolean();
+		
+		//Magic Bees
+		ALLOW_BEE_TRAP_INFUSED  = config.get(categoryMagicBees, ALLOW_BEE_TRAP_INFUSED_KEY, ALLOW_BEE_TRAP_INFUSED, "Enable Mana Infused Hives").getBoolean();
+		
+		//Ex-Astris
+		ALLOW_ENDCAKE  = config.get(categoryExAstris, ALLOW_ENDCAKE_KEY, ALLOW_ENDCAKE, "Enable End Cake").getBoolean();
+		ALLOW_SIEVE_AUTOMATIC  = config.get(categoryExAstris, ALLOW_SIEVE_AUTOMATIC_KEY, ALLOW_SIEVE_AUTOMATIC, "Enable Automatic Sieve").getBoolean();
+		SIEVE_AUTOMATIC_BASE_ENERGY = config.get(categoryExAstris, SIEVE_AUTOMATIC_BASE_ENERGY_KEY, 40, "Base RF/t that is consumed by the Automatic Sieve").getInt();
+		
+		
+		//Redstone Arsenal
+		ALLOW_HAMMER_RF  = config.get(categoryRedstoneArsenal, ALLOW_HAMMER_RF_KEY, ALLOW_HAMMER_RF, "Enable RF Hammer").getBoolean();
+		ALLOW_DOLL_FREEZING  = config.get(categoryRedstoneArsenal, ALLOW_DOLL_FREEZING_KEY, ALLOW_DOLL_FREEZING, "Enable Freezing Doll").getBoolean();
+		
+		//Blood Magic
+		ALLOW_UNCHARGED_NETHERSTAR  = config.get(categoryBloodMagic, ALLOW_UNCHARGED_NETHERSTAR_KEY, ALLOW_UNCHARGED_NETHERSTAR, "Enable Uncharged Nether Star").getBoolean();
+		
+		//MFR
+		ALLOW_MFR_COMPOST  = config.get(categoryMFR, ALLOW_MFR_COMPOST_KEY, ALLOW_MFR_COMPOST, "Add MFR items to be composted").getBoolean();
+		
+		//TiCon
+		ALLOW_ADD_TCONSTRUCT_NETHERORE  = config.get(categoryTiCon, ALLOW_ADD_TCONSTRUCT_NETHERORE_KEY, ALLOW_ADD_TCONSTRUCT_NETHERORE, "Add Tinkers Nether Ores from sifter").getBoolean();
+		ALLOW_TCONSTRUCT_HEAT_REGISTRY  = config.get(categoryTiCon, ALLOW_TCONSTRUCT_HEAT_REGISTRY_KEY, ALLOW_TCONSTRUCT_HEAT_REGISTRY, "Add Tinkers Items as a heat source for Crucible etc").getBoolean();
+		ALLOW_TCONSTRUCT_MODIFIERS  = config.get(categoryTiCon, ALLOW_TCONSTRUCT_MODIFIERS_KEY, ALLOW_TCONSTRUCT_MODIFIERS, "Add Tinkers Modifiers (Smashing and Crooked").getBoolean();
+		
+		//Steelworks
+		ALLOW_TSTEELWORKS_MELTING  = config.get(categorySteelworks, ALLOW_TSTEELWORKS_MELTING_KEY, ALLOW_TSTEELWORKS_MELTING, "Allow Dusts etc to be melted in the High Oven").getBoolean();
+			
+		//Thermal Expansion
+		ALLOW_THERMAL_EXPANSION_HEAT_REGISTRY  = config.get(categoryThermalExpansion, ALLOW_THERMAL_EXPANSION_HEAT_REGISTRY_KEY, ALLOW_THERMAL_EXPANSION_HEAT_REGISTRY, "Add Thermal Expansion Items and Fluids as heat sources for Crucible etc").getBoolean();
+		ALLOW_THERMAL_EXPANSION_HIVE_REGISTRY  = config.get(categoryThermalExpansion, ALLOW_THERMAL_EXPANSION_HIVE_REGISTRY_KEY, ALLOW_THERMAL_EXPANSION_HIVE_REGISTRY, "Add Thermal Expansion Hive Recipes").getBoolean();
+		
+		
+		
+		//RotaryCraft (NA)
+		ALLOW_STRONGLY_COMPRESSED_STONE  = config.get(categoryRotaryCraft, ALLOW_STRONGLY_COMPRESSED_STONE_KEY, ALLOW_STRONGLY_COMPRESSED_STONE, "Enable Strongly Compressed Stone").getBoolean();
+		
+		//Metallurgy
+		ALLOW_METALLURGY_ORES  = config.get(categoryMetallurgy, ALLOW_METALLURGY_ORES_KEY, ALLOW_METALLURGY_ORES, "Enable Metallurgy Ores from Sifting").getBoolean();
 	}
 	
 }
