@@ -25,7 +25,7 @@ public class ThermalExpansion {
 	public static void Initialize()
 	{
 		addHeatRegistry();
-		if(ModData.ALLOW_THERMAL_EXPANSION_HIVE_REGISTRY)
+		if(ModData.allowThermalExpansionHive)
 		{
 			addHiveRegistry();
 		}
@@ -58,7 +58,7 @@ public class ThermalExpansion {
 	}
 	public static void addHeatRegistry()
 	{
-		if(ModData.ALLOW_THERMAL_EXPANSION_HEAT_REGISTRY)
+		if(ModData.allowThermalExpansionHeat)
 		{
 			HeatRegistry.register(GameRegistry.findBlock("ThermalFoundation","FluidPyrotheum"), 0.5F);
 			HeatRegistry.register(GameRegistry.findBlock("ThermalFoundation","FluidPyrotheum"), 0, 0.7F);

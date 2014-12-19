@@ -19,7 +19,7 @@ public class Metallurgy {
 	}
 	public static void addHammerRegistry()
 	{
-		if(ModData.ALLOW_METALLURGY_ORES)
+		if(ModData.allowMetallurgyOres)
 		{
 			RegistryFactory.HammerOreRegistryFactory(ExAstrisBlock.eximiteOreBlock, ExAstrisItem.eximiteOreItem);
 			RegistryFactory.HammerOreRegistryFactory(ExAstrisBlock.meutoiteOreBlock, ExAstrisItem.meutoiteOreItem);
@@ -52,7 +52,7 @@ public class Metallurgy {
 	}
 	public static void addSieveRegistry()
 	{
-		if(ModData.ALLOW_METALLURGY_ORES)
+		if(ModData.allowMetallurgyOres)
 		{
 			//Sulfur
 			SieveRegistry.register(Blocks.sand, 0, GameRegistry.findItem("Metallurgy", "utility.item"), 0, 128);

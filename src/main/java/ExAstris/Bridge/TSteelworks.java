@@ -14,14 +14,14 @@ import tsteelworks.lib.registry.AdvancedSmelting;
 public class TSteelworks {
 	public static void Initialize()
 	{
-		if(ModData.ALLOW_TSTEELWORKS_MELTING)
+		if(ModData.allowSteelworksMelting)
 		{
 			addMeltingRecipe();
 		}
 	}
 	public static void addMeltingRecipe()
 	{
-		if(Loader.isModLoaded("TConstruct") && ModData.ALLOW_ADD_TCONSTRUCT_NETHERORE)
+		if(Loader.isModLoaded("TConstruct") && ModData.allowAddTConstructNetherOre)
 		{
 			AdvancedSmelting.addMelting(GameRegistry.findBlock("exastris", "CobaltOreBlock"),2,650, new FluidStack(TinkerSmeltery.moltenCobaltFluid, MoltenData.ingotCostHighoven));
 			AdvancedSmelting.addMelting(GameRegistry.findBlock("exastris", "ArditeOreBlock"),2,650, new FluidStack(TinkerSmeltery.moltenArditeFluid, MoltenData.ingotCostHighoven));

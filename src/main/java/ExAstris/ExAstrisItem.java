@@ -77,12 +77,12 @@ public class ExAstrisItem {
 		}
 		
 				
-		if(Loader.isModLoaded("AWWayofTime") && ModData.ALLOW_UNCHARGED_NETHERSTAR){
+		if(Loader.isModLoaded("AWWayofTime") && ModData.allowUnchargedNetherstar){
 			UnchargedNetherStar = new ItemUnchargedNetherStar();
 			GameRegistry.registerItem(UnchargedNetherStar, ItemData.UNCHARGED_NETHERSTAR_UNLOCALIZED_NAME);
 		}
 		
-		if(Loader.isModLoaded("TConstruct") && ModData.ALLOW_ADD_TCONSTRUCT_NETHERORE)
+		if(Loader.isModLoaded("TConstruct") && ModData.allowAddTConstructNetherOre)
 		{
 			cobaltOreItem = new ItemOre("Cobalt");
 			GameRegistry.registerItem(cobaltOreItem, "CobaltOreItem");
@@ -91,7 +91,7 @@ public class ExAstrisItem {
 			GameRegistry.registerItem(arditeOreItem, "ArditeOreItem");
 		}
 		
-		if(Loader.isModLoaded("Metallurgy") && ModData.ALLOW_METALLURGY_ORES)
+		if(Loader.isModLoaded("Metallurgy") && ModData.allowMetallurgyOres)
 		{
 			eximiteOreItem = new ItemOre("Eximite");
 			GameRegistry.registerItem(eximiteOreItem, "EximiteOreItem");
@@ -145,7 +145,7 @@ public class ExAstrisItem {
 			GameRegistry.registerItem(vulcaniteOreItem,  "VulcaniteOreItem");
 			GameRegistry.registerItem(sanguiniteOreItem,  "SanguiniteOreItem");
 		}
-		if (ModData.ALLOW_SIEVE_AUTOMATIC)
+		if (ModData.allowSieveAutomatic)
 		{
 			sieveUpgradeItem = new ItemSieveUpgrade();
 			GameRegistry.registerItem(sieveUpgradeItem, "SieveUpgradeItem");

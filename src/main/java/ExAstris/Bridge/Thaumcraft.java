@@ -31,7 +31,7 @@ public class Thaumcraft {
 	{
 		addHammerRegistry();
 		addSieveRegistry();
-		if(ModData.ALLOW_THAUMCRAFT_HEAT_REGISTRY)
+		if(ModData.allowThaumcraftHeat)
 		{
 			addHeatRegistry();
 		}
@@ -39,7 +39,7 @@ public class Thaumcraft {
 		addInfusion();
 		addArcane();
 		addCrucible();
-		if(ModData.ALLOW_THAUMCRAFT_RESEARCH)
+		if(ModData.allowThaumcraftResearch)
 		{
 			addResearch();			
 		}
@@ -80,7 +80,7 @@ public class Thaumcraft {
 				new ResearchPage("exastris.page.EXASTRISTHAUM.1"), new ResearchPage("exastris.page.EXASTRISTHAUM.2")
 				}).setStub().setRound().setAutoUnlock().registerResearchItem();
 		
-		if(ModData.ALLOW_BARREL_THAUMIUM)
+		if(ModData.allowThaumiumbarrel)
 		{
 			new ResearchItem("EXASTRIS_BARRELTHAUMIUM",
 					"EXASTRIS_THAUM",
@@ -91,7 +91,7 @@ public class Thaumcraft {
 					new ItemStack(ExAstrisBlock.BarrelThaumium, 1, 0)).setPages(new ResearchPage[] {
 					new ResearchPage("exastris.page.EXASTRISTHAUM.3"), new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("exastrisbarrelthaumium"))
 					}).setConcealed().registerResearchItem();
-			if(ModData.ALLOW_DOLL_THAUMIC)
+			if(ModData.allowDollThaumic)
 			{
 				new ResearchItem("EXASTRIS_DOLLTHAUMIC",
 						"EXASTRIS_THAUM",
@@ -105,7 +105,7 @@ public class Thaumcraft {
 				
 			}
 			
-			if (Loader.isModLoaded("MagicBees") && ModData.ALLOW_BEE_TRAP_INFUSED)
+			if (Loader.isModLoaded("MagicBees") && ModData.allowBeeTrapInfused)
 			{
 				new ResearchItem("EXASTRIS_BEEHIVES",
 						"EXASTRIS_THAUM",
@@ -149,7 +149,7 @@ public class Thaumcraft {
 				new ItemStack(GameRegistry.findItem("Thaumcraft", "blockStoneDevice"), 1, 2)).setPages(new ResearchPage[] {
 				new ResearchPage("exastris.page.EXASTRISTHAUM.6"),new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("exastrismatrix"))
 				}).setConcealed().setParents("EXASTRIS_VISFILTER").registerResearchItem();
-		if(ModData.ALLOW_HAMMER_THAUMIUM)
+		if(ModData.allowHammerThaumium)
 		{
 			new ResearchItem("EXASTRIS_HAMMERTHAUMIUM",
 					"EXASTRIS_THAUM",

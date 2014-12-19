@@ -18,12 +18,12 @@ import exnihilo.registries.HammerRegistry;
 public class ExAstrisRecipe {
 	public static void registerFurnaceRecipes()
 	{
-		if(Loader.isModLoaded("TConstruct") && ModData.ALLOW_ADD_TCONSTRUCT_NETHERORE)
+		if(Loader.isModLoaded("TConstruct") && ModData.allowAddTConstructNetherOre)
 		{
 			RegistryFactory.FurnaceOreRegistryFactory(ExAstrisBlock.cobaltOreBlock,new ItemStack(GameRegistry.findItem("TConstruct", "materials"), 1, 3));
 			RegistryFactory.FurnaceOreRegistryFactory(ExAstrisBlock.arditeOreBlock,new ItemStack(GameRegistry.findItem("TConstruct", "materials"), 1, 4));
 		}
-		if(Loader.isModLoaded("Metallurgy") && ModData.ALLOW_METALLURGY_ORES)
+		if(Loader.isModLoaded("Metallurgy") && ModData.allowMetallurgyOres)
 		{
 			RegistryFactory.FurnaceOreRegistryFactory(ExAstrisBlock.eximiteOreBlock,new ItemStack(GameRegistry.findItem("Metallurgy", "eximite.ingot"), 1, 0));
 			RegistryFactory.FurnaceOreRegistryFactory(ExAstrisBlock.meutoiteOreBlock,new ItemStack(GameRegistry.findItem("Metallurgy", "meutoite.ingot"), 1, 0));
@@ -54,7 +54,7 @@ public class ExAstrisRecipe {
 	}
 	public static void registerCraftingRecipes()
 	{
-		if(Loader.isModLoaded("RedstoneArsenal") && ModData.ALLOW_HAMMER_RF){
+		if(Loader.isModLoaded("RedstoneArsenal") && ModData.allowHammerRF){
 			GameRegistry.addRecipe(new ItemStack(ExAstrisItem.HammerRF, 1, 0),
 					" x ",
 					" yx",
@@ -63,7 +63,7 @@ public class ExAstrisRecipe {
 					'y', new ItemStack(GameRegistry.findItem("RedstoneArsenal", "material"), 1, 193));
 		}
 		if(Loader.isModLoaded("ThermalExpansion")){
-			if(ModData.ALLOW_SIEVE_AUTOMATIC)
+			if(ModData.allowSieveAutomatic)
 			{
 				GameRegistry.addRecipe(new ItemStack(ExAstrisBlock.SieveAutomatic, 1, 0),
 						"aba",
@@ -76,7 +76,7 @@ public class ExAstrisRecipe {
 			}
 			
 			
-			if(Loader.isModLoaded("Thaumcraft") && ModData.ALLOW_DOLL_FREEZING && ModData.ALLOW_BARREL_THAUMIUM){
+			if(Loader.isModLoaded("Thaumcraft") && ModData.allowDollFreezing && ModData.allowThaumiumbarrel){
 
 				GameRegistry.addRecipe(new ItemStack(ExAstrisItem.DollFreezing, 1, 0),
 						"aba",
@@ -103,7 +103,7 @@ public class ExAstrisRecipe {
 					'f', Items.diamond_sword);
 		}
 		
-		if(ModData.ALLOW_ENDCAKE)
+		if(ModData.allowEndCake)
 		{
 			GameRegistry.addRecipe(new ItemStack(ExAstrisBlock.EndCake, 1, 0),
 					"aaa",
@@ -114,12 +114,12 @@ public class ExAstrisRecipe {
 					'c', Items.golden_apple);
 		}
 		
-		if(Loader.isModLoaded("TConstruct") && ModData.ALLOW_ADD_TCONSTRUCT_NETHERORE)
+		if(Loader.isModLoaded("TConstruct") && ModData.allowAddTConstructNetherOre)
 		{
 			OreRecipeFactory(ExAstrisBlock.cobaltOreBlock,ExAstrisItem.cobaltOreItem);
 			OreRecipeFactory(ExAstrisBlock.arditeOreBlock,ExAstrisItem.arditeOreItem);
 		}
-		if(Loader.isModLoaded("RotaryCraft") && ModData.ALLOW_STRONGLY_COMPRESSED_STONE)
+		if(Loader.isModLoaded("RotaryCraft") && ModData.allowStronglyCompressedStone)
 		{
 			GameRegistry.addRecipe(new ItemStack(ExAstrisBlock.StronglyCompressedStone, 1, 0),
 					"aaa",
@@ -142,7 +142,7 @@ public class ExAstrisRecipe {
 					"aaa",
 					'a', new ItemStack(ExAstrisBlock.StronglyCompressedStone, 1, 2));
 		}
-		if(Loader.isModLoaded("Metallurgy") && ModData.ALLOW_METALLURGY_ORES)
+		if(Loader.isModLoaded("Metallurgy") && ModData.allowMetallurgyOres)
 		{
 			OreRecipeFactory(ExAstrisBlock.eximiteOreBlock,ExAstrisItem.eximiteOreItem);
 			OreRecipeFactory(ExAstrisBlock.meutoiteOreBlock,ExAstrisItem.meutoiteOreItem);

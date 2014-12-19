@@ -23,11 +23,11 @@ public class TConstruct {
 	public static void Initialize()
 	{
 		addSmeltery();
-		if(ModData.ALLOW_TCONSTRUCT_HEAT_REGISTRY)
+		if(ModData.allowTConstructHeat)
 		{
 			addHeatRegistry();
 		}
-		if(ModData.ALLOW_TCONSTRUCT_MODIFIERS)
+		if(ModData.allowTConstructModifiers)
 		{
 			addModifiers();
 		}
@@ -36,7 +36,7 @@ public class TConstruct {
 	}
 	public static void addSieveRegistry()
 	{
-		if(Loader.isModLoaded("TConstruct") && ModData.ALLOW_ADD_TCONSTRUCT_NETHERORE)
+		if(Loader.isModLoaded("TConstruct") && ModData.allowAddTConstructNetherOre)
 		{
 			SieveRegistry.register(ENBlocks.NetherGravel, 0, ExAstrisItem.cobaltOreItem, 0, 128);
 			SieveRegistry.register(ENBlocks.NetherGravel, 0, ExAstrisItem.arditeOreItem, 0, 128);
@@ -44,7 +44,7 @@ public class TConstruct {
 	}
 	public static void addHammerRegistry()
 	{
-		if(Loader.isModLoaded("TConstruct") && ModData.ALLOW_ADD_TCONSTRUCT_NETHERORE)
+		if(Loader.isModLoaded("TConstruct") && ModData.allowAddTConstructNetherOre)
 		{
 			RegistryFactory.HammerOreRegistryFactory(ExAstrisBlock.cobaltOreBlock, ExAstrisItem.cobaltOreItem );		
 			RegistryFactory.HammerOreRegistryFactory(ExAstrisBlock.arditeOreBlock, ExAstrisItem.arditeOreItem );	
@@ -53,7 +53,7 @@ public class TConstruct {
 	}
 	public static void addSmeltery()
 	{
-		if(ModData.ALLOW_ADD_TCONSTRUCT_NETHERORE)
+		if(ModData.allowAddTConstructNetherOre)
 		{
 			
 			Smeltery.addMelting(GameRegistry.findBlock("exastris", "CobaltOreBlock"), 0, 650, new FluidStack(TinkerSmeltery.moltenCobaltFluid, MoltenData.ingotCostSmeltery));

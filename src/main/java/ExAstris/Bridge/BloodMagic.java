@@ -12,7 +12,7 @@ public class BloodMagic {
 	}
 	public static void addAlterRegistry()
 	{
-		if(ModData.ALLOW_UNCHARGED_NETHERSTAR)
+		if(ModData.allowUnchargedNetherstar)
 		{
 			AltarRecipeRegistry.registerAltarRecipe(new ItemStack(Items.nether_star), new ItemStack(ExAstrisItem.UnchargedNetherStar), 4, 20000, 20, 20, true);
 		}

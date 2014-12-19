@@ -80,7 +80,7 @@ public class ExAstrisBlock {
 		EndCake = new BlockEndCake();
 		GameRegistry.registerBlock(EndCake, ItemBlockEndCake.class, BlockData.ENDCAKE_KEY);
 		
-		if(Loader.isModLoaded("TConstruct") && ModData.ALLOW_ADD_TCONSTRUCT_NETHERORE)
+		if(Loader.isModLoaded("TConstruct") && ModData.allowAddTConstructNetherOre)
 		{
 			cobaltOreBlock = new BlockOre("Cobalt");
 			GameRegistry.registerBlock(cobaltOreBlock, ItemBlockOre.class, "CobaltOreBlock");
@@ -90,7 +90,7 @@ public class ExAstrisBlock {
 			
 		}
 		
-		if(Loader.isModLoaded("RotaryCraft") && ModData.ALLOW_STRONGLY_COMPRESSED_STONE)
+		if(Loader.isModLoaded("RotaryCraft") && ModData.allowStronglyCompressedStone)
 		{
 			StronglyCompressedStone = new BlockStronglyCompressedStone();
 			GameRegistry.registerBlock(StronglyCompressedStone, ItemBlockStronglyCompressedStone.class, BlockData.STRONGLY_COMPRESSED_STONE_KEY);
@@ -103,7 +103,7 @@ public class ExAstrisBlock {
 			
 		}
 		
-		if(Loader.isModLoaded("Metallurgy") && ModData.ALLOW_METALLURGY_ORES)
+		if(Loader.isModLoaded("Metallurgy") && ModData.allowMetallurgyOres)
 		{
 			eximiteOreBlock = new BlockOre("Eximite");
 			GameRegistry.registerBlock(eximiteOreBlock, ItemBlockOre.class, "EximiteOreBlock");

@@ -12,7 +12,7 @@ public class MineFactoryReloaded {
 	public static void Initialize()
 	{
 		addColorRegistry();
-		if(ModData.ALLOW_MFR_COMPOST)
+		if(ModData.allowMFRCompost)
 		{
 			addCompostRegistry();
 		}
