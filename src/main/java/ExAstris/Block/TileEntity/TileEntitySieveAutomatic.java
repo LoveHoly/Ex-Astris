@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import ExAstris.ExAstrisItem;
+import ExAstris.Data.ModData;
 
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyHandler;
@@ -30,7 +31,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHandler, ISidedInventory {
 	public EnergyStorage storage = new EnergyStorage(64000);
-	private int energyPerCycle = 40;
+	private int energyPerCycle = ModData.sieveAutomaticBaseEnergy;
 	private static final float MIN_RENDER_CAPACITY = 0.70f;
 	private static final float MAX_RENDER_CAPACITY = 0.9f;
 	private float PROCESSING_INTERVAL;// = 0.005f; //was 0.005
