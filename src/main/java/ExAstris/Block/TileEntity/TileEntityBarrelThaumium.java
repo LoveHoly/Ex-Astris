@@ -30,7 +30,6 @@ import net.minecraftforge.fluids.IFluidHandler;
 import exnihilo.ENBlocks;
 import exnihilo.ENItems;
 import exnihilo.Fluids;
-import exnihilo.data.BlockData;
 import exnihilo.data.ModData;
 import exnihilo.registries.ColorRegistry;
 import exnihilo.registries.CompostRegistry;

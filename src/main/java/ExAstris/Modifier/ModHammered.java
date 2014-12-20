@@ -1,8 +1,5 @@
 package ExAstris.Modifier;
 
-import java.util.Arrays;
-import java.util.List;
-
 import tconstruct.library.tools.ToolCore;
 import tconstruct.modifiers.tools.ModBoolean;
 import net.minecraft.item.ItemStack;

@@ -2,13 +2,10 @@ package ExAstris.Block;
 
 import java.util.List;
 
-import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import exnihilo.registries.SieveRegistry;
 import ExAstris.Block.TileEntity.TileEntitySieveAutomatic;
-import ExAstris.Block.TileEntity.TileEntitySieveAutomatic.SieveMode;
 import ExAstris.Data.BlockData;
 import ExAstris.Data.ModData;
 import net.minecraft.block.Block;

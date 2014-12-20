@@ -80,8 +80,6 @@ public class BlockBarrelThaumium extends BlockContainer
 	public void onBlockAdded(World world, int x, int y, int z)
 	{
 		super.onBlockAdded(world, x, y, z);
-
-		int meta = world.getBlockMetadata(x, y, z);
 	}
 
 	@Override

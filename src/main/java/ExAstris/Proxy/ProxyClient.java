@@ -1,7 +1,6 @@
 package ExAstris.Proxy;
 
 import net.minecraft.item.Item;
-import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.Loader;

@@ -3,7 +3,6 @@ package ExAstris.Bridge;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import exnihilo.data.ModData;
 import exnihilo.registries.HammerRegistry;
@@ -30,11 +29,7 @@ public class TConstructModifier extends ActiveToolMod {
 		{
 			World world = player.worldObj;
 			Block block = world.getBlock(X,Y,Z);
-			int meta = world.getBlockMetadata(X, Y, Z);
-			boolean validTarget = false;
-			boolean extraDropped = false;
-	
-	
+			world.getBlockMetadata(X, Y, Z);
 			if (!world.isRemote && block != null && block.isLeaves(world, X, Y, Z))
 			{
 						

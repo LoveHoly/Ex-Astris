@@ -3,7 +3,6 @@ package ExAstris.Slot;
 import ExAstris.ExAstrisItem;
 import exnihilo.registries.SieveRegistry;
 import net.minecraft.block.Block;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
@@ -18,7 +17,6 @@ public class SlotSieveAutomatic  extends Slot{
 	}
 	@Override
 	public boolean isItemValid(ItemStack itemstack) {
-//		if(itemstac)
 		if(SieveRegistry.Contains(Block.getBlockFromItem(itemstack.getItem()),itemstack.getItemDamage()) && this.id==0)
 		{
 			return true;

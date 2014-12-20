@@ -45,8 +45,8 @@ public class GUISieveAutomatic extends GuiContainer{
 			this.drawTexturedModalRect(k + 32, l + 36, 176, 0, i1, 15);
 		}
 
-		i1= (int)((float)sieve.storage.getEnergyStored()/sieve.storage.getMaxEnergyStored()*60.0);
-		this.drawTexturedModalRect(k + 152, l + 9+(60-i1), 176 + 15, 0, 16, i1);
+		i1= (int)((float)sieve.storage.getEnergyStored()/sieve.storage.getMaxEnergyStored()*70.0);
+		this.drawTexturedModalRect(k + 152, l + 8+(70-i1), 176 + 15, 0, 16, i1);
 	}
 
 	@Override

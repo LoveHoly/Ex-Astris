@@ -1,22 +1,10 @@
 package ExAstris.Block.TileEntity;
 
 import forestry.api.apiculture.IAlvearyComponent;
-import forestry.api.apiculture.IBeeListener;
-import forestry.api.apiculture.IBeeModifier;
-import forestry.api.core.IStructureLogic;
-import forestry.api.core.ITileStructure;
-import forestry.apiculture.gadgets.StructureLogicAlveary;
 import forestry.apiculture.gadgets.TileAlveary;
-import forestry.core.config.Defaults;
-import forestry.core.config.ForestryBlock;
-import forestry.core.gadgets.TileForestry;
-import forestry.core.network.PacketPayload;
-import forestry.core.proxy.Proxies;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;

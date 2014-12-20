@@ -1,10 +1,8 @@
 package ExAstris.GUI;
 
-import exnihilo.registries.SieveRegistry;
 import ExAstris.Block.TileEntity.TileEntitySieveAutomatic;
 import ExAstris.Slot.SlotClosed;
 import ExAstris.Slot.SlotSieveAutomatic;
-import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -45,7 +43,7 @@ public class ContainerSieveAutomatic extends Container
 		}
 		
 		this.addSlotToContainer(new SlotSieveAutomatic(sieve, 21, 8, 62));
-		this.addSlotToContainer(new SlotSieveAutomatic(sieve, 22, 32, 62));
+		this.addSlotToContainer(new SlotSieveAutomatic(sieve, 22, 33, 62));
 	}
 
 	@Override
@@ -58,12 +56,10 @@ public class ContainerSieveAutomatic extends Container
 	{
 		ItemStack stack = null;
 		Slot slot = this.getSlot(slotNum);
-		System.out.println(slotNum);
 		if (slot != null & slot.getHasStack())
 		{
 			ItemStack stackInSlot = slot.getStack();
 			stack = stackInSlot.copy();
-			System.out.println(stackInSlot.stackSize);
 			if (slotNum <= 20 || slotNum == 57 || slotNum == 58) //In the sieve!
 			{
 				if (!this.mergeItemStack(stackInSlot, 21, 57, true))
@@ -77,6 +73,12 @@ public class ContainerSieveAutomatic extends Container
 			else if (this.sieve.canInsertItem(21, stackInSlot, 0))
 			{
 				if (!this.mergeItemStack(stackInSlot, 57, 58, false))
+					return null;
+			}
+			
+			else if (this.sieve.canInsertItem(22, stackInSlot, 0))
+			{
+				if (!this.mergeItemStack(stackInSlot, 58, 59, false))
 					return null;
 			}
 

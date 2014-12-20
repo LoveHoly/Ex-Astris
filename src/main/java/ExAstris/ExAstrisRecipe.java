@@ -7,13 +7,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
-import exnihilo.ENBlocks;
-import exnihilo.registries.HammerRegistry;
-
-
 
 public class ExAstrisRecipe {
 	public static void registerFurnaceRecipes()

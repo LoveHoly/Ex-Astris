@@ -52,6 +52,14 @@ public class ModData {
 	public static boolean allowSieveAutomatic = true;
 	public static String sieveAutomaticBaseEnergyKey = "autoSieveEnergy";
 	public static int sieveAutomaticBaseEnergy;
+	public static String sieveFortuneChanceKey = "autoSieveFortuneChance";
+	public static int sieveFortuneChance;
+	public static String sieveFortuneRFIncreaseKey = "autoSieveRFIncrease";
+	public static int sieveFortuneRFIncrease;
+	public static String sieveFortuneExtraRollsKey = "autoSieveFortuneExtraRolls";
+	public static boolean sieveFortuneExtraRolls;
+	public static String sieveFortuneExtraDropsKey = "autoSieveFortuneExtraDrops";
+	public static boolean sieveFortuneExtraDrops;
 	
 	//ITEMS
 	public static String allowDollFreezingKey = "freezingDoll";
@@ -123,7 +131,10 @@ public class ModData {
 		allowEndCake  = config.get(categoryExAstris, allowEndCakeKey, allowEndCake, "Enable End Cake").getBoolean();
 		allowSieveAutomatic  = config.get(categoryExAstris, allowSieveAutomaticKey, allowSieveAutomatic, "Enable Automatic Sieve").getBoolean();
 		sieveAutomaticBaseEnergy = config.get(categoryExAstris, sieveAutomaticBaseEnergyKey, 40, "Base RF/t that is consumed by the Automatic Sieve").getInt();
-		
+		sieveFortuneChance = config.get(categoryExAstris, sieveFortuneChanceKey, 1, "%ge that each Fortune Upgrade will increase the chance of a drop to double in the Automatic Sieve. Strictly speaking, the chance of the drops being multiplied X times is binomially distributed, with n=64 trials, and probability of success defined here. A value of 1 gives a 22% chance to triple a drop with 64 Fortune Upgrades.").getInt();
+		sieveFortuneRFIncrease = config.get(categoryExAstris, sieveFortuneRFIncreaseKey, 10, "Amount of RF that each Fortune Upgrade costs").getInt();
+		sieveFortuneExtraRolls = config.get(categoryExAstris, sieveFortuneExtraRollsKey, true, "If true, Fortune upgrades will give extra 'chances' to get each item.").getBoolean();
+		sieveFortuneExtraDrops = config.get(categoryExAstris, sieveFortuneExtraDropsKey, true, "If true, Fortune upgrades will give more of each item.").getBoolean();
 		
 		//Redstone Arsenal
 		allowHammerRF  = config.get(categoryRedstoneArsenal, allowHammerRFKey, allowHammerRF, "Enable RF Hammer").getBoolean();

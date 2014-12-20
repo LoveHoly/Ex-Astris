@@ -3,12 +3,9 @@ package ExAstris.Bridge;
 import ExAstris.ExAstrisBlock;
 import ExAstris.ExAstrisItem;
 import ExAstris.Data.ModData;
-import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
 import cpw.mods.fml.common.registry.GameRegistry;
 import exnihilo.ENBlocks;
-import exnihilo.registries.HammerRegistry;
 import exnihilo.registries.SieveRegistry;
 
 public class Metallurgy {

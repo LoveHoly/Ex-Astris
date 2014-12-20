@@ -2,8 +2,6 @@ package ExAstris.Item;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Set;
-
 import ExAstris.Data.ItemData;
 import ExAstris.Data.ModData;
 import net.minecraft.block.Block;
@@ -13,8 +11,6 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import exnihilo.registries.HammerRegistry;
 import net.minecraft.item.EnumRarity;
-import net.minecraft.item.Item;
-import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemStack;
 import redstonearsenal.item.RAItems;
 import redstonearsenal.item.tool.ItemToolRF;
@@ -24,7 +20,6 @@ import exnihilo.registries.helpers.Smashable;
 public class ItemHammerRF extends ItemToolRF {
 	  IIcon activeIcon;
 	  IIcon drainedIcon;
-	@SuppressWarnings("rawtypes")
 	//public static Set blocksEffectiveAgainst = Sets.newHashSet(new Block[]{});
 
 	public ItemHammerRF() 
@@ -52,15 +47,6 @@ public class ItemHammerRF extends ItemToolRF {
 	@Override
 	public float getDigSpeed(ItemStack item, Block block, int meta)
 	{
-		Block[] blocks = HammerRegistry.getBlocks();
-
-		/*for (int i = 0; i < blocks.length; ++i)
-		{
-			//if (blocks[i] == block && block.getHarvestLevel(meta) <= this.toolMaterial.getHarvestLevel())
-			//{
-				return efficiencyOnProperMaterial * 1.75f;
-			//}
-		}*/
 		if(isEmpowered(item))
 		{
 			return efficiencyOnProperMaterial * 6.0f;

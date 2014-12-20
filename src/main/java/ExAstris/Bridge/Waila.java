@@ -6,7 +6,6 @@ import java.util.List;
 import ExAstris.Block.BlockBarrelThaumium;
 import ExAstris.Block.BlockQStronglyCompressedStone;
 import ExAstris.Block.BlockSieveAutomatic;
-import ExAstris.Block.BlockStronglyCompressedStone;
 import ExAstris.Block.TileEntity.TileEntityBarrelThaumium;
 import ExAstris.Block.TileEntity.TileEntityBarrelThaumium.BarrelMode;
 import ExAstris.Block.TileEntity.TileEntitySieveAutomatic;

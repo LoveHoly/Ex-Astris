@@ -1,8 +1,5 @@
 package ExAstris.Modifier;
 
-import java.util.Arrays;
-import java.util.List;
-
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import tconstruct.library.tools.ToolCore;
@@ -63,7 +60,8 @@ public class ModCrooked extends ModBoolean {
 		
 		float knockback = tags.getFloat("Knockback");
 
-        knockback *= 1.5F;
+        knockback += 1.5F;
+        tags.setFloat("Knockback", knockback);
 
 		addToolTip(tool, color + tooltip, color + key);
 	}

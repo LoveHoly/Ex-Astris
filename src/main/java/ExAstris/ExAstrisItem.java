@@ -11,11 +11,7 @@ import ExAstris.Item.ItemDollFreezing;
 import ExAstris.Item.ItemOre;
 import ExAstris.Item.ItemSieveUpgrade;
 import ExAstris.Item.ItemUnchargedNetherStar;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public class ExAstrisItem {
 	public static Item DollThaumic;

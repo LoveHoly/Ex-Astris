@@ -2,12 +2,9 @@ package ExAstris.Bridge;
 
 import ExAstris.Data.ModData;
 import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.init.Blocks;
 import exnihilo.registries.CompostRegistry;
-import exnihilo.registries.SieveRegistry;
 import exnihilo.registries.ColorRegistry;
 import exnihilo.registries.helpers.Color;
-import exnihilo.registries.ColorRegistry;
 public class MineFactoryReloaded {
 	public static void Initialize()
 	{
