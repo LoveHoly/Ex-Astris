@@ -6,6 +6,7 @@ import ExAstris.Data.ModData;
 import ExAstris.Data.MoltenData;
 import ExAstris.Modifier.ModCrooked;
 import ExAstris.Modifier.ModHammered;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import tconstruct.library.TConstructRegistry;
@@ -40,6 +41,16 @@ public class TConstruct {
 		{
 			SieveRegistry.register(ENBlocks.NetherGravel, 0, ExAstrisItem.cobaltOreItem, 0, 128);
 			SieveRegistry.register(ENBlocks.NetherGravel, 0, ExAstrisItem.arditeOreItem, 0, 128);
+		}
+		
+		if (ModData.allowTConstructBushes && Loader.isModLoaded("TConstruct"))
+		{
+			SieveRegistry.register(Blocks.stone, 0, GameRegistry.findItem("TConstruct", "ore.berries.one"), 8, 96);
+			SieveRegistry.register(Blocks.stone, 0, GameRegistry.findItem("TConstruct", "ore.berries.one"), 9, 96);
+			SieveRegistry.register(Blocks.stone, 0, GameRegistry.findItem("TConstruct", "ore.berries.one"), 10, 96);
+			SieveRegistry.register(Blocks.stone, 0, GameRegistry.findItem("TConstruct", "ore.berries.one"), 11, 96);
+			SieveRegistry.register(Blocks.stone, 0, GameRegistry.findItem("TConstruct", "ore.berries.two"), 8, 96);
+			SieveRegistry.register(Blocks.stone, 0, GameRegistry.findItem("TConstruct", "ore.berries.two"), 9, 128);
 		}
 	}
 	public static void addHammerRegistry()

@@ -136,5 +136,11 @@ public class ExAstris {
 			log.info("+++ - Found BigReactors!");
 			BigReactors.init();
 		}
+		
+		if (Loader.isModLoaded("Natura"))
+		{
+			log.info("+++ - Found Natura!");
+			Natura.init();
+		}
 	}
 }

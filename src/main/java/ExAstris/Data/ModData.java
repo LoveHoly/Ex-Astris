@@ -37,6 +37,7 @@ public class ModData {
     public static String categoryRotaryCraft="RotaryCraft";
     public static String categoryMetallurgy="Metallurgy";
     public static String categoryBloodMagic="BloodMagic";
+    public static String categoryNatura="natura";
     
     //BLOCKS
     public static String allowThaumiumBarrelKey = "thaumiumBarrel";
@@ -110,11 +111,17 @@ public class ModData {
 	public static String allowTConstructModifiersKey = "modifiers";
 	public static boolean allowTConstructModifiers = true;
 	
+	public static String allowTConstructBushesKey = "oreberryBushes";
+	public static boolean allowTConstructBushes;
+	
 	public static String allowStronglyCompressedStoneKey = "stronglyCompressedStone";
 	public static boolean allowStronglyCompressedStone = true;
 
 	public static String allowMetallurgyOresKey = "metallurgySifting";
 	public static boolean allowMetallurgyOres = true;
+	
+	public static String allowNaturaPlantsKey = "naturaSifting";
+	public static boolean allowNaturaPlants = true;
 	
 	public static String[] oreType = { "Gravel","Sand","Dust" };
 	
@@ -154,6 +161,7 @@ public class ModData {
 		allowAddTConstructNetherOre  = config.get(categoryTiCon, allowAddTConstructNetherOreKey, allowAddTConstructNetherOre, "Add Tinkers Nether Ores from sifter").getBoolean();
 		allowTConstructHeat  = config.get(categoryTiCon, allowTConstructHeatKey, allowTConstructHeat, "Add Tinkers Items as a heat source for Crucible etc").getBoolean();
 		allowTConstructModifiers  = config.get(categoryTiCon, allowTConstructModifiersKey, allowTConstructModifiers, "Add Tinkers Modifiers (Smashing and Crooked").getBoolean();
+		allowTConstructBushes = config.get(categoryTiCon, allowTConstructBushesKey, true, "Allow OreBerry bushes to be obtained via sifting").getBoolean();
 		
 		//Steelworks
 		allowSteelworksMelting  = config.get(categorySteelworks, allowSteelworksMeltingKey, allowSteelworksMelting, "Allow Dusts etc to be melted in the High Oven").getBoolean();
@@ -169,6 +177,9 @@ public class ModData {
 		
 		//Metallurgy
 		allowMetallurgyOres  = config.get(categoryMetallurgy, allowMetallurgyOresKey, allowMetallurgyOres, "Enable Metallurgy Ores from Sifting").getBoolean();
+		
+		//Natura
+		allowNaturaPlants = config.get(categoryNatura, allowNaturaPlantsKey, true, "Allow Natura Plants to be obtained via sifting").getBoolean();
 	}
 	
 }
