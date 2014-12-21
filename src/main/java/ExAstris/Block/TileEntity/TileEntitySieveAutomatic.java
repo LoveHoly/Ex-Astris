@@ -539,11 +539,11 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 	{
 		if (inventory[22]== null || ModData.sieveFortuneChance==0)
 		{
-			return 0;
+			return 1;
 		}
 		else
 		{
-			int multiplier=0;
+			int multiplier=1;
 			for (int i = 0; i < inventory[22].stackSize; i++)
 			{
 				if (rand.nextInt(101-ModData.sieveFortuneChance) == 0)

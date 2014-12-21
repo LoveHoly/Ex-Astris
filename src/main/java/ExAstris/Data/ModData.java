@@ -81,6 +81,9 @@ public class ModData {
 	public static String allowMFRCompostKey = "MFRCompost";
 	public static boolean allowMFRCompost = true;
 	
+	public static String allowMFRSeedFromSiftingKey="MFRSeed";
+	public static boolean allowMFRSeedFromSifting;
+	
 	public static String allowAddTConstructNetherOreKey = "tinkersOresFromSifting";
 	public static boolean allowAddTConstructNetherOre = true;
 	
@@ -144,7 +147,8 @@ public class ModData {
 		allowUnchargedNetherstar  = config.get(categoryBloodMagic, allowUnchargedNetherstarKey, allowUnchargedNetherstar, "Enable Uncharged Nether Star").getBoolean();
 		
 		//MFR
-		allowMFRCompost  = config.get(categoryMFR, allowMFRCompostKey, allowMFRCompost, "Add MFR items to be composted").getBoolean();
+		allowMFRCompost  = config.get(categoryMFR, allowMFRCompostKey, true, "Add MFR items to be composted").getBoolean();
+		allowMFRSeedFromSifting = config.get(categoryMFR, allowMFRSeedFromSiftingKey, true, "Add Rubber Tree Seed from Dirt").getBoolean();
 		
 		//TiCon
 		allowAddTConstructNetherOre  = config.get(categoryTiCon, allowAddTConstructNetherOreKey, allowAddTConstructNetherOre, "Add Tinkers Nether Ores from sifter").getBoolean();
