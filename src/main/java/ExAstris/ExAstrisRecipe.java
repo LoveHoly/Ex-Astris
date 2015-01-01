@@ -69,11 +69,11 @@ public class ExAstrisRecipe {
 						'c', new ItemStack(GameRegistry.findItem("ThermalFoundation", "material"), 1, 135), 
 						'd', new ItemStack(GameRegistry.findItem("ThermalFoundation", "material"), 1, 104));
 				
-				GameRegistry.addRecipe(new ItemStack(ExAstrisItem.sieveUpgradeItem, 1, 0), "aba","bcb","aba",
+				GameRegistry.addRecipe(new ItemStack(ExAstrisItem.sieveUpgradeItem, 2, 0), "aba","bcb","aba",
 						'a', new ItemStack(Items.gold_nugget), 'c', new ItemStack(GameRegistry.findItem("ThermalFoundation", "material"), 1, 512),
 						'b', new ItemStack(GameRegistry.findItem("ThermalFoundation","material"), 1, 66));
 				
-				GameRegistry.addRecipe(new ItemStack(ExAstrisItem.sieveUpgradeItem, 1, 1), "aba","bcb","aba",
+				GameRegistry.addRecipe(new ItemStack(ExAstrisItem.sieveUpgradeItem, 2, 1), "aba","bcb","aba",
 						'a', new ItemStack(Items.gold_nugget), 'c', new ItemStack(Items.diamond),
 						'b', new ItemStack(GameRegistry.findItem("ThermalFoundation","material"), 1, 66));
 			}

@@ -51,6 +51,8 @@ public class TConstruct {
 			SieveRegistry.register(Blocks.stone, 0, GameRegistry.findItem("TConstruct", "ore.berries.one"), 11, 96);
 			SieveRegistry.register(Blocks.stone, 0, GameRegistry.findItem("TConstruct", "ore.berries.two"), 8, 96);
 			SieveRegistry.register(Blocks.stone, 0, GameRegistry.findItem("TConstruct", "ore.berries.two"), 9, 128);
+			
+			SieveRegistry.register(GameRegistry.findBlock("TConstruct", "slime.gel"), 1, GameRegistry.findItem("TConstruct", "slime.sapling"), 0, 24);
 		}
 	}
 	public static void addHammerRegistry()

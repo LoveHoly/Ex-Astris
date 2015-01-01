@@ -16,15 +16,14 @@ public class Natura {
 			SieveRegistry.register(GameRegistry.findBlock("Natura","GrassBlock"), 0, GameRegistry.findItem("Natura","Rare Sapling"), 1, 128);
 			SieveRegistry.register(GameRegistry.findBlock("Natura","GrassBlock"), 0, GameRegistry.findItem("Natura","Rare Sapling"), 2, 128);
 			SieveRegistry.register(GameRegistry.findBlock("Natura","GrassBlock"), 0, GameRegistry.findItem("Natura","Rare Sapling"), 3, 128);
-			;
+			SieveRegistry.register(GameRegistry.findBlock("Natura","GrassBlock"), 0, GameRegistry.findItem("Natura","Rare Sapling"), 4, 128);
 			
 			SieveRegistry.register(GameRegistry.findBlock("Natura","GrassBlock"), 0, GameRegistry.findItem("Natura","florasapling"), 0, 128);
 			SieveRegistry.register(GameRegistry.findBlock("Natura","GrassBlock"), 0, GameRegistry.findItem("Natura","florasapling"), 1, 128);
 			SieveRegistry.register(GameRegistry.findBlock("Natura","GrassBlock"), 0, GameRegistry.findItem("Natura","florasapling"), 2, 128);
 			SieveRegistry.register(GameRegistry.findBlock("Natura","GrassBlock"), 0, GameRegistry.findItem("Natura","florasapling"), 3, 128);
-			SieveRegistry.register(GameRegistry.findBlock("Natura","GrassBlock"), 0, GameRegistry.findItem("Natura","florasapling"), 4, 128);
 			
-			SieveRegistry.register(Blocks.soul_sand, 0, GameRegistry.findItem("Natura","Rare Sapling"), 4, 128);
+			SieveRegistry.register(Blocks.soul_sand, 0, GameRegistry.findItem("Natura","florasapling"), 4, 128);
 			SieveRegistry.register(Blocks.soul_sand, 0, GameRegistry.findItem("Natura","florasapling"), 5, 128);
 			SieveRegistry.register(Blocks.soul_sand, 0, GameRegistry.findItem("Natura","florasapling"), 6, 128);
 			SieveRegistry.register(Blocks.soul_sand, 0, GameRegistry.findItem("Natura","florasapling"), 7, 128);
