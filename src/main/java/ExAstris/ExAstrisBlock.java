@@ -3,6 +3,7 @@ package ExAstris;
 import ExAstris.Block.BlockBarrelThaumium;
 import ExAstris.Block.BlockBeeTrapInfused;
 import ExAstris.Block.BlockEndCake;
+import ExAstris.Block.BlockHammerAutomatic;
 import ExAstris.Block.BlockOre;
 import ExAstris.Block.BlockQStronglyCompressedStone;
 import ExAstris.Block.BlockRotaryAlveary;
@@ -26,6 +27,7 @@ public class ExAstrisBlock {
 	public static Block BeeTrapInfused;
 	public static Block SieveAutomatic;
 	public static Block EndCake;
+	public static Block HammerAutomatic;
 
 	public static Block cobaltOreBlock;
 	public static Block arditeOreBlock;
@@ -74,6 +76,8 @@ public class ExAstrisBlock {
 		if(Loader.isModLoaded("ThermalExpansion")){
 			SieveAutomatic = new BlockSieveAutomatic();
 			GameRegistry.registerBlock(SieveAutomatic, ItemBlockSieveAutomatic.class, BlockData.SIEVE_AUTOMATIC_KEY);
+			HammerAutomatic = new BlockHammerAutomatic();
+			GameRegistry.registerBlock(HammerAutomatic, BlockData.HAMMER_AUTOMATIC_KEY);
 		}
 		
 		EndCake = new BlockEndCake();

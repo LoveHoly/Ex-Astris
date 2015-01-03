@@ -104,17 +104,7 @@ public class BlockSieveAutomatic extends BlockContainer{
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ)
 	{
-		if (player.getHeldItem()!= null)
-		{
-			if (player.getHeldItem().getItem() == Items.stick)
-			{
-				TileEntitySieveAutomatic te = (TileEntitySieveAutomatic) world.getTileEntity(x, y, z);
-				te.changeSpeedLevel(0.001f);
-				return true;
-			}
-		}
 		player.openGui(ExAstris.ExAstris.instance, 0, world, x, y, z);
-
 		return true;
 	}
 

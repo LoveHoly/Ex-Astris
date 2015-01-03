@@ -62,6 +62,10 @@ public class ModData {
 	public static String sieveFortuneExtraDropsKey = "autoSieveFortuneExtraDrops";
 	public static boolean sieveFortuneExtraDrops;
 	
+	
+	public static int hammerAutomaticBaseEnergy;
+	public static String hammerAutomaticBaseEnergyKey = "hammerAutomaticBaseEnergy";
+	
 	//ITEMS
 	public static String allowDollFreezingKey = "freezingDoll";
 	public static boolean allowDollFreezing = true;
@@ -124,6 +128,7 @@ public class ModData {
 	public static boolean allowNaturaPlants = true;
 	
 	public static String[] oreType = { "Gravel","Sand","Dust" };
+
 	
 	public static void load(Configuration config)
 	{
@@ -145,6 +150,7 @@ public class ModData {
 		sieveFortuneRFIncrease = config.get(categoryExAstris, sieveFortuneRFIncreaseKey, 10, "Amount of RF that each Fortune Upgrade costs").getInt();
 		sieveFortuneExtraRolls = config.get(categoryExAstris, sieveFortuneExtraRollsKey, true, "If true, Fortune upgrades will give extra 'chances' to get each item.").getBoolean();
 		sieveFortuneExtraDrops = config.get(categoryExAstris, sieveFortuneExtraDropsKey, true, "If true, Fortune upgrades will give more of each item.").getBoolean();
+		hammerAutomaticBaseEnergy = config.get(categoryExAstris, hammerAutomaticBaseEnergyKey, 40, "Base RF/t that is consumed by the Automatic Hammerer").getInt();
 		
 		//Redstone Arsenal
 		allowHammerRF  = config.get(categoryRedstoneArsenal, allowHammerRFKey, allowHammerRF, "Enable RF Hammer").getBoolean();

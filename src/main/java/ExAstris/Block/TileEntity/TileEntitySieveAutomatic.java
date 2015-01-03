@@ -453,7 +453,6 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer) {
-		// TODO Auto-generated method stub
 		return worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : par1EntityPlayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
 	}
 
@@ -482,7 +481,7 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 	@Override
 	public int[] getAccessibleSlotsFromSide(int side) {
 		// TODO Auto-generated method stub
-		int size = getSizeInventory();
+		int size = getSizeInventory()-2;
 		int[] slots = new int[size];
 		for(int i = 0; i < size; i++)
 		{
