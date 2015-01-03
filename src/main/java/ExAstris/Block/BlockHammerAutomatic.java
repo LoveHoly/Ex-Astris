@@ -6,6 +6,8 @@ import ExAstris.Data.ModData;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
@@ -31,6 +33,37 @@ public class BlockHammerAutomatic extends BlockContainer {
 	public boolean hasTileEntity()
 	{
 		return true;
+	}
+	
+	@Override
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ)
+	{
+		player.openGui(ExAstris.ExAstris.instance, 1, world, x, y, z);
+		return true;
+	}
+	
+	@Override
+	public String getUnlocalizedName()
+	{
+		return ModData.ID + "." + BlockData.HAMMER_AUTOMATIC_UNLOCALIZED_NAME;
+	}
+	
+	@Override
+	public int getRenderType()
+	{
+		return -1;
+	}
+	
+	@Override
+	public boolean renderAsNormalBlock()
+	{
+		return false;
+	}
+	
+	@Override
+	public boolean isOpaqueCube()
+	{
+		return false;
 	}
 
 }

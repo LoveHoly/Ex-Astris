@@ -58,6 +58,7 @@ exastris.block.ArditeSand.name=Ardite Ore Sand
 exastris.block.ArditeDust.name=Ardite Ore Dust
 exastris.hammer_rf.name=Flux-Infused Hammer
 exastris.sieve_automatic.name=Automatic Sieve
+exastris.hammer_automatic.name=Automatic Hammerer
 exastris.uncharged_netherstar.name=Uncharged Nether Star
 exastris.endcake.name=End Cake
 exastris.strongly_compressed_stone0.name=Strongly Compressed Stone

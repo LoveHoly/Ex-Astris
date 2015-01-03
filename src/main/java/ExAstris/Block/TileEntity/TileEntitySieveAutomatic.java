@@ -479,8 +479,8 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 	}
 
 	@Override
-	public int[] getAccessibleSlotsFromSide(int side) {
-		// TODO Auto-generated method stub
+	public int[] getAccessibleSlotsFromSide(int side) 
+	{
 		int size = getSizeInventory()-2;
 		int[] slots = new int[size];
 		for(int i = 0; i < size; i++)
