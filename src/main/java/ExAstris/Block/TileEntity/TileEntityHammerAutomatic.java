@@ -448,7 +448,6 @@ public class TileEntityHammerAutomatic extends TileEntity  implements IEnergyHan
 		}
 		else
 		{
-			System.out.println("STACK: "+inventory[22].stackSize+", CHANCE: "+(6.0/64) * inventory[22].stackSize);
 			return (6.0/64) * inventory[22].stackSize;
 		}
 	}
