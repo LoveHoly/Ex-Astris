@@ -506,7 +506,7 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 
 	@Override
 	public boolean canExtractItem(int slot, ItemStack item, int side) {
-		if (slot >= 1) return true;
+		if (slot >= 1 && slot < 21) return true;
 		return false;
 	}
 
