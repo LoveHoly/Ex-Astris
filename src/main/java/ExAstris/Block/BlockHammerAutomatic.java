@@ -2,10 +2,14 @@ package ExAstris.Block;
 
 import java.util.List;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.ISidedInventory;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
@@ -30,6 +34,27 @@ public class BlockHammerAutomatic extends BlockContainer {
 		setBlockName(ModData.ID + "." + BlockData.HAMMER_AUTOMATIC_KEY);
 		setBlockTextureName(ModData.ID + ":HammerBase");
 		GameRegistry.registerTileEntity(TileEntityHammerAutomatic.class, ModData.ID + "." + BlockData.HAMMER_AUTOMATIC_KEY);
+	}
+    
+    @Override
+    public String getUnlocalizedName()
+	{
+		return ModData.ID + "." + BlockData.HAMMER_AUTOMATIC_UNLOCALIZED_NAME;
+	}
+    
+    @Override
+    public void breakBlock(World world, int x, int y, int z, Block block, int meta)
+	{
+		TileEntity tile = world.getTileEntity(x, y, z);
+
+		ISidedInventory inv = (ISidedInventory) tile;
+		for (int i = 0; i < inv.getSizeInventory(); i++) {
+			if(inv.getStackInSlot(i) != null){
+				EntityItem entityitem = new EntityItem(world, x, y, z, inv.getStackInSlot(i));
+				world.spawnEntityInWorld(entityitem);
+			}
+		}
+		super.breakBlock(world, x,  y,  z,  block,  meta);
 	}
 
 	@Override

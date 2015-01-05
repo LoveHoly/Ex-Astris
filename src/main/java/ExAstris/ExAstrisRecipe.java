@@ -69,16 +69,30 @@ public class ExAstrisRecipe {
 						'b', new ItemStack(GameRegistry.findItem("exnihilo", "mesh"), 1, 0), 
 						'c', "gearElectrum",
 						'd', "nuggetInvar"));
-
+			}
+			
+			if (ModData.allowUpgrades)
+			{
 				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExAstrisItem.sieveUpgradeItem, 2, 0), "aba", "bcb", "aba",
-						'a', "nuggetGold",
-						'b', "ingotSilver",
+						'a', "nuggetElectrum",
+						'b', "ingotInvar",
 						'c', "dustPyrotheum"));
 
 				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExAstrisItem.sieveUpgradeItem, 2, 1), "aba", "bcb", "aba",
-						'a', "nuggetGold",
-						'b', "ingotSilver",
+						'a', "nuggetElectrum",
+						'b', "ingotInvar",
 						'c', "gemDiamond"));
+			}
+			if (ModData.allowHammerAutomatic)
+			{
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExAstrisBlock.HammerAutomatic, 1, 0),
+						"ada",
+						"aba",
+						"aca", 
+						'a', "ingotInvar",
+						'd', Blocks.piston,
+						'c', Blocks.anvil,
+						'b', Blocks.heavy_weighted_pressure_plate));
 			}
 			
 			

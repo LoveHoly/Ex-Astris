@@ -61,6 +61,10 @@ public class ModData {
 	public static boolean sieveFortuneExtraRolls;
 	public static String sieveFortuneExtraDropsKey = "autoSieveFortuneExtraDrops";
 	public static boolean sieveFortuneExtraDrops;
+	public static boolean allowUpgrades;
+	public static String allowUpgradesKey = "allowUpgradesKey";
+	public static boolean allowHammerAutomatic;
+	public static String allowHammerAutomaticKey = "autoHammer";
 	
 	
 	public static int hammerAutomaticBaseEnergy;
@@ -151,6 +155,8 @@ public class ModData {
 		sieveFortuneExtraRolls = config.get(categoryExAstris, sieveFortuneExtraRollsKey, true, "If true, Fortune upgrades will give extra 'chances' to get each item.").getBoolean();
 		sieveFortuneExtraDrops = config.get(categoryExAstris, sieveFortuneExtraDropsKey, true, "If true, Fortune upgrades will give more of each item.").getBoolean();
 		hammerAutomaticBaseEnergy = config.get(categoryExAstris, hammerAutomaticBaseEnergyKey, 40, "Base RF/t that is consumed by the Automatic Hammerer").getInt();
+		allowUpgrades = config.get(categoryExAstris, allowUpgradesKey, true, "Allow Upgrades for Automatic Sieve/Hammer").getBoolean();
+		allowHammerAutomatic = config.get(categoryExAstris, allowHammerAutomaticKey, true, "Allow Automatic Hammerer").getBoolean();
 		
 		//Redstone Arsenal
 		allowHammerRF  = config.get(categoryRedstoneArsenal, allowHammerRFKey, allowHammerRF, "Enable RF Hammer").getBoolean();
