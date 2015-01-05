@@ -18,6 +18,7 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
+import ExAstris.ExAstrisItem;
 import ExAstris.Data.ModData;
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyHandler;
@@ -25,6 +26,7 @@ import cofh.lib.util.helpers.ItemHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.registries.HammerRegistry;
+import exnihilo.registries.SieveRegistry;
 import exnihilo.registries.helpers.Smashable;
 
 public class TileEntityHammerAutomatic extends TileEntity  implements IEnergyHandler, ISidedInventory{
@@ -311,16 +313,22 @@ public class TileEntityHammerAutomatic extends TileEntity  implements IEnergyHan
 	}
 
 	@Override
-	public boolean canInsertItem(int p_102007_1_, ItemStack p_102007_2_,
-			int p_102007_3_) {
-		// TODO Auto-generated method stub
+	public boolean canInsertItem(int slot, ItemStack item, int side) {
+		if (HammerRegistry.registered(Block.getBlockFromItem(item.getItem()),item.getItemDamage()) && slot == 0)
+		{
+			return true;
+		}
+		if (slot == 21)
+			return item.getItem() == ExAstrisItem.sieveUpgradeItem && item.getItemDamage() == 0;
+		if (slot==22)
+			return item.getItem() == ExAstrisItem.sieveUpgradeItem && item.getItemDamage() == 1;
 		return false;
 	}
 
 	@Override
-	public boolean canExtractItem(int p_102008_1_, ItemStack p_102008_2_,
-			int p_102008_3_) {
-		// TODO Auto-generated method stub
+	public boolean canExtractItem(int slot, ItemStack item,	int side) {
+		if (slot >=1) return true;
+		if (slot >=1 && slot < 21) return true;
 		return false;
 	}
 
