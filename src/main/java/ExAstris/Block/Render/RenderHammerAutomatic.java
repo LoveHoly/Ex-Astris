@@ -1,43 +1,67 @@
 package ExAstris.Block.Render;
 
+import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
+
 import org.lwjgl.opengl.GL11;
 
 import ExAstris.Block.TileEntity.TileEntityHammerAutomatic;
-import ExAstris.Data.ModData;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.model.AdvancedModelLoader;
-import net.minecraftforge.client.model.IModelCustom;
+public class RenderHammerAutomatic extends TileEntitySpecialRenderer
+{
+    private static EntityItem item;
 
-public class RenderHammerAutomatic extends TileEntitySpecialRenderer {
+    @Override
+    public void renderTileEntityAt(TileEntity tileentity, double x, double y, double z, float f)
+    {
+        if (item == null)
+        {
+            item = new EntityItem(tileentity.getWorldObj());
+        }
 
-	private IModelCustom model;
-	private IModelCustom arm;
-	
-	public RenderHammerAutomatic()
-	{
-		model = AdvancedModelLoader.loadModel(new ResourceLocation(ModData.TEXTURE_LOCATION, "models/hammer_base.obj"));
-		arm = AdvancedModelLoader.loadModel(new ResourceLocation(ModData.TEXTURE_LOCATION, "models/hammer_arm.obj"));
-	}
-	
-	@Override
-	public void renderTileEntityAt(TileEntity tileentity, double x, double y, double z, float f) {
+        float percMaxRaise = 0.95f;
+        float amntMaxRaise = 0.31f;
+        float percShowItem = 0.60f;
+
         GL11.glPushMatrix();
-        GL11.glTranslated(x+0.5, y, z+0.5);
-        //Minecraft.getMinecraft().renderEngine.func_110577_a(casinoTexture);
-        model.renderAll();
-        
-        TileEntityHammerAutomatic hammer = (TileEntityHammerAutomatic) tileentity;
-        
-        GL11.glTranslated(x+0.5, y-0.5+hammer.getVolume(), z+0.5);
-        arm.renderAll();
-        
+        GL11.glTranslated(x + 0.5, y, z + 0.5);
+
+        TileEntityHammerAutomatic tile = (TileEntityHammerAutomatic) tileentity;
+        float prog = 1 - tile.getVolume(); // volume counts down to 0, need to invert that
+
+        // show the item to be squashed
+        if (prog >= percShowItem)
+        {
+            GL11.glPushMatrix();
+            ItemStack stack = tile.getStackInSlot(0);
+            stack.stackSize = 1;
+            item.setEntityItemStack(stack);
+            GL11.glDepthMask(true);
+            item.hoverStart = 0.0F;
+            GL11.glTranslatef(0, 0.2f, 0);
+            GL11.glScalef(0.95f, 0.95f, 0.95f); // fits inside arm when squashed
+            RenderManager.instance.renderEntityWithPosYaw(item, 0.0D, 0.0D, 0.0D, 0.0F, 0.0F);
+            GL11.glPopMatrix();
+        }
+
+        // on the way down
+        if (prog > percMaxRaise)
+        {
+            percMaxRaise = 1 - percMaxRaise;
+            prog = 1 - prog;
+        }
+
+        // cut off floating point errors to prevent "bounce" at the bottom
+        float translate = Math.max(0, amntMaxRaise * (prog / percMaxRaise));
+
+        GL11.glTranslatef(0, translate, 0);
+
+        bindTexture(RenderBlockHammer.texture_arm);
+        RenderBlockHammer.model_arm.renderAll();
         GL11.glPopMatrix();
-		
-		
-	}
+    }
 
 }
