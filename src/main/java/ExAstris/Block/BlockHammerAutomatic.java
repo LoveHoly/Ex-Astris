@@ -1,9 +1,13 @@
 package ExAstris.Block;
 
+import java.util.List;
+
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import ExAstris.Block.TileEntity.TileEntityHammerAutomatic;
 import ExAstris.Data.BlockData;
@@ -13,6 +17,9 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class BlockHammerAutomatic extends BlockContainer {
 	
 	public static int renderId;
+	
+	private double minYTop = 13d/16d;
+	private double maxYBot = 3d/16d;
 	
     public BlockHammerAutomatic()
 	{
@@ -44,6 +51,34 @@ public class BlockHammerAutomatic extends BlockContainer {
 		return true;
 	}
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+    @Override
+	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB mask, List list, Entity colliding)
+	{
+	    AxisAlignedBB up = getUpperBox(x, y, z);
+	    AxisAlignedBB down = getLowerBox(x, y, z);
+	    
+	    if (mask.intersectsWith(up))
+	    {
+	        list.add(up);
+	    }
+	    
+	    if (mask.intersectsWith(down))
+	    {
+	        list.add(down);
+	    }
+	}
+	   
+    private AxisAlignedBB getUpperBox(int x, int y, int z)
+    {
+        return AxisAlignedBB.getBoundingBox(x, y + minYTop, z, x + 1, y + 1, z + 1);
+    }
+    
+	private AxisAlignedBB getLowerBox(int x, int y, int z)
+	{
+        return AxisAlignedBB.getBoundingBox(x, y, z, x + 1, y + maxYBot, z + 1);
+	}
+
 	@Override
 	public int getRenderType()
 	{

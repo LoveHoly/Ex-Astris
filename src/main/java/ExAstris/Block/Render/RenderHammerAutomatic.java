@@ -14,6 +14,9 @@ public class RenderHammerAutomatic extends TileEntitySpecialRenderer
 {
     private static EntityItem item;
 
+    private final float amntMaxRaise = 0.31f;
+    private final float percShowItem = 0.60f;
+    
     @Override
     public void renderTileEntityAt(TileEntity tileentity, double x, double y, double z, float f)
     {
@@ -22,9 +25,7 @@ public class RenderHammerAutomatic extends TileEntitySpecialRenderer
             item = new EntityItem(tileentity.getWorldObj());
         }
 
-        float percMaxRaise = 0.95f;
-        float amntMaxRaise = 0.31f;
-        float percShowItem = 0.60f;
+        float percMaxRaise = 0.90f;
 
         GL11.glPushMatrix();
         GL11.glTranslated(x + 0.5, y, z + 0.5);
@@ -37,6 +38,7 @@ public class RenderHammerAutomatic extends TileEntitySpecialRenderer
         if (prog >= percShowItem && stack != null)
         {
             GL11.glPushMatrix();
+            stack = stack.copy();
             stack.stackSize = 1;
             item.setEntityItemStack(stack);
             GL11.glDepthMask(true);

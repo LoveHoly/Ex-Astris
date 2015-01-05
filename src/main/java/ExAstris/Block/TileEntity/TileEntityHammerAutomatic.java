@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
 
-import ExAstris.Block.TileEntity.TileEntitySieveAutomatic.SieveMode;
-import ExAstris.Data.ModData;
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.particle.EntityDiggingFX;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
@@ -18,12 +18,13 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
+import ExAstris.Data.ModData;
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyHandler;
 import cofh.lib.util.helpers.ItemHelper;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.registries.HammerRegistry;
-import exnihilo.registries.SieveRegistry;
-import exnihilo.registries.helpers.SiftReward;
 import exnihilo.registries.helpers.Smashable;
 
 public class TileEntityHammerAutomatic extends TileEntity  implements IEnergyHandler, ISidedInventory{
@@ -168,6 +169,10 @@ public class TileEntityHammerAutomatic extends TileEntity  implements IEnergyHan
 					}
 				}
 			}
+			else if (inventory[0] != null)
+			{
+			    spawnCrushParticles();
+			}
 		}
 		else
 		{
@@ -175,6 +180,19 @@ public class TileEntityHammerAutomatic extends TileEntity  implements IEnergyHan
 		}
 
 		update = true;
+	}
+	
+	@SideOnly(Side.CLIENT)
+	private void spawnCrushParticles()
+	{
+        for (int i = 0; i < 10; i++)
+        {
+            EntityDiggingFX particle = new EntityDiggingFX(getWorldObj(), xCoord + 0.5, yCoord + 5d/16d, zCoord + 0.5, 0, 0, 0,
+                    Block.getBlockFromItem(inventory[0].getItem()), inventory[0].getItemDamage()
+            );
+            particle.setVelocity((worldObj.rand.nextDouble() / 2) - 0.25, 0, (worldObj.rand.nextDouble() / 2) - 0.25);
+            Minecraft.getMinecraft().effectRenderer.addEffect(particle);
+        }
 	}
 
 	private void update()
