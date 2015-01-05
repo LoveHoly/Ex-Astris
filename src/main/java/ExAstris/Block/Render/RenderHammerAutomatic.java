@@ -31,12 +31,12 @@ public class RenderHammerAutomatic extends TileEntitySpecialRenderer
 
         TileEntityHammerAutomatic tile = (TileEntityHammerAutomatic) tileentity;
         float prog = 1 - tile.getVolume(); // volume counts down to 0, need to invert that
+        ItemStack stack = tile.getStackInSlot(0);
 
         // show the item to be squashed
-        if (prog >= percShowItem)
+        if (prog >= percShowItem && stack != null)
         {
             GL11.glPushMatrix();
-            ItemStack stack = tile.getStackInSlot(0);
             stack.stackSize = 1;
             item.setEntityItemStack(stack);
             GL11.glDepthMask(true);
@@ -63,5 +63,4 @@ public class RenderHammerAutomatic extends TileEntitySpecialRenderer
         RenderBlockHammer.model_arm.renderAll();
         GL11.glPopMatrix();
     }
-
 }
