@@ -32,14 +32,12 @@ public class RenderHammerAutomatic extends TileEntitySpecialRenderer
 
         TileEntityHammerAutomatic tile = (TileEntityHammerAutomatic) tileentity;
         float prog = 1 - tile.getVolume(); // volume counts down to 0, need to invert that
-        ItemStack stack = tile.getStackInSlot(0);
+        ItemStack stack = tile.stackInProgress;
 
         // show the item to be squashed
         if (prog >= percShowItem && stack != null)
         {
             GL11.glPushMatrix();
-            stack = stack.copy();
-            stack.stackSize = 1;
             item.setEntityItemStack(stack);
             GL11.glDepthMask(true);
             item.hoverStart = 0.0F;

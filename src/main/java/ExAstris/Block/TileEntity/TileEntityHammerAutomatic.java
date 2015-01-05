@@ -39,6 +39,7 @@ public class TileEntityHammerAutomatic extends TileEntity  implements IEnergyHan
 	private static Random rand = new Random();
 	public Block content;
 	public int contentMeta;
+	public ItemStack stackInProgress;
 
 	private float volume = 0;
 	private boolean particleMode;
@@ -82,6 +83,8 @@ public class TileEntityHammerAutomatic extends TileEntity  implements IEnergyHan
 				if (HammerRegistry.registered(Block.getBlockFromItem(held.getItem()), held.getItemDamage()))
 				{
 					addHammerable(Block.getBlockFromItem(held.getItem()), held.getItemDamage());
+					stackInProgress = held.copy();
+					stackInProgress.stackSize = 1;
 					decrStackSize(0,1);
 					storage.extractEnergy(getEffectiveEnergy(), false);
 
@@ -169,7 +172,7 @@ public class TileEntityHammerAutomatic extends TileEntity  implements IEnergyHan
 					}
 				}
 			}
-			else if (inventory[0] != null)
+			else if (stackInProgress != null)
 			{
 			    spawnCrushParticles();
 			}
@@ -188,7 +191,7 @@ public class TileEntityHammerAutomatic extends TileEntity  implements IEnergyHan
         for (int i = 0; i < 10; i++)
         {
             EntityDiggingFX particle = new EntityDiggingFX(getWorldObj(), xCoord + 0.5, yCoord + 5d/16d, zCoord + 0.5, 0, 0, 0,
-                    Block.getBlockFromItem(inventory[0].getItem()), inventory[0].getItemDamage()
+                    Block.getBlockFromItem(stackInProgress.getItem()), stackInProgress.getItemDamage()
             );
             particle.setVelocity((worldObj.rand.nextDouble() / 2) - 0.25, 0, (worldObj.rand.nextDouble() / 2) - 0.25);
             Minecraft.getMinecraft().effectRenderer.addEffect(particle);
