@@ -9,6 +9,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public class ExAstrisRecipe {
 	public static void registerFurnaceRecipes()
@@ -50,32 +51,34 @@ public class ExAstrisRecipe {
 	public static void registerCraftingRecipes()
 	{
 		if(Loader.isModLoaded("RedstoneArsenal") && ModData.allowHammerRF){
-			GameRegistry.addRecipe(new ItemStack(ExAstrisItem.HammerRF, 1, 0),
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExAstrisItem.HammerRF, 1, 0),
 					" x ",
 					" yx",
 					"y  ",
-					'x', new ItemStack(GameRegistry.findItem("RedstoneArsenal", "material"), 1, 32), 
-					'y', new ItemStack(GameRegistry.findItem("RedstoneArsenal", "material"), 1, 193));
+					'x', "ingotElectrumFlux",
+					'y', new ItemStack(GameRegistry.findItem("RedstoneArsenal", "material"), 1, 193)));
 		}
 		if(Loader.isModLoaded("ThermalExpansion")){
 			if(ModData.allowSieveAutomatic)
 			{
-				GameRegistry.addRecipe(new ItemStack(ExAstrisBlock.SieveAutomatic, 1, 0),
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExAstrisBlock.SieveAutomatic, 1, 0),
 						"aba",
 						"aca",
 						"d d",
-						'a', new ItemStack(GameRegistry.findItem("ThermalFoundation", "material"), 1, 72), 
+						'a', "ingotInvar",
 						'b', new ItemStack(GameRegistry.findItem("exnihilo", "mesh"), 1, 0), 
-						'c', new ItemStack(GameRegistry.findItem("ThermalFoundation", "material"), 1, 135), 
-						'd', new ItemStack(GameRegistry.findItem("ThermalFoundation", "material"), 1, 104));
-				
-				GameRegistry.addRecipe(new ItemStack(ExAstrisItem.sieveUpgradeItem, 2, 0), "aba","bcb","aba",
-						'a', new ItemStack(Items.gold_nugget), 'c', new ItemStack(GameRegistry.findItem("ThermalFoundation", "material"), 1, 512),
-						'b', new ItemStack(GameRegistry.findItem("ThermalFoundation","material"), 1, 66));
-				
-				GameRegistry.addRecipe(new ItemStack(ExAstrisItem.sieveUpgradeItem, 2, 1), "aba","bcb","aba",
-						'a', new ItemStack(Items.gold_nugget), 'c', new ItemStack(Items.diamond),
-						'b', new ItemStack(GameRegistry.findItem("ThermalFoundation","material"), 1, 66));
+						'c', "gearElectrum",
+						'd', "nuggetInvar"));
+
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExAstrisItem.sieveUpgradeItem, 2, 0), "aba", "bcb", "aba",
+						'a', "nuggetGold",
+						'b', "ingotSilver",
+						'c', "dustPyrotheum"));
+
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExAstrisItem.sieveUpgradeItem, 2, 1), "aba", "bcb", "aba",
+						'a', "nuggetGold",
+						'b', "ingotSilver",
+						'c', "gemDiamond"));
 			}
 			
 			
