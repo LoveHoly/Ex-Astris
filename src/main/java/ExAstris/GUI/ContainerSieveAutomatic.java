@@ -1,17 +1,22 @@
 package ExAstris.GUI;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import ExAstris.Block.TileEntity.TileEntitySieveAutomatic;
 import ExAstris.Slot.SlotClosed;
 import ExAstris.Slot.SlotSieveAutomatic;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
 public class ContainerSieveAutomatic extends Container 
 {
 	public TileEntitySieveAutomatic sieve;
+	private int lastEnergy;
+	
 	public ContainerSieveAutomatic(InventoryPlayer invPlayer,
 			TileEntitySieveAutomatic entity) 
 	{
@@ -95,6 +100,28 @@ public class ContainerSieveAutomatic extends Container
 			slot.onPickupFromSlot(player, stackInSlot);
 		}
 		return stack;
+	}
+	
+	@Override
+	public void detectAndSendChanges()
+	{
+		super.detectAndSendChanges();
+		for (int i = 0; i < this.crafters.size(); i++)
+		{
+			ICrafting icrafting = (ICrafting) this.crafters.get(i);
+			if (this.lastEnergy != sieve.getEnergyStored(null))
+			{
+				icrafting.sendProgressBarUpdate(this, 0, sieve.getEnergyStored(null));
+			}
+		}
+		this.lastEnergy = sieve.getEnergyStored(null);
+	}
+	
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void updateProgressBar(int par1, int par2)
+	{
+		sieve.setEnergyStored(par2);
 	}
 
 }

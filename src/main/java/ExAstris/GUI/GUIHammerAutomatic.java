@@ -7,12 +7,9 @@ import org.lwjgl.opengl.GL11;
 
 import ExAstris.Block.TileEntity.TileEntityHammerAutomatic;
 import ExAstris.Block.TileEntity.TileEntityHammerAutomatic.HammerMode;
-import ExAstris.Block.TileEntity.TileEntitySieveAutomatic;
-import ExAstris.Block.TileEntity.TileEntitySieveAutomatic.SieveMode;
 import ExAstris.Data.ModData;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
 import net.minecraft.util.ResourceLocation;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

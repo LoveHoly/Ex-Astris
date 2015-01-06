@@ -486,4 +486,9 @@ public class TileEntityHammerAutomatic extends TileEntity  implements IEnergyHan
 		return this.volume;
 	}
 
+	public void setEnergyStored(int energy)
+	{
+		storage.setEnergyStored(energy);
+	}
+
 }

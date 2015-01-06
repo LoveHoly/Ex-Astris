@@ -551,4 +551,9 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 			return multiplier;
 		}
 	}
+
+	public void setEnergyStored(int energy) 
+	{
+		this.storage.setEnergyStored(energy);
+	}
 }
