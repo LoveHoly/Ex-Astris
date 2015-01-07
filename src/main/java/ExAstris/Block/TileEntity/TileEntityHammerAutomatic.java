@@ -295,9 +295,9 @@ public class TileEntityHammerAutomatic extends TileEntity  implements IEnergyHan
 	public void closeInventory() {}
 
 	@Override
-	public boolean isItemValidForSlot(int p_94041_1_, ItemStack p_94041_2_) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean isItemValidForSlot(int slot, ItemStack stack) 
+	{
+		return this.canInsertItem(slot, stack, 0); //Side is irrelevant here
 	}
 
 	@Override
