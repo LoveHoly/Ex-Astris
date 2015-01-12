@@ -1,15 +1,21 @@
 package ExAstris.Block.TileEntity;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Random;
-
+import ExAstris.Data.ModData;
+import ExAstris.ExAstrisItem;
+import cofh.api.energy.EnergyStorage;
+import cofh.api.energy.IEnergyHandler;
+import cofh.lib.util.helpers.ItemHelper;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import exnihilo.registries.HammerRegistry;
+import exnihilo.registries.helpers.Smashable;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityDiggingFX;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -18,16 +24,11 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
-import ExAstris.ExAstrisItem;
-import ExAstris.Data.ModData;
-import cofh.api.energy.EnergyStorage;
-import cofh.api.energy.IEnergyHandler;
-import cofh.lib.util.helpers.ItemHelper;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import exnihilo.registries.HammerRegistry;
-import exnihilo.registries.SieveRegistry;
-import exnihilo.registries.helpers.Smashable;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Random;
 
 public class TileEntityHammerAutomatic extends TileEntity  implements IEnergyHandler, ISidedInventory{
 
@@ -47,6 +48,8 @@ public class TileEntityHammerAutomatic extends TileEntity  implements IEnergyHan
 	private boolean particleMode;
 	private boolean update=false;
 	private static final int UPDATE_INTERVAL = 20;
+
+	private HashMap<ItemInfo, Boolean> registryCache = new HashMap<ItemInfo, Boolean>();
 
 	private int timer=0;
 
@@ -314,9 +317,19 @@ public class TileEntityHammerAutomatic extends TileEntity  implements IEnergyHan
 
 	@Override
 	public boolean canInsertItem(int slot, ItemStack item, int side) {
-		if (HammerRegistry.registered(Block.getBlockFromItem(item.getItem()),item.getItemDamage()) && slot == 0)
-		{
-			return true;
+		if (slot == 0) {
+			Boolean allowed = registryCache.get(new ItemInfo(item));
+			if (allowed == null) {
+				if (HammerRegistry.registered(Block.getBlockFromItem(item.getItem()), item.getItemDamage())) {
+					registryCache.put(new ItemInfo(item), true);
+					return true;
+				} else {
+					registryCache.put(new ItemInfo(item), false);
+				}
+			} else if (allowed) {
+				return true;
+			}
+			return false;
 		}
 		if (slot == 21)
 			return item.getItem() == ExAstrisItem.sieveUpgradeItem && item.getItemDamage() == 0;
@@ -489,6 +502,57 @@ public class TileEntityHammerAutomatic extends TileEntity  implements IEnergyHan
 	public void setEnergyStored(int energy)
 	{
 		storage.setEnergyStored(energy);
+	}
+
+	static class ItemInfo {
+		private int id;
+		private int subid;
+
+		public ItemInfo(int id) {
+			this.id = id;
+			this.subid = -1;
+		}
+
+		public ItemInfo(ItemStack itemStack) {
+			this.id = Item.getIdFromItem(itemStack.getItem());
+			this.subid = itemStack.getItemDamage();
+		}
+
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see java.lang.Object#hashCode()
+		 */
+		@Override
+		public int hashCode() {
+			final int prime = 31;
+			int result = 1;
+			result = prime * result + id;
+			result = prime * result + subid;
+			return result;
+		}
+
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see java.lang.Object#equals(java.lang.Object)
+		 */
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			ItemInfo other = (ItemInfo) obj;
+			if (id != other.id)
+				return false;
+			if (subid != other.subid)
+				return false;
+			return true;
+		}
+
 	}
 
 }

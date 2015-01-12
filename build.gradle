@@ -63,12 +63,14 @@ repositories {
 }
 
 dependencies {
-   compile name: 'CoFHLib', version: "${cofhlib_version}", ext: 'jar'
+    compile name: 'CoFHLib', version: "${cofhlib_version}", ext: 'jar'
 	compile name: 'CoFHCore', version: "${cofhcore_version}", ext: 'jar'
 	compile name: 'RedstoneArsenal', version: "${rars_version}", ext: 'jar'
 	compile name: 'ThermalExpansion', version: "${texpansion_version}", ext: 'jar'
 	compile name: 'ThermalFoundation', version: "${tfoundation_version}", ext: 'jar'
 	compile name: 'BloodMagic', version: "${bloodmagic_version}", ext: 'jar'
+
+    compile fileTree(dir: 'libs', include: ['*.jar', '*.zip'])
 }
 
 processResources
