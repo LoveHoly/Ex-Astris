@@ -9,10 +9,12 @@ import ExAstris.Item.ItemChiselStones;
 import ExAstris.Item.ItemDollThaumic;
 import ExAstris.Item.ItemHammerThaumium;
 import ExAstris.Item.ItemDollFreezing;
+import ExAstris.Item.ItemNugget;
 import ExAstris.Item.ItemOre;
 import ExAstris.Item.ItemSieveUpgrade;
 import ExAstris.Item.ItemUnchargedNetherStar;
 import net.minecraft.item.Item;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class ExAstrisItem {
 	public static Item DollThaumic;
@@ -53,6 +55,8 @@ public class ExAstrisItem {
 	public static Item sanguiniteOreItem;
 	
 	public static Item sieveUpgradeItem;
+	
+	public static Item nuggetElectricalSteel;
 	
 	public static Item chiselStone;
 	
@@ -154,6 +158,13 @@ public class ExAstrisItem {
 		{
 			chiselStone = new ItemChiselStones();
 			GameRegistry.registerItem(chiselStone, "chiselStone");
+		}
+		
+		if (Loader.isModLoaded("EnderIO"))
+		{
+			nuggetElectricalSteel = new ItemNugget();
+			GameRegistry.registerItem(nuggetElectricalSteel, "nuggetElectricalSteel");
+			OreDictionary.registerOre("nuggetElectricalSteel", nuggetElectricalSteel);
 		}
 	}
 }

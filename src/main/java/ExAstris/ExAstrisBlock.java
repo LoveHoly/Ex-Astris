@@ -73,7 +73,7 @@ public class ExAstrisBlock {
 			}
 		}
 		
-		if(Loader.isModLoaded("ThermalExpansion")) {
+		if(Loader.isModLoaded("ThermalFoundation") || Loader.isModLoaded("EnderIO")) {
 			SieveAutomatic = new BlockSieveAutomatic();
 			GameRegistry.registerBlock(SieveAutomatic, ItemBlockSieveAutomatic.class, BlockData.SIEVE_AUTOMATIC_KEY);
 			HammerAutomatic = new BlockHammerAutomatic();

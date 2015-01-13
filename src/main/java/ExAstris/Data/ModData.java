@@ -65,6 +65,10 @@ public class ModData {
 	public static String allowUpgradesKey = "allowUpgradesKey";
 	public static boolean allowHammerAutomatic;
 	public static String allowHammerAutomaticKey = "autoHammer";
+	public static boolean enableTERecipes;
+	public static String enableTERecipesKey = "enableTERecipes";
+	public static boolean enableEIORecipes;
+	public static String enableEIORecipesKey = "enableEIORecipes";
 	
 	
 	public static int hammerAutomaticBaseEnergy;
@@ -157,6 +161,9 @@ public class ModData {
 		hammerAutomaticBaseEnergy = config.get(categoryExAstris, hammerAutomaticBaseEnergyKey, 40, "Base RF/t that is consumed by the Automatic Hammerer").getInt();
 		allowUpgrades = config.get(categoryExAstris, allowUpgradesKey, true, "Allow Upgrades for Automatic Sieve/Hammer").getBoolean();
 		allowHammerAutomatic = config.get(categoryExAstris, allowHammerAutomaticKey, true, "Allow Automatic Hammerer").getBoolean();
+		enableTERecipes = config.get(categoryExAstris, enableTERecipesKey, true, "Enable Thermal Expansion/Foundation Recipes").getBoolean();
+		enableEIORecipes = config.get(categoryExAstris, enableEIORecipesKey, true, "Enable EnderIO Recipes").getBoolean();
+		
 		
 		//Redstone Arsenal
 		allowHammerRF  = config.get(categoryRedstoneArsenal, allowHammerRFKey, allowHammerRF, "Enable RF Hammer").getBoolean();

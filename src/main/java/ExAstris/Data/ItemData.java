@@ -20,4 +20,6 @@ public class ItemData {
 	
 	public static final String CHISEL_STONE_KEY = "chiselStone";
 	
+	public static final String NUGGET_KEY = "nuggetElectricalSteel";
+	
 }
