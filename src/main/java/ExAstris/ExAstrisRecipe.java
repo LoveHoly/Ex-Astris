@@ -238,7 +238,7 @@ public class ExAstrisRecipe {
 					"d d",
 					'a', "ingotElectricalSteel",
 					'b', new ItemStack(GameRegistry.findItem("exnihilo", "mesh"), 1, 0),
-					'c', "itemMachinePart",
+					'c', new ItemStack(GameRegistry.findItem("EnderIO", "itemMachinePart"), 1, 0),
 					'd', "nuggetElectricalSteel"));
 		}
 		
