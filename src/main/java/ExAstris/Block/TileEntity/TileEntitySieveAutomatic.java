@@ -1,10 +1,12 @@
 package ExAstris.Block.TileEntity;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Random;
 
 import ExAstris.ExAstrisItem;
+import ExAstris.ItemInfo;
 import ExAstris.Data.ModData;
 
 import cofh.api.energy.EnergyStorage;
@@ -52,6 +54,8 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 	private boolean update = false;
 	private boolean particleMode = false;
 
+	private HashMap<ItemInfo, Boolean> registryCache = new HashMap<ItemInfo, Boolean>();
+	
 	public enum SieveMode
 	{EMPTY(0), FILLED(1);
 	private SieveMode(int v){this.value = v;}
@@ -492,10 +496,26 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 
 	@Override
 	public boolean canInsertItem(int slot, ItemStack item, int side) {
-		if (SieveRegistry.Contains(Block.getBlockFromItem(item.getItem()),item.getItemDamage()) && slot == 0)
+		if (slot ==0)
 		{
-			//ExAstris.ExAstris.log.info("IMPORTANT INFO : slot "+slot+" side "+side);
-			return true;
+			Boolean allowed = registryCache.get(new ItemInfo(item));
+			if (allowed==null)
+			{
+				if (SieveRegistry.Contains(Block.getBlockFromItem(item.getItem()), item.getItemDamage()))
+				{
+					registryCache.put(new ItemInfo(item), true);
+					return true;
+				}
+				else
+				{
+					registryCache.put(new ItemInfo(item), false);
+					return false;
+				}
+			} else if (allowed)
+			{
+				return true;
+			}
+			return false;
 		}
 		if (slot == 21)
 			return item.getItem() == ExAstrisItem.sieveUpgradeItem && item.getItemDamage() == 0;

@@ -174,7 +174,7 @@ public class TileEntityHammerAutomatic extends TileEntity  implements IEnergyHan
 			}
 			else if (stackInProgress != null)
 			{
-			    spawnCrushParticles();
+				spawnCrushParticles();
 			}
 		}
 		else
@@ -184,18 +184,18 @@ public class TileEntityHammerAutomatic extends TileEntity  implements IEnergyHan
 
 		update = true;
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	private void spawnCrushParticles()
 	{
-        for (int i = 0; i < 10; i++)
-        {
-            EntityDiggingFX particle = new EntityDiggingFX(getWorldObj(), xCoord + 0.5, yCoord + 5d/16d, zCoord + 0.5, 0, 0, 0,
-                    Block.getBlockFromItem(stackInProgress.getItem()), stackInProgress.getItemDamage()
-            );
-            particle.setVelocity((worldObj.rand.nextDouble() / 2) - 0.25, 0, (worldObj.rand.nextDouble() / 2) - 0.25);
-            Minecraft.getMinecraft().effectRenderer.addEffect(particle);
-        }
+		for (int i = 0; i < 10; i++)
+		{
+			EntityDiggingFX particle = new EntityDiggingFX(getWorldObj(), xCoord + 0.5, yCoord + 5d/16d, zCoord + 0.5, 0, 0, 0,
+					Block.getBlockFromItem(stackInProgress.getItem()), stackInProgress.getItemDamage()
+					);
+			particle.setVelocity((worldObj.rand.nextDouble() / 2) - 0.25, 0, (worldObj.rand.nextDouble() / 2) - 0.25);
+			Minecraft.getMinecraft().effectRenderer.addEffect(particle);
+		}
 	}
 
 	private void update()
@@ -314,14 +314,18 @@ public class TileEntityHammerAutomatic extends TileEntity  implements IEnergyHan
 	public boolean canInsertItem(int slot, ItemStack item, int side) {
 		if (slot == 0) {
 			Boolean allowed = registryCache.get(new ItemInfo(item));
-			if (allowed == null) {
-				if (HammerRegistry.registered(Block.getBlockFromItem(item.getItem()), item.getItemDamage())) {
+			if (allowed == null) 
+			{
+				if (HammerRegistry.registered(Block.getBlockFromItem(item.getItem()), item.getItemDamage())) 
+				{
 					registryCache.put(new ItemInfo(item), true);
 					return true;
-				} else {
+				} else 
+				{
 					registryCache.put(new ItemInfo(item), false);
 				}
-			} else if (allowed) {
+			} else if (allowed) 
+			{
 				return true;
 			}
 			return false;
@@ -499,6 +503,6 @@ public class TileEntityHammerAutomatic extends TileEntity  implements IEnergyHan
 		storage.setEnergyStored(energy);
 	}
 
-	
+
 
 }
