@@ -15,9 +15,7 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -106,32 +104,5 @@ public class BlockSieveAutomatic extends BlockContainer{
 	{
 		player.openGui(ExAstris.ExAstris.instance, 0, world, x, y, z);
 		return true;
-	}
-
-	private boolean isHuman(EntityPlayer player)
-	{
-		boolean isHuman = (player instanceof EntityPlayerMP);
-
-		if (player.toString().contains("CoFH"))
-		{
-			isHuman = false;
-		}
-
-		return isHuman;
-	}
-
-	private void removeCurrentItem(EntityPlayer player)
-	{
-		ItemStack item = player.getCurrentEquippedItem();
-
-		if (!player.capabilities.isCreativeMode)
-		{
-			item.stackSize -= 1;
-			if (item.stackSize == 0)
-			{
-				item = null;
-			}
-		}
-
 	}
 }
