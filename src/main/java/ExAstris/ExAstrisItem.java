@@ -5,6 +5,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import ExAstris.Bridge.RedstoneArsenal;
 import ExAstris.Data.ItemData;
 import ExAstris.Data.ModData;
+import ExAstris.Item.ItemChiselStones;
 import ExAstris.Item.ItemDollThaumic;
 import ExAstris.Item.ItemHammerThaumium;
 import ExAstris.Item.ItemDollFreezing;
@@ -52,6 +53,8 @@ public class ExAstrisItem {
 	public static Item sanguiniteOreItem;
 	
 	public static Item sieveUpgradeItem;
+	
+	public static Item chiselStone;
 	
 	public static void registerItems()
 	{
@@ -145,6 +148,12 @@ public class ExAstrisItem {
 		{
 			sieveUpgradeItem = new ItemSieveUpgrade();
 			GameRegistry.registerItem(sieveUpgradeItem, "SieveUpgradeItem");
+		}
+		
+		if (Loader.isModLoaded("chisel"))
+		{
+			chiselStone = new ItemChiselStones();
+			GameRegistry.registerItem(chiselStone, "chiselStone");
 		}
 	}
 }

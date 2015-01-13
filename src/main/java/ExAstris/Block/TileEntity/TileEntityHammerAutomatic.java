@@ -2,6 +2,7 @@ package ExAstris.Block.TileEntity;
 
 import ExAstris.Data.ModData;
 import ExAstris.ExAstrisItem;
+import ExAstris.ItemInfo;
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyHandler;
 import cofh.lib.util.helpers.ItemHelper;
@@ -15,7 +16,6 @@ import net.minecraft.client.particle.EntityDiggingFX;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -28,18 +28,14 @@ import net.minecraftforge.common.util.ForgeDirection;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Random;
 
 public class TileEntityHammerAutomatic extends TileEntity  implements IEnergyHandler, ISidedInventory{
 
 	public EnergyStorage storage = new EnergyStorage(64000);
 	private int energyPerCycle = ModData.hammerAutomaticBaseEnergy;
 	private float processingInterval = 0.005f;
-	private static float updateInterval = 20;
-	private int speedLevel;
 	protected ItemStack[] inventory;
 	public HammerMode mode;
-	private static Random rand = new Random();
 	public Block content;
 	public int contentMeta;
 	public ItemStack stackInProgress;
@@ -63,7 +59,6 @@ public class TileEntityHammerAutomatic extends TileEntity  implements IEnergyHan
 	public TileEntityHammerAutomatic()
 	{
 		this.inventory = new ItemStack[getSizeInventory()];
-		this.speedLevel=0;
 		this.mode=HammerMode.EMPTY;
 	}
 
@@ -504,55 +499,6 @@ public class TileEntityHammerAutomatic extends TileEntity  implements IEnergyHan
 		storage.setEnergyStored(energy);
 	}
 
-	static class ItemInfo {
-		private int id;
-		private int subid;
-
-		public ItemInfo(int id) {
-			this.id = id;
-			this.subid = -1;
-		}
-
-		public ItemInfo(ItemStack itemStack) {
-			this.id = Item.getIdFromItem(itemStack.getItem());
-			this.subid = itemStack.getItemDamage();
-		}
-
-		/*
-		 * (non-Javadoc)
-		 *
-		 * @see java.lang.Object#hashCode()
-		 */
-		@Override
-		public int hashCode() {
-			final int prime = 31;
-			int result = 1;
-			result = prime * result + id;
-			result = prime * result + subid;
-			return result;
-		}
-
-		/*
-		 * (non-Javadoc)
-		 *
-		 * @see java.lang.Object#equals(java.lang.Object)
-		 */
-		@Override
-		public boolean equals(Object obj) {
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
-			if (getClass() != obj.getClass())
-				return false;
-			ItemInfo other = (ItemInfo) obj;
-			if (id != other.id)
-				return false;
-			if (subid != other.subid)
-				return false;
-			return true;
-		}
-
-	}
+	
 
 }

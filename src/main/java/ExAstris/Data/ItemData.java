@@ -18,4 +18,6 @@ public class ItemData {
 	
 	public static final String SIEVE_UPGRADE_NAME = "sieve_upgrade";
 	
+	public static final String CHISEL_STONE_KEY = "chiselStone";
+	
 }

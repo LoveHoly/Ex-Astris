@@ -142,5 +142,11 @@ public class ExAstris {
 			log.info("+++ - Found Natura!");
 			Natura.init();
 		}
+		
+		if (Loader.isModLoaded("chisel"))
+		{
+			log.info("+++ 0 Found Chisel!");
+			Chisel.init();
+		}
 	}
 }

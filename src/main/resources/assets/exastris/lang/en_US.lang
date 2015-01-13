@@ -206,3 +206,5 @@ exastris.block.SanguiniteDust.name=Sanguinite Ore Dust
 itemGroup.ExAstrisTab=Ex Astris Tab
 exastris.sieve_upgrade.0.name=Speed Upgrade
 exastris.sieve_upgrade.1.name=Fortune Upgrade
+exastris.chiselStone.0.name=Marble Stone
+exastris.chiselStone.1.name=Limestone Stone
