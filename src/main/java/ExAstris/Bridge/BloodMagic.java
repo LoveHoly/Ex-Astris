@@ -14,7 +14,7 @@ public class BloodMagic {
 	{
 		if(ModData.allowUnchargedNetherstar)
 		{
-			AltarRecipeRegistry.registerAltarRecipe(new ItemStack(Items.nether_star), new ItemStack(ExAstrisItem.UnchargedNetherStar), 4, 20000, 20, 20, true);
+			AltarRecipeRegistry.registerAltarRecipe(new ItemStack(Items.nether_star), new ItemStack(ExAstrisItem.UnchargedNetherStar), 4, 20000, 20, 20, false);
 		}
 	}
 }

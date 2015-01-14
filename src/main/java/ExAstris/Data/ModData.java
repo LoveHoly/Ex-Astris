@@ -6,7 +6,7 @@ import cpw.mods.fml.common.ModMetadata;
 public class ModData {
 	public static final String ID = "exastris";
 	public static final String NAME = "Ex Astris";
-	public static final String VERSION = "1.14";
+	public static final String VERSION = "1.15";
     public static final String DEPENDENCIES = "required-after:Forge@[10.13.0.1180,);required-after:exnihilo;after:ThermalExpansion;after:Thaumcraft;after:TConstruct;after:TSteelworks;after:RedstoneArsenal;after:RotaryCraft;after:Metallurgy;after:ThermalFoundation;after:EnderIO;after:chisel";
     
     public static void setMetadata(ModMetadata data)
