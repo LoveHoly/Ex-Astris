@@ -4,6 +4,7 @@ import java.util.List;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import exnihilo.items.ItemStone;
 import ExAstris.Data.ItemData;
 import ExAstris.Data.ModData;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -12,7 +13,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 
-public class ItemChiselStones extends Item {
+public class ItemChiselStones extends ItemStone {
 	
 	public IIcon[] icons = new IIcon[2];
 	

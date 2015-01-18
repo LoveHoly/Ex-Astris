@@ -38,6 +38,8 @@ public class ModData {
     public static String categoryMetallurgy="Metallurgy";
     public static String categoryBloodMagic="BloodMagic";
     public static String categoryNatura="natura";
+    public static String categoryBotania="Botania";
+    public static String categoryChisel="Chisel";
     
     //BLOCKS
     public static String allowThaumiumBarrelKey = "thaumiumBarrel";
@@ -135,6 +137,12 @@ public class ModData {
 	public static String allowNaturaPlantsKey = "naturaSifting";
 	public static boolean allowNaturaPlants = true;
 	
+	public static String allowBotaniaFertilizerKey = "fertilizer";
+	public static boolean allowBotaniaFertilizer = true;
+	
+	public static String allowChiselBlocksFromSiftingKey = "chiselBlocksFromSifting";
+	public static boolean allowChiselBlocksFromSifting = true;
+	
 	public static String[] oreType = { "Gravel","Sand","Dust" };
 
 	
@@ -199,6 +207,12 @@ public class ModData {
 		
 		//Natura
 		allowNaturaPlants = config.get(categoryNatura, allowNaturaPlantsKey, true, "Allow Natura Plants to be obtained via sifting").getBoolean();
+		
+		//Botania
+		allowBotaniaFertilizer = config.get(categoryBotania, allowBotaniaFertilizerKey, true, "Allow Floral Fertilizer to be obtained via sifting").getBoolean();
+		
+		//Chisel
+		allowChiselBlocksFromSifting = config.get(categoryChisel, allowChiselBlocksFromSiftingKey, true, "Allow Marble and Limestone stones to be obtained via sifting").getBoolean();
 	}
 	
 }
