@@ -145,8 +145,14 @@ public class ExAstris {
 		
 		if (Loader.isModLoaded("chisel"))
 		{
-			log.info("+++ 0 Found Chisel!");
+			log.info("+++ - Found Chisel!");
 			Chisel.init();
+		}
+		
+		if (Loader.isModLoaded("Botania"))
+		{
+			log.info("+++ - Found Botania!");
+			Botania.init();
 		}
 	}
 }
