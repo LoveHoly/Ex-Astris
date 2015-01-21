@@ -1,8 +1,10 @@
 package ExAstris.Bridge;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import exnihilo.data.ModData;
 import exnihilo.registries.HammerRegistry;
@@ -20,7 +22,7 @@ import tconstruct.library.tools.AbilityHelper;
 import tconstruct.library.tools.ToolCore;
 
 public class TConstructModifier extends ActiveToolMod {
-	
+
 	@Override
 	public boolean beforeBlockBreak (ToolCore tool, ItemStack item, int X, int Y, int Z, EntityLivingBase player)
 	{
@@ -30,14 +32,15 @@ public class TConstructModifier extends ActiveToolMod {
 			World world = player.worldObj;
 			Block block = world.getBlock(X,Y,Z);
 			world.getBlockMetadata(X, Y, Z);
+			boolean extraDropped = false;
+
 			if (!world.isRemote && block != null && block.isLeaves(world, X, Y, Z))
 			{
-						
 				if (ModData.ALLOW_SILKWORMS && world.rand.nextInt(130) == 0)
 				{
 					world.spawnEntityInWorld(new EntityItem(world, X + 0.5D, Y + 0.5D, Z + 0.5D, new ItemStack(GameRegistry.findItem("exnihilo", "silkworm"), 1, 0)));
 				}
-					
+
 				if (block.equals(GameRegistry.findBlock("exnihilo", "infested_leaves")))
 				{
 					if (ModData.ALLOW_SILKWORMS && world.rand.nextInt(20) == 0)
@@ -45,11 +48,43 @@ public class TConstructModifier extends ActiveToolMod {
 						world.spawnEntityInWorld(new EntityItem(world, X + 0.5D, Y + 0.5D, Z + 0.5D, new ItemStack(GameRegistry.findItem("exnihilo", "silkworm"), 1, 0)));
 					}
 				}
-					
-				AbilityHelper.damageTool(item, 1, player, false);
+
+				if (Loader.isModLoaded("Forestry"))
+				{
+					//Taken from Ex Nihilo. Thanks Forestry.
+					Class forestryLeafBlock = null;
+					try {
+						forestryLeafBlock = Class.forName("forestry.arboriculture.gadgets.BlockLeaves");
+
+						Method dropStuff = null;
+						if (forestryLeafBlock != null)
+						{
+							dropStuff = forestryLeafBlock.getDeclaredMethod("spawnLeafDrops", World.class, int.class, int.class, int.class, int.class, float.class, boolean.class);
+							dropStuff.setAccessible(true);
+						}
+
+						if (dropStuff != null)
+						{
+							//This gets called once here, and then it drops stuff again when it breaks.
+							dropStuff.invoke(forestryLeafBlock.newInstance(), world, X, Y, Z, world.getBlockMetadata(X, Y, Z), 1.0F, true);
+							extraDropped = true;
+						}
+					}
+					catch (Exception ex)
+					{
+						ExAstris.ExAstris.log.error("Failed to get spawnLeafDrops from Forestry BlockLeaves class");
+						ex.printStackTrace();
+					}
+				}
+
+				if (!extraDropped)
+					block.dropBlockAsItem(world, X, Y, Z, world.getBlockMetadata(X, Y, Z), 0);
+
+				AbilityHelper.onBlockChanged(item, world, block, X, Y, Z, player, AbilityHelper.random);
 			}
 			return false;
 		}
+
 		if (tags.getBoolean("Hammered"))
 		{
 			World world = player.worldObj;
@@ -59,7 +94,7 @@ public class TConstructModifier extends ActiveToolMod {
 
 			ArrayList<Smashable> rewards = HammerRegistry.getRewards(block, blockMeta);
 			boolean validTarget = false;
-			
+
 			if (!rewards.isEmpty())
 			{
 				Iterator<Smashable> it = rewards.iterator();
@@ -84,8 +119,8 @@ public class TConstructModifier extends ActiveToolMod {
 
 				if (validTarget)
 				{
-					AbilityHelper.damageTool(item, 1, player, false);
-					
+					AbilityHelper.onBlockChanged(item, world, block, X, Y, Z, player, AbilityHelper.random);
+
 					if (!world.isRemote)
 					{
 						world.setBlockToAir(X, Y, Z);
@@ -101,14 +136,14 @@ public class TConstructModifier extends ActiveToolMod {
 		}
 		return false;
 	}
-	
+
 	@Override
 	public int attackDamage (int modDamage, int currentDamage, ToolCore tool, NBTTagCompound tags, NBTTagCompound toolTags, ItemStack stack, EntityLivingBase player, Entity entity)
-    {
+	{
 		if (toolTags.hasKey("Crooked"))
 		{
 			return 0;
 		}
 		else return currentDamage;
-    }
+	}
 }
