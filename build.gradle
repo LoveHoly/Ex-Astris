@@ -24,13 +24,16 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.16"
+version = "MC${minecraft_version}-${mod_version}-${System.getenv().BUILDNUMBER)"
 group= "exastris"
 archivesBaseName = "Ex-Astris"
 
 minecraft {
     version = "1.7.10-10.13.2.1236"
     assetDir = "eclipse/assets"
+	 
+	 replace "@VERSION@", project.version
+	 replaceIn "ModData.java"
 	
 }
 
