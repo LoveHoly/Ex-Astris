@@ -24,7 +24,7 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "MC${minecraft_version}-${mod_version}-${System.getenv().BUILDNUMBER)"
+version = "MC${minecraft_version}-${mod_version}-${System.getenv().BUILDNUMBER}"
 group= "exastris"
 archivesBaseName = "Ex-Astris"
 
