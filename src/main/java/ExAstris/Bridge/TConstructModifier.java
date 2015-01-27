@@ -1,14 +1,10 @@
 package ExAstris.Bridge;
 
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import ExAstris.Util.CrookUtils;
 
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.registry.GameRegistry;
-import exnihilo.data.ModData;
 import exnihilo.registries.HammerRegistry;
 import exnihilo.registries.helpers.Smashable;
 import net.minecraft.block.Block;

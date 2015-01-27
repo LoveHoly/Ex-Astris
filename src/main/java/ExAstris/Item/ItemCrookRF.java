@@ -15,8 +15,9 @@ import redstonearsenal.item.tool.ItemToolRF;
 
 public class ItemCrookRF extends ItemToolRF {
 	
-	public static IIcon itemIcon;
-	public static IIcon empoweredIcon;
+	public IIcon itemIcon;
+	public IIcon empoweredIcon;
+	public IIcon drainedIcon;
 	
 	
 	public ItemCrookRF()
@@ -67,7 +68,7 @@ public class ItemCrookRF extends ItemToolRF {
 		if (isEmpowered(item))
 			return efficiencyOnProperMaterial * 3.0f;
 		else if (getEnergyStored(item) >= getEnergyPerUse(item))
-			return efficiencyOnProperMaterial * 1.0f;
+			return efficiencyOnProperMaterial * 0.4f;
 		
 		return 0.5f;
 	}
@@ -77,12 +78,13 @@ public class ItemCrookRF extends ItemToolRF {
 	{
 		this.itemIcon = register.registerIcon(ModData.TEXTURE_LOCATION + ":CrookRF");
 	    this.empoweredIcon = register.registerIcon(ModData.TEXTURE_LOCATION + ":CrookRF_Active");
+	    this.drainedIcon = register.registerIcon(ModData.TEXTURE_LOCATION+":CrookRF_Drained");
 	}
 	
 	@Override
 	public IIcon getIcon(ItemStack paramItemStack, int paramInt)
 	{
-		return getEnergyStored(paramItemStack) <= 0 ? this.itemIcon : isEmpowered(paramItemStack) ? this.empoweredIcon : this.itemIcon;
+		return getEnergyStored(paramItemStack) <= 0 ? this.drainedIcon : isEmpowered(paramItemStack) ? this.empoweredIcon : this.itemIcon;
 	}
 	
 	public EnumRarity getRarity()

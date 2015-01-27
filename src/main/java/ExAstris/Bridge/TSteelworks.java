@@ -2,12 +2,10 @@ package ExAstris.Bridge;
 
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import ExAstris.Data.ModData;
 import ExAstris.Data.MoltenData;
 import tconstruct.smeltery.TinkerSmeltery;
-import toops.tsteelworks.api.highoven.ISmeltingRegistry;
 import tsteelworks.lib.registry.AdvancedSmelting;
 
 
