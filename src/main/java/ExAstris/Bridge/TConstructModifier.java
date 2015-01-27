@@ -4,6 +4,8 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import ExAstris.Util.CrookUtils;
+
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import exnihilo.data.ModData;
@@ -14,6 +16,7 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
@@ -32,56 +35,12 @@ public class TConstructModifier extends ActiveToolMod {
 			World world = player.worldObj;
 			Block block = world.getBlock(X,Y,Z);
 			world.getBlockMetadata(X, Y, Z);
-			boolean extraDropped = false;
 
-			if (!world.isRemote && block != null && block.isLeaves(world, X, Y, Z))
-			{
-				if (ModData.ALLOW_SILKWORMS && world.rand.nextInt(130) == 0)
-				{
-					world.spawnEntityInWorld(new EntityItem(world, X + 0.5D, Y + 0.5D, Z + 0.5D, new ItemStack(GameRegistry.findItem("exnihilo", "silkworm"), 1, 0)));
-				}
+			boolean valid = CrookUtils.doCrooking(item, X, Y, Z, (EntityPlayer) player);
 
-				if (block.equals(GameRegistry.findBlock("exnihilo", "infested_leaves")))
-				{
-					if (ModData.ALLOW_SILKWORMS && world.rand.nextInt(20) == 0)
-					{
-						world.spawnEntityInWorld(new EntityItem(world, X + 0.5D, Y + 0.5D, Z + 0.5D, new ItemStack(GameRegistry.findItem("exnihilo", "silkworm"), 1, 0)));
-					}
-				}
-
-				if (Loader.isModLoaded("Forestry"))
-				{
-					//Taken from Ex Nihilo. Thanks Forestry.
-					Class forestryLeafBlock = null;
-					try {
-						forestryLeafBlock = Class.forName("forestry.arboriculture.gadgets.BlockLeaves");
-
-						Method dropStuff = null;
-						if (forestryLeafBlock != null)
-						{
-							dropStuff = forestryLeafBlock.getDeclaredMethod("spawnLeafDrops", World.class, int.class, int.class, int.class, int.class, float.class, boolean.class);
-							dropStuff.setAccessible(true);
-						}
-
-						if (dropStuff != null)
-						{
-							//This gets called once here, and then it drops stuff again when it breaks.
-							dropStuff.invoke(forestryLeafBlock.newInstance(), world, X, Y, Z, world.getBlockMetadata(X, Y, Z), 1.0F, true);
-							extraDropped = true;
-						}
-					}
-					catch (Exception ex)
-					{
-						ExAstris.ExAstris.log.error("Failed to get spawnLeafDrops from Forestry BlockLeaves class");
-						ex.printStackTrace();
-					}
-				}
-
-				if (!extraDropped)
-					block.dropBlockAsItem(world, X, Y, Z, world.getBlockMetadata(X, Y, Z), 0);
-
+			if (valid)
 				AbilityHelper.onBlockChanged(item, world, block, X, Y, Z, player, AbilityHelper.random);
-			}
+
 			return false;
 		}
 

@@ -6,6 +6,7 @@ import ExAstris.Bridge.RedstoneArsenal;
 import ExAstris.Data.ItemData;
 import ExAstris.Data.ModData;
 import ExAstris.Item.ItemChiselStones;
+import ExAstris.Item.ItemCrookRF;
 import ExAstris.Item.ItemDollThaumic;
 import ExAstris.Item.ItemHammerThaumium;
 import ExAstris.Item.ItemDollFreezing;
@@ -22,6 +23,7 @@ public class ExAstrisItem {
 	public static Item HammerRF;
 	public static Item DollFreezing;
 	public static Item UnchargedNetherStar;
+	public static Item CrookRF;
 	
 	//TConstruct Nether ores
 	public static Item cobaltOreItem;
@@ -75,8 +77,16 @@ public class ExAstrisItem {
 		}
 		if(Loader.isModLoaded("RedstoneArsenal"))
 		{
-			HammerRF = RedstoneArsenal.HammerRF();
-			GameRegistry.registerItem(HammerRF, ItemData.HAMMER_RF_UNLOCALIZED_NAME);
+			if (ModData.allowHammerRF)
+			{
+				HammerRF = RedstoneArsenal.HammerRF();
+				GameRegistry.registerItem(HammerRF, ItemData.HAMMER_RF_UNLOCALIZED_NAME);
+			}
+			if (ModData.allowCrookRF)
+			{
+				CrookRF = new ItemCrookRF();
+				GameRegistry.registerItem(CrookRF, ItemData.CROOK_RF_UNLOCALIZED_NAME);
+			}
 		}
 		
 				

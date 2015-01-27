@@ -85,6 +85,13 @@ public class ModData {
 
 	public static String allowHammerRFKey = "fluxHammer";
 	public static boolean allowHammerRF = true;
+	
+	public static String allowCrookRFKey = "fluxCrook";
+	public static boolean allowCrookRF = true;
+	public static String crookEnergyUsagePoweredKey = "fluxCrookEnergyUsagePowered";
+	public static int crookEnergyUsagePowered = 1200;
+	public static String crookEnergyUsageUnpoweredKey = "fluxCrookEnergyUsageUnpowered";
+	public static int crookEnergyUsageUnpowered = 400;
 
 	public static String allowHammerThaumiumKey = "thaumiumHammer";
 	public static boolean allowHammerThaumium = true;
@@ -176,7 +183,9 @@ public class ModData {
 		//Redstone Arsenal
 		allowHammerRF  = config.get(categoryRedstoneArsenal, allowHammerRFKey, allowHammerRF, "Enable RF Hammer").getBoolean();
 		allowDollFreezing  = config.get(categoryRedstoneArsenal, allowDollFreezingKey, allowDollFreezing, "Enable Freezing Doll").getBoolean();
-		
+		allowCrookRF = config.get(categoryRedstoneArsenal, allowCrookRFKey, allowCrookRF, "Enable RF Crook").getBoolean();
+		crookEnergyUsagePowered = config.get(categoryRedstoneArsenal, crookEnergyUsagePoweredKey, crookEnergyUsagePowered, "RF Consumption per block broken for RF Crook when empowered").getInt();
+		crookEnergyUsageUnpowered = config.get(categoryRedstoneArsenal, crookEnergyUsageUnpoweredKey, crookEnergyUsageUnpowered, "RF Consumption per block broken for RF Crook when unpowered").getInt();
 		//Blood Magic
 		allowUnchargedNetherstar  = config.get(categoryBloodMagic, allowUnchargedNetherstarKey, allowUnchargedNetherstar, "Enable Uncharged Nether Star").getBoolean();
 		

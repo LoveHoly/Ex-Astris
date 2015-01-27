@@ -57,6 +57,7 @@ exastris.block.ArditeGravel.name=Ardite Ore Gravel
 exastris.block.ArditeSand.name=Ardite Ore Sand
 exastris.block.ArditeDust.name=Ardite Ore Dust
 exastris.hammer_rf.name=Flux-Infused Hammer
+exastris.crook_rf.name=Flux-Infused Crook
 exastris.sieve_automatic.name=Automatic Sieve
 exastris.hammer_automatic.name=Automatic Hammerer
 exastris.uncharged_netherstar.name=Uncharged Nether Star
