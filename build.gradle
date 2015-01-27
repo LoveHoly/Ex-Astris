@@ -62,19 +62,29 @@ repositories {
 		name "ThermalFoundation"
         artifactPattern "http://addons.curse.cursecdn.com/files/2212/444/[module]-[revision].[ext]"
     }
-	 ivy {
+	ivy {
 		name "BloodMagic"
 			artifactPattern "http://addons.cursecdn.com/files/2222/331/[module]-[revision].[ext]"
 	 }
+	maven { url "http://tehnut.info/maven/" }
+	maven { url = "http://mobiusstrip.eu/maven/" } // Waila
+	maven { url = "http://chickenbones.net/maven/" } // CCC & NEI
+   maven { url = "http://dvs1.progwml6.com/files/maven/" } // TCon and Mantle
 }
 
 dependencies {
-    compile name: 'CoFHLib', version: "${cofhlib_version}", ext: 'jar'
+   compile name: 'CoFHLib', version: "${cofhlib_version}", ext: 'jar'
 	compile name: 'CoFHCore', version: "${cofhcore_version}", ext: 'jar'
 	compile name: 'RedstoneArsenal', version: "${rars_version}", ext: 'jar'
 	compile name: 'ThermalExpansion', version: "${texpansion_version}", ext: 'jar'
 	compile name: 'ThermalFoundation', version: "${tfoundation_version}", ext: 'jar'
 	compile name: 'BloodMagic', version: "${bloodmagic_version}", ext: 'jar'
+
+	compile "nf.fr.ephys.cookiecore:CookieCore:1.7.10-1.3.1-4:deobf"
+	compile "nf.fr.ephys.tsteelworks:TSteelworks:1.7.10-1.1.0-4:deobf"
+	compile "tconstruct:TConstruct:1.7.10-1.8.2.build876:deobf"
+	compile "mcp.mobius.waila:Waila:1.5.8a_1.7.10:dev"
+	compile "codechicken:CodeChickenCore:1.7.10-1.0.4.35:dev"
 
     compile fileTree(dir: 'libs', include: ['*.jar', '*.zip'])
 }
