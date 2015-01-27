@@ -66,9 +66,9 @@ public class ExAstrisRecipe {
 			if (ModData.allowCrookRF)
 			{
 				GameRegistry.addRecipe(new ShapedOreRecipe( new ItemStack(ExAstrisItem.CrookRF, 1, 0), 
-						"xx ",
-						"yxy",
-						"yxy",
+						"xxy",
+						" x ",
+						"yx ",
 						'x', new ItemStack(GameRegistry.findItem("RedstoneArsenal", "material"), 1, 192),
 						'y', "gemCrystalFlux"));
 			}
