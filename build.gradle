@@ -37,6 +37,9 @@ minecraft {
 	
 }
 
+sourceCompatibility = 7
+targetCompatibility = 7
+
 repositories {
     maven { url 'http://maven.tterrag.com/' }
 	ivy {
