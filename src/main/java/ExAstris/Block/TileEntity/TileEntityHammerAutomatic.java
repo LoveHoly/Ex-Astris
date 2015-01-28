@@ -1,8 +1,8 @@
 package ExAstris.Block.TileEntity;
 
 import ExAstris.Data.ModData;
+import ExAstris.Util.HammerUtils;
 import ExAstris.ExAstrisItem;
-import ExAstris.ItemInfo;
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyHandler;
 import cofh.lib.util.helpers.ItemHelper;
@@ -26,7 +26,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 
 public class TileEntityHammerAutomatic extends TileEntity  implements IEnergyHandler, ISidedInventory{
@@ -44,8 +43,6 @@ public class TileEntityHammerAutomatic extends TileEntity  implements IEnergyHan
 	private boolean particleMode;
 	private boolean update=false;
 	private static final int UPDATE_INTERVAL = 20;
-
-	private HashMap<ItemInfo, Boolean> registryCache = new HashMap<ItemInfo, Boolean>();
 
 	private int timer=0;
 
@@ -80,7 +77,7 @@ public class TileEntityHammerAutomatic extends TileEntity  implements IEnergyHan
 			if (mode == HammerMode.EMPTY && inventory[0] != null)
 			{
 				ItemStack held = inventory[0];
-				if (HammerRegistry.registered(Block.getBlockFromItem(held.getItem()), held.getItemDamage()))
+				if (HammerUtils.registered(held))
 				{
 					addHammerable(Block.getBlockFromItem(held.getItem()), held.getItemDamage());
 					stackInProgress = held.copy();
@@ -312,23 +309,9 @@ public class TileEntityHammerAutomatic extends TileEntity  implements IEnergyHan
 
 	@Override
 	public boolean canInsertItem(int slot, ItemStack item, int side) {
-		if (slot == 0) {
-			Boolean allowed = registryCache.get(new ItemInfo(item));
-			if (allowed == null) 
-			{
-				if (HammerRegistry.registered(Block.getBlockFromItem(item.getItem()), item.getItemDamage())) 
-				{
-					registryCache.put(new ItemInfo(item), true);
-					return true;
-				} else 
-				{
-					registryCache.put(new ItemInfo(item), false);
-				}
-			} else if (allowed) 
-			{
-				return true;
-			}
-			return false;
+		if (slot == 0) 
+		{
+			return HammerUtils.registered(item);
 		}
 		if (slot == 21)
 			return item.getItem() == ExAstrisItem.sieveUpgradeItem && item.getItemDamage() == 0;

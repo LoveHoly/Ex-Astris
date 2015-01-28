@@ -1,13 +1,12 @@
 package ExAstris.Block.TileEntity;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Random;
 
 import ExAstris.ExAstrisItem;
-import ExAstris.ItemInfo;
 import ExAstris.Data.ModData;
+import ExAstris.Util.SieveUtils;
 
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyHandler;
@@ -53,8 +52,6 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 	private int timer = 0;
 	private boolean update = false;
 	private boolean particleMode = false;
-
-	private HashMap<ItemInfo, Boolean> registryCache = new HashMap<ItemInfo, Boolean>();
 	
 	public enum SieveMode
 	{EMPTY(0), FILLED(1);
@@ -117,7 +114,7 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 			if (mode == SieveMode.EMPTY && inventory[0] != null)
 			{
 				ItemStack held = inventory[0];
-				if (SieveRegistry.Contains(Block.getBlockFromItem(held.getItem()), held.getItemDamage()))
+				if (SieveUtils.registered(held))
 				{
 					addSievable(Block.getBlockFromItem(held.getItem()), held.getItemDamage());
 					decrStackSize(0,1);
@@ -498,24 +495,7 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 	public boolean canInsertItem(int slot, ItemStack item, int side) {
 		if (slot ==0)
 		{
-			Boolean allowed = registryCache.get(new ItemInfo(item));
-			if (allowed==null)
-			{
-				if (SieveRegistry.Contains(Block.getBlockFromItem(item.getItem()), item.getItemDamage()))
-				{
-					registryCache.put(new ItemInfo(item), true);
-					return true;
-				}
-				else
-				{
-					registryCache.put(new ItemInfo(item), false);
-					return false;
-				}
-			} else if (allowed)
-			{
-				return true;
-			}
-			return false;
+			return SieveUtils.registered(item);
 		}
 		if (slot == 21)
 			return item.getItem() == ExAstrisItem.sieveUpgradeItem && item.getItemDamage() == 0;

@@ -1,13 +1,10 @@
 package ExAstris.Item;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Set;
-
 import ExAstris.Data.ItemData;
 import ExAstris.Data.ModData;
+import ExAstris.Util.HammerUtils;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -25,8 +22,7 @@ public class ItemHammerRF extends ItemToolRF {
 	  IIcon activeIcon;
 	  IIcon drainedIcon;
 	//public static Set blocksEffectiveAgainst = Sets.newHashSet(new Block[]{});
-	  private static Set<Block> effectiveBlocks = new HashSet<Block>(Arrays.asList(HammerRegistry.getBlocks()));
-
+	 
 	public ItemHammerRF() 
 	{
 		super(RAItems.TOOL_MATERIAL_FLUX);
@@ -37,7 +33,7 @@ public class ItemHammerRF extends ItemToolRF {
 	@Override
 	public boolean func_150897_b(Block block)
 	{
-		return effectiveBlocks.contains(block);
+		return HammerUtils.registered(block);
 	}
 
 	@Override

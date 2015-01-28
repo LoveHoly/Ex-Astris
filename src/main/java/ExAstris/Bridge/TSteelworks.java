@@ -7,6 +7,7 @@ import net.minecraftforge.fluids.FluidStack;
 import ExAstris.Data.ModData;
 import ExAstris.Data.MoltenData;
 import tconstruct.smeltery.TinkerSmeltery;
+import toops.tsteelworks.api.PluginFactory;
 import toops.tsteelworks.api.highoven.ISmeltingRegistry;
 
 
@@ -20,12 +21,13 @@ public class TSteelworks {
 	}
 	public static void addMeltingRecipe()
 	{
+		ISmeltingRegistry Instance = (ISmeltingRegistry) PluginFactory.getInstance(ISmeltingRegistry.class);
 		if(Loader.isModLoaded("TConstruct") && ModData.allowAddTConstructNetherOre)
 		{
 			//AdvancedSmelting.addMelting(GameRegistry.findBlock("exastris", "CobaltOreBlock"), 2, 650, new FluidStack(TinkerSmeltery.moltenCobaltFluid, MoltenData.ingotCostHighoven), true);
 			//AdvancedSmelting.addMelting(GameRegistry.findBlock("exastris", "ArditeOreBlock"), 2, 650, new FluidStack(TinkerSmeltery.moltenArditeFluid, MoltenData.ingotCostHighoven), true);
-			ISmeltingRegistry.INSTANCE.addMeltable(new ItemStack(GameRegistry.findBlock("exastris", "CobaltOreBlock"), 2), true, new FluidStack(TinkerSmeltery.moltenCobaltFluid, MoltenData.ingotCostHighoven), 650);
-			ISmeltingRegistry.INSTANCE.addMeltable(new ItemStack(GameRegistry.findBlock("exastris", "ArditeOreBlock"), 2), true, new FluidStack(TinkerSmeltery.moltenArditeFluid, MoltenData.ingotCostHighoven), 650);
+			Instance.addMeltable(new ItemStack(GameRegistry.findBlock("exastris", "CobaltOreBlock"), 2), true, new FluidStack(TinkerSmeltery.moltenCobaltFluid, MoltenData.ingotCostHighoven), 650);
+			Instance.addMeltable(new ItemStack(GameRegistry.findBlock("exastris", "ArditeOreBlock"), 2), true, new FluidStack(TinkerSmeltery.moltenArditeFluid, MoltenData.ingotCostHighoven), 650);
 		}
 		
 		/*AdvancedSmelting.addMelting(GameRegistry.findBlock("exnihilo", "iron_dust"),0, 600, new FluidStack(TinkerSmeltery.moltenIronFluid, MoltenData.ingotCostHighoven), true);
@@ -38,15 +40,15 @@ public class TSteelworks {
 		AdvancedSmelting.addMelting(GameRegistry.findBlock("exnihilo", "platinum_dust"),0, 400, new FluidStack(TinkerSmeltery.moltenShinyFluid, MoltenData.ingotCostHighoven), true);
 		AdvancedSmelting.addMelting(GameRegistry.findBlock("exnihilo", "aluminum_dust"),0, 400, new FluidStack(TinkerSmeltery.moltenAluminumFluid, MoltenData.ingotCostHighoven), true);*/
 		
-		ISmeltingRegistry.INSTANCE.addMeltable(new ItemStack(GameRegistry.findBlock("exastris", "iron_dust"), 0), true, new FluidStack(TinkerSmeltery.moltenIronFluid, MoltenData.ingotCostHighoven), 600);
-		ISmeltingRegistry.INSTANCE.addMeltable(new ItemStack(GameRegistry.findBlock("exastris", "gold_dust"), 0), true, new FluidStack(TinkerSmeltery.moltenGoldFluid, MoltenData.ingotCostHighoven), 400);
-		ISmeltingRegistry.INSTANCE.addMeltable(new ItemStack(GameRegistry.findBlock("exastris", "copper_dust"), 0), true, new FluidStack(TinkerSmeltery.moltenCopperFluid, MoltenData.ingotCostHighoven), 550);
-		ISmeltingRegistry.INSTANCE.addMeltable(new ItemStack(GameRegistry.findBlock("exastris", "tin_dust"), 0), true, new FluidStack(TinkerSmeltery.moltenTinFluid, MoltenData.ingotCostHighoven), 400);
-		ISmeltingRegistry.INSTANCE.addMeltable(new ItemStack(GameRegistry.findBlock("exastris", "silver_dust"), 0), true, new FluidStack(TinkerSmeltery.moltenSilverFluid, MoltenData.ingotCostHighoven), 400);
-		ISmeltingRegistry.INSTANCE.addMeltable(new ItemStack(GameRegistry.findBlock("exastris", "lead_dust"), 0), true, new FluidStack(TinkerSmeltery.moltenLeadFluid, MoltenData.ingotCostHighoven), 400);
-		ISmeltingRegistry.INSTANCE.addMeltable(new ItemStack(GameRegistry.findBlock("exastris", "nickel_dust"), 0), true, new FluidStack(TinkerSmeltery.moltenNickelFluid, MoltenData.ingotCostHighoven), 400);
-		ISmeltingRegistry.INSTANCE.addMeltable(new ItemStack(GameRegistry.findBlock("exastris", "platinum_dust"), 0), true, new FluidStack(TinkerSmeltery.moltenShinyFluid, MoltenData.ingotCostHighoven), 400);
-		ISmeltingRegistry.INSTANCE.addMeltable(new ItemStack(GameRegistry.findBlock("exastris", "aluminum_dust"), 0), true, new FluidStack(TinkerSmeltery.moltenAluminumFluid, MoltenData.ingotCostHighoven), 400);
+		Instance.addMeltable(new ItemStack(GameRegistry.findBlock("exastris", "iron_dust"), 0), true, new FluidStack(TinkerSmeltery.moltenIronFluid, MoltenData.ingotCostHighoven), 600);
+		Instance.addMeltable(new ItemStack(GameRegistry.findBlock("exastris", "gold_dust"), 0), true, new FluidStack(TinkerSmeltery.moltenGoldFluid, MoltenData.ingotCostHighoven), 400);
+		Instance.addMeltable(new ItemStack(GameRegistry.findBlock("exastris", "copper_dust"), 0), true, new FluidStack(TinkerSmeltery.moltenCopperFluid, MoltenData.ingotCostHighoven), 550);
+		Instance.addMeltable(new ItemStack(GameRegistry.findBlock("exastris", "tin_dust"), 0), true, new FluidStack(TinkerSmeltery.moltenTinFluid, MoltenData.ingotCostHighoven), 400);
+		Instance.addMeltable(new ItemStack(GameRegistry.findBlock("exastris", "silver_dust"), 0), true, new FluidStack(TinkerSmeltery.moltenSilverFluid, MoltenData.ingotCostHighoven), 400);
+		Instance.addMeltable(new ItemStack(GameRegistry.findBlock("exastris", "lead_dust"), 0), true, new FluidStack(TinkerSmeltery.moltenLeadFluid, MoltenData.ingotCostHighoven), 400);
+		Instance.addMeltable(new ItemStack(GameRegistry.findBlock("exastris", "nickel_dust"), 0), true, new FluidStack(TinkerSmeltery.moltenNickelFluid, MoltenData.ingotCostHighoven), 400);
+		Instance.addMeltable(new ItemStack(GameRegistry.findBlock("exastris", "platinum_dust"), 0), true, new FluidStack(TinkerSmeltery.moltenShinyFluid, MoltenData.ingotCostHighoven), 400);
+		Instance.addMeltable(new ItemStack(GameRegistry.findBlock("exastris", "aluminum_dust"), 0), true, new FluidStack(TinkerSmeltery.moltenAluminumFluid, MoltenData.ingotCostHighoven), 400);
 		
 	}
 }

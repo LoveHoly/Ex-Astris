@@ -1,4 +1,4 @@
-package ExAstris;
+package ExAstris.Util;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
