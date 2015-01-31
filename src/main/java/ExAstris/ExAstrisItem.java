@@ -8,6 +8,7 @@ import ExAstris.Data.ModData;
 import ExAstris.Item.ItemChiselStones;
 import ExAstris.Item.ItemCrookRF;
 import ExAstris.Item.ItemDollThaumic;
+import ExAstris.Item.ItemHammerMana;
 import ExAstris.Item.ItemHammerThaumium;
 import ExAstris.Item.ItemDollFreezing;
 import ExAstris.Item.ItemNugget;
@@ -61,6 +62,8 @@ public class ExAstrisItem {
 	public static Item nuggetElectricalSteel;
 	
 	public static Item chiselStone;
+	
+	public static Item manaHammer;
 	
 	public static void registerItems()
 	{
@@ -175,6 +178,12 @@ public class ExAstrisItem {
 			nuggetElectricalSteel = new ItemNugget();
 			GameRegistry.registerItem(nuggetElectricalSteel, "nuggetElectricalSteel");
 			OreDictionary.registerOre("nuggetElectricalSteel", nuggetElectricalSteel);
+		}
+		
+		if (Loader.isModLoaded("Botania"))
+		{
+			manaHammer = new ItemHammerMana();
+			GameRegistry.registerItem(manaHammer, "manaHammer");
 		}
 	}
 }
