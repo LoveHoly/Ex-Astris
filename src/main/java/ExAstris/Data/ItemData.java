@@ -25,4 +25,7 @@ public class ItemData {
 	
 	public static final String NUGGET_KEY = "nuggetElectricalSteel";
 	
+	public static final String MANA_HAMMER_KEY = "hammer_mana";
+	public static final String MANA_HAMMER_UNLOCALIZED_NAME = "hammer_mana";
+	
 }
