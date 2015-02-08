@@ -10,8 +10,8 @@ import ExAstris.Data.ItemData;
 import ExAstris.Data.ModData;
 import ExAstris.Proxy.Proxy;
 import ExAstris.Util.CrookUtils;
-import redstonearsenal.item.RAItems;
-import redstonearsenal.item.tool.ItemToolRF;
+import cofh.redstonearsenal.item.RAItems;
+import cofh.redstonearsenal.item.tool.ItemToolRF;
 
 public class ItemCrookRF extends ItemToolRF {
 	

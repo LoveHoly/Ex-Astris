@@ -44,15 +44,15 @@ repositories {
     maven { url 'http://maven.tterrag.com/' }
 	ivy {
 		name "CoFHLib"
-		artifactPattern "http://addons.cursecdn.com/files/2218/257/[module]-[revision].[ext]"
+		artifactPattern "http://addons.cursecdn.com/files/2226/635/[module]-[revision].[ext]"
 	}
 	ivy {
 		name "CoFHCore"
-        artifactPattern "http://addons.cursecdn.com/files/2218/330/[module]-[revision].[ext]"
+        artifactPattern "http://addons.cursecdn.com/files/2226/638/[module]-[revision].[ext]"
     }
 	ivy {
 		name "RedstoneArsenal"
-        artifactPattern "http://addons.cursecdn.com/files/2218/261/[module]-[revision].[ext]"
+        artifactPattern "http://addons.cursecdn.com/files/2226/643/[module]-[revision].[ext]"
     }
 	ivy {
 		name "ThermalExpansion"
