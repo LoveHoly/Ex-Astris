@@ -1,6 +1,8 @@
 package ExAstris.Bridge;
 
+import net.minecraft.item.Item;
 import ExAstris.Data.ModData;
+import ExAstris.Item.ItemHammerMana;
 import cpw.mods.fml.common.registry.GameRegistry;
 import exnihilo.registries.ColorRegistry;
 import exnihilo.registries.CompostRegistry;
@@ -28,6 +30,11 @@ public class Botania {
 		{
 			CompostRegistry.register(GameRegistry.findItem("Botania", "flower"), i, 0.125f, ColorRegistry.color("Botania"));
 		}
+	}
+	
+	public static Item manaHammer()
+	{
+		return new ItemHammerMana();
 	}
 
 }

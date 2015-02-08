@@ -2,7 +2,12 @@ package ExAstris.Bridge;
 
 import ExAstris.ExAstrisBlock;
 import ExAstris.ExAstrisItem;
+import ExAstris.Block.BlockBarrelThaumium;
+import ExAstris.Block.BlockBeeTrapInfused;
 import ExAstris.Data.ModData;
+import ExAstris.Item.ItemDollFreezing;
+import ExAstris.Item.ItemDollThaumic;
+import ExAstris.Item.ItemHammerThaumium;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -16,8 +21,10 @@ import thaumcraft.common.config.ConfigResearch;
 import thaumcraft.common.entities.monster.EntityPech;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
@@ -306,5 +313,30 @@ public class Thaumcraft {
 		peck.setPosition(x, y, z);
 
 		worldObj.spawnEntityInWorld(peck);
+	}
+	
+	public static Item dollThaumic()
+	{
+		return new ItemDollThaumic();
+	}
+	
+	public static Item hammerThaumic()
+	{
+		return new ItemHammerThaumium();
+	}
+	
+	public static Item dollFreezing()
+	{
+		return new ItemDollFreezing();
+	}
+	
+	public static Block barrelThaumic()
+	{
+		return new BlockBarrelThaumium();
+	}
+	
+	public static Block beeTrapInfused()
+	{
+		return new BlockBeeTrapInfused();
 	}
 }

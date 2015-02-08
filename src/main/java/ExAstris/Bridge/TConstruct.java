@@ -2,11 +2,15 @@ package ExAstris.Bridge;
 
 import ExAstris.ExAstrisBlock;
 import ExAstris.ExAstrisItem;
+import ExAstris.Block.BlockOre;
 import ExAstris.Data.ModData;
 import ExAstris.Data.MoltenData;
+import ExAstris.Item.ItemOre;
 import ExAstris.Modifier.ModCrooked;
 import ExAstris.Modifier.ModHammered;
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import tconstruct.library.TConstructRegistry;
@@ -97,5 +101,15 @@ public class TConstruct {
 		TConstructClientRegistry.addEffectRenderMapping(61, "exastris", "hammer", true);
 		
 		TConstructRegistry.registerActiveToolMod(new TConstructModifier());
+	}
+	
+	public static Item oreItem(String name)
+	{
+		return new ItemOre(name);
+	}
+	
+	public static Block oreBlock(String name)
+	{
+		return new BlockOre(name);
 	}
 }

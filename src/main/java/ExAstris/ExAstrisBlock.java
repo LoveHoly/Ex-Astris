@@ -1,14 +1,8 @@
 package ExAstris;
 
-import ExAstris.Block.BlockBarrelThaumium;
-import ExAstris.Block.BlockBeeTrapInfused;
 import ExAstris.Block.BlockEndCake;
 import ExAstris.Block.BlockHammerAutomatic;
-import ExAstris.Block.BlockOre;
-import ExAstris.Block.BlockQStronglyCompressedStone;
-import ExAstris.Block.BlockRotaryAlveary;
 import ExAstris.Block.BlockSieveAutomatic;
-import ExAstris.Block.BlockStronglyCompressedStone;
 import ExAstris.Block.ItemBlock.ItemBlockBarrelThaumium;
 import ExAstris.Block.ItemBlock.ItemBlockEndCake;
 import ExAstris.Block.ItemBlock.ItemBlockOre;
@@ -16,6 +10,10 @@ import ExAstris.Block.ItemBlock.ItemBlockQStronglyCompressedStone;
 import ExAstris.Block.ItemBlock.ItemBlockRotaryAlveary;
 import ExAstris.Block.ItemBlock.ItemBlockSieveAutomatic;
 import ExAstris.Block.ItemBlock.ItemBlockStronglyCompressedStone;
+import ExAstris.Bridge.Metallurgy;
+import ExAstris.Bridge.RotaryCraft;
+import ExAstris.Bridge.TConstruct;
+import ExAstris.Bridge.Thaumcraft;
 import ExAstris.Data.BlockData;
 import ExAstris.Data.ModData;
 import cpw.mods.fml.common.Loader;
@@ -64,16 +62,20 @@ public class ExAstrisBlock {
 	
 	public static void registerBlocks()
 	{
-		if(Loader.isModLoaded("Thaumcraft")){
-			BarrelThaumium = new BlockBarrelThaumium();
+		if(Loader.isModLoaded("Thaumcraft"))
+		{
+			BarrelThaumium = Thaumcraft.barrelThaumic();
 			GameRegistry.registerBlock(BarrelThaumium, ItemBlockBarrelThaumium.class, BlockData.BARREL_THAUMIUM_KEY);
-			if(Loader.isModLoaded("MagicBees")){
-				BeeTrapInfused = new BlockBeeTrapInfused();
+			
+			if(Loader.isModLoaded("MagicBees"))
+			{
+				BeeTrapInfused = Thaumcraft.beeTrapInfused();
 				GameRegistry.registerBlock(BeeTrapInfused, BlockData.BEE_TRAP_INFUSED_KEY);
 			}
 		}
 		
-		if(Loader.isModLoaded("ThermalFoundation") || Loader.isModLoaded("EnderIO")) {
+		if(Loader.isModLoaded("ThermalFoundation") || Loader.isModLoaded("EnderIO")) 
+		{
 			SieveAutomatic = new BlockSieveAutomatic();
 			GameRegistry.registerBlock(SieveAutomatic, ItemBlockSieveAutomatic.class, BlockData.SIEVE_AUTOMATIC_KEY);
 			HammerAutomatic = new BlockHammerAutomatic();
@@ -85,46 +87,46 @@ public class ExAstrisBlock {
 		
 		if(Loader.isModLoaded("TConstruct") && ModData.allowAddTConstructNetherOre)
 		{
-			cobaltOreBlock = new BlockOre("Cobalt");
+			cobaltOreBlock = TConstruct.oreBlock("Cobalt");
 			GameRegistry.registerBlock(cobaltOreBlock, ItemBlockOre.class, "CobaltOreBlock");
 			
-			arditeOreBlock = new BlockOre("Ardite");
+			arditeOreBlock = TConstruct.oreBlock("Ardite");
 			GameRegistry.registerBlock(arditeOreBlock, ItemBlockOre.class, "ArditeOreBlock");
 			
 		}
 		
 		if(Loader.isModLoaded("RotaryCraft") && ModData.allowStronglyCompressedStone)
 		{
-			StronglyCompressedStone = new BlockStronglyCompressedStone();
+			StronglyCompressedStone = RotaryCraft.stronglyCompressedStone();
 			GameRegistry.registerBlock(StronglyCompressedStone, ItemBlockStronglyCompressedStone.class, BlockData.STRONGLY_COMPRESSED_STONE_KEY);
 			
-			QStronglyCompressedStone = new BlockQStronglyCompressedStone();
+			QStronglyCompressedStone = RotaryCraft.qStronglyCompressedStone();
 			GameRegistry.registerBlock(QStronglyCompressedStone, ItemBlockQStronglyCompressedStone.class, BlockData.STRONGLY_COMPRESSED_STONE_KEY + "3");
 			
-			RotaryAlveary = new BlockRotaryAlveary();
+			RotaryAlveary = RotaryCraft.rotaryAlveary();
 			GameRegistry.registerBlock(RotaryAlveary, ItemBlockRotaryAlveary.class, BlockData.ROTARY_ALVEARY_KEY);
 			
 		}
 		
 		if(Loader.isModLoaded("Metallurgy") && ModData.allowMetallurgyOres)
 		{
-			eximiteOreBlock = new BlockOre("Eximite");
+			eximiteOreBlock = Metallurgy.oreBlock("Eximite");
 			GameRegistry.registerBlock(eximiteOreBlock, ItemBlockOre.class, "EximiteOreBlock");
 			
-			meutoiteOreBlock = new BlockOre("Meutoite");
+			meutoiteOreBlock = Metallurgy.oreBlock("Meutoite");
 			GameRegistry.registerBlock(meutoiteOreBlock, ItemBlockOre.class, "MeutoiteOreBlock");
 
-			prometheumOreBlock = new BlockOre("Prometheum");
-			deepironOreBlock = new BlockOre("DeepIron");
-			infuscoliumOreBlock = new BlockOre("Infuscolium");
-			oureclaseOreBlock = new BlockOre("Oureclase");
-			astralsilverOreBlock = new BlockOre("AstralSilver");
-			carmotOreBlock = new BlockOre("Carmot");
-			mithrilOreBlock = new BlockOre("Mithril");
-			rubraciumOreBlock = new BlockOre("Rubracium");
-			orichalcumOreBlock = new BlockOre("Orichalcum");
-			adamantineOreBlock = new BlockOre("Adamantine");
-			atlarusOreBlock = new BlockOre("Atlarus");
+			prometheumOreBlock = Metallurgy.oreBlock("Prometheum");
+			deepironOreBlock = Metallurgy.oreBlock("DeepIron");
+			infuscoliumOreBlock = Metallurgy.oreBlock("Infuscolium");
+			oureclaseOreBlock = Metallurgy.oreBlock("Oureclase");
+			astralsilverOreBlock = Metallurgy.oreBlock("AstralSilver");
+			carmotOreBlock = Metallurgy.oreBlock("Carmot");
+			mithrilOreBlock = Metallurgy.oreBlock("Mithril");
+			rubraciumOreBlock = Metallurgy.oreBlock("Rubracium");
+			orichalcumOreBlock = Metallurgy.oreBlock("Orichalcum");
+			adamantineOreBlock = Metallurgy.oreBlock("Adamantine");
+			atlarusOreBlock = Metallurgy.oreBlock("Atlarus");
 			
 			GameRegistry.registerBlock(prometheumOreBlock, ItemBlockOre.class, "PrometheumOreBlock");
 			GameRegistry.registerBlock(deepironOreBlock, ItemBlockOre.class, "DeepIronOreBlock");
@@ -138,16 +140,16 @@ public class ExAstrisBlock {
 			GameRegistry.registerBlock(adamantineOreBlock, ItemBlockOre.class, "AdamantineOreBlock");
 			GameRegistry.registerBlock(atlarusOreBlock, ItemBlockOre.class, "AtlarusOreBlock");
 			
-			ignatiusOreBlock = new BlockOre("Ignatius");
-			shadowironOreBlock = new BlockOre("ShadowIron");
-			lemuriteOreBlock = new BlockOre("Lemurite");
-			midasiumOreBlock = new BlockOre("Midasium");
-			vyroxeresOreBlock = new BlockOre("Vyroxeres");
-			ceruclaseOreBlock = new BlockOre("Ceruclase");
-			alduoriteOreBlock = new BlockOre("Alduorite");
-			kalendriteOreBlock = new BlockOre("Kalendrite");
-			vulcaniteOreBlock = new BlockOre("Vulcanite");
-			sanguiniteOreBlock = new BlockOre("Sanguinite");
+			ignatiusOreBlock = Metallurgy.oreBlock("Ignatius");
+			shadowironOreBlock = Metallurgy.oreBlock("ShadowIron");
+			lemuriteOreBlock = Metallurgy.oreBlock("Lemurite");
+			midasiumOreBlock = Metallurgy.oreBlock("Midasium");
+			vyroxeresOreBlock = Metallurgy.oreBlock("Vyroxeres");
+			ceruclaseOreBlock = Metallurgy.oreBlock("Ceruclase");
+			alduoriteOreBlock = Metallurgy.oreBlock("Alduorite");
+			kalendriteOreBlock = Metallurgy.oreBlock("Kalendrite");
+			vulcaniteOreBlock = Metallurgy.oreBlock("Vulcanite");
+			sanguiniteOreBlock = Metallurgy.oreBlock("Sanguinite");
 			
 			GameRegistry.registerBlock(ignatiusOreBlock, ItemBlockOre.class, "IgnatiusOreBlock");
 			GameRegistry.registerBlock(shadowironOreBlock, ItemBlockOre.class, "ShadowIronOreBlock");

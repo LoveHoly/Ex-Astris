@@ -2,8 +2,12 @@ package ExAstris.Bridge;
 
 import ExAstris.ExAstrisBlock;
 import ExAstris.ExAstrisItem;
+import ExAstris.Block.BlockOre;
 import ExAstris.Data.ModData;
+import ExAstris.Item.ItemOre;
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import cpw.mods.fml.common.registry.GameRegistry;
 import exnihilo.ENBlocks;
 import exnihilo.registries.SieveRegistry;
@@ -91,5 +95,15 @@ public class Metallurgy {
 			SieveRegistry.register(ENBlocks.NetherGravel, 0, ExAstrisItem.vulcaniteOreItem, 0, 128);
 			SieveRegistry.register(ENBlocks.NetherGravel, 0, ExAstrisItem.sanguiniteOreItem, 0, 128);
 		}		
+	}
+	
+	public static Item oreItem(String name)
+	{
+		return new ItemOre(name);
+	}
+	
+	public static Block oreBlock(String name)
+	{
+		return new BlockOre(name);
 	}
 }
