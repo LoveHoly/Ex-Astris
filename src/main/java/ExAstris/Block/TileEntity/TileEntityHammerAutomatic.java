@@ -1,7 +1,6 @@
 package ExAstris.Block.TileEntity;
 
 import ExAstris.Data.ModData;
-import ExAstris.Util.HammerUtils;
 import ExAstris.ExAstrisItem;
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyHandler;
@@ -77,7 +76,7 @@ public class TileEntityHammerAutomatic extends TileEntity  implements IEnergyHan
 			if (mode == HammerMode.EMPTY && inventory[0] != null)
 			{
 				ItemStack held = inventory[0];
-				if (HammerUtils.registered(held))
+				if (HammerRegistry.registered(held))
 				{
 					addHammerable(Block.getBlockFromItem(held.getItem()), held.getItemDamage());
 					stackInProgress = held.copy();
@@ -311,7 +310,8 @@ public class TileEntityHammerAutomatic extends TileEntity  implements IEnergyHan
 	public boolean canInsertItem(int slot, ItemStack item, int side) {
 		if (slot == 0) 
 		{
-			return HammerUtils.registered(item);
+			System.out.println("CAN INSERT: "+HammerRegistry.registered(item)+" or "+HammerRegistry.registered(Block.getBlockFromItem(item.getItem()), item.getItemDamage()));
+			return HammerRegistry.registered(item);
 		}
 		if (slot == 21)
 			return item.getItem() == ExAstrisItem.sieveUpgradeItem && item.getItemDamage() == 0;

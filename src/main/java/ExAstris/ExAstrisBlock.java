@@ -103,9 +103,6 @@ public class ExAstrisBlock {
 			QStronglyCompressedStone = RotaryCraft.qStronglyCompressedStone();
 			GameRegistry.registerBlock(QStronglyCompressedStone, ItemBlockQStronglyCompressedStone.class, BlockData.STRONGLY_COMPRESSED_STONE_KEY + "3");
 			
-			RotaryAlveary = RotaryCraft.rotaryAlveary();
-			GameRegistry.registerBlock(RotaryAlveary, ItemBlockRotaryAlveary.class, BlockData.ROTARY_ALVEARY_KEY);
-			
 		}
 		
 		if(Loader.isModLoaded("Metallurgy") && ModData.allowMetallurgyOres)

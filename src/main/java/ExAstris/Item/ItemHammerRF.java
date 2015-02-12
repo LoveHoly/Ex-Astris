@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import ExAstris.Data.ItemData;
 import ExAstris.Data.ModData;
-import ExAstris.Util.HammerUtils;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -33,7 +32,7 @@ public class ItemHammerRF extends ItemToolRF {
 	@Override
 	public boolean func_150897_b(Block block)
 	{
-		return HammerUtils.registered(block);
+		return HammerRegistry.registered(block, 0);
 	}
 
 	@Override

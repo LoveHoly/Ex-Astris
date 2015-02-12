@@ -10,6 +10,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import cpw.mods.fml.common.registry.GameRegistry;
 import exnihilo.ENBlocks;
+import exnihilo.registries.HammerRegistry;
 import exnihilo.registries.SieveRegistry;
 
 public class Metallurgy {
