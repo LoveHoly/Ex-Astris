@@ -3,7 +3,7 @@ package ExAstris.Bridge;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import ExAstris.Util.CrookUtils;
+import exnihilo.utils.CrookUtils;
 
 import exnihilo.registries.HammerRegistry;
 import exnihilo.registries.helpers.Smashable;

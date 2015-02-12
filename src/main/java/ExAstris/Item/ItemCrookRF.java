@@ -9,7 +9,7 @@ import net.minecraft.util.IIcon;
 import ExAstris.Data.ItemData;
 import ExAstris.Data.ModData;
 import ExAstris.Proxy.Proxy;
-import ExAstris.Util.CrookUtils;
+import exnihilo.utils.CrookUtils;
 import cofh.redstonearsenal.item.RAItems;
 import cofh.redstonearsenal.item.tool.ItemToolRF;
 
