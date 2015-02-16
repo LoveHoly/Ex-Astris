@@ -97,8 +97,8 @@ public class ExAstrisBlock {
 			arditeOreBlock = TConstruct.oreBlock("Ardite");
 			GameRegistry.registerBlock(arditeOreBlock, ItemBlockOre.class, "ArditeOreBlock");
 			
-			OreRegistry.createNetherOre("cobalt", new Color(0,0,1,1), 5, GameRegistry.findItem("TConstruct", "ingotCobalt"));
-			OreRegistry.createNetherOre("ardite", new Color(244,110,0,1), 5, GameRegistry.findItem("TConstruct", "ingotCobalt"));
+			//OreRegistry.createNetherOre("cobalt", new Color(0,0,1,1), 5, GameRegistry.findItem("TConstruct", "ingotCobalt"));
+			//OreRegistry.createNetherOre("ardite", new Color(244,110,0,1), 5, GameRegistry.findItem("TConstruct", "ingotArdite"));
 			
 		}
 		
