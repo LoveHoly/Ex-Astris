@@ -528,7 +528,6 @@ public class TileEntityBarrelThaumium extends TileEntity implements IFluidHandle
 					resetBarrel();
 					break;
 				}
-
 				//Try to spawn enderman, if you can't keep trying.
 				for (int x = -1; x <= 1; x++)
 				{
@@ -543,12 +542,10 @@ public class TileEntityBarrelThaumium extends TileEntity implements IFluidHandle
 									worldObj.rand.nextInt(10) == 0 && !isDone())
 							{
 								timer = MAX_COMPOSTING_TIME;
-
-								//ExAstris.Bridge.Thaumcraft.summonPeck(worldObj,xCoord + x + 0.5d,yCoord + y,zCoord + z + 0.5d);							}
+								ExAstris.Bridge.Thaumcraft.summonPeck(worldObj,xCoord + x + 0.5d,yCoord + y,zCoord + z + 0.5d);							}
 						}
 					}
 				}
-			}
 			}
 
 			break;

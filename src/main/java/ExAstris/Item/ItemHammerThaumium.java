@@ -7,10 +7,10 @@ import ExAstris.Data.ItemData;
 import ExAstris.Data.ModData;
 import exnihilo.items.hammers.ItemHammerBase;
 import cpw.mods.fml.common.Optional.Interface;
-//import thaumcraft.api.IRepairable;
+import thaumcraft.api.IRepairable;
 
 @Interface(iface="thaumcraft.api.IRepairable", modid="Thaumcraft")
-public class ItemHammerThaumium extends ItemHammerBase {//implements IRepairable{
+public class ItemHammerThaumium extends ItemHammerBase implements IRepairable {
 
 	public ItemHammerThaumium() {
 		super(ToolMaterial.EMERALD);

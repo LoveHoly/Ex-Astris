@@ -7,7 +7,6 @@ import ExAstris.Block.ItemBlock.ItemBlockBarrelThaumium;
 import ExAstris.Block.ItemBlock.ItemBlockEndCake;
 import ExAstris.Block.ItemBlock.ItemBlockOre;
 import ExAstris.Block.ItemBlock.ItemBlockQStronglyCompressedStone;
-import ExAstris.Block.ItemBlock.ItemBlockRotaryAlveary;
 import ExAstris.Block.ItemBlock.ItemBlockSieveAutomatic;
 import ExAstris.Block.ItemBlock.ItemBlockStronglyCompressedStone;
 import ExAstris.Bridge.Metallurgy;
@@ -18,6 +17,8 @@ import ExAstris.Data.BlockData;
 import ExAstris.Data.ModData;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
+import exnihilo.registries.OreRegistry;
+import exnihilo.registries.helpers.Color;
 import net.minecraft.block.Block;
 
 public class ExAstrisBlock {
@@ -60,8 +61,11 @@ public class ExAstrisBlock {
 	public static Block vulcaniteOreBlock;
 	public static Block sanguiniteOreBlock;
 	
+	public static Block testOreBlock;
+	
 	public static void registerBlocks()
 	{
+		
 		if(Loader.isModLoaded("Thaumcraft"))
 		{
 			BarrelThaumium = Thaumcraft.barrelThaumic();
@@ -92,6 +96,9 @@ public class ExAstrisBlock {
 			
 			arditeOreBlock = TConstruct.oreBlock("Ardite");
 			GameRegistry.registerBlock(arditeOreBlock, ItemBlockOre.class, "ArditeOreBlock");
+			
+			OreRegistry.createNetherOre("cobalt", new Color(0,0,1,1), 5, GameRegistry.findItem("TConstruct", "ingotCobalt"));
+			OreRegistry.createNetherOre("ardite", new Color(244,110,0,1), 5, GameRegistry.findItem("TConstruct", "ingotCobalt"));
 			
 		}
 		

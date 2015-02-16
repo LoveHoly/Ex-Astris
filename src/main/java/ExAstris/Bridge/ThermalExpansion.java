@@ -3,7 +3,7 @@ package ExAstris.Bridge;
 import java.lang.reflect.Method;
 
 import ExAstris.Data.ModData;
-import thermalfoundation.fluid.TFFluids;
+import cofh.thermalfoundation.fluid.TFFluids;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
@@ -13,7 +13,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import exnihilo.registries.HeatRegistry;
-import thermalfoundation.entity.monster.EntityBlizz;
+import cofh.thermalfoundation.entity.monster.EntityBlizz;
 
 public class ThermalExpansion {
 	public static void Initialize()
