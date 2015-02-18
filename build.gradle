@@ -126,6 +126,21 @@ processResources
     }
 }
 
+task sourceJar(type: Jar) {
+    from sourceSets.main.allSource
+    classifier = 'sources'
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    from javadoc.destinationDir
+    classifier = 'javadoc'
+}
+
+task deobfJar(type: Jar) {
+    from sourceSets.main.output
+    classifier = 'deobf'
+}
+
 publishing {
     tasks.publish.dependsOn 'build'
     publications {
