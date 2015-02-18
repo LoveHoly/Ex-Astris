@@ -84,6 +84,13 @@ repositories {
         url = "http://shadow.gcod.net/maven"
     }
 	maven { url = "http://maven.tterrag.com/" }
+	 maven {
+        name = "Player"
+        url = "http://maven.ic2.player.to/"
+    }
+	 maven {
+		url = "http://dl.tsr.me/artifactory/libs-release-local"
+	}
 }
 
 dependencies {
