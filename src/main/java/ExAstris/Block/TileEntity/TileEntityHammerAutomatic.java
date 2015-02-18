@@ -310,7 +310,6 @@ public class TileEntityHammerAutomatic extends TileEntity  implements IEnergyHan
 	public boolean canInsertItem(int slot, ItemStack item, int side) {
 		if (slot == 0) 
 		{
-			System.out.println("CAN INSERT: "+HammerRegistry.registered(item)+" or "+HammerRegistry.registered(Block.getBlockFromItem(item.getItem()), item.getItemDamage()));
 			return HammerRegistry.registered(item);
 		}
 		if (slot == 21)
