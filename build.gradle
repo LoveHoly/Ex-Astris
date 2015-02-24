@@ -75,6 +75,10 @@ repositories {
 		name "MetallurgyCore"
 			artifactPattern "http://addons.cursecdn.com/files/2215/714/[module]-[revision].[ext]"
 	 }
+	ivy {
+		name "Draconic-Evolution"
+			artifactPattern "http://addons.cursecdn.com/files/2225/633/[module]-[revision].[ext]"
+	 }
 	maven { url "http://tehnut.info/maven/" }
 	maven { url = "http://mobiusstrip.eu/maven/" } // Waila
 	maven { url = "http://chickenbones.net/maven/" } // CCC & NEI
@@ -100,6 +104,7 @@ dependencies {
 	compile name: 'ThermalExpansion', version: "${texpansion_version}", ext: 'jar'
 	compile name: 'ThermalFoundation', version: "${tfoundation_version}", ext: 'jar'
 	compile name: 'BloodMagic', version: "${bloodmagic_version}", ext: 'jar'
+	compile name: 'Draconic-Evolution', version: "1.7.10-v1.0.1-snapshot_3", ext: 'jar'
 	compile "com.teammetallurgy:Metallurgy:1.7.10-4.0.6.80:deobf"
 	compile "com.teammetallurgy:MetallurgyCore:1.7.10-4.0.4.18:deobf"
 	compile "exnihilo:Ex-Nihilo:1.38-13:deobf"

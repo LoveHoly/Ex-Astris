@@ -154,5 +154,11 @@ public class ExAstris {
 			log.info("+++ - Found Botania!");
 			Botania.init();
 		}
+		
+		if (Loader.isModLoaded("DraconicEvolution"))
+		{
+			log.info("+++ - Found DraconicEvolution");
+			DraconicEvolution.addSiftingRegistry();
+		}
 	}
 }
