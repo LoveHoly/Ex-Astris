@@ -70,7 +70,7 @@ public class ThermalExpansion {
 		
 		Object[] parameters ={(Object)Energy, (Object)PrimaryInput, (Object)SecondaryInput, (Object)PrimaryOutput,(Object)SecondaryOutput,(Object)SecondaryChance, (Object)Overwrite};
 		try {
-			smelter = Class.forName("thermalexpansion.util.crafting.SmelterManager");
+			smelter = Class.forName("cofh.thermalexpansion.util.crafting.SmelterManager");
 
 			if (smelter != null)
 			{	
@@ -94,7 +94,7 @@ public class ThermalExpansion {
 		
 		Object[] parameters ={(Object)Energy, (Object)InputItem, (Object)Output, (Object)InputFluid, (Object)Overwrite};
 		try {
-			transposer = Class.forName("thermalexpansion.util.crafting.TransposerManager");
+			transposer = Class.forName("cofh.thermalexpansion.util.crafting.TransposerManager");
 
 			if (transposer != null)
 			{	
