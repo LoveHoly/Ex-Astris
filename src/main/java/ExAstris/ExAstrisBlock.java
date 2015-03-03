@@ -5,7 +5,6 @@ import ExAstris.Block.BlockBeeTrapInfused;
 import ExAstris.Block.BlockEndCake;
 import ExAstris.Block.BlockOre;
 import ExAstris.Block.BlockQStronglyCompressedStone;
-import ExAstris.Block.BlockRotaryAlveary;
 import ExAstris.Block.BlockSieveAutomatic;
 import ExAstris.Block.BlockStronglyCompressedStone;
 import ExAstris.Block.ItemBlock.ItemBlockBarrelThaumium;

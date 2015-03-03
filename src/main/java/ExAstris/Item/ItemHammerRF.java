@@ -16,12 +16,10 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemStack;
-import redstonearsenal.item.RAItems;
-import redstonearsenal.item.tool.ItemToolRF;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import exnihilo.registries.helpers.Smashable;
-public class ItemHammerRF extends ItemToolRF {
+public class ItemHammerRF extends cofh.redstonearsenal.item.tool.ItemToolRF {
 	  IIcon activeIcon;
 	  IIcon drainedIcon;
 	@SuppressWarnings("rawtypes")
@@ -29,7 +27,7 @@ public class ItemHammerRF extends ItemToolRF {
 
 	public ItemHammerRF() 
 	{
-		super(RAItems.TOOL_MATERIAL_FLUX);
+		super(cofh.redstonearsenal.item.RAItems.TOOL_MATERIAL_FLUX);
 	    this.energyPerUseCharged = 1600;
 		setCreativeTab(ExAstris.ExAstris.ExAstrisTab);
 	}
