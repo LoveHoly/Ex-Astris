@@ -2,12 +2,9 @@ package ExAstris.Bridge;
 
 import java.lang.reflect.Method;
 
+import cofh.thermalfoundation.entity.monster.EntityBlizz;
 import ExAstris.Data.ModData;
-import skyboy.core.fluid.LiquidRegistry;
 import tconstruct.smeltery.TinkerSmeltery;
-import thermalfoundation.block.TFBlocks;
-import thermalfoundation.fluid.TFFluids;
-import thermalfoundation.item.TFItems;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import exnihilo.compatibility.MineFactoryReloaded;
@@ -20,7 +17,6 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import exnihilo.registries.HeatRegistry;
-import thermalfoundation.entity.monster.EntityBlizz;
 
 public class ThermalExpansion {
 	public static void Initialize()
@@ -44,18 +40,7 @@ public class ThermalExpansion {
 			addSmelterRecipe(10000, new ItemStack(GameRegistry.findBlock("exnihilo", "bee_trap_treated")),new ItemStack(Blocks.ice,8),new ItemStack(GameRegistry.findBlock("Forestry", "beehives"),1,6),null,0,false);
 			addSmelterRecipe(10000, new ItemStack(GameRegistry.findBlock("exnihilo", "bee_trap_treated")),new ItemStack(Blocks.mycelium,8),new ItemStack(GameRegistry.findBlock("Forestry", "beehives"),1,7),null,0,false);
 		}
-		if (Loader.isModLoaded("ExtraBees"))
-		{
-			addTransposerRecipe(10000, new ItemStack(GameRegistry.findBlock("exnihilo", "bee_trap_treated")),new ItemStack(GameRegistry.findBlock("ExtraBees", "hive"),1,0),new FluidStack(FluidRegistry.WATER, 8000),false);
-			if(Loader.isModLoaded("TConstruct")){
-				addTransposerRecipe(10000, new ItemStack(GameRegistry.findBlock("exnihilo", "bee_trap_treated")),new ItemStack(GameRegistry.findBlock("ExtraBees", "hive"),1,1),new FluidStack(TinkerSmeltery.moltenStoneFluid, 8000),false);
-			}
-			addTransposerRecipe(10000, new ItemStack(GameRegistry.findBlock("exnihilo", "bee_trap_treated")),new ItemStack(GameRegistry.findBlock("ExtraBees", "hive"),1,2),new FluidStack(TFFluids.fluidRedstone, 8000),false);
-			if(Loader.isModLoaded("MineFactoryReloaded")){
-				addTransposerRecipe(10000, new ItemStack(GameRegistry.findBlock("exnihilo", "bee_trap_treated")),new ItemStack(GameRegistry.findBlock("ExtraBees", "hive"),1,3),new FluidStack(LiquidRegistry.getLiquid("milk"), 8000),false);
-			}
 
-		}
 	}
 	public static void addHeatRegistry()
 	{
@@ -123,4 +108,5 @@ public class ThermalExpansion {
 
 		worldObj.spawnEntityInWorld(peck);
 	}
+
 }
