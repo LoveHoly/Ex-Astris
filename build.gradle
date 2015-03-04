@@ -30,7 +30,7 @@ group= "exastris"
 archivesBaseName = "Ex-Astris"
 
 minecraft {
-    version = "1.7.10-10.13.2.1236"
+    version = "1.7.10-10.13.2.1291"
     assetDir = "eclipse/assets"
 	 
 	 replace "@VERSION@", project.version
@@ -45,23 +45,23 @@ repositories {
     maven { url 'http://maven.tterrag.com/' }
 	ivy {
 		name "CoFHLib"
-		artifactPattern "http://addons.cursecdn.com/files/2227/275/[module]-[revision].[ext]"
+		artifactPattern "http://addons.cursecdn.com/files/2228/833/[module]-[revision].[ext]"
 	}
 	ivy {
 		name "CoFHCore"
-        artifactPattern "http://addons.cursecdn.com/files/2227/393/[module]-[revision].[ext]"
+        artifactPattern "http://addons.cursecdn.com/files/2228/840/[module]-[revision].[ext]"
     }
 	ivy {
 		name "RedstoneArsenal"
-        artifactPattern "http://addons.cursecdn.com/files/2226/643/[module]-[revision].[ext]"
+        artifactPattern "http://addons.cursecdn.com/files/2228/755/[module]-[revision].[ext]"
     }
 	ivy {
 		name "ThermalExpansion"
-        artifactPattern "http://addons.cursecdn.com/files/2227/289/[module]-[revision].[ext]"
+        artifactPattern "http://addons.cursecdn.com/files/2228/842/[module]-[revision].[ext]"
     }
 	ivy {
 		name "ThermalFoundation"
-        artifactPattern "http://addons.cursecdn.com/files/2227/386/[module]-[revision].[ext]"
+        artifactPattern "http://addons.cursecdn.com/files/2228/839/[module]-[revision].[ext]"
     }
 	ivy {
 		name "BloodMagic"
