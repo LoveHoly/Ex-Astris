@@ -34,7 +34,7 @@ minecraft {
     assetDir = "eclipse/assets"
 	 
 	 replace "@VERSION@", project.version
-	 replaceIn "ModData.java"
+	 replaceIn "Data/ModData.java"
 	
 }
 
