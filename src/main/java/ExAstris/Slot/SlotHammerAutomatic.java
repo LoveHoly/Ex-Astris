@@ -20,7 +20,7 @@ public class SlotHammerAutomatic extends Slot {
 
 	@Override
 	public boolean isItemValid(ItemStack itemstack) {
-		if(HammerRegistry.registered(Block.getBlockFromItem(itemstack.getItem()),itemstack.getItemDamage()) && this.id==0)
+		if(HammerRegistry.registered(itemstack) && this.id==0)
 		{
 			return true;
 		}
