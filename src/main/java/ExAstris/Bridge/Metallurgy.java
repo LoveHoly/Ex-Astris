@@ -11,7 +11,9 @@ import net.minecraft.item.Item;
 import cpw.mods.fml.common.registry.GameRegistry;
 import exnihilo.ENBlocks;
 import exnihilo.registries.HammerRegistry;
+import exnihilo.registries.OreRegistry;
 import exnihilo.registries.SieveRegistry;
+import exnihilo.registries.helpers.Color;
 
 public class Metallurgy {
 	public static void init()
@@ -48,6 +50,8 @@ public class Metallurgy {
 			RegistryFactory.HammerOreRegistryFactory(ExAstrisBlock.kalendriteOreBlock,  ExAstrisItem.kalendriteOreItem);
 			RegistryFactory.HammerOreRegistryFactory(ExAstrisBlock.vulcaniteOreBlock,  ExAstrisItem.vulcaniteOreItem);
 			RegistryFactory.HammerOreRegistryFactory(ExAstrisBlock.sanguiniteOreBlock,  ExAstrisItem.sanguiniteOreItem);
+			
+			OreRegistry.createOverworldOre("zinc", new Color("bfc55c"), 64, GameRegistry.findItem("Metallurgy", "zinc.ingot"), false);
 		}
 		
 
