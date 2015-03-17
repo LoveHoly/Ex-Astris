@@ -82,11 +82,13 @@ public class ItemHammerRF extends ItemToolRF {
 					entityitem.motionZ = world.rand.nextGaussian() * f3;
 
 					world.spawnEntityInWorld(entityitem);
-					useEnergy(item, false);
+					
 				}
 				
 				valid = true;
 			}
+			if (valid)
+				useEnergy(item, false);
 		}else
 		{
 			if (block.getMaterial().isToolNotRequired() || block.getHarvestTool(blockMeta) == null)
@@ -94,8 +96,6 @@ public class ItemHammerRF extends ItemToolRF {
 				return false;
 			}
 		}
-		
-		item.damageItem(1, player);
 
 		if (item.stackSize == 0)
 		{

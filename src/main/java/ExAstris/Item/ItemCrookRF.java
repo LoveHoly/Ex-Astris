@@ -53,13 +53,13 @@ public class ItemCrookRF extends ItemToolRF {
 		if (getEnergyStored(item) < getEnergyPerUse(item))
 				return false;
 		
-		boolean valid = CrookUtils.doCrooking(item, X, Y, Z, player);
+		boolean valid = CrookUtils.doCrooking(item, X, Y, Z, player, false);
 		
 		if (valid)
 		{
 			useEnergy(item, false);
 		}
-		return false;
+		return valid;
 	}
 	
 	@Override
