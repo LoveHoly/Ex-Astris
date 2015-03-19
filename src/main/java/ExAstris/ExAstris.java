@@ -3,6 +3,8 @@ package ExAstris;
 import java.io.File;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import ExAstris.CreativeTab.CreativeTabExAstris;
@@ -69,6 +71,7 @@ public class ExAstris {
 		ExAstrisRecipe.registerCraftingRecipes();
 		ExAstrisRecipe.registerFurnaceRecipes();
 		FMLInterModComms.sendMessage("Waila", "register", "ExAstris.Bridge.Waila.callbackRegister");
+		
 	}
 	@EventHandler
 	public void PostInitialize(FMLPostInitializationEvent event)
@@ -158,7 +161,8 @@ public class ExAstris {
 		if (Loader.isModLoaded("DraconicEvolution"))
 		{
 			log.info("+++ - Found DraconicEvolution");
-			DraconicEvolution.addSiftingRegistry();
+			DraconicEvolution.init();
 		}
+		
 	}
 }
