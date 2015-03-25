@@ -196,7 +196,6 @@ public class ModData {
 		
 		//MFR
 		allowMFRCompost  = config.get(categoryMFR, allowMFRCompostKey, true, "Add MFR items to be composted").getBoolean();
-		allowMFRSeedFromSifting = config.get(categoryMFR, allowMFRSeedFromSiftingKey, true, "Add Rubber Tree Seed from Dirt").getBoolean();
 		
 		//TiCon
 		allowAddTConstructNetherOre  = config.get(categoryTiCon, allowAddTConstructNetherOreKey, allowAddTConstructNetherOre, "Add Tinkers Nether Ores from sifter").getBoolean();
