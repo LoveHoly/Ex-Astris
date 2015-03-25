@@ -32,12 +32,12 @@ public class TConstructModifier extends ActiveToolMod {
 			Block block = world.getBlock(X,Y,Z);
 			world.getBlockMetadata(X, Y, Z);
 
-			boolean valid = CrookUtils.doCrooking(item, X, Y, Z, (EntityPlayer) player);
+			boolean valid = CrookUtils.doCrooking(item, X, Y, Z, (EntityPlayer) player, false);
 
 			if (valid)
 				AbilityHelper.onBlockChanged(item, world, block, X, Y, Z, player, AbilityHelper.random);
 
-			return false;
+			return valid;
 		}
 
 		if (tags.getBoolean("Hammered"))
