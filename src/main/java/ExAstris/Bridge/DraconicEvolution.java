@@ -39,13 +39,14 @@ public class DraconicEvolution {
 	
 	public static void addDraconicDoubling(Block block)
 	{
-		ItemStack furnaceOutput = FurnaceRecipes.smelting().getSmeltingResult(new ItemStack(block));
+		// DISABLED FOR NOW
+		/*ItemStack furnaceOutput = FurnaceRecipes.smelting().getSmeltingResult(new ItemStack(block));
 		if (furnaceOutput != null)
 		{
 			furnaceOutput = furnaceOutput.copy();
 			furnaceOutput.stackSize*=2;
 			OreDoublingRegistry.resultOverrides.put(block.getUnlocalizedName(), furnaceOutput); //This is naughty
-		}
+		}*/
 	}
 
 }
