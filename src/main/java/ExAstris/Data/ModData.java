@@ -151,6 +151,11 @@ public class ModData {
 	public static boolean allowChiselBlocksFromSifting = true;
 	
 	public static String[] oreType = { "Gravel","Sand","Dust" };
+	
+	public static boolean allowBarrelsToBeChiselled;
+	public static String allowBarrelsToBeChiselledKey = "barrelChiselled";
+	public static boolean allowSievesToBeChiselled;
+	public static String allowSievesToBeChiselledKey = "sieveChiselled";
 
 	
 	public static void load(Configuration config)
@@ -222,6 +227,8 @@ public class ModData {
 		
 		//Chisel
 		allowChiselBlocksFromSifting = config.get(categoryChisel, allowChiselBlocksFromSiftingKey, true, "Allow Marble and Limestone stones to be obtained via sifting").getBoolean();
+		allowBarrelsToBeChiselled = config.get(categoryChisel, allowBarrelsToBeChiselledKey , true, "Allow Barrels to be chiselled between types").getBoolean();
+		allowSievesToBeChiselled = config.get(categoryChisel, allowSievesToBeChiselledKey, true, "Allow Sieves to be chiselled between types").getBoolean();
 	}
 	
 }

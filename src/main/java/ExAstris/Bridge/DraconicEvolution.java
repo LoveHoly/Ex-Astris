@@ -1,11 +1,6 @@
 package ExAstris.Bridge;
 
-import com.brandon3055.draconicevolution.common.lib.OreDoublingRegistry;
-
 import net.minecraft.block.Block;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
-import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.registry.GameRegistry;
 import exnihilo.blocks.ores.BlockOre;
 import exnihilo.registries.HammerRegistry;

@@ -72,6 +72,12 @@ public class ExAstris {
 		ExAstrisRecipe.registerFurnaceRecipes();
 		FMLInterModComms.sendMessage("Waila", "register", "ExAstris.Bridge.Waila.callbackRegister");
 		
+		if (Loader.isModLoaded("chisel"))
+		{
+			log.info("+++ - Found Chisel!");
+			Chisel.sendIMC();
+		}
+		
 	}
 	@EventHandler
 	public void PostInitialize(FMLPostInitializationEvent event)
