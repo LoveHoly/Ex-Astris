@@ -2,10 +2,12 @@ package ExAstris.Item;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.World;
 import ExAstris.Data.ItemData;
 import ExAstris.Data.ModData;
 import ExAstris.Proxy.Proxy;
@@ -53,13 +55,9 @@ public class ItemCrookRF extends ItemToolRF {
 		if (getEnergyStored(item) < getEnergyPerUse(item))
 				return false;
 		
-		boolean valid = CrookUtils.doCrooking(item, X, Y, Z, player, false);
+		CrookUtils.doCrooking(item, X, Y, Z, player);
 		
-		if (valid)
-		{
-			useEnergy(item, false);
-		}
-		return valid;
+		return false;
 	}
 	
 	@Override
@@ -91,5 +89,14 @@ public class ItemCrookRF extends ItemToolRF {
 	{
 		return EnumRarity.uncommon;
 	}
+	
+	@Override
+	public boolean onBlockDestroyed(ItemStack stack, World world, Block block, int x, int y, int z, EntityLivingBase entity)
+    {
+        if (canHarvestBlock(block, stack) && entity instanceof EntityPlayer)
+        	harvestBlock(world, x, y, z, (EntityPlayer) entity);
+
+        return true;
+    }
 
 }

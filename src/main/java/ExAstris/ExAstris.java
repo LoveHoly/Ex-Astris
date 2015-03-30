@@ -3,8 +3,6 @@ package ExAstris;
 import java.io.File;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import ExAstris.CreativeTab.CreativeTabExAstris;
@@ -55,12 +53,12 @@ public class ExAstris {
 		ExAstrisBlock.registerBlocks();
 		ExAstrisItem.registerItems();
 		
-		if(config.hasChanged())
-			config.save();
-		
 		proxy.initializeSounds();
 		proxy.initializeRenderers();
 		MinecraftForge.EVENT_BUS.register(this);
+		
+		if(config.hasChanged())
+			config.save();
 	}
 	@EventHandler
 	public void Initialize(FMLInitializationEvent event)
@@ -169,6 +167,8 @@ public class ExAstris {
 			log.info("+++ - Found DraconicEvolution");
 			DraconicEvolution.init();
 		}
+		
+		
 		
 	}
 }

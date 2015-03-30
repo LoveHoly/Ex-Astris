@@ -40,6 +40,8 @@ public class ModData {
     public static String categoryNatura="natura";
     public static String categoryBotania="Botania";
     public static String categoryChisel="Chisel";
+    public static String categoryArsMagica="ArsMagica";
+    public static String categoryOres="Ores";
     
     //BLOCKS
     public static String allowThaumiumBarrelKey = "thaumiumBarrel";
@@ -71,6 +73,8 @@ public class ModData {
 	public static String enableTERecipesKey = "enableTERecipes";
 	public static boolean enableEIORecipes;
 	public static String enableEIORecipesKey = "enableEIORecipes";
+	public static String allowEndCakeEatingWhileFullKey = "enableEndCakeToBeEatenWhenFull";
+	public static boolean allowEndCakeEatingWhileFull = true;
 	
 	
 	public static int hammerAutomaticBaseEnergy;
@@ -156,7 +160,22 @@ public class ModData {
 	public static String allowBarrelsToBeChiselledKey = "barrelChiselled";
 	public static boolean allowSievesToBeChiselled;
 	public static String allowSievesToBeChiselledKey = "sieveChiselled";
-
+	
+	//Ars Magica
+	
+	//Ores
+	public static String oreYelloriumKey = "yellorium";
+	public static int oreYelloriumChance = 128;
+	public static String oreDraconiumKey = "draconium";
+	public static int oreDraconiumChance = 25;
+	public static String oreCobaltKey = "cobalt";
+	public static int oreCobaltChance = 128;
+	public static String oreArditeKey = "ardite";
+	public static int oreArditeChance = 128;
+	public static String oreQuicksilverKey = "quicksilver";
+	public static int oreQuicksilverChance = 128;
+	public static String oreAmberKey = "amber";
+	public static int oreAmberChance = 128;
 	
 	public static void load(Configuration config)
 	{
@@ -183,6 +202,7 @@ public class ModData {
 		allowHammerAutomatic = config.get(categoryExAstris, allowHammerAutomaticKey, true, "Allow Automatic Hammerer").getBoolean();
 		enableTERecipes = config.get(categoryExAstris, enableTERecipesKey, true, "Enable Thermal Expansion/Foundation Recipes").getBoolean();
 		enableEIORecipes = config.get(categoryExAstris, enableEIORecipesKey, true, "Enable EnderIO Recipes").getBoolean();
+		allowEndCakeEatingWhileFull = config.get(categoryExAstris, allowEndCakeEatingWhileFullKey, true, "Allow End Cake to be eaten when full").getBoolean();
 		
 		
 		//Redstone Arsenal
@@ -228,6 +248,14 @@ public class ModData {
 		allowChiselBlocksFromSifting = config.get(categoryChisel, allowChiselBlocksFromSiftingKey, true, "Allow Marble and Limestone stones to be obtained via sifting").getBoolean();
 		allowBarrelsToBeChiselled = config.get(categoryChisel, allowBarrelsToBeChiselledKey , true, "Allow Barrels to be chiselled between types").getBoolean();
 		allowSievesToBeChiselled = config.get(categoryChisel, allowSievesToBeChiselledKey, true, "Allow Sieves to be chiselled between types").getBoolean();
+		
+		//Ores
+		oreYelloriumChance = config.get(categoryOres, oreYelloriumKey, oreYelloriumChance).getInt();
+		oreDraconiumChance = config.get(categoryOres, oreDraconiumKey, oreDraconiumChance).getInt();
+		oreCobaltChance = config.get(categoryOres, oreCobaltKey, oreCobaltChance).getInt();
+		oreArditeChance = config.get(categoryOres, oreArditeKey, oreArditeChance).getInt();
+		oreQuicksilverChance = config.get(categoryOres, oreQuicksilverKey, oreQuicksilverChance).getInt();
+		oreAmberChance = config.get(categoryOres, oreAmberKey, oreAmberChance).getInt();
 	}
 	
 }

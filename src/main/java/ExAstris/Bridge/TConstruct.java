@@ -43,8 +43,8 @@ public class TConstruct {
 	{
 		if(Loader.isModLoaded("TConstruct") && ModData.allowAddTConstructNetherOre)
 		{
-			SieveRegistry.register(ENBlocks.NetherGravel, 0, ExAstrisItem.cobaltOreItem, 0, 128);
-			SieveRegistry.register(ENBlocks.NetherGravel, 0, ExAstrisItem.arditeOreItem, 0, 128);
+			SieveRegistry.register(ENBlocks.NetherGravel, 0, ExAstrisItem.cobaltOreItem, 0, ModData.oreCobaltChance);
+			SieveRegistry.register(ENBlocks.NetherGravel, 0, ExAstrisItem.arditeOreItem, 0, ModData.oreArditeChance);
 		}
 		
 		if (ModData.allowTConstructBushes && Loader.isModLoaded("TConstruct"))

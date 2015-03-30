@@ -63,8 +63,8 @@ public class Thaumcraft {
 	}
 	public static void addSieveRegistry()
 	{
-		SieveRegistry.register(Blocks.sand, 0, GameRegistry.findItem("Thaumcraft", "ItemNugget"), 5, 128);
-		SieveRegistry.register(Blocks.sand, 0, GameRegistry.findItem("Thaumcraft", "ItemResource"), 6, 128);
+		SieveRegistry.register(Blocks.sand, 0, GameRegistry.findItem("Thaumcraft", "ItemNugget"), 5, ModData.oreQuicksilverChance);
+		SieveRegistry.register(Blocks.sand, 0, GameRegistry.findItem("Thaumcraft", "ItemResource"), 6, ModData.oreAmberChance);
 	}
 	public static void addHeatRegistry()
 	{

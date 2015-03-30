@@ -90,7 +90,7 @@ public class BlockEndCake extends BlockCake {
 	
 	private void nomEndCake(World world, int x, int y, int z, EntityPlayer player)
     {
-        if (player.canEat(false))
+        if (player.canEat(false) || ModData.allowEndCakeEatingWhileFull)
         {
             int l = world.getBlockMetadata(x, y, z) + 1;
 

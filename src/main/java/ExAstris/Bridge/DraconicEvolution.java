@@ -1,23 +1,32 @@
 package ExAstris.Bridge;
 
+import ExAstris.Data.ModData;
 import net.minecraft.block.Block;
 import cpw.mods.fml.common.registry.GameRegistry;
 import exnihilo.blocks.ores.BlockOre;
+import exnihilo.compatibility.OreList.OreDimension;
 import exnihilo.registries.HammerRegistry;
 import exnihilo.registries.OreRegistry;
 import exnihilo.registries.helpers.Color;
 
 public class DraconicEvolution {
 	
+	
 	public static void init()
 	{
+		addOres();
 		addSiftingRegistry();
 		addChestSmeltingDoubling();
 	}
 	
+	private static void addOres()
+	{
+		OreRegistry.createEnderOre("draconiumdust", new Color("BF3FBF"), ModData.oreDraconiumChance, GameRegistry.findItem("DraconicEvolution","draconiumDust"), true);
+	}
+	
 	public static void addSiftingRegistry()
 	{
-		OreRegistry.createEnderOre("draconiumDust", new Color("BF3FBF"), 25, GameRegistry.findItem("DraconicEvolution","draconiumDust"), true);
+		
 		HammerRegistry.register(GameRegistry.findBlock("exastris", "draconiumdust_dust"), 0, GameRegistry.findItem("DraconicEvolution","draconiumDust"), 0, 0.8f, 0);
 		HammerRegistry.register(GameRegistry.findBlock("exastris", "draconiumdust_dust"), 0, GameRegistry.findItem("DraconicEvolution","draconiumDust"), 0, 0.1f, 0.1f);
 	}

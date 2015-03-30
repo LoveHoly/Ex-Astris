@@ -10,6 +10,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import cpw.mods.fml.common.registry.GameRegistry;
 import exnihilo.ENBlocks;
+import exnihilo.compatibility.OreList.OreDimension;
 import exnihilo.registries.HammerRegistry;
 import exnihilo.registries.OreRegistry;
 import exnihilo.registries.SieveRegistry;
@@ -52,6 +53,7 @@ public class Metallurgy {
 			RegistryFactory.HammerOreRegistryFactory(ExAstrisBlock.sanguiniteOreBlock,  ExAstrisItem.sanguiniteOreItem);
 			
 			OreRegistry.createOverworldOre("zinc", new Color("bfc55c"), 64, GameRegistry.findItem("Metallurgy", "zinc.ingot"), false);
+			//OreList.addOreToGenerate(new OreType("zinc", new Color("bfc55c"), OreDimension.OVERWORLD, 64, GameRegistry.findItem("Metallurgy", "zinc.ingot"), false));
 		}
 		
 
