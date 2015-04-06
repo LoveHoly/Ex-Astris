@@ -17,8 +17,6 @@ import ExAstris.Data.BlockData;
 import ExAstris.Data.ModData;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
-import exnihilo.registries.OreRegistry;
-import exnihilo.registries.helpers.Color;
 import net.minecraft.block.Block;
 
 public class ExAstrisBlock {
@@ -77,7 +75,6 @@ public class ExAstrisBlock {
 				GameRegistry.registerBlock(BeeTrapInfused, BlockData.BEE_TRAP_INFUSED_KEY);
 			}
 		}
-		
 		if(Loader.isModLoaded("ThermalFoundation") || Loader.isModLoaded("EnderIO")) 
 		{
 			SieveAutomatic = new BlockSieveAutomatic();

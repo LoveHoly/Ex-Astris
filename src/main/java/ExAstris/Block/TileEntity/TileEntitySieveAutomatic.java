@@ -16,6 +16,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.particles.ParticleSieve;
 import exnihilo.registries.SieveRegistry;
 import exnihilo.registries.helpers.SiftReward;
+import exnihilo.registries.helpers.SiftingResult;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.item.EntityItem;
@@ -141,13 +142,13 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 			//give rewards!
 			if (!worldObj.isRemote)
 			{
-				ArrayList<SiftReward> rewards = SieveRegistry.getRewards(content, contentMeta);
+				ArrayList<SiftingResult> rewards = SieveRegistry.getSiftingOutput(content, contentMeta);
 				if (rewards.size() > 0)
 				{
-					Iterator<SiftReward> it = rewards.iterator();
+					Iterator<SiftingResult> it = rewards.iterator();
 					while(it.hasNext())
 					{
-						SiftReward reward = it.next();
+						SiftingResult reward = it.next();
 						int fortuneAmount;
 						if (ModData.sieveFortuneExtraRolls)
 							fortuneAmount = getFortuneModifier();
@@ -472,7 +473,7 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack item) {
 		//SieveRegistry.Contains(Block.getBlockFromItem(item.getItem()),item.getItemDamage()) && 
-		if (SieveRegistry.Contains(Block.getBlockFromItem(item.getItem()),item.getItemDamage()) && slot == 0)
+		if (SieveRegistry.registered(Block.getBlockFromItem(item.getItem()),item.getItemDamage()) && slot == 0)
 		{
 			return true;
 		}

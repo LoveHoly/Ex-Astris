@@ -168,6 +168,8 @@ public class ExAstris {
 			DraconicEvolution.init();
 		}
 		
+		System.out.println("LOADED: "+Loader.isModLoaded("CoFHAPI|energy"));
+		
 		
 		
 	}
