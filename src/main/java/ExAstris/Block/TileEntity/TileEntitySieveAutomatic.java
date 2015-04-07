@@ -143,7 +143,7 @@ public class TileEntitySieveAutomatic extends TileEntity  implements IEnergyHand
 			if (!worldObj.isRemote)
 			{
 				ArrayList<SiftingResult> rewards = SieveRegistry.getSiftingOutput(content, contentMeta);
-				if (rewards.size() > 0)
+				if (rewards != null && rewards.size() > 0)
 				{
 					Iterator<SiftingResult> it = rewards.iterator();
 					while(it.hasNext())
