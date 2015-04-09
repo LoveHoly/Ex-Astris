@@ -2,6 +2,8 @@ package ExAstris.Bridge;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
+import exnihilo.registries.ColorRegistry;
+import exnihilo.registries.CompostRegistry;
 import exnihilo.registries.SieveRegistry;
 import ExAstris.Data.ModData;
 
@@ -41,6 +43,19 @@ public class Natura {
 			SieveRegistry.register(GameRegistry.findBlock("Natura", "soil.tainted"), 0, GameRegistry.findItem("Natura","NetherBerryBush"), 14, 64);
 			SieveRegistry.register(GameRegistry.findBlock("Natura", "soil.tainted"), 0, GameRegistry.findItem("Natura","NetherBerryBush"), 15, 64);
 			
+		}
+		
+		if (ModData.allowNaturaPlantsToBeComposted)
+		{
+			for (int i = 0 ; i < 5; i++)
+				CompostRegistry.register(GameRegistry.findItem("Natura","Rare Sapling"), i, 0.125f, ColorRegistry.color("oak"));
+			for (int i = 0; i < 8; i++)
+				CompostRegistry.register(GameRegistry.findItem("Natura","florasapling"), i, 0.125f, ColorRegistry.color("oak"));
+			for (int i = 12; i < 15; i++)
+			{
+				CompostRegistry.register(GameRegistry.findItem("Natura","BerryBush"), i, 0.20f, ColorRegistry.color("oak"));
+				CompostRegistry.register(GameRegistry.findItem("Natura","NetherBerryBush"), i, 0.20f, ColorRegistry.color("rotten_flesh"));
+			}
 		}
 	}
 

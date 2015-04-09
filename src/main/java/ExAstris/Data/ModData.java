@@ -148,6 +148,9 @@ public class ModData {
 	public static String allowNaturaPlantsKey = "naturaSifting";
 	public static boolean allowNaturaPlants = true;
 	
+	public static String allowNaturaPlantsToBeCompostedKey = "naturaComposting";
+	public static boolean allowNaturaPlantsToBeComposted = true;
+	
 	public static String allowBotaniaCompostingKey = "botaniaComposting";
 	public static boolean allowBotaniaComposting = true;
 	
@@ -176,6 +179,7 @@ public class ModData {
 	public static int oreQuicksilverChance = 128;
 	public static String oreAmberKey = "amber";
 	public static int oreAmberChance = 128;
+
 	
 	public static void load(Configuration config)
 	{
@@ -240,6 +244,7 @@ public class ModData {
 		
 		//Natura
 		allowNaturaPlants = config.get(categoryNatura, allowNaturaPlantsKey, true, "Allow Natura Plants to be obtained via sifting").getBoolean();
+		allowNaturaPlantsToBeComposted = config.get(categoryNatura, allowNaturaPlantsToBeCompostedKey, true, "Allow Natura Saplings to be composted").getBoolean();
 		
 		//Botania
 		allowBotaniaComposting = config.get(categoryBotania, allowBotaniaCompostingKey, true, "Allow Botania Mystical Flowers to be composted").getBoolean();
