@@ -16,6 +16,7 @@ import ExAstris.Bridge.Thaumcraft;
 import ExAstris.Data.BlockData;
 import ExAstris.Data.ModData;
 import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.ModAPIManager;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 
@@ -75,7 +76,7 @@ public class ExAstrisBlock {
 				GameRegistry.registerBlock(BeeTrapInfused, BlockData.BEE_TRAP_INFUSED_KEY);
 			}
 		}
-		if(Loader.isModLoaded("ThermalFoundation") || Loader.isModLoaded("EnderIO")) 
+		if(ModAPIManager.INSTANCE.hasAPI("CoFHAPI|energy")) 
 		{
 			SieveAutomatic = new BlockSieveAutomatic();
 			GameRegistry.registerBlock(SieveAutomatic, ItemBlockSieveAutomatic.class, BlockData.SIEVE_AUTOMATIC_KEY);

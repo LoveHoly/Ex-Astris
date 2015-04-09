@@ -45,23 +45,23 @@ repositories {
     maven { url 'http://maven.tterrag.com/' }
 	ivy {
 		name "CoFHLib"
-		artifactPattern "http://addons.cursecdn.com/files/2228/833/[module]-[revision].[ext]"
+		artifactPattern "http://addons-origin.cursecdn.com/files/2233/88/[module]-[revision].[ext]"
 	}
 	ivy {
 		name "CoFHCore"
-        artifactPattern "http://addons.cursecdn.com/files/2228/840/[module]-[revision].[ext]"
+        artifactPattern "http://addons-origin.cursecdn.com/files/2233/150/[module]-[revision].[ext]"
     }
 	ivy {
 		name "RedstoneArsenal"
-        artifactPattern "http://addons.cursecdn.com/files/2228/755/[module]-[revision].[ext]"
+        artifactPattern "http://addons-origin.cursecdn.com/files/2232/684/[module]-[revision].[ext]"
     }
 	ivy {
 		name "ThermalExpansion"
-        artifactPattern "http://addons.cursecdn.com/files/2228/842/[module]-[revision].[ext]"
+        artifactPattern "http://addons-origin.cursecdn.com/files/2233/141/[module]-[revision].[ext]"
     }
 	ivy {
 		name "ThermalFoundation"
-        artifactPattern "http://addons.cursecdn.com/files/2228/839/[module]-[revision].[ext]"
+        artifactPattern "http://addons-origin.cursecdn.com/files/2233/148/[module]-[revision].[ext]"
     }
 	ivy {
 		name "BloodMagic"
