@@ -14,7 +14,6 @@ public class RegistryFactory {
 	{
 		for(int i=0;i<2;i++)
 		{
-			System.out.println(block.getUnlocalizedName()+":"+i);
 			HammerRegistry.register(block, i,item , (i+1), 1.00f, 0.0f);
 			HammerRegistry.register(block, i,item , (i+1), 1.00f, 0.0f);
 			HammerRegistry.register(block, i,item , (i+1), 1.00f, 0.0f);
