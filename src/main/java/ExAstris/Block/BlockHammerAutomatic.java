@@ -1,23 +1,34 @@
 package ExAstris.Block;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import cofh.api.block.IDismantleable;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
 import ExAstris.Block.TileEntity.TileEntityHammerAutomatic;
+import ExAstris.Block.TileEntity.TileEntitySieveAutomatic;
 import ExAstris.Data.BlockData;
 import ExAstris.Data.ModData;
+import cpw.mods.fml.common.eventhandler.Event.Result;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-public class BlockHammerAutomatic extends BlockContainer {
+public class BlockHammerAutomatic extends BlockContainer implements IDismantleable {
 	
 	public static int renderId;
 	
@@ -71,8 +82,16 @@ public class BlockHammerAutomatic extends BlockContainer {
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ)
 	{
-		player.openGui(ExAstris.ExAstris.instance, 1, world, x, y, z);
-		return true;
+		PlayerInteractEvent e = new PlayerInteractEvent(player, Action.RIGHT_CLICK_BLOCK, x, y, z, side, world);
+		if (MinecraftForge.EVENT_BUS.post(e) || e.getResult() == Result.DENY || e.useBlock == Result.DENY)
+			return false;
+		
+		if (!player.isSneaking())
+		{
+			player.openGui(ExAstris.ExAstris.instance, 1, world, x, y, z);
+			return true;
+		}
+		return false;
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -119,6 +138,44 @@ public class BlockHammerAutomatic extends BlockContainer {
 	public boolean isOpaqueCube()
 	{
 		return false;
+	}
+	
+	@Override
+	public ArrayList<ItemStack> dismantleBlock(EntityPlayer player, World world, int x, int y, int z, boolean returnDrops)
+	{
+		TileEntityHammerAutomatic te = (TileEntityHammerAutomatic) world.getTileEntity(x, y, z);
+
+		ItemStack stack = new ItemStack(this);
+		if (stack.stackTagCompound == null)
+			stack.stackTagCompound = new NBTTagCompound();
+		stack.stackTagCompound.setInteger("energy", te.getEnergyStored(null));
+		
+		ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
+		ret.add(stack);
+		world.setBlockToAir(x, y, z);
+		if (!returnDrops)
+		{
+			dropBlockAsItem(world, x, y, z, stack);
+		}
+		return ret;
+	}
+	
+	public boolean canDismantle(EntityPlayer player, World world, int x, int y, int z)
+	{
+		return true;
+	}
+	
+	@Override
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase player, ItemStack stack)
+	{
+		if (stack.stackTagCompound != null && stack.stackTagCompound.hasKey("energy"))
+		{
+			TileEntityHammerAutomatic sieve = (TileEntityHammerAutomatic) world.getTileEntity(x, y, z);
+			sieve.setEnergyStored(stack.stackTagCompound.getInteger("energy"));
+		}
+		
+		super.onBlockPlacedBy(world, x, y, z, player, stack);
+		
 	}
 
 }
