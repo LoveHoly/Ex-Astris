@@ -15,7 +15,6 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.particles.ParticleSieve;
 import exnihilo.registries.SieveRegistry;
-import exnihilo.registries.helpers.SiftReward;
 import exnihilo.registries.helpers.SiftingResult;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;

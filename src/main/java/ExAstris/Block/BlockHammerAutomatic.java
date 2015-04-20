@@ -22,7 +22,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
 import ExAstris.Block.TileEntity.TileEntityHammerAutomatic;
-import ExAstris.Block.TileEntity.TileEntitySieveAutomatic;
 import ExAstris.Data.BlockData;
 import ExAstris.Data.ModData;
 import cpw.mods.fml.common.eventhandler.Event.Result;

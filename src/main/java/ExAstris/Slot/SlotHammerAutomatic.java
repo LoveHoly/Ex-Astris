@@ -2,7 +2,6 @@ package ExAstris.Slot;
 
 import ExAstris.ExAstrisItem;
 import exnihilo.registries.HammerRegistry;
-import net.minecraft.block.Block;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;

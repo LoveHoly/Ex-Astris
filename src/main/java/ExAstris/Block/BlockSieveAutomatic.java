@@ -9,7 +9,6 @@ import cpw.mods.fml.common.eventhandler.Event.Result;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import exnihilo.blocks.tileentities.TileEntitySieve;
 import ExAstris.Block.TileEntity.TileEntitySieveAutomatic;
 import ExAstris.Data.BlockData;
 import ExAstris.Data.ModData;
