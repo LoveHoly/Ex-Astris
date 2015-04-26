@@ -178,6 +178,11 @@ public class ExAstrisRecipe {
 				OreRecipeFactory(ExAstrisBlock.vulcaniteOreBlock,ExAstrisItem.vulcaniteOreItem);
 				OreRecipeFactory(ExAstrisBlock.sanguiniteOreBlock,ExAstrisItem.sanguiniteOreItem);
 			}
+			
+			if (Loader.isModLoaded("Botania"))
+			{
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExAstrisItem.manaHammer), " b ", " ab", "a  ", 'a', "livingwoodTwig", 'b', "ingotManasteel"));
+			}
 		}
 		public static void OreRecipeFactory(Block block,Item item)
 		{

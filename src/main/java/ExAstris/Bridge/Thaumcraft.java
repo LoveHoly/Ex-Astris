@@ -339,4 +339,10 @@ public class Thaumcraft {
 	{
 		return new BlockBeeTrapInfused();
 	}
+	
+	public static Class entityPech()
+	{
+		return EntityPech.class;
+	}
+	
 }

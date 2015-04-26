@@ -2,6 +2,8 @@ package ExAstris;
 
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
+import exnihilo.Fluids;
+import exnihilo.registries.BarrelRecipeRegistry;
 import ExAstris.Bridge.BloodMagic;
 import ExAstris.Bridge.Botania;
 import ExAstris.Bridge.Chisel;
@@ -14,6 +16,7 @@ import ExAstris.Data.ItemData;
 import ExAstris.Data.ModData;
 import ExAstris.Item.ItemSieveUpgrade;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class ExAstrisItem {
@@ -65,13 +68,16 @@ public class ExAstrisItem {
 	
 	public static void registerItems()
 	{
-		if(Loader.isModLoaded("Thaumcraft")){
+		if(Loader.isModLoaded("Thaumcraft"))
+		{
 			DollThaumic = Thaumcraft.dollThaumic();
 			GameRegistry.registerItem(DollThaumic, ItemData.THAUMIC_DOLL_UNLOCALIZED_NAME);
+			//BarrelRecipeRegistry.addMobRecipe(Fluids.fluidWitchWater, new ItemStack(DollThaumic), Thaumcraft.entityPech(), "portal", )
 			
 			HammerThaumium = Thaumcraft.hammerThaumic();
 			GameRegistry.registerItem(HammerThaumium, ItemData.HAMMER_THAUMIUM_UNLOCALIZED_NAME);
-			if(Loader.isModLoaded("ThermalExpansion")){
+			if(Loader.isModLoaded("ThermalExpansion"))
+			{
 				DollFreezing = Thaumcraft.dollFreezing();
 				GameRegistry.registerItem(DollFreezing, ItemData.FREEZING_DOLL_UNLOCALIZED_NAME);
 			}
