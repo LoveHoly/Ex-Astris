@@ -8,6 +8,7 @@ import ExAstris.Bridge.BloodMagic;
 import ExAstris.Bridge.Botania;
 import ExAstris.Bridge.Chisel;
 import ExAstris.Bridge.EnderIO;
+import ExAstris.Bridge.FoodPlus;
 import ExAstris.Bridge.Metallurgy;
 import ExAstris.Bridge.RedstoneArsenal;
 import ExAstris.Bridge.TConstruct;
@@ -65,6 +66,8 @@ public class ExAstrisItem {
 	public static Item chiselStone;
 	
 	public static Item manaHammer;
+	
+	public static Item foodPlusSeed;
 	
 	public static void registerItems()
 	{
@@ -188,6 +191,12 @@ public class ExAstrisItem {
 		{
 			manaHammer = Botania.manaHammer();
 			GameRegistry.registerItem(manaHammer, "manaHammer");
+		}
+		
+		if (Loader.isModLoaded("FoodPlus"))
+		{
+			foodPlusSeed = FoodPlus.foodPlusSeed();
+			GameRegistry.registerItem(foodPlusSeed, "foodPlusSeed");
 		}
 	}
 }

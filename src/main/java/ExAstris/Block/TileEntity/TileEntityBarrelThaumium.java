@@ -77,7 +77,10 @@ public class TileEntityBarrelThaumium extends TileEntity implements IFluidHandle
 		PECK(22, ExtractMode.None),
 		BEEINFUSED(23, ExtractMode.Always),
 		BLIZZ_COOKING(24, ExtractMode.None),
-		BLIZZ(25, ExtractMode.None);
+		BLIZZ(25, ExtractMode.None),
+		RECIPE(26, ExtractMode.Always),
+		MOB(27, ExtractMode.None),
+		MAGICAL_MOB(28, ExtractMode.None);
 
 		private BarrelMode(int v, ExtractMode extract){this.value = v; this.canExtract = extract;}
 		public int value;
@@ -895,6 +898,18 @@ public class TileEntityBarrelThaumium extends TileEntity implements IFluidHandle
 
 		case 25:
 			setMode(BarrelMode.BLIZZ);
+			break;
+			
+		case 26:
+			setMode(BarrelMode.RECIPE);
+			break;
+			
+		case 27:
+			setMode(BarrelMode.MOB);
+			break;
+			
+		case 28:
+			setMode(BarrelMode.MAGICAL_MOB);
 			break;
 		}
 
