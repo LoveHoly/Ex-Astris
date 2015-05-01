@@ -50,7 +50,7 @@ public class TConstructModifier extends ActiveToolMod {
 			ArrayList<Smashable> rewards = HammerRegistry.getRewards(block, blockMeta);
 			boolean validTarget = false;
 
-			if (!rewards.isEmpty())
+			if (rewards != null && !rewards.isEmpty())
 			{
 				Iterator<Smashable> it = rewards.iterator();
 				while(it.hasNext())

@@ -58,8 +58,19 @@ public class ModHammered  extends ModBoolean {
 
 	public boolean validType (ToolCore tool)
 	{
-		if(tool.getToolName().equals("Pickaxe") ||
-				tool.getToolName().equals("Hammer") )
+		if(tool.getToolName().equals("Mattock") ||
+				tool.getToolName().equals("Hatchet") ||
+				tool.getToolName().equals("Broadsword") ||
+				tool.getToolName().equals("Longsword") ||
+				tool.getToolName().equals("Rapier") ||
+				tool.getToolName().equals("Cutlass") ||
+				tool.getToolName().equals("Cleaver") ||
+				tool.getToolName().equals("Lumber Axe") ||
+				tool.getToolName().equals("Scythe") || 
+				tool.getToolName().equals("Pickaxe") ||
+				tool.getToolName().equals("Hammer") ||
+				tool.getToolName().equals("Shovel") ||
+				tool.getToolName().equals("Excavator"))
 		{
 			return true;
 		}
