@@ -174,6 +174,11 @@ public class ExAstris {
 			FoodPlus.init();
 		}
 		
+		if (Loader.isModLoaded("witchery"))
+		{
+			log.info("+++ - Found Witchery");
+			Witchery.init();
+		}
 		
 		
 	}

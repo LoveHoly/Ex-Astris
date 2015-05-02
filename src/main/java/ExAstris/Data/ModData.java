@@ -43,6 +43,7 @@ public class ModData {
     public static String categoryArsMagica="ArsMagica";
     public static String categoryOres="Ores";
     public static String categoryFoodPlus="FoodPlus";
+    public static String categoryWitchery="Witchery";
     
     //BLOCKS
     public static String allowThaumiumBarrelKey = "thaumiumBarrel";
@@ -171,6 +172,12 @@ public class ModData {
 	public static boolean allowFoodPlusSaplingsToBeComposted = true;
 	public static String allowFoodPlusSaplingsToBeCompostedKey = "saplingsToBeComposted";
 	
+	//Witchery
+	public static int witcherySeedsChance = 64;
+	public static String witcherySeedsChanceKey = "seedsFromSifting";
+	public static boolean witcheryEnableCovenWitch = true;
+	public static String witcheryEnableCovenWitchKey = "enableCovenWitch";
+	
 	//Ars Magica
 	
 	//Ores
@@ -272,6 +279,10 @@ public class ModData {
 		//Food Plus
 		foodPlusSaplingSiftingChance = config.get(categoryFoodPlus, allowFoodPlusSaplingsFromSiftingKey, 64).getInt();
 		allowFoodPlusSaplingsToBeComposted = config.get(categoryFoodPlus, allowFoodPlusSaplingsToBeCompostedKey, true).getBoolean();
+		
+		//Witchery
+		witcherySeedsChance = config.get(categoryWitchery, witcherySeedsChanceKey, witcherySeedsChance).getInt();
+		witcheryEnableCovenWitch = config.get(categoryWitchery, witcheryEnableCovenWitchKey, witcheryEnableCovenWitch).getBoolean();
 	}
 	
 }
