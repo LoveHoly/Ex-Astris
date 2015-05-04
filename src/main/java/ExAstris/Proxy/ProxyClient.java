@@ -21,12 +21,12 @@ import cpw.mods.fml.common.Loader;
 import exnihilo.blocks.models.ModelSieveMesh;
 
 public class ProxyClient extends Proxy {
-	
+
 	public ProxyClient()
 	{
 		Proxy.setInstance((Proxy)this);
 	}
-	
+
 	@Override
 	public void initializeRenderers() {
 		if(Loader.isModLoaded("Thaumcraft")){
@@ -34,18 +34,18 @@ public class ProxyClient extends Proxy {
 			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBarrelThaumium.class, new RenderBarrelThaumium(barrel));
 			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ExAstrisBlock.BarrelThaumium), new ItemRenderBarrelThaumium(barrel));
 		}
-		
-		if(Loader.isModLoaded("ThermalExpansion") || Loader.isModLoaded("EnderIO")){
-			ModelSieveAutomatic sieve = new ModelSieveAutomatic();
-			ModelSieveMesh mesh = new ModelSieveMesh();
-			ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySieveAutomatic.class, new RenderSieveAutomatic(sieve, mesh));
-			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ExAstrisBlock.SieveAutomatic), new ItemRenderSieveAutomatic(sieve, mesh));
-			
-			BlockHammerAutomatic.renderId = RenderingRegistry.getNextAvailableRenderId();
-			RenderingRegistry.registerBlockHandler(new RenderBlockHammer());
-			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHammerAutomatic.class,  new RenderHammerAutomatic());
-			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ExAstrisBlock.HammerAutomatic), new RenderBlockHammer());
-		}
+
+
+		ModelSieveAutomatic sieve = new ModelSieveAutomatic();
+		ModelSieveMesh mesh = new ModelSieveMesh();
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySieveAutomatic.class, new RenderSieveAutomatic(sieve, mesh));
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ExAstrisBlock.SieveAutomatic), new ItemRenderSieveAutomatic(sieve, mesh));
+
+		BlockHammerAutomatic.renderId = RenderingRegistry.getNextAvailableRenderId();
+		RenderingRegistry.registerBlockHandler(new RenderBlockHammer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHammerAutomatic.class,  new RenderHammerAutomatic());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ExAstrisBlock.HammerAutomatic), new RenderBlockHammer());
+
 	}
-	
+
 }
