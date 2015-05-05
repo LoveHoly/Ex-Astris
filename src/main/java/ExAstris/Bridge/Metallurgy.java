@@ -2,14 +2,19 @@ package ExAstris.Bridge;
 
 import ExAstris.ExAstrisBlock;
 import ExAstris.ExAstrisItem;
+import ExAstris.Block.BlockOre;
 import ExAstris.Data.ModData;
+import ExAstris.Item.ItemOre;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import cpw.mods.fml.common.registry.GameRegistry;
 import exnihilo.ENBlocks;
+import exnihilo.compatibility.OreList.OreDimension;
 import exnihilo.registries.HammerRegistry;
+import exnihilo.registries.OreRegistry;
 import exnihilo.registries.SieveRegistry;
+import exnihilo.registries.helpers.Color;
 
 public class Metallurgy {
 	public static void init()
@@ -19,7 +24,7 @@ public class Metallurgy {
 	}
 	public static void addHammerRegistry()
 	{
-		if(ModData.ALLOW_METALLURGY_ORES)
+		if(ModData.allowMetallurgyOres)
 		{
 			RegistryFactory.HammerOreRegistryFactory(ExAstrisBlock.eximiteOreBlock, ExAstrisItem.eximiteOreItem);
 			RegistryFactory.HammerOreRegistryFactory(ExAstrisBlock.meutoiteOreBlock, ExAstrisItem.meutoiteOreItem);
@@ -46,13 +51,16 @@ public class Metallurgy {
 			RegistryFactory.HammerOreRegistryFactory(ExAstrisBlock.kalendriteOreBlock,  ExAstrisItem.kalendriteOreItem);
 			RegistryFactory.HammerOreRegistryFactory(ExAstrisBlock.vulcaniteOreBlock,  ExAstrisItem.vulcaniteOreItem);
 			RegistryFactory.HammerOreRegistryFactory(ExAstrisBlock.sanguiniteOreBlock,  ExAstrisItem.sanguiniteOreItem);
+			
+			OreRegistry.createOverworldOre("zinc", new Color("bfc55c"), 64, GameRegistry.findItem("Metallurgy", "zinc.ingot"), false);
+			//OreList.addOreToGenerate(new OreType("zinc", new Color("bfc55c"), OreDimension.OVERWORLD, 64, GameRegistry.findItem("Metallurgy", "zinc.ingot"), false));
 		}
 		
 
 	}
 	public static void addSieveRegistry()
 	{
-		if(ModData.ALLOW_METALLURGY_ORES)
+		if(ModData.allowMetallurgyOres)
 		{
 			//Sulfur
 			SieveRegistry.register(Blocks.sand, 0, GameRegistry.findItem("Metallurgy", "utility.item"), 0, 128);
@@ -94,5 +102,15 @@ public class Metallurgy {
 			SieveRegistry.register(ENBlocks.NetherGravel, 0, ExAstrisItem.vulcaniteOreItem, 0, 128);
 			SieveRegistry.register(ENBlocks.NetherGravel, 0, ExAstrisItem.sanguiniteOreItem, 0, 128);
 		}		
+	}
+	
+	public static Item oreItem(String name)
+	{
+		return new ItemOre(name);
+	}
+	
+	public static Block oreBlock(String name)
+	{
+		return new BlockOre(name);
 	}
 }

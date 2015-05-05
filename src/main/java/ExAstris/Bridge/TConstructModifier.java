@@ -3,9 +3,8 @@ package ExAstris.Bridge;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.registry.GameRegistry;
-import exnihilo.data.ModData;
+import exnihilo.utils.CrookUtils;
+
 import exnihilo.registries.HammerRegistry;
 import exnihilo.registries.helpers.Smashable;
 import net.minecraft.block.Block;
@@ -13,6 +12,7 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
@@ -21,7 +21,7 @@ import tconstruct.library.tools.AbilityHelper;
 import tconstruct.library.tools.ToolCore;
 
 public class TConstructModifier extends ActiveToolMod {
-	
+
 	@Override
 	public boolean beforeBlockBreak (ToolCore tool, ItemStack item, int X, int Y, int Z, EntityLivingBase player)
 	{
@@ -30,31 +30,16 @@ public class TConstructModifier extends ActiveToolMod {
 		{
 			World world = player.worldObj;
 			Block block = world.getBlock(X,Y,Z);
-			int meta = world.getBlockMetadata(X, Y, Z);
-			boolean validTarget = false;
-			boolean extraDropped = false;
-	
-	
-			if (!world.isRemote && block != null && block.isLeaves(world, X, Y, Z))
-			{
-						
-				if (ModData.ALLOW_SILKWORMS && world.rand.nextInt(130) == 0)
-				{
-					world.spawnEntityInWorld(new EntityItem(world, X + 0.5D, Y + 0.5D, Z + 0.5D, new ItemStack(GameRegistry.findItem("exnihilo", "silkworm"), 1, 0)));
-				}
-					
-				if (block.equals(GameRegistry.findBlock("exnihilo", "infested_leaves")))
-				{
-					if (ModData.ALLOW_SILKWORMS && world.rand.nextInt(20) == 0)
-					{
-						world.spawnEntityInWorld(new EntityItem(world, X + 0.5D, Y + 0.5D, Z + 0.5D, new ItemStack(GameRegistry.findItem("exnihilo", "silkworm"), 1, 0)));
-					}
-				}
-					
-				AbilityHelper.damageTool(item, 1, player, false);
-			}
+			world.getBlockMetadata(X, Y, Z);
+
+			boolean valid = CrookUtils.doCrooking(item, X, Y, Z, (EntityPlayer) player);
+
+			if (valid)
+				AbilityHelper.onBlockChanged(item, world, block, X, Y, Z, player, AbilityHelper.random);
+
 			return false;
 		}
+
 		if (tags.getBoolean("Hammered"))
 		{
 			World world = player.worldObj;
@@ -64,8 +49,8 @@ public class TConstructModifier extends ActiveToolMod {
 
 			ArrayList<Smashable> rewards = HammerRegistry.getRewards(block, blockMeta);
 			boolean validTarget = false;
-			
-			if (!rewards.isEmpty())
+
+			if (rewards != null && !rewards.isEmpty())
 			{
 				Iterator<Smashable> it = rewards.iterator();
 				while(it.hasNext())
@@ -89,8 +74,8 @@ public class TConstructModifier extends ActiveToolMod {
 
 				if (validTarget)
 				{
-					AbilityHelper.damageTool(item, 1, player, false);
-					
+					AbilityHelper.onBlockChanged(item, world, block, X, Y, Z, player, AbilityHelper.random);
+
 					if (!world.isRemote)
 					{
 						world.setBlockToAir(X, Y, Z);
@@ -106,14 +91,14 @@ public class TConstructModifier extends ActiveToolMod {
 		}
 		return false;
 	}
-	
+
 	@Override
 	public int attackDamage (int modDamage, int currentDamage, ToolCore tool, NBTTagCompound tags, NBTTagCompound toolTags, ItemStack stack, EntityLivingBase player, Entity entity)
-    {
+	{
 		if (toolTags.hasKey("Crooked"))
 		{
 			return 0;
 		}
 		else return currentDamage;
-    }
+	}
 }

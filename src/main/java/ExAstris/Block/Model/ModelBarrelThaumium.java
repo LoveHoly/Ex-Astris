@@ -1,13 +1,11 @@
 package ExAstris.Block.Model;
 
-import ExAstris.ExAstrisBlock;
 import ExAstris.Data.ModData;
 import net.minecraft.block.Block;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
-import exnihilo.ENBlocks;
 
 public class ModelBarrelThaumium extends ModelBase
 {

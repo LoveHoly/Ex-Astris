@@ -20,4 +20,7 @@ public class BlockData {
 	
 	public static final String STRONGLY_COMPRESSED_STONE_KEY = "strongly_compressed_stone";
 	public static final String STRONGLY_COMPRESSED_STONE_UNLOCALIZED_NAME = "strongly_compressed_stone";
+	
+	public static final String HAMMER_AUTOMATIC_KEY = "hammer_automatic";
+	public static final String HAMMER_AUTOMATIC_UNLOCALIZED_NAME = "hammer_automatic";
 }

@@ -2,7 +2,12 @@ package ExAstris.Bridge;
 
 import ExAstris.ExAstrisBlock;
 import ExAstris.ExAstrisItem;
+import ExAstris.Block.BlockBarrelThaumium;
+import ExAstris.Block.BlockBeeTrapInfused;
 import ExAstris.Data.ModData;
+import ExAstris.Item.ItemDollFreezing;
+import ExAstris.Item.ItemDollThaumic;
+import ExAstris.Item.ItemHammerThaumium;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -16,8 +21,10 @@ import thaumcraft.common.config.ConfigResearch;
 import thaumcraft.common.entities.monster.EntityPech;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
@@ -31,7 +38,7 @@ public class Thaumcraft {
 	{
 		addHammerRegistry();
 		addSieveRegistry();
-		if(ModData.ALLOW_THAUMCRAFT_HEAT_REGISTRY)
+		if(ModData.allowThaumcraftHeat)
 		{
 			addHeatRegistry();
 		}
@@ -39,7 +46,7 @@ public class Thaumcraft {
 		addInfusion();
 		addArcane();
 		addCrucible();
-		if(ModData.ALLOW_THAUMCRAFT_RESEARCH)
+		if(ModData.allowThaumcraftResearch)
 		{
 			addResearch();			
 		}
@@ -56,8 +63,8 @@ public class Thaumcraft {
 	}
 	public static void addSieveRegistry()
 	{
-		SieveRegistry.register(Blocks.sand, 0, GameRegistry.findItem("Thaumcraft", "ItemNugget"), 5, 128);
-		SieveRegistry.register(Blocks.sand, 0, GameRegistry.findItem("Thaumcraft", "ItemResource"), 6, 128);
+		SieveRegistry.register(Blocks.sand, 0, GameRegistry.findItem("Thaumcraft", "ItemNugget"), 5, ModData.oreQuicksilverChance);
+		SieveRegistry.register(Blocks.sand, 0, GameRegistry.findItem("Thaumcraft", "ItemResource"), 6, ModData.oreAmberChance);
 	}
 	public static void addHeatRegistry()
 	{
@@ -80,7 +87,7 @@ public class Thaumcraft {
 				new ResearchPage("exastris.page.EXASTRISTHAUM.1"), new ResearchPage("exastris.page.EXASTRISTHAUM.2")
 				}).setStub().setRound().setAutoUnlock().registerResearchItem();
 		
-		if(ModData.ALLOW_BARREL_THAUMIUM)
+		if(ModData.allowThaumiumbarrel)
 		{
 			new ResearchItem("EXASTRIS_BARRELTHAUMIUM",
 					"EXASTRIS_THAUM",
@@ -91,7 +98,7 @@ public class Thaumcraft {
 					new ItemStack(ExAstrisBlock.BarrelThaumium, 1, 0)).setPages(new ResearchPage[] {
 					new ResearchPage("exastris.page.EXASTRISTHAUM.3"), new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("exastrisbarrelthaumium"))
 					}).setConcealed().registerResearchItem();
-			if(ModData.ALLOW_DOLL_THAUMIC)
+			if(ModData.allowDollThaumic)
 			{
 				new ResearchItem("EXASTRIS_DOLLTHAUMIC",
 						"EXASTRIS_THAUM",
@@ -105,7 +112,7 @@ public class Thaumcraft {
 				
 			}
 			
-			if (Loader.isModLoaded("MagicBees") && ModData.ALLOW_BEE_TRAP_INFUSED)
+			if (Loader.isModLoaded("MagicBees") && ModData.allowBeeTrapInfused)
 			{
 				new ResearchItem("EXASTRIS_BEEHIVES",
 						"EXASTRIS_THAUM",
@@ -149,7 +156,7 @@ public class Thaumcraft {
 				new ItemStack(GameRegistry.findItem("Thaumcraft", "blockStoneDevice"), 1, 2)).setPages(new ResearchPage[] {
 				new ResearchPage("exastris.page.EXASTRISTHAUM.6"),new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("exastrismatrix"))
 				}).setConcealed().setParents("EXASTRIS_VISFILTER").registerResearchItem();
-		if(ModData.ALLOW_HAMMER_THAUMIUM)
+		if(ModData.allowHammerThaumium)
 		{
 			new ResearchItem("EXASTRIS_HAMMERTHAUMIUM",
 					"EXASTRIS_THAUM",
@@ -307,4 +314,35 @@ public class Thaumcraft {
 
 		worldObj.spawnEntityInWorld(peck);
 	}
+	
+	public static Item dollThaumic()
+	{
+		return new ItemDollThaumic();
+	}
+	
+	public static Item hammerThaumic()
+	{
+		return new ItemHammerThaumium();
+	}
+	
+	public static Item dollFreezing()
+	{
+		return new ItemDollFreezing();
+	}
+	
+	public static Block barrelThaumic()
+	{
+		return new BlockBarrelThaumium();
+	}
+	
+	public static Block beeTrapInfused()
+	{
+		return new BlockBeeTrapInfused();
+	}
+	
+	public static Class entityPech()
+	{
+		return EntityPech.class;
+	}
+	
 }

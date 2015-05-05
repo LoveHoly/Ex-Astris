@@ -80,8 +80,6 @@ public class BlockBarrelThaumium extends BlockContainer
 	public void onBlockAdded(World world, int x, int y, int z)
 	{
 		super.onBlockAdded(world, x, y, z);
-
-		int meta = world.getBlockMetadata(x, y, z);
 	}
 
 	@Override
@@ -274,7 +272,7 @@ public class BlockBarrelThaumium extends BlockContainer
 								
 							}
 							
-							if(ExAstris.Data.ModData.ALLOW_BEE_TRAP_INFUSED && item.getItem() == Item.getItemFromBlock(ENBlocks.BeeTrap))
+							if(ExAstris.Data.ModData.allowBeeTrapInfused && item.getItem() == Item.getItemFromBlock(ENBlocks.BeeTrap))
 							{
 								barrel.setMode(BarrelMode.BEEINFUSED);
 								barrel.resetColor();

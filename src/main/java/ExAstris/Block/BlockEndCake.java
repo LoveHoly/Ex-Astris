@@ -10,7 +10,6 @@ import net.minecraft.block.BlockEndPortal;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -91,7 +90,7 @@ public class BlockEndCake extends BlockCake {
 	
 	private void nomEndCake(World world, int x, int y, int z, EntityPlayer player)
     {
-        if (player.canEat(false))
+        if (player.canEat(false) || ModData.allowEndCakeEatingWhileFull)
         {
             int l = world.getBlockMetadata(x, y, z) + 1;
 

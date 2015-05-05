@@ -3,7 +3,6 @@ package ExAstris.Item;
 import ExAstris.Data.ItemData;
 import ExAstris.Data.ModData;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 

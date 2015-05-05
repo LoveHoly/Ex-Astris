@@ -7,6 +7,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+@SuppressWarnings("unused")
 public class ItemUnchargedNetherStar extends Item{
 	public ItemUnchargedNetherStar() {
 		super();

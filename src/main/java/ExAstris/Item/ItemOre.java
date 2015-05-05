@@ -55,6 +55,7 @@ public class ItemOre extends Item
 		return icon[meta];
 	}
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void getSubItems(Item item, CreativeTabs tabs, List subItems)

@@ -23,7 +23,6 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 
 @Mod(modid = ModData.ID, name = ModData.NAME, version = ModData.VERSION, dependencies = ModData.DEPENDENCIES)
@@ -54,12 +53,12 @@ public class ExAstris {
 		ExAstrisBlock.registerBlocks();
 		ExAstrisItem.registerItems();
 		
-		if(config.hasChanged())
-			config.save();
-		
 		proxy.initializeSounds();
 		proxy.initializeRenderers();
 		MinecraftForge.EVENT_BUS.register(this);
+		
+		if(config.hasChanged())
+			config.save();
 	}
 	@EventHandler
 	public void Initialize(FMLInitializationEvent event)
@@ -70,6 +69,13 @@ public class ExAstris {
 		ExAstrisRecipe.registerCraftingRecipes();
 		ExAstrisRecipe.registerFurnaceRecipes();
 		FMLInterModComms.sendMessage("Waila", "register", "ExAstris.Bridge.Waila.callbackRegister");
+		
+		if (Loader.isModLoaded("chisel"))
+		{
+			log.info("+++ - Found Chisel!");
+			Chisel.sendIMC();
+		}
+		
 	}
 	@EventHandler
 	public void PostInitialize(FMLPostInitializationEvent event)
@@ -137,5 +143,43 @@ public class ExAstris {
 			log.info("+++ - Found BigReactors!");
 			BigReactors.init();
 		}
+		
+		if (Loader.isModLoaded("Natura"))
+		{
+			log.info("+++ - Found Natura!");
+			Natura.init();
+		}
+		
+		if (Loader.isModLoaded("chisel"))
+		{
+			log.info("+++ - Found Chisel!");
+			Chisel.init();
+		}
+		
+		if (Loader.isModLoaded("Botania"))
+		{
+			log.info("+++ - Found Botania!");
+			Botania.init();
+		}
+		
+		if (Loader.isModLoaded("DraconicEvolution"))
+		{
+			log.info("+++ - Found DraconicEvolution");
+			DraconicEvolution.init();
+		}
+		
+		if (Loader.isModLoaded("FoodPlus"))
+		{
+			log.info("+++ - Found FoodPlus");
+			FoodPlus.init();
+		}
+		
+		if (Loader.isModLoaded("witchery"))
+		{
+			log.info("+++ - Found Witchery");
+			Witchery.init();
+		}
+		
+		
 	}
 }

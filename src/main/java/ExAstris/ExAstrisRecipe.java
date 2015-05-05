@@ -7,27 +7,23 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
-import exnihilo.ENBlocks;
-import exnihilo.registries.HammerRegistry;
-
-
+import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public class ExAstrisRecipe {
 	public static void registerFurnaceRecipes()
 	{
-		if(Loader.isModLoaded("TConstruct") && ModData.ALLOW_ADD_TCONSTRUCT_NETHERORE)
+		if(Loader.isModLoaded("TConstruct") && ModData.allowAddTConstructNetherOre)
 		{
 			RegistryFactory.FurnaceOreRegistryFactory(ExAstrisBlock.cobaltOreBlock,new ItemStack(GameRegistry.findItem("TConstruct", "materials"), 1, 3));
 			RegistryFactory.FurnaceOreRegistryFactory(ExAstrisBlock.arditeOreBlock,new ItemStack(GameRegistry.findItem("TConstruct", "materials"), 1, 4));
 		}
-		if(Loader.isModLoaded("Metallurgy") && ModData.ALLOW_METALLURGY_ORES)
+		if(Loader.isModLoaded("Metallurgy") && ModData.allowMetallurgyOres)
 		{
 			RegistryFactory.FurnaceOreRegistryFactory(ExAstrisBlock.eximiteOreBlock,new ItemStack(GameRegistry.findItem("Metallurgy", "eximite.ingot"), 1, 0));
 			RegistryFactory.FurnaceOreRegistryFactory(ExAstrisBlock.meutoiteOreBlock,new ItemStack(GameRegistry.findItem("Metallurgy", "meutoite.ingot"), 1, 0));
-			
+
 			RegistryFactory.FurnaceOreRegistryFactory(ExAstrisBlock.prometheumOreBlock,new ItemStack(GameRegistry.findItem("Metallurgy", "prometheum.ingot"), 1, 0));
 			RegistryFactory.FurnaceOreRegistryFactory(ExAstrisBlock.deepironOreBlock,new ItemStack(GameRegistry.findItem("Metallurgy", "deep.iron.ingot"), 1, 0));
 			RegistryFactory.FurnaceOreRegistryFactory(ExAstrisBlock.infuscoliumOreBlock,new ItemStack(GameRegistry.findItem("Metallurgy", "infuscolium.ingot"), 1, 0));
@@ -39,7 +35,7 @@ public class ExAstrisRecipe {
 			RegistryFactory.FurnaceOreRegistryFactory(ExAstrisBlock.orichalcumOreBlock,new ItemStack(GameRegistry.findItem("Metallurgy", "orichalcum.ingot"), 1, 0));
 			RegistryFactory.FurnaceOreRegistryFactory(ExAstrisBlock.adamantineOreBlock,new ItemStack(GameRegistry.findItem("Metallurgy", "adamantine.ingot"), 1, 0));
 			RegistryFactory.FurnaceOreRegistryFactory(ExAstrisBlock.atlarusOreBlock,new ItemStack(GameRegistry.findItem("Metallurgy", "atlarus.ingot"), 1, 0));
-			
+
 			RegistryFactory.FurnaceOreRegistryFactory(ExAstrisBlock.ignatiusOreBlock,new ItemStack(GameRegistry.findItem("Metallurgy", "ignatius.ingot"), 1, 0));
 			RegistryFactory.FurnaceOreRegistryFactory(ExAstrisBlock.shadowironOreBlock,new ItemStack(GameRegistry.findItem("Metallurgy", "shadow.iron.ingot"), 1, 0));
 			RegistryFactory.FurnaceOreRegistryFactory(ExAstrisBlock.lemuriteOreBlock,new ItemStack(GameRegistry.findItem("Metallurgy", "lemurite.ingot"), 1, 0));
@@ -54,29 +50,32 @@ public class ExAstrisRecipe {
 	}
 	public static void registerCraftingRecipes()
 	{
-		if(Loader.isModLoaded("RedstoneArsenal") && ModData.ALLOW_HAMMER_RF){
-			GameRegistry.addRecipe(new ItemStack(ExAstrisItem.HammerRF, 1, 0),
-					" x ",
-					" yx",
-					"y  ",
-					'x', new ItemStack(GameRegistry.findItem("RedstoneArsenal", "material"), 1, 32), 
-					'y', new ItemStack(GameRegistry.findItem("RedstoneArsenal", "material"), 1, 193));
-		}
-		if(Loader.isModLoaded("ThermalExpansion")){
-			if(ModData.ALLOW_SIEVE_AUTOMATIC)
+		if(Loader.isModLoaded("RedstoneArsenal"))
+		{
+			if (ModData.allowHammerRF)
 			{
-				GameRegistry.addRecipe(new ItemStack(ExAstrisBlock.SieveAutomatic, 1, 0),
-						"aba",
-						"aca",
-						"d d",
-						'a', new ItemStack(GameRegistry.findItem("ThermalFoundation", "material"), 1, 72), 
-						'b', new ItemStack(GameRegistry.findItem("exnihilo", "mesh"), 1, 0), 
-						'c', new ItemStack(GameRegistry.findItem("ThermalFoundation", "material"), 1, 135), 
-						'd', new ItemStack(GameRegistry.findItem("ThermalFoundation", "material"), 1, 104));
+
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExAstrisItem.HammerRF, 1, 0),
+						" x ",
+						" yx",
+						"y  ",
+						'x', "ingotElectrumFlux",
+						'y', new ItemStack(GameRegistry.findItem("RedstoneArsenal", "material"), 1, 193)));
 			}
 			
-			
-			if(Loader.isModLoaded("Thaumcraft") && ModData.ALLOW_DOLL_FREEZING && ModData.ALLOW_BARREL_THAUMIUM){
+			if (ModData.allowCrookRF)
+			{
+				GameRegistry.addRecipe(new ShapedOreRecipe( new ItemStack(ExAstrisItem.CrookRF, 1, 0), 
+						"xxy",
+						" x ",
+						"yx ",
+						'x', new ItemStack(GameRegistry.findItem("RedstoneArsenal", "material"), 1, 192),
+						'y', "gemCrystalFlux"));
+			}
+		}
+
+			if(Loader.isModLoaded("Thaumcraft") && ModData.allowDollFreezing && ModData.allowThaumiumbarrel)
+			{
 
 				GameRegistry.addRecipe(new ItemStack(ExAstrisItem.DollFreezing, 1, 0),
 						"aba",
@@ -88,107 +87,206 @@ public class ExAstrisRecipe {
 						'd', Items.glowstone_dust, 
 						'e', new ItemStack(GameRegistry.findItem("exnihilo", "doll"), 1, 0));
 			}
+
+			if(Loader.isModLoaded("AWWayofTime")){
+				GameRegistry.addRecipe(new ItemStack(ExAstrisItem.UnchargedNetherStar, 1, 0),
+						"aaa",
+						"dbd",
+						"cef",
+						'a', Items.skull, 
+						'b', Items.quartz, 
+						'c', Items.diamond_axe, 
+						'd', Blocks.soul_sand, 
+						'e', Items.diamond_pickaxe, 
+						'f', Items.diamond_sword);
+			}
+
+			if(ModData.allowEndCake)
+			{
+				GameRegistry.addRecipe(new ItemStack(ExAstrisBlock.EndCake, 1, 0),
+						"aaa",
+						"bcb",
+						"aaa",
+						'a', Items.ender_eye, 
+						'b', Items.cake, 
+						'c', Items.golden_apple);
+			}
+
+			if (Loader.isModLoaded("ThermalFoundation") && ModData.enableTERecipes)
+			{
+				addThermalFoundationRecipes();
+			}
+
+			if (Loader.isModLoaded("EnderIO") && ModData.enableEIORecipes)
+			{
+				addEnderIORecipes();
+			}
+
+			if(Loader.isModLoaded("TConstruct") && ModData.allowAddTConstructNetherOre)
+			{
+				OreRecipeFactory(ExAstrisBlock.cobaltOreBlock,ExAstrisItem.cobaltOreItem);
+				OreRecipeFactory(ExAstrisBlock.arditeOreBlock,ExAstrisItem.arditeOreItem);
+			}
+			if(Loader.isModLoaded("RotaryCraft") && ModData.allowStronglyCompressedStone)
+			{
+				GameRegistry.addRecipe(new ItemStack(ExAstrisBlock.StronglyCompressedStone, 1, 0),
+						"aaa",
+						"aaa",
+						"aaa",
+						'a', new ItemStack(Blocks.obsidian, 1, 0));
+				GameRegistry.addRecipe(new ItemStack(ExAstrisBlock.StronglyCompressedStone, 1, 1),
+						"aaa",
+						"aaa",
+						"aaa",
+						'a', new ItemStack(ExAstrisBlock.StronglyCompressedStone, 1, 0));
+				GameRegistry.addRecipe(new ItemStack(ExAstrisBlock.StronglyCompressedStone, 1, 2),
+						"aaa",
+						"aaa",
+						"aaa",
+						'a', new ItemStack(ExAstrisBlock.StronglyCompressedStone, 1, 1));
+				GameRegistry.addRecipe(new ItemStack(ExAstrisBlock.QStronglyCompressedStone, 1, 0),
+						"aaa",
+						"aaa",
+						"aaa",
+						'a', new ItemStack(ExAstrisBlock.StronglyCompressedStone, 1, 2));
+			}
+			if(Loader.isModLoaded("Metallurgy") && ModData.allowMetallurgyOres)
+			{
+				OreRecipeFactory(ExAstrisBlock.eximiteOreBlock,ExAstrisItem.eximiteOreItem);
+				OreRecipeFactory(ExAstrisBlock.meutoiteOreBlock,ExAstrisItem.meutoiteOreItem);
+
+				OreRecipeFactory(ExAstrisBlock.prometheumOreBlock,ExAstrisItem.prometheumOreItem);
+				OreRecipeFactory(ExAstrisBlock.deepironOreBlock,ExAstrisItem.deepironOreItem);
+				OreRecipeFactory(ExAstrisBlock.infuscoliumOreBlock,ExAstrisItem.infuscoliumOreItem);
+				OreRecipeFactory(ExAstrisBlock.oureclaseOreBlock,ExAstrisItem.oureclaseOreItem);
+				OreRecipeFactory(ExAstrisBlock.astralsilverOreBlock,ExAstrisItem.astralsilverOreItem);
+				OreRecipeFactory(ExAstrisBlock.carmotOreBlock,ExAstrisItem.carmotOreItem);
+				OreRecipeFactory(ExAstrisBlock.mithrilOreBlock,ExAstrisItem.mithrilOreItem);
+				OreRecipeFactory(ExAstrisBlock.rubraciumOreBlock,ExAstrisItem.rubraciumOreItem);
+				OreRecipeFactory(ExAstrisBlock.orichalcumOreBlock,ExAstrisItem.orichalcumOreItem);
+				OreRecipeFactory(ExAstrisBlock.adamantineOreBlock,ExAstrisItem.adamantineOreItem);
+				OreRecipeFactory(ExAstrisBlock.atlarusOreBlock,ExAstrisItem.atlarusOreItem);
+
+				OreRecipeFactory(ExAstrisBlock.ignatiusOreBlock,ExAstrisItem.ignatiusOreItem);
+				OreRecipeFactory(ExAstrisBlock.shadowironOreBlock,ExAstrisItem.shadowironOreItem);
+				OreRecipeFactory(ExAstrisBlock.lemuriteOreBlock,ExAstrisItem.lemuriteOreItem);
+				OreRecipeFactory(ExAstrisBlock.midasiumOreBlock,ExAstrisItem.midasiumOreItem);
+				OreRecipeFactory(ExAstrisBlock.vyroxeresOreBlock,ExAstrisItem.vyroxeresOreItem);
+				OreRecipeFactory(ExAstrisBlock.ceruclaseOreBlock,ExAstrisItem.ceruclaseOreItem);
+				OreRecipeFactory(ExAstrisBlock.alduoriteOreBlock,ExAstrisItem.alduoriteOreItem);
+				OreRecipeFactory(ExAstrisBlock.kalendriteOreBlock,ExAstrisItem.kalendriteOreItem);
+				OreRecipeFactory(ExAstrisBlock.vulcaniteOreBlock,ExAstrisItem.vulcaniteOreItem);
+				OreRecipeFactory(ExAstrisBlock.sanguiniteOreBlock,ExAstrisItem.sanguiniteOreItem);
+			}
 			
+			if (Loader.isModLoaded("Botania"))
+			{
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExAstrisItem.manaHammer), " b ", " ab", "a  ", 'a', "livingwoodTwig", 'b', "ingotManasteel"));
+			}
 		}
-		if(Loader.isModLoaded("AWWayofTime")){
-			GameRegistry.addRecipe(new ItemStack(ExAstrisItem.UnchargedNetherStar, 1, 0),
-					"aaa",
-					"dbd",
-					"cef",
-					'a', Items.skull, 
-					'b', Items.quartz, 
-					'c', Items.diamond_axe, 
-					'd', Blocks.soul_sand, 
-					'e', Items.diamond_pickaxe, 
-					'f', Items.diamond_sword);
-		}
-		
-		if(ModData.ALLOW_ENDCAKE)
+		public static void OreRecipeFactory(Block block,Item item)
 		{
-			GameRegistry.addRecipe(new ItemStack(ExAstrisBlock.EndCake, 1, 0),
-					"aaa",
-					"bcb",
-					"aaa",
-					'a', Items.ender_eye, 
-					'b', Items.cake, 
-					'c', Items.golden_apple);
+			GameRegistry.addRecipe(new ItemStack(block, 1, 0),
+					"aa ",
+					"aa ",
+					"   ",
+					'a', new ItemStack(item, 1, 0));
+
+			GameRegistry.addRecipe(new ItemStack(block, 1,1),
+					"aa ",
+					"aa ",
+					"   ",
+					'a', new ItemStack(item, 1, 1));
+
+			GameRegistry.addRecipe(new ItemStack(block ,1, 2),
+					"aa ",
+					"aa ",
+					"   ",
+					'a', new ItemStack(item, 1, 2));
 		}
-		
-		if(Loader.isModLoaded("TConstruct") && ModData.ALLOW_ADD_TCONSTRUCT_NETHERORE)
+
+		public static void addThermalFoundationRecipes()
 		{
-			OreRecipeFactory(ExAstrisBlock.cobaltOreBlock,ExAstrisItem.cobaltOreItem);
-			OreRecipeFactory(ExAstrisBlock.arditeOreBlock,ExAstrisItem.arditeOreItem);
+			if (ModData.allowSieveAutomatic)
+			{
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExAstrisBlock.SieveAutomatic, 1, 0),
+						"aba",
+						"aca",
+						"d d",
+						'a', "ingotInvar",
+						'b', new ItemStack(GameRegistry.findItem("exnihilo", "mesh"), 1, 0), 
+						'c', "gearElectrum",
+						'd', "nuggetInvar"));
+			}
+			if (ModData.allowUpgrades)
+			{
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExAstrisItem.sieveUpgradeItem, 2, 0), "aba", "bcb", "aba",
+						'a', "nuggetElectrum",
+						'b', "ingotInvar",
+						'c', "dustPyrotheum"));
+
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExAstrisItem.sieveUpgradeItem, 2, 1), "aba", "bcb", "aba",
+						'a', "nuggetElectrum",
+						'b', "ingotInvar",
+						'c', "gemDiamond"));
+
+			}
+
+			if (ModData.allowHammerAutomatic)
+			{
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExAstrisBlock.HammerAutomatic, 1, 0),
+						"ada",
+						"aba",
+						"aca", 
+						'a', "ingotInvar",
+						'd', Blocks.piston,
+						'c', Blocks.anvil,
+						'b', Blocks.heavy_weighted_pressure_plate));
+			}
 		}
-		if(Loader.isModLoaded("RotaryCraft") && ModData.ALLOW_STRONGLY_COMPRESSED_STONE)
+
+		public static void addEnderIORecipes()
 		{
-			GameRegistry.addRecipe(new ItemStack(ExAstrisBlock.StronglyCompressedStone, 1, 0),
-					"aaa",
-					"aaa",
-					"aaa",
-					'a', new ItemStack(Blocks.obsidian, 1, 0));
-			GameRegistry.addRecipe(new ItemStack(ExAstrisBlock.StronglyCompressedStone, 1, 1),
-					"aaa",
-					"aaa",
-					"aaa",
-					'a', new ItemStack(ExAstrisBlock.StronglyCompressedStone, 1, 0));
-			GameRegistry.addRecipe(new ItemStack(ExAstrisBlock.StronglyCompressedStone, 1, 2),
-					"aaa",
-					"aaa",
-					"aaa",
-					'a', new ItemStack(ExAstrisBlock.StronglyCompressedStone, 1, 1));
-			GameRegistry.addRecipe(new ItemStack(ExAstrisBlock.QStronglyCompressedStone, 1, 0),
-					"aaa",
-					"aaa",
-					"aaa",
-					'a', new ItemStack(ExAstrisBlock.StronglyCompressedStone, 1, 2));
-		}
-		if(Loader.isModLoaded("Metallurgy") && ModData.ALLOW_METALLURGY_ORES)
-		{
-			OreRecipeFactory(ExAstrisBlock.eximiteOreBlock,ExAstrisItem.eximiteOreItem);
-			OreRecipeFactory(ExAstrisBlock.meutoiteOreBlock,ExAstrisItem.meutoiteOreItem);
-			
-			OreRecipeFactory(ExAstrisBlock.prometheumOreBlock,ExAstrisItem.prometheumOreItem);
-			OreRecipeFactory(ExAstrisBlock.deepironOreBlock,ExAstrisItem.deepironOreItem);
-			OreRecipeFactory(ExAstrisBlock.infuscoliumOreBlock,ExAstrisItem.infuscoliumOreItem);
-			OreRecipeFactory(ExAstrisBlock.oureclaseOreBlock,ExAstrisItem.oureclaseOreItem);
-			OreRecipeFactory(ExAstrisBlock.astralsilverOreBlock,ExAstrisItem.astralsilverOreItem);
-			OreRecipeFactory(ExAstrisBlock.carmotOreBlock,ExAstrisItem.carmotOreItem);
-			OreRecipeFactory(ExAstrisBlock.mithrilOreBlock,ExAstrisItem.mithrilOreItem);
-			OreRecipeFactory(ExAstrisBlock.rubraciumOreBlock,ExAstrisItem.rubraciumOreItem);
-			OreRecipeFactory(ExAstrisBlock.orichalcumOreBlock,ExAstrisItem.orichalcumOreItem);
-			OreRecipeFactory(ExAstrisBlock.adamantineOreBlock,ExAstrisItem.adamantineOreItem);
-			OreRecipeFactory(ExAstrisBlock.atlarusOreBlock,ExAstrisItem.atlarusOreItem);
-			
-			OreRecipeFactory(ExAstrisBlock.ignatiusOreBlock,ExAstrisItem.ignatiusOreItem);
-			OreRecipeFactory(ExAstrisBlock.shadowironOreBlock,ExAstrisItem.shadowironOreItem);
-			OreRecipeFactory(ExAstrisBlock.lemuriteOreBlock,ExAstrisItem.lemuriteOreItem);
-			OreRecipeFactory(ExAstrisBlock.midasiumOreBlock,ExAstrisItem.midasiumOreItem);
-			OreRecipeFactory(ExAstrisBlock.vyroxeresOreBlock,ExAstrisItem.vyroxeresOreItem);
-			OreRecipeFactory(ExAstrisBlock.ceruclaseOreBlock,ExAstrisItem.ceruclaseOreItem);
-			OreRecipeFactory(ExAstrisBlock.alduoriteOreBlock,ExAstrisItem.alduoriteOreItem);
-			OreRecipeFactory(ExAstrisBlock.kalendriteOreBlock,ExAstrisItem.kalendriteOreItem);
-			OreRecipeFactory(ExAstrisBlock.vulcaniteOreBlock,ExAstrisItem.vulcaniteOreItem);
-			OreRecipeFactory(ExAstrisBlock.sanguiniteOreBlock,ExAstrisItem.sanguiniteOreItem);
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExAstrisItem.nuggetElectricalSteel, 9, 0), "a", 'a', "ingotElectricalSteel"));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(GameRegistry.findItem("EnderIO", "itemAlloy"), 1, 0), "aaa", "aaa", "aaa", 'a', "nuggetElectricalSteel"));
+
+			if (ModData.allowSieveAutomatic)
+			{
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExAstrisBlock.SieveAutomatic, 1, 0),
+						"aba",
+						"aca",
+						"d d",
+						'a', "ingotElectricalSteel",
+						'b', new ItemStack(GameRegistry.findItem("exnihilo", "mesh"), 1, 0),
+						'c', new ItemStack(GameRegistry.findItem("EnderIO", "itemMachinePart"), 1, 0),
+						'd', "nuggetElectricalSteel"));
+			}
+
+			if (ModData.allowUpgrades)
+			{
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExAstrisItem.sieveUpgradeItem, 2, 0), "aba", "bcb", "aba",
+						'a', "nuggetVibrantAlloy",
+						'b', "ingotRedstoneAlloy",
+						'c', new ItemStack(GameRegistry.findItem("EnderIO", "itemMaterial"), 1, 7)));
+
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExAstrisItem.sieveUpgradeItem, 2, 1), "aba", "bcb", "aba",
+						'a', "nuggetVibrantAlloy",
+						'b', "ingotRedstoneAlloy",
+						'c', "gemDiamond"));
+
+			}
+
+			if (ModData.allowHammerAutomatic)
+			{
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExAstrisBlock.HammerAutomatic, 1, 0),
+						"ada",
+						"aba",
+						"aca", 
+						'a', "ingotDarkSteel",
+						'd', Blocks.piston,
+						'c', Blocks.anvil,
+						'b', Blocks.heavy_weighted_pressure_plate));
+			}
+
 		}
 	}
-	public static void OreRecipeFactory(Block block,Item item)
-	{
-		GameRegistry.addRecipe(new ItemStack(block, 1, 0),
-				"aa ",
-				"aa ",
-				"   ",
-				'a', new ItemStack(item, 1, 0));
-		
-		GameRegistry.addRecipe(new ItemStack(block, 1,1),
-				"aa ",
-				"aa ",
-				"   ",
-				'a', new ItemStack(item, 1, 1));
-		
-		GameRegistry.addRecipe(new ItemStack(block ,1, 2),
-				"aa ",
-				"aa ",
-				"   ",
-				'a', new ItemStack(item, 1, 2));
-	}
-}

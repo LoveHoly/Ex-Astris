@@ -2,17 +2,14 @@ package ExAstris.Bridge;
 
 import ExAstris.Data.ModData;
 import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.init.Blocks;
 import exnihilo.registries.CompostRegistry;
-import exnihilo.registries.SieveRegistry;
 import exnihilo.registries.ColorRegistry;
 import exnihilo.registries.helpers.Color;
-import exnihilo.registries.ColorRegistry;
 public class MineFactoryReloaded {
 	public static void Initialize()
 	{
 		addColorRegistry();
-		if(ModData.ALLOW_MFR_COMPOST)
+		if(ModData.allowMFRCompost)
 		{
 			addCompostRegistry();
 		}
@@ -24,9 +21,10 @@ public class MineFactoryReloaded {
 	public static void addCompostRegistry()
 	{
 		
-		CompostRegistry.register(GameRegistry.findItem("MineFactoryReloaded", "tile.mfr.rubberwood.sapling"), 0, 0.125F, ColorRegistry.color("rubberwood"));
-		CompostRegistry.register(GameRegistry.findItem("MineFactoryReloaded", "tile.mfr.rubberwood.leaves"), 0, 0.125F, ColorRegistry.color("rubberwood"));
-		CompostRegistry.register(GameRegistry.findItem("MineFactoryReloaded", "tile.mfr.rubberwood.leaves"), 1, 0.125F, ColorRegistry.color("rubberwood"));
+		CompostRegistry.register(GameRegistry.findItem("MineFactoryReloaded", "rubberwood.sapling"), 0, 0.125F, ColorRegistry.color("rubberwood"));
+		CompostRegistry.register(GameRegistry.findItem("MineFactoryReloaded", "rubberwood.sapling"), 1, 0.125F, ColorRegistry.color("rubberwood"));
+		CompostRegistry.register(GameRegistry.findItem("MineFactoryReloaded", "rubberwood.leaves"), 0, 0.125F, ColorRegistry.color("rubberwood"));
+		CompostRegistry.register(GameRegistry.findItem("MineFactoryReloaded", "rubberwood.leaves"), 1, 0.125F, ColorRegistry.color("rubberwood"));
 		
 	}
 }

@@ -2,8 +2,6 @@ package ExAstris.Item;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Set;
-
 import ExAstris.Data.ItemData;
 import ExAstris.Data.ModData;
 import net.minecraft.block.Block;
@@ -13,20 +11,17 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import exnihilo.registries.HammerRegistry;
 import net.minecraft.item.EnumRarity;
-import net.minecraft.item.Item;
-import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemStack;
-import redstonearsenal.item.RAItems;
-import redstonearsenal.item.tool.ItemToolRF;
+import cofh.redstonearsenal.item.RAItems;
+import cofh.redstonearsenal.item.tool.ItemToolRF;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import exnihilo.registries.helpers.Smashable;
 public class ItemHammerRF extends ItemToolRF {
 	  IIcon activeIcon;
 	  IIcon drainedIcon;
-	@SuppressWarnings("rawtypes")
 	//public static Set blocksEffectiveAgainst = Sets.newHashSet(new Block[]{});
-
+	 
 	public ItemHammerRF() 
 	{
 		super(RAItems.TOOL_MATERIAL_FLUX);
@@ -37,30 +32,12 @@ public class ItemHammerRF extends ItemToolRF {
 	@Override
 	public boolean func_150897_b(Block block)
 	{
-		Block[] blocks = HammerRegistry.getBlocks();
-
-		for (int i = 0; i < blocks.length; ++i)
-		{
-			if (blocks[i] == block)
-			{
-				return true;
-			}
-		}
-		return false;
+		return HammerRegistry.registered(block, 0);
 	}
 
 	@Override
 	public float getDigSpeed(ItemStack item, Block block, int meta)
 	{
-		Block[] blocks = HammerRegistry.getBlocks();
-
-		/*for (int i = 0; i < blocks.length; ++i)
-		{
-			//if (blocks[i] == block && block.getHarvestLevel(meta) <= this.toolMaterial.getHarvestLevel())
-			//{
-				return efficiencyOnProperMaterial * 1.75f;
-			//}
-		}*/
 		if(isEmpowered(item))
 		{
 			return efficiencyOnProperMaterial * 6.0f;
@@ -105,11 +82,13 @@ public class ItemHammerRF extends ItemToolRF {
 					entityitem.motionZ = world.rand.nextGaussian() * f3;
 
 					world.spawnEntityInWorld(entityitem);
-					useEnergy(item, false);
+					
 				}
 				
 				valid = true;
 			}
+			if (valid)
+				useEnergy(item, false);
 		}else
 		{
 			if (block.getMaterial().isToolNotRequired() || block.getHarvestTool(blockMeta) == null)
@@ -117,8 +96,6 @@ public class ItemHammerRF extends ItemToolRF {
 				return false;
 			}
 		}
-		
-		item.damageItem(1, player);
 
 		if (item.stackSize == 0)
 		{
